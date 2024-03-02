@@ -1,14 +1,15 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
-
+const SPEED = 150.0
+const ACCELERATION_SMOOTHING = 25
 
 func _process(delta):
 	# Define Movement
 	var movement_vector = get_movement_vector()
 	#Normalize 
 	var direction = movement_vector.normalized()
-	velocity = direction * SPEED
+	var target_velocity = direction * SPEED
+	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
 	move_and_slide()
 #Get Input in a Vector2 return
 func get_movement_vector():

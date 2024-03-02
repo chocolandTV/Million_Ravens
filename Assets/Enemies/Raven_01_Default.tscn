@@ -10,7 +10,9 @@ radius = 23.0
 radius = 13.0
 
 [node name="Ravenspeedy" type="CharacterBody2D" groups=["enemy"]]
-collision_layer = 0
+collision_layer = 16
+collision_mask = 17
+motion_mode = 1
 script = ExtResource("1_i2ncy")
 
 [node name="HurtBox" type="Area2D" parent="."]

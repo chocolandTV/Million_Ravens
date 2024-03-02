@@ -1,5 +1,5 @@
 extends Camera2D
-@export var smoothLerp =10.0
+@export var smoothLerp =20.0
 var target_position = Vector2.ZERO
 
 func _ready():
