@@ -1,6 +1,6 @@
 extends Node
 
-class_name Filemanager
+class_name Game_Filemanager
 const SAVE_PATH : String = "user://funny.bin"
 const SAVE_PASS : String = "iHWgc%d8g2V="
 @onready var settings : Global_Settings = get_node("/root/GlobalSetting")

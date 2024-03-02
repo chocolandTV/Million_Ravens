@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
-@export var speed :float  =125.0
+@export var speed :float  =225.0
 
 func _ready():
-      pass
+      $HurtBox.area_entered.connect(on_area_entered)
 
-func _process(delta):
+func _process(_delta):
       #get direction
       var direction = get_direction_to_player()
       #start flying
@@ -20,3 +20,6 @@ func get_direction_to_player():
             return (player_node.global_position - global_position).normalized()
       #return if not null
       return Vector2.ZERO
+
+func on_area_entered(_other_area: Area2D):
+      queue_free()

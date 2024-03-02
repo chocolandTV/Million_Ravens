@@ -1,10 +1,10 @@
 extends Node
 @export var sword_ability: PackedScene
-@export var timer : Timer
+
 const MAX_RANGE = 150
 
 func _ready():
-      timer.timeout.connect(on_timer_timeout)
+      $Timer.timeout.connect(on_timer_timeout)
 
 
 func on_timer_timeout():
@@ -27,3 +27,7 @@ func on_timer_timeout():
       var sword_instance = sword_ability.instantiate() as Node2D
       player.get_parent().add_child(sword_instance)
       sword_instance.global_position = enemies[0].global_position
+      sword_instance.global_position += Vector2.RIGHT.rotated(randf_range(0, TAU)) * 4
+
+      var enemy_direction = enemies[0].global_position - sword_instance.global_position
+      sword_instance.rotation = enemy_direction.angle()

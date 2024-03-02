@@ -15,6 +15,14 @@ run/main_scene="res://Assets/Scene/main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalSettings="*res://Assets/Scripts/Global_Settings.gd"
+
+[debug]
+
+gdscript/warnings/unused_parameter=0
+
 [display]
 
 window/size/viewport_width=640
@@ -54,8 +62,16 @@ move_down={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Terrain"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Enemy"
+2d_physics/layer_4="Collectable"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+2d/snap/snap_2d_transforms_to_pixel=true

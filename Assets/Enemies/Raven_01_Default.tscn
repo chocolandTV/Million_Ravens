@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwp0tj0ahcgwn"]
+[gd_scene load_steps=5 format=3 uid="uid://dwp0tj0ahcgwn"]
 
 [ext_resource type="Script" path="res://Assets/Enemies/Raven_01_Behaviour.gd" id="1_i2ncy"]
 [ext_resource type="Texture2D" uid="uid://ctw0qgngcx0gn" path="res://Assets/Enemies/Raven_01.png" id="2_4oblf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ik7ue"]
+radius = 23.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n74e4"]
 radius = 13.0
@@ -9,6 +12,14 @@ radius = 13.0
 [node name="Ravenspeedy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 0
 script = ExtResource("1_i2ncy")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_ik7ue")
+debug_color = Color(0.984314, 0.121569, 0, 0.0823529)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_4oblf")

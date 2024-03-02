@@ -12,8 +12,6 @@ collision_layer = 0
 script = ExtResource("1_nrt3d")
 
 [node name="SwordAbilityController" parent="." instance=ExtResource("2_fyp0d")]
-timer = Object(Timer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","process_callback":1,"wait_time":1.5,"one_shot":false,"autostart":true,"script":null)
-
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -31)
