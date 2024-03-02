@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmabelwimwac0"]
+
+[ext_resource type="Script" path="res://Scripts/Global_Settings.gd" id="1_72dvi"]
+
+[node name="Global_Settings" type="Node"]
+script = ExtResource("1_72dvi")

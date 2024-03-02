@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgm1x214t41l2"]
+
+[ext_resource type="Script" path="res://Scripts/highscoresystem.gd" id="1_kfpo5"]
+
+[node name="GameData" type="Node"]
+script = ExtResource("1_kfpo5")
