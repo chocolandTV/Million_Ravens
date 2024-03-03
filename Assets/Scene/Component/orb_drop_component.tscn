@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmbodtb67ycs3"]
+
+[ext_resource type="Script" path="res://Assets/Scene/Component/orb_drop_component.gd" id="1_xl6ng"]
+[ext_resource type="PackedScene" uid="uid://tepyy62drcik" path="res://Assets/Scene/game_objects/experience_orb/highscore_orb.tscn" id="2_4rbvx"]
+
+[node name="orb_drop_component" type="Node"]
+script = ExtResource("1_xl6ng")
+orb_Scene = ExtResource("2_4rbvx")
+highscore_amount = 1

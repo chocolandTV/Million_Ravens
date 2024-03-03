@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0k7pkd8w6bgf"]
+[gd_scene load_steps=8 format=3 uid="uid://b0k7pkd8w6bgf"]
 
 [ext_resource type="Script" path="res://Assets/Character/CharacterBody2D.gd" id="1_nrt3d"]
-[ext_resource type="PackedScene" uid="uid://dawavi4jsphc" path="res://Assets/Scene/Ability/sword_ability_controller/sword_ability_controller.tscn" id="2_fyp0d"]
+[ext_resource type="PackedScene" uid="uid://dawavi4jsphc" path="res://Assets/Scene/Ability/paw_ability_controller/ability_controller.tscn" id="2_35odb"]
 [ext_resource type="Texture2D" uid="uid://cdrtoohsq78d8" path="res://Assets/Character/player.png" id="3_pi4lh"]
+[ext_resource type="PackedScene" uid="uid://0csxtg2x17g1" path="res://Assets/Scene/Ability/Main_paw_ability_controller/mainpaw_ability_controller.tscn" id="3_xomax"]
+[ext_resource type="PackedScene" uid="uid://4mlj1c18armv" path="res://Assets/Scene/Ability/paw_ability/paw_ability.tscn" id="4_htvlp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cri55"]
 radius = 23.0217
@@ -15,9 +17,13 @@ collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_nrt3d")
 
-[node name="SwordAbilityController" parent="." instance=ExtResource("2_fyp0d")]
+[node name="PawAbilityController" parent="." instance=ExtResource("2_35odb")]
+
+[node name="MainPaw_AbilityController" parent="." instance=ExtResource("3_xomax")]
+mainpaw_ability = ExtResource("4_htvlp")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-0.750019, -13.75)
 collision_layer = 32
 collision_mask = 0
 
@@ -27,10 +33,9 @@ shape = SubResource("CircleShape2D_cri55")
 debug_color = Color(0.517647, 0.427451, 0.980392, 0.419608)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1.24998, -16.25)
-scale = Vector2(0.492188, 0.492188)
+position = Vector2(-2, -30)
 texture = ExtResource("3_pi4lh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.74998, -16.75)
+position = Vector2(-2.5, -30.5)
 shape = SubResource("CircleShape2D_s8tio")

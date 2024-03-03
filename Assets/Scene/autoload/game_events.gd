@@ -1,5 +1,8 @@
 extends Node
-class_name  GameEvents
+
+signal highscore_orb_collected(number: int)
+
+
 
 func emit_highscore_orb_collected(number:int):
-      pass
+      highscore_orb_collected.emit(number)

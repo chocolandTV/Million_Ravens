@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0bgl5elagkmg"]
+
+[ext_resource type="Script" path="res://Assets/Scene/UI/experience_bar.gd" id="1_fehif"]
+
+[node name="ExperienceBar" type="CanvasLayer"]
+script = ExtResource("1_fehif")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 100.0
+offset_bottom = -260.0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
+custom_minimum_size = Vector2(100, 8)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+mouse_filter = 2
+max_value = 1.0
+value = 0.5

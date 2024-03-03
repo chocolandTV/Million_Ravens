@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://qiblhkndhetr"]
+
+[ext_resource type="Script" path="res://Assets/Scene/Manager/upgrade_manager.gd" id="1_2g3j4"]
+[ext_resource type="Resource" uid="uid://dgdighcl0oiok" path="res://Assets/Ressources/upgrades/paw_rate.tres" id="2_pvf3p"]
+
+[node name="UpgradeManager" type="Node"]
+script = ExtResource("1_2g3j4")
+upgrade_pool = Array[Resource("res://Assets/Ressources/upgrades/ability_upgrade.gd")]([ExtResource("2_pvf3p")])

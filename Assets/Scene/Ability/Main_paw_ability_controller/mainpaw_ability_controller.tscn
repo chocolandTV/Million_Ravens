@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://0csxtg2x17g1"]
+
+[ext_resource type="Script" path="res://Assets/Scene/Ability/Main_paw_ability_controller/mainpaw_ability_controller.gd" id="1_06lsd"]
+
+[node name="AbilityController" type="Node"]
+script = ExtResource("1_06lsd")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.52
+autostart = true

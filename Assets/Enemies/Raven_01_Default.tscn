@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwp0tj0ahcgwn"]
+[gd_scene load_steps=8 format=3 uid="uid://dwp0tj0ahcgwn"]
 
 [ext_resource type="Script" path="res://Assets/Enemies/Raven_01_Behaviour.gd" id="1_i2ncy"]
 [ext_resource type="Texture2D" uid="uid://ctw0qgngcx0gn" path="res://Assets/Enemies/Raven_01.png" id="2_4oblf"]
+[ext_resource type="PackedScene" uid="uid://dmbodtb67ycs3" path="res://Assets/Scene/Component/orb_drop_component.tscn" id="2_ojryt"]
+[ext_resource type="PackedScene" uid="uid://nro3glw2xb4p" path="res://Assets/Scene/Component/hurtbox_component.tscn" id="4_phfd6"]
+[ext_resource type="PackedScene" uid="uid://c1gnol8gqyu7s" path="res://Assets/Scene/Component/health_component.tscn" id="4_ru232"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ik7ue"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ercf5"]
 radius = 23.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n74e4"]
@@ -14,13 +17,18 @@ collision_layer = 16
 collision_mask = 17
 motion_mode = 1
 script = ExtResource("1_i2ncy")
+speed = null
 
-[node name="HurtBox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
+[node name="orb_drop_component" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_ojryt")]
+health_component = NodePath("../HealthComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-shape = SubResource("CircleShape2D_ik7ue")
+[node name="HealthComponent" parent="." instance=ExtResource("4_ru232")]
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_phfd6")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("CircleShape2D_ercf5")
 debug_color = Color(0.984314, 0.121569, 0, 0.0823529)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

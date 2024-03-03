@@ -1,9 +1,8 @@
 extends CharacterBody2D
 
-@export var speed :float  =225.0
 
-func _ready():
-      $HurtBox.area_entered.connect(on_area_entered)
+@onready var health_component : HealthComponent = $HealthComponent
+@export var speed :float  =225.0
 
 func _process(_delta):
       #get direction
@@ -20,6 +19,3 @@ func get_direction_to_player():
             return (player_node.global_position - global_position).normalized()
       #return if not null
       return Vector2.ZERO
-
-func on_area_entered(_other_area: Area2D):
-      queue_free()

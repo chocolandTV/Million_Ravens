@@ -1,5 +1,7 @@
 extends Node
-@export var sword_ability: PackedScene
+
+@export var paw_ability: PackedScene
+@export var damage = 5
 
 const MAX_RANGE = 150
 
@@ -24,10 +26,12 @@ func on_timer_timeout():
             var b_distance = b.global_position.distance_squared_to(player.global_position)
             return a_distance < b_distance
       )
-      var sword_instance = sword_ability.instantiate() as Node2D
-      player.get_parent().add_child(sword_instance)
-      sword_instance.global_position = enemies[0].global_position
-      sword_instance.global_position += Vector2.RIGHT.rotated(randf_range(0, TAU)) * 4
+      var paw_instance = paw_ability.instantiate() as PawAbility
+      player.get_parent().add_child(paw_instance)
+      paw_instance.hitbox_component.damage = damage
 
-      var enemy_direction = enemies[0].global_position - sword_instance.global_position
-      sword_instance.rotation = enemy_direction.angle()
+      paw_instance.global_position = enemies[0].global_position
+      paw_instance.global_position += Vector2.RIGHT.rotated(randf_range(0, TAU)) * 4
+
+      var enemy_direction = enemies[0].global_position - paw_instance.global_position
+      paw_instance.rotation = enemy_direction.angle()
