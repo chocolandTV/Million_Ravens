@@ -2,11 +2,15 @@ extends Node
 
 @export var paw_ability: PackedScene
 @export var damage = 5
+var base_wait_time
 
 const MAX_RANGE = 150
 
 func _ready():
+      base_wait_time = $Timer.wait_time
       $Timer.timeout.connect(on_timer_timeout)
+      GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
+
 
 
 func on_timer_timeout():
@@ -27,7 +31,8 @@ func on_timer_timeout():
             return a_distance < b_distance
       )
       var paw_instance = paw_ability.instantiate() as PawAbility
-      player.get_parent().add_child(paw_instance)
+      var foreground_layer = get_tree().get_first_node_in_group("foreground_layer")
+      foreground_layer.add_child(paw_instance)
       paw_instance.hitbox_component.damage = damage
 
       paw_instance.global_position = enemies[0].global_position
@@ -35,3 +40,12 @@ func on_timer_timeout():
 
       var enemy_direction = enemies[0].global_position - paw_instance.global_position
       paw_instance.rotation = enemy_direction.angle()
+
+func on_ability_upgrade_added(upgrade : AbilityUpgrade, current_upgrades: Dictionary):
+      if upgrade.id != "paw_attackspeed":
+            return
+      var percent_reduction = current_upgrades["paw_attackspeed"]["quantity"] * .1
+      $Timer.wait_time = base_wait_time * (1- percent_reduction)
+      $Timer.start()
+
+      print($Timer.wait_time)

@@ -30,7 +30,8 @@ func main_paw_attack():
             return
       
       var paw_instance = mainpaw_ability.instantiate() as PawAbility
-      player.get_parent().add_child(paw_instance)
+      var foreground_layer = get_tree().get_first_node_in_group("foreground_layer")
+      foreground_layer.add_child(paw_instance)
       paw_instance.hitbox_component.damage = damage
       
       var camera_offset:Vector2 = camera_node.get_local_mouse_position() + camera_node.global_position

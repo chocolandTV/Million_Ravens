@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b0k7pkd8w6bgf"]
+[gd_scene load_steps=10 format=3 uid="uid://b0k7pkd8w6bgf"]
 
-[ext_resource type="Script" path="res://Assets/Character/CharacterBody2D.gd" id="1_nrt3d"]
+[ext_resource type="Script" path="res://Assets/Character/player.gd" id="1_mc8ud"]
 [ext_resource type="PackedScene" uid="uid://dawavi4jsphc" path="res://Assets/Scene/Ability/paw_ability_controller/ability_controller.tscn" id="2_35odb"]
+[ext_resource type="PackedScene" uid="uid://c3fef1dfnqvp0" path="res://Assets/Scene/Component/player_health_component.tscn" id="2_lr8yo"]
 [ext_resource type="Texture2D" uid="uid://cdrtoohsq78d8" path="res://Assets/Character/player.png" id="3_pi4lh"]
 [ext_resource type="PackedScene" uid="uid://0csxtg2x17g1" path="res://Assets/Scene/Ability/Main_paw_ability_controller/mainpaw_ability_controller.tscn" id="3_xomax"]
 [ext_resource type="PackedScene" uid="uid://4mlj1c18armv" path="res://Assets/Scene/Ability/paw_ability/paw_ability.tscn" id="4_htvlp"]
@@ -12,22 +13,31 @@ radius = 23.0217
 [sub_resource type="CircleShape2D" id="CircleShape2D_s8tio"]
 radius = 15.7678
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dc46s"]
+radius = 12.0
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 0
 motion_mode = 1
-script = ExtResource("1_nrt3d")
+script = ExtResource("1_mc8ud")
+
+[node name="PlayerHealthComponent" parent="." instance=ExtResource("2_lr8yo")]
 
 [node name="PawAbilityController" parent="." instance=ExtResource("2_35odb")]
 
 [node name="MainPaw_AbilityController" parent="." instance=ExtResource("3_xomax")]
 mainpaw_ability = ExtResource("4_htvlp")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="DamageIntervalTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="PickupArea2D" type="Area2D" parent="."]
 position = Vector2(-0.750019, -13.75)
 collision_layer = 32
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea2D"]
 position = Vector2(-2, -17)
 shape = SubResource("CircleShape2D_cri55")
 debug_color = Color(0.517647, 0.427451, 0.980392, 0.419608)
@@ -39,3 +49,12 @@ texture = ExtResource("3_pi4lh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.5, -30.5)
 shape = SubResource("CircleShape2D_s8tio")
+
+[node name="CollisionArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea2D"]
+position = Vector2(0, -29)
+shape = SubResource("CircleShape2D_dc46s")
+debug_color = Color(0.988235, 0, 0.298039, 0.419608)
