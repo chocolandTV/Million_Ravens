@@ -1,0 +1,211 @@
+[gd_scene load_steps=7 format=3 uid="uid://des0khalvaaf1"]
+
+[ext_resource type="Texture2D" uid="uid://tdqul4ymtndy" path="res://Assets/Textures/feather.png" id="1_62ja5"]
+[ext_resource type="Script" path="res://Assets/Scene/UI/global_ui.gd" id="1_75rbs"]
+[ext_resource type="Texture2D" uid="uid://4baj1cphpr71" path="res://Assets/Textures/coin_base.png" id="2_q8n1d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f6fi0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ypq7u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1afpj"]
+
+[node name="Global_UI" type="CanvasLayer"]
+script = ExtResource("1_75rbs")
+
+[node name="MarginContainerTop" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(0, 80)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainerTop"]
+layout_mode = 2
+color = Color(0.501961, 0.439216, 0, 0.2)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainerTop"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainerTop/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_f6fi0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainerTop/HBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Player_D_Label" type="Label" parent="MarginContainerTop/HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Player:"
+
+[node name="Level_D_Label" type="Label" parent="MarginContainerTop/HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level"
+
+[node name="Label3" type="Label" parent="MarginContainerTop/HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "FPS:"
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainerTop/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ypq7u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainerTop/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+
+[node name="Value_PlayerName" type="Label" parent="MarginContainerTop/HBoxContainer/PanelContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "PlayerName"
+
+[node name="Value_PlayerLevel" type="Label" parent="MarginContainerTop/HBoxContainer/PanelContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Level 01"
+
+[node name="Value_FPS" type="Label" parent="MarginContainerTop/HBoxContainer/PanelContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "999"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainerTop/HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="PanelContainer3" type="PanelContainer" parent="MarginContainerTop/HBoxContainer"]
+custom_minimum_size = Vector2(650, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1afpj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainerTop/HBoxContainer/PanelContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainerTop/HBoxContainer/PanelContainer3/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Highscore :  ( Health)"
+horizontal_alignment = 1
+
+[node name="Value_Highscore" type="Label" parent="MarginContainerTop/HBoxContainer/PanelContainer3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "400.000.000.000"
+horizontal_alignment = 1
+
+[node name="MarginContainerBot" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(0, 40)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainerBot"]
+layout_mode = 2
+color = Color(0.501961, 0.439216, 0, 0.2)
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainerBot/ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_62ja5")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainerBot/ColorRect"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 12.0
+offset_right = 183.0
+offset_bottom = 35.0
+text = "Collected Feathers:"
+
+[node name="Label2" type="Label" parent="MarginContainerBot/ColorRect"]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 13.0
+offset_right = 228.0
+offset_bottom = 36.0
+text = "99"
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainerBot/ColorRect"]
+layout_mode = 0
+offset_left = 239.0
+offset_top = -2.0
+offset_right = 279.0
+offset_bottom = 38.0
+texture = ExtResource("2_q8n1d")
+expand_mode = 2
+
+[node name="Label3" type="Label" parent="MarginContainerBot/ColorRect"]
+layout_mode = 0
+offset_left = 274.0
+offset_top = 10.0
+offset_right = 422.0
+offset_bottom = 33.0
+text = "Collected Coins:"
+
+[node name="Label4" type="Label" parent="MarginContainerBot/ColorRect"]
+layout_mode = 0
+offset_left = 406.0
+offset_top = 10.0
+offset_right = 446.0
+offset_bottom = 33.0
+text = "99"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainerBot/ColorRect"]
+layout_mode = 0
+offset_left = 490.0
+offset_top = -3.0
+offset_right = 1247.0
+offset_bottom = 37.0
+
+[node name="PawAttack_Label" type="Label" parent="MarginContainerBot/ColorRect/HBoxContainer"]
+layout_mode = 2
+text = "Paw Attack Level : "
+
+[node name="Value_PawAttackLevel" type="Label" parent="MarginContainerBot/ColorRect/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainerBot/ColorRect/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="PawAttack_Label2" type="Label" parent="MarginContainerBot/ColorRect/HBoxContainer"]
+layout_mode = 2
+text = "Auto Attack Level : "
+
+[node name="Value_AutoAttackLevel2" type="Label" parent="MarginContainerBot/ColorRect/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"
+
+[node name="VSeparator2" type="VSeparator" parent="MarginContainerBot/ColorRect/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="MovementSpeed_Label" type="Label" parent="MarginContainerBot/ColorRect/HBoxContainer"]
+layout_mode = 2
+text = "Movement Speed : "
+
+[node name="Value_MovementSpeed" type="Label" parent="MarginContainerBot/ColorRect/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"
+
+[node name="VSeparator3" type="VSeparator" parent="MarginContainerBot/ColorRect/HBoxContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="CollectRadius_Label" type="Label" parent="MarginContainerBot/ColorRect/HBoxContainer"]
+layout_mode = 2
+text = "Collect Radius Level : "
+
+[node name="Value_CollectRadius" type="Label" parent="MarginContainerBot/ColorRect/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"

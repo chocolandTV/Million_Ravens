@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://tepyy62drcik"]
+[gd_scene load_steps=5 format=3 uid="uid://tepyy62drcik"]
 
 [ext_resource type="Texture2D" uid="uid://bw4uom644kl8a" path="res://Assets/Character/score_orb.png" id="1_72qm4"]
 [ext_resource type="Script" path="res://Assets/Scene/game_objects/experience_orb/highscore_orb.gd" id="1_y5wwd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c2hjl"]
 
-[node name="Highscore_Orb" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_n3cll"]
+radius = 1.0
+
+[node name="Highscore_Orb" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 32
 script = ExtResource("1_y5wwd")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -18,3 +23,7 @@ shape = SubResource("CircleShape2D_c2hjl")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_72qm4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n3cll")
+debug_color = Color(0.94902, 0, 0.572549, 0.419608)

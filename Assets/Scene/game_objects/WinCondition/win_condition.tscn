@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhx858knrbh5p"]
+
+[ext_resource type="Script" path="res://Assets/Scene/game_objects/WinCondition/Win_Condition.gd" id="1_smtln"]
+
+[node name="Win_Condition" type="Node2D"]
+script = ExtResource("1_smtln")

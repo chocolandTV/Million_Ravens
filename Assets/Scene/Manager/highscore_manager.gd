@@ -1,4 +1,5 @@
 extends Node
+class_name  HighscoreManager
 
 var current_highscore = 1
 signal highscore_died

@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://djduejgbtwq6p"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerNameChanged.gd" id="1_2yfeq"]
-[ext_resource type="LabelSettings" uid="uid://bwi883n202088" path="res://Resources/LabelSetting.tres" id="2_3lydc"]
-[ext_resource type="Script" path="res://Scripts/SpeedrunTimer.gd" id="3_b1ggp"]
-[ext_resource type="Script" path="res://Scripts/FPS_Count_Label.gd" id="4_j8nxc"]
+[ext_resource type="Script" path="res://Assets/Scripts/PlayerNameChanged.gd" id="1_2yfeq"]
+[ext_resource type="LabelSettings" path="res://Resources/LabelSetting.tres" id="2_3lydc"]
+[ext_resource type="Script" path="res://Assets/Scripts/SpeedrunTimer.gd" id="3_b1ggp"]
+[ext_resource type="Script" path="res://Assets/Scripts/FPS_Count_Label.gd" id="4_j8nxc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hnqdy"]
 

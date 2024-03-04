@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://5o1ko2576ded"]
+
+[ext_resource type="Texture2D" uid="uid://bls7r12yn7w85" path="res://Assets/Textures/checkPoint_New Region.png" id="1_4tytu"]
+[ext_resource type="Script" path="res://Assets/Scene/Component/health_component.gd" id="1_88d0i"]
+[ext_resource type="Script" path="res://Assets/Scene/game_objects/region_01.gd" id="1_wslgf"]
+[ext_resource type="PackedScene" uid="uid://c8fehafkiu66p" path="res://Assets/Scene/game_objects/region_checked.tscn" id="3_6hpll"]
+[ext_resource type="PackedScene" uid="uid://vhc5r3ex6oou" path="res://Assets/Scene/Component/flag_drop_component.tscn" id="3_y2g5g"]
+[ext_resource type="PackedScene" uid="uid://nro3glw2xb4p" path="res://Assets/Scene/Component/hurtbox_component.tscn" id="5_5qubd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lhuhs"]
+radius = 33.0606
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8yqdt"]
+radius = 9.05539
+
+[node name="Region_01" type="StaticBody2D"]
+script = ExtResource("1_wslgf")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("1_88d0i")
+
+[node name="flag_drop_component" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_y2g5g")]
+orb_Scene = ExtResource("3_6hpll")
+highscore_amount = 1000
+health_component = NodePath("../HealthComponent")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -33)
+texture = ExtResource("1_4tytu")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -40.0
+offset_top = -86.0
+offset_right = 45.0
+offset_bottom = -63.0
+text = "Region - 01"
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_5qubd")]
+position = Vector2(0, -42)
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(-5, 9)
+shape = SubResource("CircleShape2D_lhuhs")
+debug_color = Color(0.984314, 0.121569, 0, 0.0823529)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-15, -11)
+shape = SubResource("CircleShape2D_8yqdt")

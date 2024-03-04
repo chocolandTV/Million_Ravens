@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://dng3vrp03i3j7"]
+
+[ext_resource type="Script" path="res://Assets/Scene/game_objects/Destroyed_Objects/Chest_destroyed.gd" id="1_6jjl4"]
+[ext_resource type="Texture2D" uid="uid://cjw4t5jh47xbf" path="res://Assets/Textures/chest_Destroyed.png" id="5_42g67"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7t41"]
+size = Vector2(19, 20)
+
+[node name="Region_01" type="StaticBody2D"]
+script = ExtResource("1_6jjl4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -33)
+texture = ExtResource("5_42g67")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -40.0
+offset_top = -86.0
+offset_right = 45.0
+offset_bottom = -63.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "+ 1000 Score"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(12.5, -33)
+shape = SubResource("RectangleShape2D_b7t41")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-19, -39)
+shape = SubResource("RectangleShape2D_b7t41")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

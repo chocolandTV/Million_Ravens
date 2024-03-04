@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx83g2vdm4dex"]
+
+[ext_resource type="Texture2D" uid="uid://cju34v3xyscnk" path="res://Assets/Enemies/Raven_02_spawner_destroyed.png" id="1_mvi43"]
+
+[node name="Raven02SpawnerDead" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mvi43")

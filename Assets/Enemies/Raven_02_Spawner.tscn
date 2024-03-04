@@ -2,20 +2,11 @@
 
 [ext_resource type="Script" path="res://Assets/Enemies/Raven_02_Spawner.gd" id="1_jxtgj"]
 [ext_resource type="PackedScene" uid="uid://dmbodtb67ycs3" path="res://Assets/Scene/Component/orb_drop_component.tscn" id="2_81hbw"]
+[ext_resource type="PackedScene" uid="uid://bx83g2vdm4dex" path="res://Assets/Scene/game_objects/Destroyed_Objects/Raven_02_Spawner_dead.tscn" id="3_1rihy"]
 [ext_resource type="PackedScene" uid="uid://c1gnol8gqyu7s" path="res://Assets/Scene/Component/health_component.tscn" id="3_qgpfd"]
 [ext_resource type="PackedScene" uid="uid://nro3glw2xb4p" path="res://Assets/Scene/Component/hurtbox_component.tscn" id="4_ei2b6"]
+[ext_resource type="PackedScene" uid="uid://csljirmwo8vcg" path="res://Assets/Scene/Component/health_bar.tscn" id="4_n333f"]
 [ext_resource type="Texture2D" uid="uid://xbxd0yc76l6n" path="res://Assets/Enemies/Raven_02_spawner_base.png" id="5_o4dvy"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jj3f1"]
-bg_color = Color(0.247059, 0.14902, 0.192157, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u0nhh"]
-bg_color = Color(0.262745, 0.882353, 0.701961, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.247059, 0.14902, 0.192157, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ercf5"]
 radius = 90.0888
@@ -34,22 +25,14 @@ motion_mode = 1
 script = ExtResource("1_jxtgj")
 
 [node name="orb_drop_component" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_81hbw")]
-highscore_amount = 100
+orb_Scene = ExtResource("3_1rihy")
+highscore_amount = 1000
 health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_qgpfd")]
-max_health = 100.0
+max_health = 5.0
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -26.0
-offset_top = -112.0
-offset_right = 24.0
-offset_bottom = -102.0
-theme_override_styles/background = SubResource("StyleBoxFlat_jj3f1")
-theme_override_styles/fill = SubResource("StyleBoxFlat_u0nhh")
-max_value = 1.0
-value = 0.5
-show_percentage = false
+[node name="HealthBar" parent="." instance=ExtResource("4_n333f")]
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_ei2b6")]
 health_component = NodePath("../HealthComponent")

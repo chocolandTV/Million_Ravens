@@ -1,0 +1,203 @@
+[gd_scene load_steps=14 format=3 uid="uid://c2po4yygqv25f"]
+
+[ext_resource type="Script" path="res://Assets/Scene/main/Main_Menu.gd" id="1_0kdyt"]
+[ext_resource type="Texture2D" uid="uid://b0gx35n3pyr1i" path="res://Assets/Textures/Sprite-0006_LootLocker-Sheet.png" id="2_cw1xd"]
+[ext_resource type="Texture2D" uid="uid://c4hulwdi3djki" path="res://banner.png" id="3_d3pxi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnhba"]
+atlas = ExtResource("2_cw1xd")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk2dw"]
+atlas = ExtResource("2_cw1xd")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_reo82"]
+atlas = ExtResource("2_cw1xd")
+region = Rect2(2048, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8tc4"]
+atlas = ExtResource("2_cw1xd")
+region = Rect2(3072, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hodc5"]
+atlas = ExtResource("2_cw1xd")
+region = Rect2(4096, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdix8"]
+atlas = ExtResource("2_cw1xd")
+region = Rect2(5120, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd2e5"]
+atlas = ExtResource("2_cw1xd")
+region = Rect2(6144, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kntvs"]
+atlas = ExtResource("2_cw1xd")
+region = Rect2(7168, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_os0t3"]
+atlas = ExtResource("2_cw1xd")
+region = Rect2(8192, 0, 1024, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_txge5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnhba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk2dw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_reo82")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8tc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hodc5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdix8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dd2e5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kntvs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_os0t3")
+}],
+"loop": false,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Main_Menu" type="Node"]
+script = ExtResource("1_0kdyt")
+
+[node name="firstSplash" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="firstSplash"]
+layout_mode = 2
+color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="firstSplash"]
+position = Vector2(710, 370)
+sprite_frames = SubResource("SpriteFrames_txge5")
+autoplay = "default"
+frame = 8
+frame_progress = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="Menu" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Menu"]
+layout_mode = 2
+texture = ExtResource("3_d3pxi")
+expand_mode = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Menu"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ColorRect" type="ColorRect" parent="Menu/PanelContainer"]
+layout_mode = 2
+color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/PanelContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Menu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Million Ravens"
+
+[node name="Start_Button" type="Button" parent="Menu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Start"
+
+[node name="Button2" type="Button" parent="Menu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+disabled = true
+text = "Settings"
+
+[node name="Button3" type="Button" parent="Menu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+disabled = true
+text = "Credits"
+
+[node name="Quit_Button4" type="Button" parent="Menu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[node name="HSeparator" type="HSeparator" parent="Menu/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Menu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "version 1.00"
+
+[node name="PanelContainer2" type="PanelContainer" parent="Menu"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/PanelContainer2"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Menu/PanelContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Notes that will be updated:
+-highscore-system 
+not implemented yet
+-1 Ability upgrade
+-No Sound
+- no Credits
+-No Settings
+
+Controls: 
+-W,A,S,D to move
+-Left Mouse Button to attack
+
+Win Condition:
+Survive 10 Minutes or 
+Defeat the Ravenlord
+
+Loose Conditition:
+loose every Highscore
+
+
+"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Menu/PanelContainer/VBoxContainer/Start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Menu/PanelContainer/VBoxContainer/Quit_Button4" to="." method="_on_quit_button_pressed"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwp0tj0ahcgwn"]
+[gd_scene load_steps=9 format=3 uid="uid://dwp0tj0ahcgwn"]
 
 [ext_resource type="Script" path="res://Assets/Enemies/Raven_01_Behaviour.gd" id="1_i2ncy"]
 [ext_resource type="Texture2D" uid="uid://ctw0qgngcx0gn" path="res://Assets/Enemies/Raven_01.png" id="2_4oblf"]
 [ext_resource type="PackedScene" uid="uid://dmbodtb67ycs3" path="res://Assets/Scene/Component/orb_drop_component.tscn" id="2_ojryt"]
+[ext_resource type="PackedScene" uid="uid://csljirmwo8vcg" path="res://Assets/Scene/Component/health_bar.tscn" id="4_ipg1o"]
 [ext_resource type="PackedScene" uid="uid://nro3glw2xb4p" path="res://Assets/Scene/Component/hurtbox_component.tscn" id="4_phfd6"]
 [ext_resource type="PackedScene" uid="uid://c1gnol8gqyu7s" path="res://Assets/Scene/Component/health_component.tscn" id="4_ru232"]
 
@@ -18,22 +19,14 @@ collision_layer = 16
 collision_mask = 17
 motion_mode = 1
 script = ExtResource("1_i2ncy")
-speed = null
 
 [node name="orb_drop_component" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_ojryt")]
 health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_ru232")]
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -10.0
-offset_top = -36.0
-offset_right = 10.0
-offset_bottom = -31.0
-pivot_offset = Vector2(10, 3)
-max_value = 1.0
-value = 0.5
-show_percentage = false
+[node name="HealthBar" parent="." instance=ExtResource("4_ipg1o")]
+visible = false
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_phfd6")]
 health_component = NodePath("../HealthComponent")

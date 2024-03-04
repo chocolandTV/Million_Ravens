@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://q4eqbtjlxdw8"]
+
+[ext_resource type="Texture2D" uid="uid://dr1e81s7kw6l1" path="res://Assets/Textures/checkPoint_New Region_done.png" id="1_kfhvd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8yqdt"]
+radius = 9.05539
+
+[node name="Region_start" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -33)
+texture = ExtResource("1_kfhvd")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -40.0
+offset_top = -86.0
+offset_right = 45.0
+offset_bottom = -63.0
+text = "Region - Start  - Sunset Raviland"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 488.0
+offset_top = -85.0
+offset_right = 790.0
+offset_bottom = -62.0
+text = "Use W,A,S,D or the Arrow Keys to move"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 959.0
+offset_top = -90.0
+offset_right = 1428.0
+offset_bottom = -67.0
+text = "Use Left Mouse Button to attack, you also have an autoattack"
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 28.0
+offset_top = -61.0
+offset_right = 497.0
+offset_bottom = -38.0
+text = "Goal: kill the Ravenlord"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-15, -11)
+shape = SubResource("CircleShape2D_8yqdt")
