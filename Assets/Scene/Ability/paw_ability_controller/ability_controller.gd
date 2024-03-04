@@ -45,6 +45,8 @@ func on_ability_upgrade_added(upgrade : AbilityUpgrade, current_upgrades: Dictio
       if upgrade.id != "paw_attackspeed":
             return
       var percent_reduction = current_upgrades["paw_attackspeed"]["quantity"] * .1
+      if percent_reduction > 0.8:
+            percent_reduction = 0.8
       $Timer.wait_time = base_wait_time * (1- percent_reduction)
       $Timer.start()
 

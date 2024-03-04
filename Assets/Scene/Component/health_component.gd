@@ -2,6 +2,7 @@ extends Node
 class_name HealthComponent
 
 signal died
+signal health_changed
 
 @export var max_health : float = 1
 var current_health
@@ -12,9 +13,15 @@ func _ready():
 
 func damage(damage_amount : float):
 	#Get Damage
-	current_health = max(current_health- damage_amount,0)
+	current_health = max(current_health - damage_amount,0)
+	health_changed.emit()
 	#Callable to avoid Godot Error while checking multiply time if entity is dead...
 	Callable(check_death).call_deferred()
+
+func get_health_percent():
+	if max_health<=0:
+		return 0
+	return min(current_health / max_health,1)
 
 func check_death():
 	

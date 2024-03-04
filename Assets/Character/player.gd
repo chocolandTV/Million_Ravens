@@ -24,6 +24,11 @@ func get_movement_vector():
 	var x_movement = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	var y_movement = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	return Vector2(x_movement, y_movement)
+# GET KNOCKBACK WHEN ENEMY HITS YOU
+func get_knockback(damage_source_position : Vector2, damage_amount : int):
+	var knockback_direction = damage_source_position.direction_to(self.global_position)
+	var knockback = damage_amount * knockback_direction
+	global_position += knockback
 
 func check_deal_damage():
 	if number_colliding_bodies == 0 || !damage_interval_timer.is_stopped():
@@ -33,8 +38,11 @@ func check_deal_damage():
 	print(player_health_component.current_health)
 
 func on_body_entered(other_body : Node2D):
+	if !other_body.is_in_group("enemy"):
+		return
 	number_colliding_bodies += 1
 	check_deal_damage()
+	get_knockback(other_body.global_position, 10)
 
 func on_body_exited(other_body: Node2D):
 	number_colliding_bodies -= 1
