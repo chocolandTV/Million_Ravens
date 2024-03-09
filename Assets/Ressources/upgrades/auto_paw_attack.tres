@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://t0krl85i8cxq"]
+
+[ext_resource type="Script" path="res://Assets/Ressources/upgrades/ability_upgrade.gd" id="1_0jxd1"]
+
+[resource]
+script = ExtResource("1_0jxd1")
+id = "auto_paw_attack_damage"
+name = "Auto Attack Damage"
+description = "Increase the auto attack damage by 1"

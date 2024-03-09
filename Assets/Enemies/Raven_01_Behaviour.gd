@@ -2,8 +2,13 @@ extends CharacterBody2D
 
 
 @onready var health_component : HealthComponent = $HealthComponent
-@export var speed :float  =225.0
+@onready var hit_box : Area2D = $%HitboxComponent
 
+@export var speed :float  =325.0
+@export var damage =5 
+
+func _ready():
+      hit_box.damage = damage
 func _process(_delta):
       #get direction
       var direction = get_direction_to_player()

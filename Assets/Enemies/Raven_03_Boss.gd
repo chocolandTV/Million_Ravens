@@ -1,4 +1,5 @@
 extends CharacterBody2D
+@export var damage = 1000
 
 @onready var health_component : HealthComponent = $HealthComponent
 

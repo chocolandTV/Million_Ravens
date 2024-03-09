@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://fspi5fqwea8d"]
+
+[ext_resource type="Script" path="res://Assets/Ressources/upgrades/ability_upgrade.gd" id="1_bqucw"]
+
+[resource]
+script = ExtResource("1_bqucw")
+id = "orb_attraction"
+name = "Orb Collect Radius"
+description = "Increase the attraction collecting orbs by 10%"

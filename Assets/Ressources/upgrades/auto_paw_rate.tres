@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://ngyxmrfj4hmt"]
+
+[ext_resource type="Script" path="res://Assets/Ressources/upgrades/ability_upgrade.gd" id="1_j4jgs"]
+
+[resource]
+script = ExtResource("1_j4jgs")
+id = "auto_attack_speed"
+name = "Auto Attack Speed"
+description = "Increase auto attack rate by 10%"

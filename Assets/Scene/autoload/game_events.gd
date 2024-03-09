@@ -1,6 +1,10 @@
 extends Node
 #Orb was collected
 signal highscore_orb_collected(number: int)
+#Feather was collected
+signal highscore_feather_collected()
+# Coins was collected
+signal highscore_coin_collected()
 # Player taken damage
 signal highscore_player_get_damage(number:int)
 
@@ -8,10 +12,17 @@ signal winGame_boss_down()
 
 signal increase_raven_spawn()
 
-
 #ability has been upgraded
 signal ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrade:Dictionary)
 
+
+
+##########################################################
+func emit_highscore_feather_collected():
+	highscore_feather_collected.emit()
+
+func emit_highscore_coin_collected():
+	highscore_coin_collected.emit()
 
 func emit_highscore_orb_collected(number:int):
 	highscore_orb_collected.emit(number)

@@ -10,7 +10,7 @@ tile_data = PackedInt32Array(0, 0, 6, 65536, 131072, 805306374, 1, 65536, 6, 655
 rough = true
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ddwjf"]
-rough = true
+friction = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rj6fv"]
 texture = ExtResource("1_27o0r")
@@ -664,7 +664,6 @@ texture_region_size = Vector2i(64, 64)
 9:5/0/physics_layer_0/angular_velocity = 0.0
 9:5/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 9:5/0/physics_layer_1/angular_velocity = 0.0
-9:5/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 9:5/0/terrains_peering_bit/right_side = 2
 9:5/0/terrains_peering_bit/bottom_right_corner = 2
 9:5/0/terrains_peering_bit/bottom_side = 2
@@ -776,6 +775,7 @@ texture_region_size = Vector2i(64, 64)
 4:4/0 = 0
 4:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:4/0/physics_layer_0/angular_velocity = 0.0
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(116.25, 18, 118.25, 29.5, -115.25, 29, -115.25, 17)
 4:4/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 4:4/0/physics_layer_1/angular_velocity = 0.0
 8:6/next_alternative_id = 3

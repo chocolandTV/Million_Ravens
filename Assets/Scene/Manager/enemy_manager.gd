@@ -9,10 +9,13 @@ func _ready():
 	GameEvents.increase_raven_spawn.connect(increase_raven_spawn)
 
 func increase_raven_spawn():
-	waittime = min(0.001,waittime - 0.01)
+	waittime = min(0.01,waittime - 0.01)
 	timer.wait_time  =  waittime
-	print("decrased time to : " + str(waittime))
-
+	print("EggEvent: decrased time to : " + str(waittime))
+func increase_dificult_over_time():
+	waittime = min(0.01,waittime - 0.01)
+	timer.wait_time  =  waittime
+	print("TimeEvent: decrased time to : " + str(waittime))
 func on_timer_timeout():
 	var player = get_tree().get_first_node_in_group("player")
 	if player == null:
@@ -23,6 +26,6 @@ func on_timer_timeout():
 
 	var enemy = _Enemy_01_Scene.instantiate() as Node2D
 	var entities_layer = get_tree().get_first_node_in_group("entities_layer")
-	
+
 	entities_layer.add_child(enemy)
 	enemy.global_position = spawn_position

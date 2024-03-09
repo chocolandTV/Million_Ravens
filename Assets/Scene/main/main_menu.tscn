@@ -80,6 +80,7 @@ script = ExtResource("1_0kdyt")
 
 [node name="firstSplash" type="MarginContainer" parent="."]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -104,7 +105,6 @@ autostart = true
 
 [node name="Menu" type="MarginContainer" parent="."]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -130,6 +130,8 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Menu/PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 40
 text = "Million Ravens"
@@ -162,8 +164,10 @@ layout_mode = 2
 
 [node name="Label2" type="Label" parent="Menu/PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "version 1.00"
+theme_override_font_sizes/font_size = 35
+text = "version 1.01"
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="PanelContainer2" type="PanelContainer" parent="Menu"]
 layout_mode = 2
@@ -176,13 +180,7 @@ layout_mode = 2
 [node name="Label3" type="Label" parent="Menu/PanelContainer2/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
-text = "Notes that will be updated:
--highscore-system 
-not implemented yet
--1 Ability upgrade
--No Sound
-- no Credits
--No Settings
+text = "-No Sound
 
 Controls: 
 -W,A,S,D to move
@@ -192,8 +190,8 @@ Win Condition:
 Survive 10 Minutes or 
 Defeat the Ravenlord
 
-Loose Conditition:
-loose every Highscore
+Lose Conditition:
+ less than 0 Highscore
 
 
 "

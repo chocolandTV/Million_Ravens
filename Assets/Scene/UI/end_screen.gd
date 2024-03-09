@@ -10,6 +10,10 @@ func _ready():
 func set_defeat():
 	$%TitleLabel.text = "Defeat"
 	$%DescriptionLabel.text = " You have no Scorepoints left- it is your health"
+# set text after winning
+func setText(_text : String):
+	$%TitleLabel.text = "Victory"
+	$%DescriptionLabel.text = _text
 
 func on_restart_button_pressed():
 	get_tree().paused = false

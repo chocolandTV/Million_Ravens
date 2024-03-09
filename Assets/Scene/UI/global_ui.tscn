@@ -84,7 +84,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainerTop/HBoxContainer/PanelContainer3/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
-text = "Highscore :  ( Health)"
+text = "Highscore :"
 horizontal_alignment = 1
 
 [node name="Value_Highscore" type="Label" parent="MarginContainerTop/HBoxContainer/PanelContainer3/VBoxContainer"]
@@ -122,13 +122,14 @@ offset_right = 183.0
 offset_bottom = 35.0
 text = "Collected Feathers:"
 
-[node name="Label2" type="Label" parent="MarginContainerBot/ColorRect"]
+[node name="value_feathers_Label" type="Label" parent="MarginContainerBot/ColorRect"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 188.0
 offset_top = 13.0
 offset_right = 228.0
 offset_bottom = 36.0
-text = "99"
+text = "0"
 
 [node name="TextureRect2" type="TextureRect" parent="MarginContainerBot/ColorRect"]
 layout_mode = 0
@@ -153,7 +154,7 @@ offset_left = 406.0
 offset_top = 10.0
 offset_right = 446.0
 offset_bottom = 33.0
-text = "99"
+text = "0"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainerBot/ColorRect"]
 layout_mode = 0
@@ -161,10 +162,11 @@ offset_left = 490.0
 offset_top = -3.0
 offset_right = 1247.0
 offset_bottom = 37.0
+alignment = 1
 
 [node name="PawAttack_Label" type="Label" parent="MarginContainerBot/ColorRect/HBoxContainer"]
 layout_mode = 2
-text = "Paw Attack Level : "
+text = "Paw Attack /Rate : "
 
 [node name="Value_PawAttackLevel" type="Label" parent="MarginContainerBot/ColorRect/HBoxContainer"]
 unique_name_in_owner = true
@@ -177,9 +179,9 @@ layout_mode = 2
 
 [node name="PawAttack_Label2" type="Label" parent="MarginContainerBot/ColorRect/HBoxContainer"]
 layout_mode = 2
-text = "Auto Attack Level : "
+text = "Auto Attack /Rate : "
 
-[node name="Value_AutoAttackLevel2" type="Label" parent="MarginContainerBot/ColorRect/HBoxContainer"]
+[node name="Value_AutoAttackLevel" type="Label" parent="MarginContainerBot/ColorRect/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "1"
@@ -193,19 +195,6 @@ layout_mode = 2
 text = "Movement Speed : "
 
 [node name="Value_MovementSpeed" type="Label" parent="MarginContainerBot/ColorRect/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "1"
-
-[node name="VSeparator3" type="VSeparator" parent="MarginContainerBot/ColorRect/HBoxContainer"]
-custom_minimum_size = Vector2(30, 0)
-layout_mode = 2
-
-[node name="CollectRadius_Label" type="Label" parent="MarginContainerBot/ColorRect/HBoxContainer"]
-layout_mode = 2
-text = "Collect Radius Level : "
-
-[node name="Value_CollectRadius" type="Label" parent="MarginContainerBot/ColorRect/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "1"

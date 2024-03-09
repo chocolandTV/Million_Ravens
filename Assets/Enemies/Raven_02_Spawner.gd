@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
+@export var damage = 10
 @export var Min_Dinstance : float =  400
 @onready var health_component : HealthComponent = $HealthComponent
 @onready var detect_area : Area2D  = $%DetectArea2D
 @onready var health_bar = $HealthBar
-
 func _ready():
 	detect_area.body_entered.connect(on_body_entered)
 	health_component.health_changed.connect(on_health_changed)

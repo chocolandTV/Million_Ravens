@@ -6,6 +6,8 @@
 [node name="AbilityController" type="Node"]
 script = ExtResource("1_w82jg")
 paw_ability = ExtResource("2_dj1gb")
+damage = 1
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true

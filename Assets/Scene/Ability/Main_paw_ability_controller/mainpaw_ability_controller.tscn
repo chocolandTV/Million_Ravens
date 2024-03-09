@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://0csxtg2x17g1"]
+[gd_scene load_steps=3 format=3 uid="uid://0csxtg2x17g1"]
 
 [ext_resource type="Script" path="res://Assets/Scene/Ability/Main_paw_ability_controller/mainpaw_ability_controller.gd" id="1_06lsd"]
+[ext_resource type="PackedScene" uid="uid://4mlj1c18armv" path="res://Assets/Scene/Ability/paw_ability/paw_ability.tscn" id="2_ornld"]
 
 [node name="AbilityController" type="Node"]
 script = ExtResource("1_06lsd")
+mainpaw_ability = ExtResource("2_ornld")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 1.52
+wait_time = 2.0
 autostart = true

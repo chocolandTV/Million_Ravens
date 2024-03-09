@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalSettings="*res://Assets/Scripts/Global_Settings.gd"
 GameEvents="*res://Assets/Scene/autoload/game_events.tscn"
+GlobalVariables="*res://Assets/Scene/autoload/global_variables.tscn"
 
 [debug]
 

@@ -8,7 +8,7 @@ var regionname : String
 func _ready():
       ( health_component as HealthComponent).died.connect(on_died)
       regionname = get_parent().get_region_text()
-      print(regionname)
+      #print(regionname)
 func on_died():
       if orb_Scene == null:
             return

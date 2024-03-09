@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_o4gdm")
-id = "paw_attackspeed"
-name = "Paw Attack Speed"
-description = "Increase Paw attack rate by 10%"
+id = "attack_speed"
+name = "Attack Speed"
+description = "Increase attack speed by 10%"
