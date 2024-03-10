@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 GameEvents="*res://Assets/Scene/autoload/game_events.tscn"
 GlobalVariables="*res://Assets/Scene/autoload/global_variables.tscn"
+GlobalFileManager="*res://Assets/Scene/Manager/file_manager.tscn"
+HighscoreUiSystem="*res://Assets/Scene/UI/highscore/highscore_ui_system.tscn"
 
 [debug]
 

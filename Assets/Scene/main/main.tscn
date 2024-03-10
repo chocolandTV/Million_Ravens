@@ -112,7 +112,7 @@ layer_2/tile_data = PackedInt32Array()
 y_sort_enabled = true
 
 [node name="RavenBoss" parent="Entities" instance=ExtResource("12_3peer")]
-position = Vector2(14615, 2706)
+position = Vector2(15578, 3250)
 
 [node name="Player" parent="Entities" instance=ExtResource("1_w3pij")]
 position = Vector2(7200, 2273)
@@ -146,6 +146,9 @@ position = Vector2(10722, 1483)
 
 [node name="RavenNest10" parent="Entities" instance=ExtResource("18_vwc51")]
 position = Vector2(10822, 1654)
+
+[node name="Raven_Boss" parent="Entities" instance=ExtResource("12_3peer")]
+position = Vector2(10868, 1276)
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]
 

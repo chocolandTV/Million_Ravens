@@ -70,7 +70,7 @@ highscore_amount = 100000
 health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_5h0ci")]
-max_health = 1000.0
+max_health = 50.0
 
 [node name="HealthBar" parent="." instance=ExtResource("5_m3loi")]
 offset_left = -96.0

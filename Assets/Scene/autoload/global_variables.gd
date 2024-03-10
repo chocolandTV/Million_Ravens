@@ -8,6 +8,7 @@ var gv_Settings = {
       "setting_volume_music" : 0.5,
       "offline_modus" : 0,
       "player_name" : "Player_Default",
+      "player_identifier": "",
       "game_version" : "1.01"
 }
 

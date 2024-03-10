@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwp0tj0ahcgwn"]
+[gd_scene load_steps=14 format=3 uid="uid://dwp0tj0ahcgwn"]
 
 [ext_resource type="Script" path="res://Assets/Enemies/Raven_01_Behaviour.gd" id="1_i2ncy"]
 [ext_resource type="Texture2D" uid="uid://ctw0qgngcx0gn" path="res://Assets/Enemies/Raven_01.png" id="2_4oblf"]
@@ -11,11 +11,47 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ercf5"]
 radius = 23.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dehkm"]
+radius = 22.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_n74e4"]
 radius = 13.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dehkm"]
-radius = 22.0
+[sub_resource type="Animation" id="Animation_rikkm"]
+resource_name = "Knockback"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:skew")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 1),
+"transitions": PackedFloat32Array(1, 3.24901, 1, 1),
+"update": 0,
+"values": [0.0, 0.506145, -0.752237, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_yts2b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ulpw8"]
+_data = {
+"Knockback": SubResource("Animation_rikkm"),
+"RESET": SubResource("Animation_yts2b")
+}
 
 [node name="Ravenspeedy" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(0.5, 0.5)
@@ -42,15 +78,22 @@ debug_color = Color(0.984314, 0.121569, 0, 0.0823529)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_4oblf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_n74e4")
-
-[node name="HitboxComponent" type="Area2D" parent="."]
+[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("damage_source")]
 unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("7_r8f8q")
+damage_source = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_dehkm")
 debug_color = Color(0, 0.65098, 0.12549, 0.419608)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n74e4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_ulpw8")
+}

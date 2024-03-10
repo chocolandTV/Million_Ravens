@@ -10,13 +10,8 @@ func on_area_entered(other_area :Area2D):
 	if not other_area is HitboxComponent:
 		return
 	var hitbox_component = other_area as HitboxComponent
-	player_health_comonent.damage((int(hitbox_component.damage)))
-	print("hitbox damage: %d " %hitbox_component.damage)
-	#Knockback
-	get_knockback(other_area, hitbox_component.damage)
+	receive_damage(hitbox_component.damage)
+	hitbox_component.knockback()
 
-func get_knockback(enemy : Node2D, damage_amount : int):
-	var direction = global_position - enemy.global_position
-	var target_pos = direction * damage_amount * knockback_force
-	var _enemy = enemy.get_parent() as CharacterBody2D
-	enemy.global_position += target_pos
+func receive_damage(damage : int):
+	player_health_comonent.damage(damage)
