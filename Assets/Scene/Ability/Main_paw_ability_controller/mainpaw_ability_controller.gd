@@ -24,6 +24,8 @@ func main_paw_attack():
       if isCooldown:
             return
       isCooldown = true
+      #GAME EVENT ABILITY 1 MAIN IS ACTIVE
+      GameEvents.emit_ability_status_changed(0,false)
 
       var player = get_tree().get_first_node_in_group("player") as Node2D
       if player == null:
@@ -43,3 +45,5 @@ func main_paw_attack():
 
 func on_timer_timeout():
       isCooldown = false
+      #GAME EVENT ABILITY 1 MAIN IS ACTIVE
+      GameEvents.emit_ability_status_changed(0,true)

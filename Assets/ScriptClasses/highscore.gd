@@ -2,10 +2,10 @@ class_name  HighScore
 
 var rank : String ="0"
 var playername : String = ""
-var score : int = 0
+var score : String = "0"
 var time : String = "0"
-var feather : int = 0
-var coins : int = 0
+var feather :String = "0"
+var coins :String = "0"
 
 func getString():
       return ("" +rank + "-" + playername + "-" + str(score))

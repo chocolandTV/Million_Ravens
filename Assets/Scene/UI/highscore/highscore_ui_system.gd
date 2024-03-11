@@ -6,7 +6,7 @@ class_name HighscoreUISystem
 
 var game_API_key = "dev_0e36fc6a869c4616a00d895124bd13cb"
 var development_mode = true
-var leaderboard_key = "MillionRavens20240309_MF"
+var leaderboard_key = "ravenCrisy213039125f"
 var session_token =""
 var highscore_Table : Array[HighScore]
 var highscore_player : HighScore
@@ -24,6 +24,7 @@ var get_name_http = HTTPRequest.new()
 
 func _ready():
 	_authentication_request()
+	_get_player_name()
 	#_change_player_name(globalVars.gv_Settings["player_name"])
 func _authentication_request():
 	# Check if a player session exists
@@ -107,13 +108,15 @@ func _on_leaderboard_request_complete(result, response_code, headers, body):
 		leaderboard_http.queue_free()
 		return
 	highscore_Table.clear()
+	
 	for n in json.get_data().items.size():
 		highscore_Table.append(HighScore.new(
 		str(json.get_data().items[n].rank),
 		str(json.get_data().items[n].player.name),
-		int(json.get_data().items[n].score),
-		str(json.get_data().items[n].metadata),
-		0,0))
+		str(json.get_data().items[n].score),
+		"40123",
+		"0",
+		"0"))
 
 	print(json.get_data().items.size())
 	# clear node
@@ -124,7 +127,7 @@ func _on_leaderboard_request_complete(result, response_code, headers, body):
 
 func _upload_score(score :int):
 	# data verifier  is boss down && new score is higher >
-	var data = {"score": str(score)}
+	var data = {"score": str(score), "metadata": "4812382838388ms, 5Feather,10coins"}
 	var headers = ["Content-Type: application/json", "x-session-token:" + session_token]
 	submit_score_http = HTTPRequest.new()
 	add_child(submit_score_http)
@@ -183,5 +186,6 @@ func _on_player_get_name_request_completed(result, response_code, headers, body)
 	# Print data
 	print(json.get_data())
 	# Print player name
-	print(json.get_data().name)
+	print("HighscoreSystem: get Playername:" + json.get_data().name)
+	globalVars.gv_Settings["player_name"] = json.get_data().name
 	get_name_http.queue_free()

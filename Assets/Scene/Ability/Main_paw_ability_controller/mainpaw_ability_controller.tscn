@@ -8,5 +8,4 @@ script = ExtResource("1_06lsd")
 mainpaw_ability = ExtResource("2_ornld")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
 autostart = true

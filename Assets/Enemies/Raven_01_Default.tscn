@@ -55,8 +55,8 @@ _data = {
 
 [node name="Ravenspeedy" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(0.5, 0.5)
-collision_layer = 17
-collision_mask = 17
+collision_layer = 4
+collision_mask = 18
 motion_mode = 1
 script = ExtResource("1_i2ncy")
 
@@ -69,6 +69,7 @@ health_component = NodePath("../HealthComponent")
 visible = false
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_phfd6")]
+collision_mask = 2
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
@@ -78,12 +79,10 @@ debug_color = Color(0.984314, 0.121569, 0, 0.0823529)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_4oblf")
 
-[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("damage_source")]
-unique_name_in_owner = true
-collision_layer = 0
-collision_mask = 2
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("7_r8f8q")
-damage_source = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_dehkm")
@@ -93,7 +92,9 @@ debug_color = Color(0, 0.65098, 0.12549, 0.419608)
 shape = SubResource("CircleShape2D_n74e4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_ulpw8")
 }
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

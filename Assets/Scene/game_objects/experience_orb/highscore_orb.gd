@@ -1,6 +1,6 @@
 extends CharacterBody2D
 @export var highscore_amount : int =  1
-@export var speed :float  =500.0
+const speed :float  =500.0
 
 func _ready():
       $Area2D.area_entered.connect(on_area_entered)
@@ -11,6 +11,7 @@ func on_area_entered(other_area : Area2D):
 
 
 func _process(_delta):
+     
       #get direction
       var direction = get_direction_to_player()
       #start flying

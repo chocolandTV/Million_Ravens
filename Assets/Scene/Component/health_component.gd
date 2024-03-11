@@ -27,4 +27,5 @@ func check_death():
 	
 	if current_health == 0:
 		died.emit()
+		GameEvents.emit_raven_died()
 		owner.queue_free()

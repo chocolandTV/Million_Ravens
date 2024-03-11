@@ -3,17 +3,21 @@ extends CharacterBody2D
 class_name Enemy01_Ravii
 
 @onready var health_component : HealthComponent = $HealthComponent
-@onready var hit_box : Area2D = $%HitboxComponent
-@onready var anim : AnimationPlayer = $%AnimationPlayer
+@onready var hit_box : Area2D = $HitboxComponent
+@onready var anim : AnimationPlayer = $AnimationPlayer
+@onready var timer : Timer = $Timer
 
-@export var speed :float  =325.0
-@export var damage =5 
-signal raven_01_kockback
+const speed : float  = 325.0
+const damage :int  = 1 
+var isCooldown : bool  = false
 
 func _ready():
       hit_box.damage = damage
-      raven_01_kockback.connect(on_raven_01_knockback)
+      hit_box.raven_01_kockback.connect(on_raven_01_knockback)
+      timer.timeout.connect(on_timer_timeouti)
 func _process(_delta):
+      if isCooldown:
+            return
       #get direction
       var direction = get_direction_to_player()
       #start flying
@@ -29,9 +33,12 @@ func get_direction_to_player():
       #return if not null
       return Vector2.ZERO
 func on_raven_01_knockback():
-      print("knockback effect")
       #animate 
       anim.play("Knockback")
-
       #set position in back in direction of player * damage
       global_position += -get_direction_to_player() * damage * 10
+      isCooldown = true
+      timer.start()
+
+func on_timer_timeouti():
+      isCooldown = false

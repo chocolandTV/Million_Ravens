@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj3q25jgd6xj4"]
+
+[ext_resource type="Script" path="res://Assets/Scene/Ability/Dash/dash_ability_controller.gd" id="1_0x7ty"]
+
+[node name="DashAbilityController" type="Node"]
+script = ExtResource("1_0x7ty")
+
+[node name="Timer" type="Timer" parent="."]

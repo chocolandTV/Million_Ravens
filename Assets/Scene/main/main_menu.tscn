@@ -136,24 +136,29 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 40
 text = "Million Ravens"
 
-[node name="Start_Button" type="Button" parent="Menu/PanelContainer/VBoxContainer"]
+[node name="Button_Start" type="Button" parent="Menu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Start"
 
-[node name="Button2" type="Button" parent="Menu/PanelContainer/VBoxContainer"]
+[node name="Button_Settings" type="Button" parent="Menu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 disabled = true
 text = "Settings"
 
-[node name="Button3" type="Button" parent="Menu/PanelContainer/VBoxContainer"]
+[node name="Button_Credit" type="Button" parent="Menu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 disabled = true
 text = "Credits"
 
-[node name="Quit_Button4" type="Button" parent="Menu/PanelContainer/VBoxContainer"]
+[node name="Button_Highscore" type="Button" parent="Menu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Highscore"
+
+[node name="Quit_Button" type="Button" parent="Menu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Quit"
@@ -197,5 +202,6 @@ Lose Conditition:
 "
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="Menu/PanelContainer/VBoxContainer/Start_Button" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="Menu/PanelContainer/VBoxContainer/Quit_Button4" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Menu/PanelContainer/VBoxContainer/Button_Start" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Menu/PanelContainer/VBoxContainer/Button_Highscore" to="." method="_on_button_highscore_pressed"]
+[connection signal="pressed" from="Menu/PanelContainer/VBoxContainer/Quit_Button" to="." method="_on_quit_button_pressed"]

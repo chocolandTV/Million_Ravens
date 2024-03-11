@@ -11,13 +11,21 @@ signal highscore_player_get_damage(number:int)
 signal winGame_boss_down()
 
 signal increase_raven_spawn()
-
+#abilityCooldownSignals#
+signal ability_status_changed(index:int, status:bool)
 #ability has been upgraded
 signal ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrade:Dictionary)
 
-
+#signal to get raven count
+signal raven_died()
 
 ##########################################################
+func emit_raven_died():
+	raven_died.emit()
+
+func emit_ability_status_changed(index: int, status: bool):
+	ability_status_changed.emit(index,status)
+	
 func emit_highscore_feather_collected():
 	highscore_feather_collected.emit()
 

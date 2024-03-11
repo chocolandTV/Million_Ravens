@@ -2,8 +2,8 @@ extends CanvasLayer
 
 @onready var filemanager : FileManager = get_node("/root/GlobalFileManager")
 @onready var settings : Global_Variables  =get_node("/root/GlobalVariables")
-@onready var highscore_ui_system : HighscoreUISystem = get_node("/root/HighscoreUISystem")
-@onready var highscoremanager : HighscoreManager = get_node("/root/HighscoreManager")
+@onready var highscore_ui_system : HighscoreUISystem = get_node("/root/HighscoreUiSystem")
+@onready var highscoremanager : HighscoreManager = get_node("/root/Highscore_Manager")
 
 @onready var vbox_container : VBoxContainer = $%VBoxContainer
 
@@ -22,3 +22,7 @@ func _ready():
 
 func saveHighscore():
       highscore_ui_system. _upload_score(highscoremanager.current_highscore)
+
+func _on_button_pressed():
+      get_tree().change_scene_to_file("res://Assets/Scene/main/main_menu.tscn")
+

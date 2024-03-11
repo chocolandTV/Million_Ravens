@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://b0k7pkd8w6bgf"]
+[gd_scene load_steps=14 format=3 uid="uid://b0k7pkd8w6bgf"]
 
 [ext_resource type="Script" path="res://Assets/Character/player.gd" id="1_mc8ud"]
 [ext_resource type="PackedScene" uid="uid://dawavi4jsphc" path="res://Assets/Scene/Ability/paw_ability_controller/ability_controller.tscn" id="2_35odb"]
 [ext_resource type="PackedScene" uid="uid://c3fef1dfnqvp0" path="res://Assets/Character/player_health_component.tscn" id="2_ehluf"]
 [ext_resource type="Texture2D" uid="uid://cdrtoohsq78d8" path="res://Assets/Character/player.png" id="3_pi4lh"]
 [ext_resource type="PackedScene" uid="uid://0csxtg2x17g1" path="res://Assets/Scene/Ability/Main_paw_ability_controller/mainpaw_ability_controller.tscn" id="3_xomax"]
+[ext_resource type="PackedScene" uid="uid://bj3q25jgd6xj4" path="res://Assets/Scene/Ability/Dash/dash_ability_controller.tscn" id="5_c7kej"]
 [ext_resource type="Script" path="res://Assets/Character/PlayerHurtboxComponent.gd" id="6_8ivss"]
 
 [sub_resource type="Animation" id="Animation_gk7r7"]
@@ -73,24 +74,26 @@ _data = {
 radius = 23.0217
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5s175"]
-radius = 12.0
+radius = 11.1803
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s8tio"]
-radius = 8.06226
+radius = 8.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
-collision_layer = 2
-collision_mask = 3
+collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_mc8ud")
+
+[node name="AutoAbilityController" parent="." instance=ExtResource("2_35odb")]
+
+[node name="MainAbilityController" parent="." instance=ExtResource("3_xomax")]
 
 [node name="PlayerHealthComponent" parent="." node_paths=PackedStringArray("player_animations") instance=ExtResource("2_ehluf")]
 player_animations = NodePath("../AnimationPlayer")
 
-[node name="PawAbilityController" parent="." instance=ExtResource("2_35odb")]
-
-[node name="MainPaw_AbilityController" parent="." instance=ExtResource("3_xomax")]
+[node name="DashAbilityController" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_c7kej")]
+player = NodePath("..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -98,12 +101,10 @@ libraries = {
 }
 
 [node name="PickupArea2D" type="Area2D" parent="."]
-position = Vector2(-0.750019, -13.75)
 collision_layer = 32
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea2D"]
-position = Vector2(-2, -17)
 shape = SubResource("CircleShape2D_cri55")
 debug_color = Color(0.141176, 0.647059, 0, 0.419608)
 
@@ -112,17 +113,14 @@ position = Vector2(-2, -30)
 texture = ExtResource("3_pi4lh")
 
 [node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("player_health_comonent")]
-collision_layer = 2
-collision_mask = 20
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("6_8ivss")
 player_health_comonent = NodePath("../PlayerHealthComponent")
-knockback_force = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
-position = Vector2(-1, -30)
 shape = SubResource("CircleShape2D_5s175")
 debug_color = Color(0.976471, 0, 0, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -30)
 shape = SubResource("CircleShape2D_s8tio")

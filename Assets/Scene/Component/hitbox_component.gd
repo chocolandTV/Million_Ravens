@@ -2,9 +2,9 @@ extends Area2D
 class_name HitboxComponent
 
 var damage = 5
+signal raven_01_kockback
 
-@export var damage_source : Enemy01_Ravii
 
-func knockback()-> void :
+func knockback() :
      
-     damage_source.knockbackEffect()
+     raven_01_kockback.emit()
