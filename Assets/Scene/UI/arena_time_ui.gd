@@ -5,6 +5,7 @@ extends CanvasLayer
 var timestart = 0
 var time = 0
 var timer_on = false
+var text : String
 func _ready():
       timer_on = true
       timestart =  Time.get_ticks_msec()
@@ -33,5 +34,5 @@ func _process(_delta):
       time = time /24
       #tage ausrechnen  time
       
-      var text = "Time : %02d :%02d : %02d : %02d : %03d" % [time,hr,mins,secs,msec]
+      text = "Time : %02d :%02d : %02d : %02d : %03d" % [time,hr,mins,secs,msec]
       label.text = text

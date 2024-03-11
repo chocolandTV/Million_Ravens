@@ -62,8 +62,9 @@ shader_parameter/noise2 = SubResource("NoiseTexture2D_me3wv")
 script = ExtResource("1_qc85t")
 end_screen_scene = ExtResource("4_83l3l")
 
-[node name="Global_UI" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("16_1mrm1")]
+[node name="Global_UI" parent="." node_paths=PackedStringArray("experience_manager", "upgrade_manager") instance=ExtResource("16_1mrm1")]
 experience_manager = NodePath("../ExperienceManager")
+upgrade_manager = NodePath("../UpgradeManager")
 
 [node name="ArenaTimeUI" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("2_5ontx")]
 arena_time_manager = NodePath("../ArenaTimeManager")
@@ -145,7 +146,7 @@ position = Vector2(10722, 1483)
 position = Vector2(10822, 1654)
 
 [node name="Raven_Boss" parent="Entities" instance=ExtResource("12_3peer")]
-position = Vector2(10868, 1276)
+position = Vector2(7437, 2316)
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]
 

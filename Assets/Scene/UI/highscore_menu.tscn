@@ -63,6 +63,7 @@ layout_mode = 2
 [node name="Panel" type="Panel" parent="."]
 
 [node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
 offset_right = 250.0
 offset_bottom = 80.0
 theme_override_colors/font_color = Color(0.262745, 0.882353, 0.701961, 1)
