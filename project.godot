@@ -17,11 +17,11 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameEvents="*res://Assets/Scene/autoload/game_events.tscn"
+File_Manager="*res://Assets/Scene/autoload/file_manager.tscn"
 GlobalVariables="*res://Assets/Scene/autoload/global_variables.tscn"
-GlobalFileManager="*res://Assets/Scene/Manager/file_manager.tscn"
-HighscoreUiSystem="*res://Assets/Scene/UI/highscore/highscore_ui_system.tscn"
+GameEvents="*res://Assets/Scene/autoload/game_events.tscn"
 Highscore_Manager="*res://Assets/Scene/Manager/highscore_manager.gd"
+HighscoreUiSystem="*res://Assets/Scene/UI/highscore/highscore_ui_system.tscn"
 
 [debug]
 

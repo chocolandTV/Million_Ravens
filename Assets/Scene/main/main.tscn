@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://gbw6bwm54644"]
+[gd_scene load_steps=33 format=3 uid="uid://gbw6bwm54644"]
 
 [ext_resource type="PackedScene" uid="uid://dwsgmvwvvu86q" path="res://Assets/Scene/Manager/arena_time_manager.tscn" id="1_0trha"]
 [ext_resource type="PackedScene" uid="uid://dtmli75wgeic" path="res://Assets/Modules/Camera/camera.tscn" id="1_k1roq"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://bfk04mxsi1y0k" path="res://Assets/Textures/Water_tile.png" id="18_mfsav"]
 [ext_resource type="PackedScene" uid="uid://cg5id4dgxp4ub" path="res://Assets/Enemies/Raven_02_Spawner.tscn" id="18_vwc51"]
 [ext_resource type="PackedScene" uid="uid://diqmbn2ls8nc0" path="res://Assets/Scene/game_objects/Chest.tscn" id="19_2px30"]
+[ext_resource type="PackedScene" uid="uid://cagxkvae0a0n5" path="res://Assets/Enemies/Raven_02_FireStar.tscn" id="23_h12sg"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_tj4rp"]
 noise_type = 0
@@ -67,6 +68,7 @@ experience_manager = NodePath("../ExperienceManager")
 upgrade_manager = NodePath("../UpgradeManager")
 
 [node name="ArenaTimeUI" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("2_5ontx")]
+unique_name_in_owner = true
 arena_time_manager = NodePath("../ArenaTimeManager")
 
 [node name="ExperienceBar" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("3_aleo8")]
@@ -146,7 +148,16 @@ position = Vector2(10722, 1483)
 position = Vector2(10822, 1654)
 
 [node name="Raven_Boss" parent="Entities" instance=ExtResource("12_3peer")]
-position = Vector2(7437, 2316)
+position = Vector2(664, 373)
+
+[node name="Raven_Boss2" parent="Entities" instance=ExtResource("12_3peer")]
+position = Vector2(1212, 3725)
+
+[node name="Raven_fireStarter" parent="Entities" instance=ExtResource("23_h12sg")]
+position = Vector2(7771, 2278)
+
+[node name="Raven_Boss3" parent="Entities" instance=ExtResource("12_3peer")]
+position = Vector2(15956, 5364)
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]
 

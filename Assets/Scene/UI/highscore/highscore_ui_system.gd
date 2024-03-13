@@ -9,10 +9,10 @@ var development_mode = true
 var leaderboard_key = "MillionRavens20240309_MF"
 var session_token =""
 var highscore_Table : Array[HighScore]
-var highscore_player : HighScore
+
 
 var player_session_exists = false
-var oldPlayername = ""
+
 # HTTP Request node can only handle one call per node
 var auth_http  = HTTPRequest.new()
 var leaderboard_http = HTTPRequest.new()
@@ -23,9 +23,9 @@ var get_name_http = HTTPRequest.new()
 
 
 func _ready():
+	print("authenticate")
 	_authentication_request()
-	
-	#_change_player_name(globalVars.gv_Settings["player_name"])
+	# _change_player_name(globalVars.gv_Settings["player_name"])
 func _authentication_request():
 	# Check if a player session exists
 	player_session_exists = false
@@ -73,17 +73,14 @@ func _on_authentication_request_completed(result, response_code, headers, body):
 	
 	# Save session_token to memory
 	session_token = json.get_data().session_token
-	
+	print("Session_token" + session_token)
 	# Print server response
 	print(json.get_data())
 	
 	# Clear node
 	auth_http.queue_free()
-	
 	# Get leaderboards
 	_get_leaderboards()
-	# get player and save to global variables
-	_get_player_name()
 
 func _get_leaderboards():
 	print ("Getting Leaderboards")
@@ -105,21 +102,21 @@ func _on_leaderboard_request_complete(result, response_code, headers, body):
 	var json = JSON.new()
 	# json parse
 	json.parse(body.get_string_from_utf8())
+	# Print data
+	print(json.get_data())
 
-	if json == null:
-		print("null")
-		leaderboard_http.queue_free()
-		return
 	highscore_Table.clear()
 	
 	for n in json.get_data().items.size():
+		var metadata = json.get_data().items[n].metadata.rsplit(",", true, 3)
+		
 		highscore_Table.append(HighScore.new(
 		str(json.get_data().items[n].rank),
 		str(json.get_data().items[n].player.name),
 		str(json.get_data().items[n].score),
-		"40123",
-		"0",
-		"0"))
+		metadata[0],
+		metadata[1],
+		metadata[2]))
 
 	print(json.get_data().items.size())
 	# clear node
@@ -128,9 +125,9 @@ func _on_leaderboard_request_complete(result, response_code, headers, body):
 		leaderboard_http.queue_free()
 	
 
-func _upload_score(score :int):
+func _upload_score(score :int, _metadata : String):
 	# data verifier  is boss down && new score is higher >
-	var data = {"score": str(score), "metadata": "4812382838388ms,5Feather,10coins"}
+	var data = {"score": str(score), "metadata": _metadata}
 	var headers = ["Content-Type: application/json", "x-session-token:" + session_token]
 	submit_score_http = HTTPRequest.new()
 	add_child(submit_score_http)
@@ -169,6 +166,7 @@ func _on_player_set_name_request_completed(result, response_code, headers, body)
 	# Print data
 	print(json.get_data())
 	set_name_http.queue_free()
+	_get_leaderboards()
 
 func _get_player_name():
 	print("Getting player name")
@@ -186,9 +184,6 @@ func _on_player_get_name_request_completed(result, response_code, headers, body)
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
 	
-	# Print data
-	# print(json.get_data())
-	# Print player name
 	print("HighscoreSystem: get Playername:" + json.get_data().name)
 	globalVars.gv_Settings["player_name"] = json.get_data().name
 	get_name_http.queue_free()

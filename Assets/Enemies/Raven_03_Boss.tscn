@@ -59,8 +59,8 @@ animations = [{
 
 [node name="Raven_Boss" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(0.5, 0.5)
-collision_layer = 16
-collision_mask = 17
+collision_layer = 0
+collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_p686j")
 
@@ -70,7 +70,7 @@ highscore_amount = 100000
 health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_5h0ci")]
-max_health = 10.0
+max_health = 200.0
 
 [node name="HealthBar" parent="." instance=ExtResource("5_m3loi")]
 offset_left = -96.0

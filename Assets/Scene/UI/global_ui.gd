@@ -8,7 +8,7 @@ extends CanvasLayer
 @onready var value_Feather : Label = $%Feather_Value
 @onready var value_coin : Label  =$%Coin_Value
 # MANAGERS 
-@export var highscoremanager : HighscoreManager
+@onready var highscore_manager : Highscore_Manager = get_node("/root/Highscore_Manager")
 @export var experience_manager : ExperienceManager
 @export var upgrade_manager : UpgradeManager
 @export var abilityReady : Array[TextureRect]
@@ -17,14 +17,14 @@ func _ready():
       experience_manager.level_up.connect(on_level_up_change_ui)
       GameEvents.ability_upgrade_added.connect(on_ability_levelup)
       #get ravenKilledAmount
-      highscoremanager.UI_ravenkilled.connect(on_ravenscore_update)
+      highscore_manager.UI_ravenkilled.connect(on_ravenscore_update)
       #get ability status event
       GameEvents.ability_status_changed.connect(on_ability_status_change)
       # RESET ALL STATS
       reset_stats()
 func _process(delta):
       value_fps_text.text = ("FPS: %d" % Engine.get_frames_per_second())
-      highscore_value_text.text = str(highscoremanager.current_highscore)
+      highscore_value_text.text = str(highscore_manager.current_highscore)
 # when player levels up
 func on_level_up_change_ui(new_level : int):
       value_playerLevel.text = str(new_level)

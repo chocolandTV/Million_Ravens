@@ -7,6 +7,8 @@ extends Node
 @onready var highscore_ui_system : HighscoreUISystem = get_node("/root/HighscoreUiSystem")
 @onready var highscore_manager : Highscore_Manager = get_node("/root/Highscore_Manager")
 @onready var globalVars : Global_Variables = get_node("/root/GlobalVariables")
+@onready var filemanager : FileManager = get_node("/root/File_Manager")
+@onready var deltaTimer : ArenaDeltaTimer = $%ArenaTimeUI
 
 var text : String ="You win: You survived 10 minutes"
 func _ready():
@@ -27,7 +29,8 @@ func on_boss_down():
 
 func win_game():
       # Upload Current Score
-      highscore_ui_system._upload_score(highscore_manager.current_highscore)
+      var metadata = str(deltaTimer.time) +"," + str(highscore_manager.current_feathers) + "," + str(highscore_manager.current_coins)
+      highscore_ui_system._upload_score(highscore_manager.current_highscore,metadata)
       #update Leaderboard and get player index as new Highscore_entry Panel
       highscore_ui_system._get_leaderboards()
       for x in highscore_ui_system.highscore_Table:
@@ -40,3 +43,4 @@ func win_game():
       var end_screen_instance = end_screen_scene.instantiate() as CanvasLayer
       add_child(end_screen_instance)
       end_screen_instance.setText(text)
+      filemanager.save_game()

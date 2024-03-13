@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+class_name ArenaDeltaTimer
+
 @export var arena_time_manager: Node
 @onready var label = $%Label
 var timestart = 0

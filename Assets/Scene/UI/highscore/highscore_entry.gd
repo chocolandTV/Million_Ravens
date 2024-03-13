@@ -17,4 +17,4 @@ func on_initialize_text(rank:String, playername:String, score:String, time:Strin
       time_label.text = time
       feather_label.text = feather
       coin_label.text = coin
-      print("init score")
+      
