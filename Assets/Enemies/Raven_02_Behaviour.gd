@@ -51,11 +51,14 @@ func on_area_entered_player(_area :Area2D):
             isAttacking = true
             attackTimer.start()
             target_pos = get_target_pos()
+            
+            animated_sprite.flip_h = true
+            if (Vector2((target_pos- global_position).normalized().x,1)) == Vector2(-1,1):
+                  animated_sprite.flip_h = false
             isPlayerInVision = true
             animated_sprite.set_animation("start")
 func on_raven_reached_target_position():
-      # got pos and activate Cooldown
-      print("got pos and activate Cooldown")
+      
       isPlayerInVision = false
       isCooldown = true
       timer.start()

@@ -1,7 +1,7 @@
 extends Node
 class_name  HighscoreManager
 
-var current_highscore : int= 1000000
+var current_highscore : int= 100
 var current_feathers : int= 0
 var current_coins : int= 0
 var current_ravenkills : int =0

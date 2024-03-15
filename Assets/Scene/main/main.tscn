@@ -154,7 +154,13 @@ position = Vector2(664, 373)
 position = Vector2(1212, 3725)
 
 [node name="Raven_fireStarter" parent="Entities" instance=ExtResource("23_h12sg")]
-position = Vector2(7771, 2278)
+position = Vector2(8381, 2329)
+
+[node name="Raven_fireStarter2" parent="Entities" instance=ExtResource("23_h12sg")]
+position = Vector2(7798, 838)
+
+[node name="Raven_fireStarter3" parent="Entities" instance=ExtResource("23_h12sg")]
+position = Vector2(8764, 4395)
 
 [node name="Raven_Boss3" parent="Entities" instance=ExtResource("12_3peer")]
 position = Vector2(15956, 5364)

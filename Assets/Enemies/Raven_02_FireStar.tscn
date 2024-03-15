@@ -169,7 +169,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"start",
-"speed": 5.0
+"speed": 20.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n74e4"]
@@ -207,6 +207,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_plh1b"]
 resource_name = "Raven_walking"
+loop_mode = 1
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -273,7 +274,7 @@ unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_fg0ag")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.315672
+frame_progress = 0.576824
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_n74e4")
@@ -282,6 +283,7 @@ shape = SubResource("CircleShape2D_n74e4")
 libraries = {
 "": SubResource("AnimationLibrary_ulpw8")
 }
+autoplay = "Raven_walking"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
