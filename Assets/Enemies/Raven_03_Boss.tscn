@@ -1,12 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://chbnahrkdklgj"]
+[gd_scene load_steps=18 format=3 uid="uid://chbnahrkdklgj"]
 
 [ext_resource type="Script" path="res://Assets/Enemies/Raven_03_Boss.gd" id="1_p686j"]
-[ext_resource type="PackedScene" uid="uid://dmbodtb67ycs3" path="res://Assets/Scene/Component/orb_drop_component.tscn" id="2_rwmks"]
+[ext_resource type="PackedScene" uid="uid://bo1ri05hjk1sx" path="res://Assets/Scene/Component/Drop_Components/Boss_drop_component.tscn" id="2_vbupa"]
 [ext_resource type="PackedScene" uid="uid://c1gnol8gqyu7s" path="res://Assets/Scene/Component/health_component.tscn" id="3_5h0ci"]
-[ext_resource type="PackedScene" uid="uid://bhx858knrbh5p" path="res://Assets/Scene/game_objects/WinCondition/win_condition.tscn" id="3_xore2"]
 [ext_resource type="PackedScene" uid="uid://nro3glw2xb4p" path="res://Assets/Scene/Component/hurtbox_component.tscn" id="4_mjkxg"]
 [ext_resource type="PackedScene" uid="uid://csljirmwo8vcg" path="res://Assets/Scene/Component/health_bar.tscn" id="5_m3loi"]
 [ext_resource type="Texture2D" uid="uid://bmxijgrp64hfh" path="res://Assets/Textures/Sprite-0002_Ravii.png" id="6_4cwlh"]
+[ext_resource type="Script" path="res://Assets/Scene/Component/hitbox_component.gd" id="8_tp4l1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ercf5"]
 radius = 80.025
@@ -57,6 +57,12 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_mbnsr"]
+radius = 400.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aawj4"]
+radius = 82.5
+
 [node name="Raven_Boss" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(0.5, 0.5)
 collision_layer = 0
@@ -64,9 +70,8 @@ collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_p686j")
 
-[node name="orb_drop_component" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_rwmks")]
-orb_Scene = ExtResource("3_xore2")
-highscore_amount = 100000
+[node name="Boss_drop_component" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_vbupa")]
+highscore_amount = 1000000
 health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_5h0ci")]
@@ -79,6 +84,7 @@ offset_right = 104.0
 offset_bottom = -107.0
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_mjkxg")]
+collision_mask = 2
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
@@ -94,3 +100,21 @@ scale = Vector2(2.465, 2.465)
 sprite_frames = SubResource("SpriteFrames_jouuy")
 autoplay = "default"
 frame_progress = 0.875412
+
+[node name="Vision_radius" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision_radius"]
+shape = SubResource("CircleShape2D_mbnsr")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("8_tp4l1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_aawj4")
+debug_color = Color(0, 0.65098, 0.12549, 0.419608)
+
+[connection signal="area_entered" from="Vision_radius" to="." method="_on_vision_radius_area_entered"]

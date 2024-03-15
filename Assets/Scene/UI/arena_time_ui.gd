@@ -13,6 +13,8 @@ func _ready():
       timestart =  Time.get_ticks_msec()
 
 func _process(_delta):
+      if get_parent().isGameStatePaused():
+            return
       if arena_time_manager == null:
             return
       if(!timer_on):

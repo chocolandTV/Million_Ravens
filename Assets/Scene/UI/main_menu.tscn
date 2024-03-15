@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://c2po4yygqv25f"]
 
-[ext_resource type="Script" path="res://Assets/Scene/main/Main_Menu.gd" id="1_0kdyt"]
+[ext_resource type="Script" path="res://Assets/Scene/UI/Main_Menu.gd" id="1_0kdyt"]
 [ext_resource type="Texture2D" uid="uid://b0gx35n3pyr1i" path="res://Assets/Textures/Sprite-0006_LootLocker-Sheet.png" id="2_cw1xd"]
 [ext_resource type="Texture2D" uid="uid://c4hulwdi3djki" path="res://banner.png" id="3_d3pxi"]
 [ext_resource type="Texture2D" uid="uid://p6rt41s08b7g" path="res://Assets/Textures/UI/Sprite-0015_UI_knob.png" id="4_uq5w3"]
@@ -91,12 +91,12 @@ bg_color = Color(0.668416, 0.992682, 0.872438, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7fyp"]
 bg_color = Color(0.324376, 0.202315, 0.255942, 1)
 
-[node name="Main_Menu" type="Node"]
+[node name="Main_Menu" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_0kdyt")
 
 [node name="firstSplash" type="MarginContainer" parent="."]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -114,6 +114,13 @@ autoplay = "default"
 frame = 8
 frame_progress = 1.0
 
+[node name="Label" type="Label" parent="firstSplash"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "
+
+Database System"
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
@@ -121,6 +128,7 @@ autostart = true
 
 [node name="Menu" type="MarginContainer" parent="."]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -149,10 +157,12 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 30
 text = "Million Ravens"
+horizontal_alignment = 1
 
 [node name="Button_Start" type="Button" parent="Menu/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Start"
@@ -179,7 +189,7 @@ theme_override_font_sizes/font_size = 50
 text = "Quit"
 
 [node name="HSeparator" type="HSeparator" parent="Menu/PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 250)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="Menu/PanelContainer/VBoxContainer"]

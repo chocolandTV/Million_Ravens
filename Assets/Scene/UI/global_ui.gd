@@ -22,6 +22,7 @@ func _ready():
       GameEvents.ability_status_changed.connect(on_ability_status_change)
       # RESET ALL STATS
       reset_stats()
+      
 func _process(delta):
       value_fps_text.text = ("FPS: %d" % Engine.get_frames_per_second())
       highscore_value_text.text = str(highscore_manager.current_highscore)

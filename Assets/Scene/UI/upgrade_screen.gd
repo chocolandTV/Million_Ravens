@@ -6,8 +6,6 @@ signal upgrade_selected(upgrade: AbilityUpgrade)
 
 @onready var card_container: HBoxContainer = $%CardContainer
 
-func _ready():
-	get_tree().paused = true
 
 func set_ability_upgrade(upgrades:Array[AbilityUpgrade]):
 	for upgrade in upgrades:
@@ -18,5 +16,4 @@ func set_ability_upgrade(upgrades:Array[AbilityUpgrade]):
 
 func on_upgrade_selected(upgrade: AbilityUpgrade):
 	upgrade_selected.emit(upgrade)
-	get_tree().paused = false
 	queue_free()

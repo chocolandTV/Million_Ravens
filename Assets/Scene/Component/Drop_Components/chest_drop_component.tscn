@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmxsepl0ddne"]
+
+[ext_resource type="Script" path="res://Assets/Scene/Component/Drop_Components/chest_drop_component.gd" id="1_q87qg"]
+
+[node name="chest_drop_component" type="Node"]
+script = ExtResource("1_q87qg")

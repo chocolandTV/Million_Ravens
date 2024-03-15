@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://diqmbn2ls8nc0"]
+[gd_scene load_steps=10 format=3 uid="uid://diqmbn2ls8nc0"]
 
-[ext_resource type="Script" path="res://Assets/Scene/game_objects/region_01.gd" id="1_4pqug"]
+[ext_resource type="Script" path="res://Assets/Scene/game_objects/Chest.gd" id="1_l23ae"]
 [ext_resource type="Script" path="res://Assets/Scene/Component/health_component.gd" id="2_kbjr5"]
-[ext_resource type="PackedScene" uid="uid://vhc5r3ex6oou" path="res://Assets/Scene/Component/flag_drop_component.tscn" id="3_hxuga"]
+[ext_resource type="PackedScene" uid="uid://dmxsepl0ddne" path="res://Assets/Scene/Component/Drop_Components/chest_drop_component.tscn" id="3_7cc4c"]
 [ext_resource type="PackedScene" uid="uid://dng3vrp03i3j7" path="res://Assets/Scene/game_objects/Destroyed_Objects/Chest_destroyed.tscn" id="4_1bq4m"]
 [ext_resource type="Texture2D" uid="uid://dnbd61llyi4lr" path="res://Assets/Textures/chest.png" id="5_ytyta"]
 [ext_resource type="PackedScene" uid="uid://nro3glw2xb4p" path="res://Assets/Scene/Component/hurtbox_component.tscn" id="6_0sa5r"]
+[ext_resource type="PackedScene" uid="uid://csljirmwo8vcg" path="res://Assets/Scene/Component/health_bar.tscn" id="7_hdqjd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lhuhs"]
 radius = 35.0143
@@ -14,14 +15,13 @@ radius = 35.0143
 size = Vector2(57, 31)
 
 [node name="Chest_Destoyable" type="StaticBody2D"]
-script = ExtResource("1_4pqug")
-region_text = "chest"
+script = ExtResource("1_l23ae")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("2_kbjr5")
 max_health = 10.0
 
-[node name="flag_drop_component" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_hxuga")]
+[node name="chest_drop_component" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_7cc4c")]
 orb_Scene = ExtResource("4_1bq4m")
 highscore_amount = 1000
 health_component = NodePath("../HealthComponent")
@@ -30,17 +30,9 @@ health_component = NodePath("../HealthComponent")
 position = Vector2(0, -33)
 texture = ExtResource("5_ytyta")
 
-[node name="Label" type="Label" parent="."]
-unique_name_in_owner = true
-visible = false
-offset_left = -40.0
-offset_top = -86.0
-offset_right = 45.0
-offset_bottom = -63.0
-text = "Region - 01"
-
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_0sa5r")]
 position = Vector2(0, -42)
+collision_mask = 64
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
@@ -51,3 +43,9 @@ debug_color = Color(0.984314, 0.121569, 0, 0.0823529)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -31.5)
 shape = SubResource("RectangleShape2D_dc5u2")
+
+[node name="HealthBar" parent="." instance=ExtResource("7_hdqjd")]
+offset_left = -25.0
+offset_top = -83.0
+offset_right = 25.0
+offset_bottom = -73.0

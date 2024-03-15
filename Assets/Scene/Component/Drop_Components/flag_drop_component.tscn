@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://vhc5r3ex6oou"]
 
-[ext_resource type="Script" path="res://Assets/Scene/Component/flag_drop_component.gd" id="1_gtv5u"]
+[ext_resource type="Script" path="res://Assets/Scene/Component/Drop_Components/flag_drop_component.gd" id="1_gtv5u"]
 
 [node name="flag_drop_component" type="Node"]
 script = ExtResource("1_gtv5u")

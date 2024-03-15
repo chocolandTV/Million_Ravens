@@ -17,6 +17,8 @@ func increase_dificult_over_time():
 	timer.wait_time  =  waittime
 	print("TimeEvent: decrased time to : " + str(waittime))
 func on_timer_timeout():
+	if get_parent().isGameStatePaused():
+		return
 	var player = get_tree().get_first_node_in_group("player")
 	if player == null:
 		return

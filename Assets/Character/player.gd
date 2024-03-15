@@ -5,7 +5,6 @@ const DASH_SPEED = 1500.0
 const ACCELERATION_SMOOTHING = 25
 
 func _process(delta):
-	
 	# Define Movement
 	var movement_vector = get_movement_vector()
 	#Normalize 

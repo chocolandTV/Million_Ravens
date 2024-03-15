@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://gbw6bwm54644"]
+[gd_scene load_steps=34 format=3 uid="uid://gbw6bwm54644"]
 
 [ext_resource type="PackedScene" uid="uid://dwsgmvwvvu86q" path="res://Assets/Scene/Manager/arena_time_manager.tscn" id="1_0trha"]
 [ext_resource type="PackedScene" uid="uid://dtmli75wgeic" path="res://Assets/Modules/Camera/camera.tscn" id="1_k1roq"]
@@ -8,6 +8,7 @@
 [ext_resource type="TileSet" uid="uid://iwu3xtoc6knu" path="res://Assets/Ressources/RavenTileSet.tres" id="1_yjc0t"]
 [ext_resource type="PackedScene" uid="uid://cfhm8ivm8l58p" path="res://Assets/Scene/UI/arena_time_ui.tscn" id="2_5ontx"]
 [ext_resource type="PackedScene" uid="uid://c0bgl5elagkmg" path="res://Assets/Scene/UI/experience_bar.tscn" id="3_aleo8"]
+[ext_resource type="PackedScene" uid="uid://c2po4yygqv25f" path="res://Assets/Scene/UI/main_menu.tscn" id="3_q3nsa"]
 [ext_resource type="PackedScene" uid="uid://cusf0eprmxqmi" path="res://Assets/Scene/UI/end_screen.tscn" id="4_83l3l"]
 [ext_resource type="PackedScene" uid="uid://qiblhkndhetr" path="res://Assets/Scene/Manager/upgrade_manager.tscn" id="4_n4msl"]
 [ext_resource type="PackedScene" uid="uid://ciomhcvfb7dvy" path="res://Assets/Scene/Manager/experience_manager.tscn" id="4_r8j7u"]
@@ -63,15 +64,27 @@ shader_parameter/noise2 = SubResource("NoiseTexture2D_me3wv")
 script = ExtResource("1_qc85t")
 end_screen_scene = ExtResource("4_83l3l")
 
+[node name="Main_Menu" parent="." instance=ExtResource("3_q3nsa")]
+unique_name_in_owner = true
+process_mode = 3
+layer = 1
+
 [node name="Global_UI" parent="." node_paths=PackedStringArray("experience_manager", "upgrade_manager") instance=ExtResource("16_1mrm1")]
+unique_name_in_owner = true
+layer = 2
+visible = false
 experience_manager = NodePath("../ExperienceManager")
 upgrade_manager = NodePath("../UpgradeManager")
 
 [node name="ArenaTimeUI" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("2_5ontx")]
 unique_name_in_owner = true
+layer = 3
+visible = false
 arena_time_manager = NodePath("../ArenaTimeManager")
 
 [node name="ExperienceBar" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("3_aleo8")]
+unique_name_in_owner = true
+visible = false
 experience_manager = NodePath("../ExperienceManager")
 
 [node name="ArenaTimeManager" parent="." instance=ExtResource("1_0trha")]

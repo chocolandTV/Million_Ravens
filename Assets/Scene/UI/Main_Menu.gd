@@ -8,6 +8,8 @@ extends Node
 @onready var highscore_ui_system : HighscoreUISystem = get_node("/root/HighscoreUiSystem")
 @onready var filemanager : FileManager = get_node("/root/File_Manager")
 @onready var highscore_ui : CanvasLayer = $%Highscore_Menu
+# START BUTTON TEXT 
+@onready var startButton_text : Button = $%Button_Start
 # TOGGLE SETTING VARIABLE
 var setting_enabled :bool = false
 
@@ -15,6 +17,7 @@ func _ready():
       # Load Savegame Data if persists
       filemanager.load_game()
       playername_textField.text_submitted.connect(on_playername_textfield_submitted)
+      GameEvents.highscore_button_pressed.connect(on_highscore_button_pressed)
 func _on_timer_timeout():
       splash.visible = false
       menu.visible = true
@@ -22,14 +25,17 @@ func _on_timer_timeout():
 func _on_quit_button_pressed():
       filemanager.save_game()
       get_tree().quit()
-
+################### START BUTTON ####################
 func _on_start_button_pressed():
-      get_tree().change_scene_to_file("res://Assets/Scene/main/main.tscn")
+      startButton_text.text = "Resume"
+      GameEvents.emit_menu_switch()
 
 func _on_button_highscore_pressed():
       highscore_ui.on_CanvasLayer_activate()
       splash.visible = false
       menu.visible = false
+      setting_enabled = false
+      setting_menu.visible = setting_enabled
       # Turn highscore On
       highscore_ui.visible = true
 
@@ -56,3 +62,6 @@ func toggleSettingMenu():
       playername_textField.placeholder_text = global_vars.gv_Settings["player_name"]
       if !setting_enabled:
             filemanager.save_game()
+
+func on_highscore_button_pressed():
+      _on_button_highscore_pressed()

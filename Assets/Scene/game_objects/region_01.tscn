@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Assets/Scene/Component/health_component.gd" id="1_88d0i"]
 [ext_resource type="Script" path="res://Assets/Scene/game_objects/region_01.gd" id="1_wslgf"]
 [ext_resource type="PackedScene" uid="uid://c8fehafkiu66p" path="res://Assets/Scene/game_objects/region_checked.tscn" id="3_6hpll"]
-[ext_resource type="PackedScene" uid="uid://vhc5r3ex6oou" path="res://Assets/Scene/Component/flag_drop_component.tscn" id="3_y2g5g"]
+[ext_resource type="PackedScene" uid="uid://vhc5r3ex6oou" path="res://Assets/Scene/Component/Drop_Components/flag_drop_component.tscn" id="3_y2g5g"]
 [ext_resource type="PackedScene" uid="uid://nro3glw2xb4p" path="res://Assets/Scene/Component/hurtbox_component.tscn" id="5_5qubd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lhuhs"]

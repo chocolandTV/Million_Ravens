@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cg5id4dgxp4ub"]
 
 [ext_resource type="Script" path="res://Assets/Enemies/Raven_02_Spawner.gd" id="1_jxtgj"]
-[ext_resource type="PackedScene" uid="uid://dmbodtb67ycs3" path="res://Assets/Scene/Component/orb_drop_component.tscn" id="2_81hbw"]
+[ext_resource type="PackedScene" uid="uid://dmbodtb67ycs3" path="res://Assets/Scene/Component/Drop_Components/orb_drop_component.tscn" id="2_81hbw"]
 [ext_resource type="PackedScene" uid="uid://bx83g2vdm4dex" path="res://Assets/Scene/game_objects/Destroyed_Objects/Raven_02_Spawner_dead.tscn" id="3_1rihy"]
 [ext_resource type="PackedScene" uid="uid://c1gnol8gqyu7s" path="res://Assets/Scene/Component/health_component.tscn" id="3_qgpfd"]
 [ext_resource type="PackedScene" uid="uid://nro3glw2xb4p" path="res://Assets/Scene/Component/hurtbox_component.tscn" id="4_ei2b6"]

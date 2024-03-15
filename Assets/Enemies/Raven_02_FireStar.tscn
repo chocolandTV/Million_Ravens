@@ -1,7 +1,7 @@
 [gd_scene load_steps=37 format=3 uid="uid://cagxkvae0a0n5"]
 
 [ext_resource type="Script" path="res://Assets/Enemies/Raven_02_Behaviour.gd" id="1_hx448"]
-[ext_resource type="PackedScene" uid="uid://dmbodtb67ycs3" path="res://Assets/Scene/Component/orb_drop_component.tscn" id="2_r1nj6"]
+[ext_resource type="PackedScene" uid="uid://dmbodtb67ycs3" path="res://Assets/Scene/Component/Drop_Components/orb_drop_component.tscn" id="2_r1nj6"]
 [ext_resource type="PackedScene" uid="uid://c1gnol8gqyu7s" path="res://Assets/Scene/Component/health_component.tscn" id="3_a3kop"]
 [ext_resource type="PackedScene" uid="uid://csljirmwo8vcg" path="res://Assets/Scene/Component/health_bar.tscn" id="4_7nywh"]
 [ext_resource type="PackedScene" uid="uid://nro3glw2xb4p" path="res://Assets/Scene/Component/hurtbox_component.tscn" id="5_p3i21"]
@@ -239,7 +239,7 @@ motion_mode = 1
 script = ExtResource("1_hx448")
 
 [node name="orb_drop_component" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_r1nj6")]
-highscore_amount = 5
+highscore_amount = 50000
 health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_a3kop")]

@@ -19,10 +19,16 @@ signal ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrade:Dictionary
 #signal to get raven count
 signal raven_died()
 
+#Signal das Highscore startet
+signal highscore_button_pressed()
+#Signal Menu Switch on Main Menu
+signal menu_switch()
 ##########################################################
 func emit_raven_died():
 	raven_died.emit()
 
+func emit_menu_switch():
+	menu_switch.emit()
 func emit_ability_status_changed(index: int, status: bool):
 	ability_status_changed.emit(index,status)
 	
@@ -46,3 +52,6 @@ func emit_winGame_boss_down_event():
 
 func emit_increase_raven_spawn_event():
 	increase_raven_spawn.emit()
+
+func emit_highscore_button_pressed():
+	highscore_button_pressed.emit()

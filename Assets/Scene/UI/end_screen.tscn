@@ -1,12 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cusf0eprmxqmi"]
+[gd_scene load_steps=2 format=3 uid="uid://cusf0eprmxqmi"]
 
 [ext_resource type="Script" path="res://Assets/Scene/UI/end_screen.gd" id="1_eagpv"]
-[ext_resource type="PackedScene" uid="uid://dx6neeihut3tr" path="res://Assets/Scene/UI/highscore_menu.tscn" id="2_a52kc"]
 
 [node name="EndScreen" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_eagpv")
-highscore_panel = ExtResource("2_a52kc")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
