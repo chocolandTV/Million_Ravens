@@ -10,6 +10,12 @@ extends Node
 @onready var highscore_ui : CanvasLayer = $%Highscore_Menu
 # START BUTTON TEXT 
 @onready var startButton_text : Button = $%Button_Start
+
+# CREDIT 
+@onready var creditButton : Button =$%Button_Credit
+@onready var credit_Panel : MarginContainer  = $%Credit_Panel
+@onready var credit_HighFrame_Image : ParallaxBackground = $%ParallaxBackground
+var  isCreditsOn :bool = false
 # TOGGLE SETTING VARIABLE
 var setting_enabled :bool = false
 
@@ -18,6 +24,8 @@ func _ready():
       filemanager.load_game()
       playername_textField.text_submitted.connect(on_playername_textfield_submitted)
       GameEvents.highscore_button_pressed.connect(on_highscore_button_pressed)
+      creditButton.pressed.connect(_on_credit_button_pressed)
+
 func _on_timer_timeout():
       splash.visible = false
       menu.visible = true
@@ -29,6 +37,14 @@ func _on_quit_button_pressed():
 func _on_start_button_pressed():
       startButton_text.text = "Resume"
       GameEvents.emit_menu_switch()
+
+func _on_credit_button_pressed():
+      isCreditsOn = !isCreditsOn
+      credit_HighFrame_Image.visible = isCreditsOn
+      credit_Panel.visible = isCreditsOn
+      setting_enabled = !isCreditsOn
+      setting_menu.visible = setting_enabled
+      
 
 func _on_button_highscore_pressed():
       highscore_ui.on_CanvasLayer_activate()
@@ -51,6 +67,7 @@ func _on_button_pressed():
 func on_playername_textfield_submitted(_text : String):
       global_vars.gv_Settings["player_name"]  = _text
       highscore_ui_system._change_player_name(_text)
+      get_parent().on_playerName_changed_Submit_to_UI()
 
 func _on_button_settings_pressed():
       toggleSettingMenu()

@@ -41,6 +41,8 @@ func switchMenu():
 func on_menu_switch():
 	switchMenu()
 
+func on_playerName_changed_Submit_to_UI():
+	canvas_Layer_Global_UI.UpdatePlayerName()
 func _input(event):
 	if event.is_action_pressed("openmenu"):
 		switchMenu()

@@ -11,13 +11,13 @@ class_name Enemy02_FireStarter
 @onready var health_bar = $HealthBar
 
 const speed : float  = 1000.0
-const damage :int  = 100
+
 var isCooldown : bool  = false
 var isPlayerInVision :bool = false
 var target_pos : Vector2 = Vector2.ZERO
 var isAttacking : bool = false
 func _ready():
-      hit_box.damage = damage
+      
       animated_sprite.set_animation("Idle")
       health_component.health_changed.connect(on_health_changed)
       update_health_display()

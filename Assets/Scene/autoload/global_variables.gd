@@ -11,7 +11,7 @@ var gv_Settings = {
       "player_identifier": "",
       "game_version" : "1.01",
 #ability settings
-       "paw_ability_damage_level" : 5,
+      "paw_ability_damage_level" : 5,
       "paw_ability_cooldown_level" : 0.01, 
       "auto_attack_ability_damage_level" : 1,
       "auto_attack_ability_cooldown_level" : 0.01,

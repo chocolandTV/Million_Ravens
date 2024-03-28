@@ -1,11 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://b0k7pkd8w6bgf"]
+[gd_scene load_steps=22 format=3 uid="uid://b0k7pkd8w6bgf"]
 
 [ext_resource type="Script" path="res://Assets/Character/player.gd" id="1_mc8ud"]
 [ext_resource type="PackedScene" uid="uid://dawavi4jsphc" path="res://Assets/Scene/Ability/paw_ability_controller/ability_controller.tscn" id="2_35odb"]
 [ext_resource type="PackedScene" uid="uid://c3fef1dfnqvp0" path="res://Assets/Character/player_health_component.tscn" id="2_ehluf"]
-[ext_resource type="Texture2D" uid="uid://cdrtoohsq78d8" path="res://Assets/Character/player.png" id="3_pi4lh"]
 [ext_resource type="PackedScene" uid="uid://0csxtg2x17g1" path="res://Assets/Scene/Ability/Main_paw_ability_controller/mainpaw_ability_controller.tscn" id="3_xomax"]
 [ext_resource type="PackedScene" uid="uid://bj3q25jgd6xj4" path="res://Assets/Scene/Ability/Dash/dash_ability_controller.tscn" id="5_c7kej"]
+[ext_resource type="Texture2D" uid="uid://becdm7xbjf21n" path="res://Assets/Character/Sprite-0019.png" id="6_6h511"]
 [ext_resource type="Script" path="res://Assets/Character/PlayerHurtboxComponent.gd" id="6_8ivss"]
 
 [sub_resource type="Animation" id="Animation_gk7r7"]
@@ -13,7 +13,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/path = NodePath("Animatedsprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -25,7 +25,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/path = NodePath("Animatedsprite2D:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -42,7 +42,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/path = NodePath("Animatedsprite2D:modulate")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -54,7 +54,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/path = NodePath("Animatedsprite2D:scale")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -72,6 +72,63 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cri55"]
 radius = 23.0217
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti5s6"]
+atlas = ExtResource("6_6h511")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5iawy"]
+atlas = ExtResource("6_6h511")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7yra"]
+atlas = ExtResource("6_6h511")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vpwj"]
+atlas = ExtResource("6_6h511")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4vmt"]
+atlas = ExtResource("6_6h511")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_836ve"]
+atlas = ExtResource("6_6h511")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk8p5"]
+atlas = ExtResource("6_6h511")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_obf75"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ti5s6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5iawy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7yra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vpwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4vmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_836ve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gk8p5")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5s175"]
 radius = 11.1803
@@ -108,9 +165,12 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_cri55")
 debug_color = Color(0.141176, 0.647059, 0, 0.419608)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Animatedsprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -30)
-texture = ExtResource("3_pi4lh")
+sprite_frames = SubResource("SpriteFrames_obf75")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.358957
 
 [node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("player_health_comonent")]
 collision_layer = 0
@@ -124,3 +184,7 @@ debug_color = Color(0.976471, 0, 0, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_s8tio")
+
+[node name="InvincibleTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true

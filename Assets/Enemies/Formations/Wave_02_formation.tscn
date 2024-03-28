@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://3etyyu5pcjdb"]
+
+[ext_resource type="PackedScene" uid="uid://dwp0tj0ahcgwn" path="res://Assets/Enemies/Raven_01_Default.tscn" id="1_amx0h"]
+[ext_resource type="PackedScene" uid="uid://cagxkvae0a0n5" path="res://Assets/Enemies/Raven_02_FireStar.tscn" id="2_jmgvq"]
+
+[node name="Wave_02_Formation" type="Node2D"]
+
+[node name="Ravenspeedy" parent="." instance=ExtResource("1_amx0h")]
+position = Vector2(-1, 27)
+
+[node name="Ravenspeedy2" parent="." instance=ExtResource("1_amx0h")]
+position = Vector2(-27, 0)
+
+[node name="Ravenspeedy3" parent="." instance=ExtResource("1_amx0h")]
+position = Vector2(27, 0)
+
+[node name="Raven_fireStarter" parent="." instance=ExtResource("2_jmgvq")]
+position = Vector2(70, -31)
+
+[node name="orb_drop_component" parent="Raven_fireStarter" index="0"]
+highscore_amount = 50
+
+[node name="HealthComponent" parent="Raven_fireStarter" index="1"]
+max_health = 5.0
+
+[node name="Raven_fireStarter2" parent="." instance=ExtResource("2_jmgvq")]
+position = Vector2(-72, -33)
+
+[node name="orb_drop_component" parent="Raven_fireStarter2" index="0"]
+highscore_amount = 50
+
+[node name="HealthComponent" parent="Raven_fireStarter2" index="1"]
+max_health = 4.0
+
+[editable path="Raven_fireStarter"]
+[editable path="Raven_fireStarter2"]

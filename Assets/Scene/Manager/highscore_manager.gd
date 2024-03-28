@@ -68,3 +68,9 @@ func on_highscore_feather_collected():
 func on_raven_died():
       increment_raven()
 
+func on_highscore_reset():
+      current_highscore = 100
+      current_feathers = 0
+      current_coins = 0
+      current_ravenkills=0
+

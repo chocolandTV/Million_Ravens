@@ -1,12 +1,28 @@
-[gd_scene load_steps=22 format=3 uid="uid://c2po4yygqv25f"]
+[gd_scene load_steps=39 format=3 uid="uid://c2po4yygqv25f"]
 
 [ext_resource type="Script" path="res://Assets/Scene/UI/Main_Menu.gd" id="1_0kdyt"]
 [ext_resource type="Texture2D" uid="uid://b0gx35n3pyr1i" path="res://Assets/Textures/Sprite-0006_LootLocker-Sheet.png" id="2_cw1xd"]
 [ext_resource type="Texture2D" uid="uid://c4hulwdi3djki" path="res://banner.png" id="3_d3pxi"]
+[ext_resource type="PackedScene" uid="uid://bak46xmq64iyc" path="res://Assets/Textures/UI/texture_rect.tscn" id="3_ixpla"]
+[ext_resource type="Texture2D" uid="uid://y33fjpxbkh41" path="res://Assets/Textures/Sprite-0018_Raven_logo.png" id="4_5k81t"]
+[ext_resource type="StyleBox" uid="uid://dsubedcjd0m1g" path="res://Assets/Textures/UI/Normal_Button.tres" id="4_od8gl"]
+[ext_resource type="Shader" path="res://Assets/Shaders/TitleScreen.gdshader" id="4_svw16"]
 [ext_resource type="Texture2D" uid="uid://p6rt41s08b7g" path="res://Assets/Textures/UI/Sprite-0015_UI_knob.png" id="4_uq5w3"]
+[ext_resource type="StyleBox" uid="uid://d16hmc62p4hhg" path="res://Assets/Textures/UI/Normal_Button_Highlighted.tres" id="5_2n3ur"]
 [ext_resource type="Texture2D" uid="uid://c1x0dbwb20jea" path="res://Assets/Textures/target.png" id="5_h5faj"]
 [ext_resource type="Script" path="res://Assets/Scene/UI/highscore/highscore_menu.gd" id="6_mv5we"]
+[ext_resource type="StyleBox" uid="uid://dikvv1e2y5t12" path="res://Assets/Textures/UI/Normal_Button_pressed.tres" id="6_qsrk2"]
 [ext_resource type="PackedScene" uid="uid://b7yh6fykenerv" path="res://Assets/Scene/UI/highscore/highscore_entry.tscn" id="7_g7t55"]
+[ext_resource type="Texture2D" uid="uid://c2qctfglsw8kq" path="res://Assets/Textures/UI/Sprite-0020_Card_Item.png" id="11_pgkrv"]
+[ext_resource type="Texture2D" uid="uid://bh5x2hfe7cl6s" path="res://Assets/Textures/UI/dev.png" id="12_yap77"]
+[ext_resource type="SpriteFrames" uid="uid://ddugwwces31m" path="res://Assets/Enemies/AnimatedSprite/Raven_02_FireStar.tres" id="13_djfnm"]
+[ext_resource type="Texture2D" uid="uid://dqf6yrnfld85x" path="res://Assets/Textures/Parallax/L1_Sun.png" id="13_lua0k"]
+[ext_resource type="Script" path="res://Assets/Textures/Parallax/CloudLayer2.gd" id="14_2exku"]
+[ext_resource type="Texture2D" uid="uid://bn3dg0pd8y38b" path="res://Assets/Textures/Parallax/L2_CloudsFar.png" id="14_soqag"]
+[ext_resource type="Texture2D" uid="uid://cmyq45thpaqhs" path="res://Assets/Textures/Parallax/L3_MountainFar.png" id="15_v6tuy"]
+[ext_resource type="Texture2D" uid="uid://2r4i23pnn6vt" path="res://Assets/Textures/Parallax/L4_CloudsNear.png" id="16_fav26"]
+[ext_resource type="Texture2D" uid="uid://hdvyv0e1p1ud" path="res://Assets/Textures/Parallax/L5_MountainNear.png" id="17_dua7v"]
+[ext_resource type="Texture2D" uid="uid://dg7j30k6eivfw" path="res://Assets/Textures/Parallax/L6_Particles.png" id="18_r1o1o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jnhba"]
 atlas = ExtResource("2_cw1xd")
@@ -79,8 +95,12 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nxvqd"]
+shader = ExtResource("4_svw16")
+shader_parameter/bright_amount = 0.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtfd7"]
-bg_color = Color(0.247059, 0.14902, 0.192157, 1)
+bg_color = Color(0, 0, 0, 0.729412)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cja07"]
 bg_color = Color(0.262745, 0.882353, 0.701961, 1)
@@ -97,6 +117,7 @@ script = ExtResource("1_0kdyt")
 
 [node name="firstSplash" type="MarginContainer" parent="."]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -117,9 +138,6 @@ frame_progress = 1.0
 [node name="Label" type="Label" parent="firstSplash"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
-text = "
-
-Database System"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
@@ -128,23 +146,22 @@ autostart = true
 
 [node name="Menu" type="MarginContainer" parent="."]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Menu"]
+[node name="TextureRect2" parent="Menu" instance=ExtResource("3_ixpla")]
+material = SubResource("ShaderMaterial_nxvqd")
 layout_mode = 2
-texture = ExtResource("3_d3pxi")
-expand_mode = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="Menu"]
 layout_mode = 2
 size_flags_horizontal = 0
 
 [node name="ColorRect" type="ColorRect" parent="Menu/PanelContainer"]
+visible = false
 layout_mode = 2
 color = Color(0.247059, 0.14902, 0.192157, 1)
 
@@ -152,7 +169,16 @@ color = Color(0.247059, 0.14902, 0.192157, 1)
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 
+[node name="TextureRect" type="TextureRect" parent="Menu/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("4_5k81t")
+expand_mode = 1
+
 [node name="Label" type="Label" parent="Menu/PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
@@ -165,32 +191,43 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("4_od8gl")
+theme_override_styles/hover = ExtResource("5_2n3ur")
+theme_override_styles/pressed = ExtResource("6_qsrk2")
 text = "Start"
 
 [node name="Button_Settings" type="Button" parent="Menu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("4_od8gl")
+theme_override_styles/hover = ExtResource("5_2n3ur")
+theme_override_styles/pressed = ExtResource("6_qsrk2")
 text = "Settings"
 
 [node name="Button_Credit" type="Button" parent="Menu/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-disabled = true
+theme_override_styles/normal = ExtResource("4_od8gl")
+theme_override_styles/hover = ExtResource("5_2n3ur")
+theme_override_styles/pressed = ExtResource("6_qsrk2")
 text = "Credits"
 
 [node name="Button_Highscore" type="Button" parent="Menu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("4_od8gl")
+theme_override_styles/hover = ExtResource("5_2n3ur")
+theme_override_styles/pressed = ExtResource("6_qsrk2")
 text = "Highscore"
 
 [node name="Quit_Button" type="Button" parent="Menu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("4_od8gl")
+theme_override_styles/hover = ExtResource("5_2n3ur")
+theme_override_styles/pressed = ExtResource("6_qsrk2")
 text = "Quit"
-
-[node name="HSeparator" type="HSeparator" parent="Menu/PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
 
 [node name="Label2" type="Label" parent="Menu/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -211,7 +248,7 @@ layout_mode = 2
 [node name="Label3" type="Label" parent="Menu/PanelContainer2/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
-text = "-No Sound
+text = "#Patch Node-No Sound
 
 Controls: 
 -W,A,S,D to move
@@ -425,6 +462,183 @@ offset_top = 73.0
 offset_right = 713.0
 offset_bottom = 104.0
 text = "Submit"
+
+[node name="Credit_Panel" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -900.0
+offset_top = -250.0
+offset_bottom = 250.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Credit_Panel"]
+layout_mode = 2
+
+[node name="Background" type="TextureRect" parent="Credit_Panel/Panel"]
+layout_mode = 0
+offset_left = -93.0
+offset_top = -5.0
+offset_right = 419.0
+offset_bottom = 507.0
+texture = ExtResource("11_pgkrv")
+
+[node name="TextureRect" type="TextureRect" parent="Credit_Panel/Panel"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 86.0
+offset_right = 276.0
+offset_bottom = 381.0
+texture = ExtResource("12_yap77")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Credit_Panel/Panel"]
+layout_mode = 2
+offset_left = 57.0
+offset_top = 28.0
+offset_right = 307.0
+offset_bottom = 78.0
+scale = Vector2(0.72, 0.72)
+theme_override_styles/normal = ExtResource("4_od8gl")
+theme_override_styles/hover = ExtResource("5_2n3ur")
+theme_override_styles/pressed = ExtResource("6_qsrk2")
+text = "Programmer / Artist"
+
+[node name="Label" type="Label" parent="Credit_Panel/Panel"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 406.0
+offset_right = 258.0
+offset_bottom = 457.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 23
+text = "Robert Mögenburg"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Credit_Panel/Panel"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 18.0
+offset_right = 878.0
+offset_bottom = 468.0
+color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Credit_Panel/Panel/ColorRect"]
+unique_name_in_owner = true
+layer = 3
+visible = false
+offset = Vector2(984.08, 355.975)
+transform = Transform2D(1, 0, 0, 1, 984.08, 355.975)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Credit_Panel/Panel/ColorRect/ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="L1_Sun" type="Sprite2D" parent="Credit_Panel/Panel/ColorRect/ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("13_lua0k")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Credit_Panel/Panel/ColorRect/ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(550, 0)
+script = ExtResource("14_2exku")
+
+[node name="L2_CloudsFar" type="Sprite2D" parent="Credit_Panel/Panel/ColorRect/ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("14_soqag")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Credit_Panel/Panel/ColorRect/ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(550, 0)
+script = ExtResource("14_2exku")
+
+[node name="L3_MountainFar" type="Sprite2D" parent="Credit_Panel/Panel/ColorRect/ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("15_v6tuy")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Credit_Panel/Panel/ColorRect/ParallaxBackground"]
+motion_scale = Vector2(0.25, 0.25)
+motion_mirroring = Vector2(550, 0)
+
+[node name="L4_CloudsNear" type="Sprite2D" parent="Credit_Panel/Panel/ColorRect/ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource("16_fav26")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="Credit_Panel/Panel/ColorRect/ParallaxBackground"]
+motion_scale = Vector2(0.25, 0.25)
+motion_mirroring = Vector2(550, 0)
+
+[node name="L5_MountainNear" type="Sprite2D" parent="Credit_Panel/Panel/ColorRect/ParallaxBackground/ParallaxLayer5"]
+texture = ExtResource("17_dua7v")
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="Credit_Panel/Panel/ColorRect/ParallaxBackground"]
+motion_scale = Vector2(0.28, 0.28)
+
+[node name="L6_Particles" type="Sprite2D" parent="Credit_Panel/Panel/ColorRect/ParallaxBackground/ParallaxLayer6"]
+texture = ExtResource("18_r1o1o")
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="Credit_Panel/Panel/ColorRect/ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Credit_Panel/Panel/ColorRect/ParallaxBackground/ParallaxLayer7"]
+z_index = 4
+position = Vector2(-27.08, -134.975)
+sprite_frames = ExtResource("13_djfnm")
+animation = &"flying"
+autoplay = "flying"
+frame_progress = 0.0803135
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Credit_Panel/Panel/ColorRect/ParallaxBackground/ParallaxLayer7"]
+z_index = 4
+position = Vector2(-14.08, -122.975)
+sprite_frames = ExtResource("13_djfnm")
+animation = &"flying"
+autoplay = "flying"
+frame_progress = 0.68033
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Credit_Panel/Panel/ColorRect/ParallaxBackground/ParallaxLayer7"]
+z_index = 4
+position = Vector2(1.91998, -111.975)
+sprite_frames = ExtResource("13_djfnm")
+animation = &"flying"
+autoplay = "flying"
+frame_progress = 0.68033
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Credit_Panel/Panel/ColorRect/ParallaxBackground/ParallaxLayer7"]
+z_index = 4
+position = Vector2(18.92, -99.975)
+sprite_frames = ExtResource("13_djfnm")
+animation = &"flying"
+autoplay = "flying"
+frame_progress = 0.68033
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Credit_Panel/Panel/ColorRect/ParallaxBackground/ParallaxLayer7"]
+z_index = 4
+position = Vector2(13.92, -85.975)
+sprite_frames = ExtResource("13_djfnm")
+animation = &"flying"
+autoplay = "flying"
+frame_progress = 0.68033
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Credit_Panel/Panel/ColorRect/ParallaxBackground/ParallaxLayer7"]
+z_index = 4
+position = Vector2(-5.08002, -71.975)
+sprite_frames = ExtResource("13_djfnm")
+animation = &"flying"
+autoplay = "flying"
+frame_progress = 0.68033
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Credit_Panel/Panel/ColorRect/ParallaxBackground/ParallaxLayer7"]
+z_index = 4
+position = Vector2(-28.08, -54.975)
+sprite_frames = ExtResource("13_djfnm")
+animation = &"flying"
+autoplay = "flying"
+frame_progress = 0.68033
 
 [node name="Highscore_Menu" type="CanvasLayer" parent="."]
 unique_name_in_owner = true

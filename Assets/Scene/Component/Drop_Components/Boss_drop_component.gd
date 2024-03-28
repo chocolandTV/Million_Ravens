@@ -8,3 +8,4 @@ func _ready():
 
 func on_died():
       GameEvents.emit_highscore_orb_collected(highscore_amount)
+      GameEvents.emit_winGame_boss_down_event()

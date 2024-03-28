@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bak46xmq64iyc"]
+
+[ext_resource type="Texture2D" uid="uid://d1ecyjjp880f7" path="res://Assets/Textures/TitleScreen.png" id="1_dtxiw"]
+[ext_resource type="Script" path="res://Assets/Textures/UI/TitleScreenEffect.gd" id="2_pqqdm"]
+
+[node name="TextureRect" type="TextureRect"]
+texture = ExtResource("1_dtxiw")
+expand_mode = 1
+script = ExtResource("2_pqqdm")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 120.0
+autostart = true
+
+[node name="effect_Timer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true

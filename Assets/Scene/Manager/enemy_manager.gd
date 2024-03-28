@@ -1,6 +1,6 @@
 extends Node
 
-@export var _Enemy_01_Scene: PackedScene
+@export var enemyPool: Array[PackedScene]
 @export var Min_Dinstance : float =  400
 @onready var timer : Timer = $Timer
 var waittime : float = 0.095
@@ -25,8 +25,8 @@ func on_timer_timeout():
 
 	var random_direction = Vector2.RIGHT.rotated(randf_range(0,TAU))
 	var spawn_position = player.global_position + (random_direction * Min_Dinstance)
-
-	var enemy = _Enemy_01_Scene.instantiate() as Node2D
+	var rand_index:int = randi() % enemyPool.size()
+	var enemy = enemyPool[rand_index].instantiate() as Node2D
 	var entities_layer = get_tree().get_first_node_in_group("entities_layer")
 
 	entities_layer.add_child(enemy)

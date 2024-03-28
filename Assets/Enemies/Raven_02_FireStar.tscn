@@ -272,9 +272,9 @@ debug_color = Color(0, 0.65098, 0.12549, 0.419608)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_fg0ag")
-animation = &"Idle"
+animation = &"start"
 autoplay = "Idle"
-frame_progress = 0.576824
+frame_progress = 0.576464
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_n74e4")

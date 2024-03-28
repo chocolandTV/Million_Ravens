@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c3yfsi68xaecw" path="res://Assets/Character/player_Icon_happy.png" id="4_atrb5"]
 [ext_resource type="Texture2D" uid="uid://irud0f84orvx" path="res://Assets/Character/player_Icon_filled.png" id="5_5wto8"]
 [ext_resource type="Texture2D" uid="uid://jso0dy5gjf8k" path="res://Assets/Textures/UI/Sprite-0015_Player_Interface_UI2Layer.png" id="5_pddqb"]
-[ext_resource type="Texture2D" uid="uid://bw4uom644kl8a" path="res://Assets/Character/score_orb.png" id="7_ksp8w"]
+[ext_resource type="PackedScene" uid="uid://ddjyt7n1306f5" path="res://Assets/Character/health_icon_UI.tscn" id="8_1g2gw"]
 [ext_resource type="Texture2D" uid="uid://duu8t2hhde8sj" path="res://Assets/Textures/UI/Sprite-0015_Player_Interface_Collectables.png" id="8_i16wt"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ypq7u"]
@@ -88,7 +88,7 @@ _data = {
 
 [node name="Global_UI" type="CanvasLayer" node_paths=PackedStringArray("abilityReady")]
 script = ExtResource("1_75rbs")
-abilityReady = [NodePath("PlayerInterface_Ability01_ready/TextureRect"), NodePath("PlayerInterface_Ability02_ready2/TextureRect")]
+abilityReady = [NodePath(""), null]
 
 [node name="PlayerInterface" type="MarginContainer" parent="."]
 offset_right = 265.0
@@ -160,12 +160,16 @@ layout_mode = 2
 texture = SubResource("AnimatedTexture_g5pt1")
 
 [node name="TextureLevel2Container" type="MarginContainer" parent="."]
-offset_right = 265.0
-offset_bottom = 265.0
+offset_left = 18.0
+offset_top = 60.0
+offset_right = 283.0
+offset_bottom = 325.0
+scale = Vector2(0.205, 0.205)
 
 [node name="TextureRect2" type="TextureRect" parent="TextureLevel2Container"]
 layout_mode = 2
 texture = ExtResource("5_pddqb")
+expand_mode = 2
 
 [node name="PlayerLevelContainer" type="MarginContainer" parent="."]
 offset_left = 25.0
@@ -185,42 +189,52 @@ theme_override_font_sizes/font_size = 35
 text = "99"
 horizontal_alignment = 1
 
-[node name="PlayerInterface_Ability01_ready" type="MarginContainer" parent="."]
+[node name="PlayerInterface_Health" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(20, 20)
-offset_left = 23.0
-offset_top = 183.0
-offset_right = 43.0
-offset_bottom = 203.0
+offset_left = 577.0
+offset_top = 147.0
+offset_right = 727.0
+offset_bottom = 179.0
 
-[node name="TextureRect" type="TextureRect" parent="PlayerInterface_Ability01_ready"]
+[node name="HFlowContainer" type="HFlowContainer" parent="PlayerInterface_Health"]
 layout_mode = 2
-texture = ExtResource("7_ksp8w")
-expand_mode = 2
+theme_override_constants/h_separation = 32
 
-[node name="PlayerInterface_Ability02_ready2" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(20, 20)
-offset_left = 50.0
-offset_top = 183.0
-offset_right = 70.0
-offset_bottom = 203.0
-
-[node name="TextureRect" type="TextureRect" parent="PlayerInterface_Ability02_ready2"]
+[node name="Label" type="Label" parent="PlayerInterface_Health/HFlowContainer"]
+visible = false
 layout_mode = 2
-texture = ExtResource("7_ksp8w")
-expand_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "9"
+
+[node name="Label2" type="Label" parent="PlayerInterface_Health/HFlowContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "x"
+
+[node name="Health_Icon" parent="PlayerInterface_Health/HFlowContainer" instance=ExtResource("8_1g2gw")]
+layout_mode = 2
+
+[node name="Health_Icon2" parent="PlayerInterface_Health/HFlowContainer" instance=ExtResource("8_1g2gw")]
+layout_mode = 2
+
+[node name="Health_Icon3" parent="PlayerInterface_Health/HFlowContainer" instance=ExtResource("8_1g2gw")]
+layout_mode = 2
+
+[node name="Health_Icon4" parent="PlayerInterface_Health/HFlowContainer" instance=ExtResource("8_1g2gw")]
+layout_mode = 2
 
 [node name="HighscoreInterface" type="MarginContainer" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -246.0
-offset_top = 75.0
-offset_right = -246.0
-offset_bottom = 75.0
+offset_left = -240.0
+offset_top = 65.0
+offset_right = -240.0
+offset_bottom = 65.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-metadata/_edit_lock_ = true
 
 [node name="Panel" type="Panel" parent="HighscoreInterface"]
 layout_mode = 2
@@ -236,10 +250,10 @@ expand_mode = 1
 flip_v = true
 
 [node name="Highscore_Values" type="MarginContainer" parent="."]
-offset_left = 419.0
-offset_top = 91.0
-offset_right = 869.0
-offset_bottom = 151.0
+offset_left = 425.0
+offset_top = 83.0
+offset_right = 875.0
+offset_bottom = 143.0
 
 [node name="Value_Highscore" type="Label" parent="Highscore_Values"]
 unique_name_in_owner = true
@@ -262,10 +276,10 @@ libraries = {
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -283.0
-offset_top = 95.0
-offset_right = -151.0
-offset_bottom = 159.0
+offset_left = -215.0
+offset_top = 643.0
+offset_right = -83.0
+offset_bottom = 707.0
 grow_horizontal = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Collectable_Background"]
@@ -283,10 +297,10 @@ texture = ExtResource("8_i16wt")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -273.0
-offset_top = 100.0
-offset_right = -82.0
-offset_bottom = 164.0
+offset_left = -206.0
+offset_top = 652.0
+offset_right = -15.0001
+offset_bottom = 716.0
 grow_horizontal = 0
 scale = Vector2(0.62, 0.62)
 
@@ -309,10 +323,10 @@ texture = ExtResource("2_q8n1d")
 stretch_mode = 2
 
 [node name="Collectable_values" type="MarginContainer" parent="."]
-offset_left = 1011.0
-offset_top = 105.0
-offset_right = 1202.0
-offset_bottom = 169.0
+offset_left = 1084.0
+offset_top = 653.0
+offset_right = 1275.0
+offset_bottom = 717.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Collectable_values"]
 layout_mode = 2
