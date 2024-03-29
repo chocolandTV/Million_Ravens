@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://des0khalvaaf1"]
+[gd_scene load_steps=29 format=3 uid="uid://des0khalvaaf1"]
 
 [ext_resource type="Texture2D" uid="uid://tdqul4ymtndy" path="res://Assets/Textures/feather.png" id="1_62ja5"]
 [ext_resource type="Script" path="res://Assets/Scene/UI/global_ui.gd" id="1_75rbs"]
@@ -11,6 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://jso0dy5gjf8k" path="res://Assets/Textures/UI/Sprite-0015_Player_Interface_UI2Layer.png" id="5_pddqb"]
 [ext_resource type="PackedScene" uid="uid://ddjyt7n1306f5" path="res://Assets/Character/health_icon_UI.tscn" id="8_1g2gw"]
 [ext_resource type="Texture2D" uid="uid://duu8t2hhde8sj" path="res://Assets/Textures/UI/Sprite-0015_Player_Interface_Collectables.png" id="8_i16wt"]
+[ext_resource type="Texture2D" uid="uid://bctq5espwykm6" path="res://Assets/Textures/UI/Sprite-0015_Player_Interface_Ability_01.png" id="12_imf22"]
+[ext_resource type="Texture2D" uid="uid://c573jitq0ax1" path="res://Assets/Textures/UI/Sprite-0023-ability_up-export.png" id="13_83hpb"]
+[ext_resource type="Texture2D" uid="uid://bldwm7gq7mem" path="res://Assets/Textures/UI/Sprite-0025_Ability_player_movementspeed.png" id="14_ubjgm"]
+[ext_resource type="Texture2D" uid="uid://yx82xo4cixma" path="res://Assets/Textures/UI/Sprite-0024_Ability_atkSpeed_icon.png" id="14_vrimc"]
+[ext_resource type="Texture2D" uid="uid://byanvxjmxtlyb" path="res://Assets/Textures/UI/Sprite-0026_Ability_lifeup.png" id="15_kyq3j"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ypq7u"]
 
@@ -86,9 +91,51 @@ _data = {
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4w7bl"]
 
-[node name="Global_UI" type="CanvasLayer" node_paths=PackedStringArray("abilityReady")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tkobw"]
+
+[sub_resource type="Animation" id="Animation_77u8n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yhkje"]
+_data = {
+"RESET": SubResource("Animation_77u8n")
+}
+
+[sub_resource type="Animation" id="Animation_qccax"]
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8, 1.2, 1.5, 1.7, 2),
+"transitions": PackedFloat32Array(1, 2.14355, 0.615572, 1.7411, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.95, 0.95), Vector2(1.05, 1.05), Vector2(1.08, 1.08), Vector2(1, 1), Vector2(1.05, 1.05), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wqv0i"]
+_data = {
+"levelup_anim": SubResource("Animation_qccax")
+}
+
+[node name="Global_UI" type="CanvasLayer"]
 script = ExtResource("1_75rbs")
-abilityReady = [NodePath(""), null]
 
 [node name="PlayerInterface" type="MarginContainer" parent="."]
 offset_right = 265.0
@@ -191,12 +238,12 @@ horizontal_alignment = 1
 
 [node name="PlayerInterface_Health" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(20, 20)
-offset_left = 577.0
-offset_top = 147.0
-offset_right = 727.0
-offset_bottom = 179.0
+offset_right = 1280.0
+offset_bottom = 32.0
 
 [node name="HFlowContainer" type="HFlowContainer" parent="PlayerInterface_Health"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_constants/h_separation = 32
 
@@ -213,15 +260,6 @@ theme_override_font_sizes/font_size = 33
 text = "x"
 
 [node name="Health_Icon" parent="PlayerInterface_Health/HFlowContainer" instance=ExtResource("8_1g2gw")]
-layout_mode = 2
-
-[node name="Health_Icon2" parent="PlayerInterface_Health/HFlowContainer" instance=ExtResource("8_1g2gw")]
-layout_mode = 2
-
-[node name="Health_Icon3" parent="PlayerInterface_Health/HFlowContainer" instance=ExtResource("8_1g2gw")]
-layout_mode = 2
-
-[node name="Health_Icon4" parent="PlayerInterface_Health/HFlowContainer" instance=ExtResource("8_1g2gw")]
 layout_mode = 2
 
 [node name="HighscoreInterface" type="MarginContainer" parent="."]
@@ -276,10 +314,10 @@ libraries = {
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -215.0
-offset_top = 643.0
-offset_right = -83.0
-offset_bottom = 707.0
+offset_left = -232.0
+offset_top = 86.0
+offset_right = -100.0
+offset_bottom = 150.0
 grow_horizontal = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Collectable_Background"]
@@ -297,10 +335,10 @@ texture = ExtResource("8_i16wt")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -206.0
-offset_top = 652.0
-offset_right = -15.0001
-offset_bottom = 716.0
+offset_left = -223.0
+offset_top = 95.0001
+offset_right = -32.0001
+offset_bottom = 159.0
 grow_horizontal = 0
 scale = Vector2(0.62, 0.62)
 
@@ -323,10 +361,10 @@ texture = ExtResource("2_q8n1d")
 stretch_mode = 2
 
 [node name="Collectable_values" type="MarginContainer" parent="."]
-offset_left = 1084.0
-offset_top = 653.0
-offset_right = 1275.0
-offset_bottom = 717.0
+offset_left = 1067.0
+offset_top = 96.0
+offset_right = 1258.0
+offset_bottom = 160.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Collectable_values"]
 layout_mode = 2
@@ -355,3 +393,178 @@ theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 15
 text = "x 55"
+
+[node name="Player_Ability_Container" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+offset_left = 897.0
+offset_top = 468.0
+offset_right = 1297.0
+offset_bottom = 668.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Player_Ability_Container"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="AttackDmg_panel" type="Panel" parent="Player_Ability_Container/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Player_Ability_Container/VBoxContainer/AttackDmg_panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 15
+
+[node name="LevelUp_Panel" type="Panel" parent="Player_Ability_Container/VBoxContainer/AttackDmg_panel/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tkobw")
+
+[node name="atk_up_Button" type="TextureButton" parent="Player_Ability_Container/VBoxContainer/AttackDmg_panel/HBoxContainer/LevelUp_Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 14.0
+offset_right = 35.0
+offset_bottom = 46.0
+texture_normal = ExtResource("13_83hpb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player_Ability_Container/VBoxContainer/AttackDmg_panel/HBoxContainer/LevelUp_Panel"]
+root_node = NodePath("../atk_up_Button")
+libraries = {
+"": SubResource("AnimationLibrary_yhkje"),
+"animation": SubResource("AnimationLibrary_wqv0i")
+}
+autoplay = "animation/levelup_anim"
+
+[node name="atk_up_Texture" type="TextureRect" parent="Player_Ability_Container/VBoxContainer/AttackDmg_panel/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("12_imf22")
+
+[node name="atk_up_text" type="Label" parent="Player_Ability_Container/VBoxContainer/AttackDmg_panel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "- 5 Damage"
+
+[node name="Attack_Speed_panel" type="Panel" parent="Player_Ability_Container/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Player_Ability_Container/VBoxContainer/Attack_Speed_panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 15
+
+[node name="LevelUp_Panel" type="Panel" parent="Player_Ability_Container/VBoxContainer/Attack_Speed_panel/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tkobw")
+
+[node name="atkspeed_up_Button" type="TextureButton" parent="Player_Ability_Container/VBoxContainer/Attack_Speed_panel/HBoxContainer/LevelUp_Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 14.0
+offset_right = 35.0
+offset_bottom = 46.0
+texture_normal = ExtResource("13_83hpb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player_Ability_Container/VBoxContainer/Attack_Speed_panel/HBoxContainer/LevelUp_Panel"]
+root_node = NodePath("../atkspeed_up_Button")
+libraries = {
+"": SubResource("AnimationLibrary_yhkje"),
+"animation": SubResource("AnimationLibrary_wqv0i")
+}
+autoplay = "animation/levelup_anim"
+
+[node name="atkspeed_up_Texture" type="TextureRect" parent="Player_Ability_Container/VBoxContainer/Attack_Speed_panel/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("14_vrimc")
+
+[node name="atkspeed_up_text" type="Label" parent="Player_Ability_Container/VBoxContainer/Attack_Speed_panel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "- 2"
+
+[node name="Mov_Speed_panel" type="Panel" parent="Player_Ability_Container/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Player_Ability_Container/VBoxContainer/Mov_Speed_panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 15
+
+[node name="LevelUp_Panel" type="Panel" parent="Player_Ability_Container/VBoxContainer/Mov_Speed_panel/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tkobw")
+
+[node name="movspeed_up_Button" type="TextureButton" parent="Player_Ability_Container/VBoxContainer/Mov_Speed_panel/HBoxContainer/LevelUp_Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 14.0
+offset_right = 35.0
+offset_bottom = 46.0
+texture_normal = ExtResource("13_83hpb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player_Ability_Container/VBoxContainer/Mov_Speed_panel/HBoxContainer/LevelUp_Panel"]
+root_node = NodePath("../movspeed_up_Button")
+libraries = {
+"": SubResource("AnimationLibrary_yhkje"),
+"animation": SubResource("AnimationLibrary_wqv0i")
+}
+autoplay = "animation/levelup_anim"
+
+[node name="movspeed_up_Texture" type="TextureRect" parent="Player_Ability_Container/VBoxContainer/Mov_Speed_panel/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("14_ubjgm")
+
+[node name="movspeed_up_text" type="Label" parent="Player_Ability_Container/VBoxContainer/Mov_Speed_panel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "- 125 P/m"
+
+[node name="liveplus_panel2" type="Panel" parent="Player_Ability_Container/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Player_Ability_Container/VBoxContainer/liveplus_panel2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 15
+
+[node name="LevelUp_Panel" type="Panel" parent="Player_Ability_Container/VBoxContainer/liveplus_panel2/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tkobw")
+
+[node name="lifeplus_up_Button" type="TextureButton" parent="Player_Ability_Container/VBoxContainer/liveplus_panel2/HBoxContainer/LevelUp_Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 14.0
+offset_right = 35.0
+offset_bottom = 46.0
+texture_normal = ExtResource("13_83hpb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player_Ability_Container/VBoxContainer/liveplus_panel2/HBoxContainer/LevelUp_Panel"]
+root_node = NodePath("../lifeplus_up_Button")
+libraries = {
+"": SubResource("AnimationLibrary_yhkje"),
+"animation": SubResource("AnimationLibrary_wqv0i")
+}
+autoplay = "animation/levelup_anim"
+
+[node name="lifeplus_up_Texture" type="TextureRect" parent="Player_Ability_Container/VBoxContainer/liveplus_panel2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("15_kyq3j")
+
+[node name="lifeplus_up_text" type="Label" parent="Player_Ability_Container/VBoxContainer/liveplus_panel2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "- 0 extra Health"

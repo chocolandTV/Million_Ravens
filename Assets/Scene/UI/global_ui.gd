@@ -12,16 +12,38 @@ extends CanvasLayer
 @onready var highscore_manager : Highscore_Manager = get_node("/root/Highscore_Manager")
 @onready var settings : Global_Variables = get_node("/root/GlobalVariables")
 @export var experience_manager : ExperienceManager
-@export var upgrade_manager : UpgradeManager
-@export var abilityReady : Array[TextureRect]
 
+
+#Ability Upgrades
+@onready var _player_Ability_Container : MarginContainer = $%Player_Ability_Container
+@onready var _atk_up_Button : TextureButton =$%atk_up_Button
+@onready var _atk_up_text :Label =$%atk_up_text
+@onready var _atkspeed_up_Button : TextureButton =$%atkspeed_up_Button
+@onready var _atkspeed_up_text : Label =$%atkspeed_up_text
+@onready var _movspeed_up_Button : TextureButton =$%movspeed_up_Button
+@onready var _movspeed_up_text : Label =$%movspeed_up_text
+@onready var _lifeplus_up_Button : TextureButton =$%lifeplus_up_Button
+@onready var _lifeplus_up_text : Label = $%lifeplus_up_text
+
+# Life Container + Icons
+@export var life_icon_scene : PackedScene
+@onready var life_container : HFlowContainer  =$%HFlowContainer
+var health_array : Array[Panel]
 func _ready():
       experience_manager.level_up.connect(on_level_up_change_ui)
-      GameEvents.ability_upgrade_added.connect(on_ability_levelup)
+      #GameEvents.ability_upgrade_added.connect(on_ability_levelup)
       #get ravenKilledAmount
       highscore_manager.UI_ravenkilled.connect(on_ravenscore_update)
-      #get ability status event
-      GameEvents.ability_status_changed.connect(on_ability_status_change)
+      # ability upgrade buttons
+      _atk_up_Button.pressed.connect(_on_atk_up_Button)
+      _atkspeed_up_Button.pressed.connect(_on_atkspeed_up)
+      _movspeed_up_Button.pressed.connect(on_movspeed_up)
+      _lifeplus_up_Button.pressed.connect(on_lifeplus_up)
+      #update LifeCointainer
+      GameEvents.ability_upgrade_newLife.connect(on_lifeplus_UI)
+      GameEvents.PlayerLife_UI_update.connect(on_lifeChange_UI)
+      #show globalUI event
+      GameEvents.level_up_show_upgrademenu.connect(_on_levelup_update_upgrades)
       # RESET ALL STATS
       reset_stats()
       
@@ -32,13 +54,10 @@ func _process(delta):
 func on_level_up_change_ui(new_level : int):
       value_playerLevel.text = str(new_level)
 #when ability levels up
-func on_ability_levelup(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
-      pass
-      # var pawAttackAndRate :String = current_upgrades[0]
-      # value_pawAttackAndRate.text =  
-func on_ability_status_change(abilityType: int,abilityStatus :bool):
-      # DO ABILITY 1 abilityStatus
-      abilityReady[abilityType].visible = abilityStatus
+# func on_ability_levelup(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
+#       pass
+#       # var pawAttackAndRate :String = current_upgrades[0]
+#       # value_pawAttackAndRate.text =  
 
 func on_ravenscore_update(amount : int):
       value_ravenkills.text = str(amount) + "kills"
@@ -52,3 +71,44 @@ func reset_stats():
 func UpdatePlayerName():
       print ("update playername")
       value_playername.text = settings.gv_Settings["player_name"]
+# On Level Up
+func _on_levelup_update_upgrades():
+      _showupgrades(true)
+      update_ability_text()
+
+func update_ability_text():
+      _atk_up_text.text = "%d + 1 Dmg" % settings.gv_Settings["paw_ability_damage_level"]
+      _atkspeed_up_text.text = "%d - 100 ms" % settings.gv_Settings["paw_ability_cooldown_level"]
+      _movspeed_up_text.text = "%d + 2,5 m/s" % settings.gv_Settings["player_movement_speed_level"]
+      _lifeplus_up_text.text = "%d + 1 Life" % settings.gv_Settings["player_health_level"]
+
+func _showupgrades(_bool :bool):
+      _player_Ability_Container.visible = _bool
+
+# BUTTON UPGRADES
+func _on_atk_up_Button():
+      _showupgrades(false)
+      GameEvents.emit_ability_upgrade_Button(0)
+func _on_atkspeed_up():
+      _showupgrades(false)
+      GameEvents.emit_ability_upgrade_Button(1)
+func on_movspeed_up():
+      _showupgrades(false)
+      GameEvents.emit_ability_upgrade_Button(2)
+func on_lifeplus_up():
+      _showupgrades(false)
+      GameEvents.emit_ability_upgrade_Button(3)
+
+func on_lifeplus_UI():
+      var life_instance = life_icon_scene.instantiate()
+      life_container.add_child(life_instance)
+      health_array.append(life_instance)
+
+func on_lifeChange_UI(value : int):
+      var county :int = 0
+      for i in health_array:
+            if value > county:
+                  i.setstatus(true)
+            else:
+                  i.setstatus(false)
+            county += 1

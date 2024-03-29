@@ -16,7 +16,7 @@ var game_state : int = 0
 var isMenuOpened : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	highscore_manager.highscore_died.connect(on_highscore_died)
+	GameEvents.player_died.connect(on_highscore_died)
 	game_state = 0
 	get_tree().paused = false
 	GameEvents.menu_switch.connect(on_menu_switch)

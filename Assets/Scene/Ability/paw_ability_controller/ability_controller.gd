@@ -1,14 +1,17 @@
 extends Node
 
+@onready var settings : Global_Variables = get_node("/root/GlobalVariables")
+@onready var timer : Timer  =$Timer
 @export var paw_ability: PackedScene
 @export var damage = 5
 var base_wait_time
 
+const BASEDAMAGE = 5
 const MAX_RANGE = 150
 
 func _ready():
       base_wait_time = $Timer.wait_time
-      $Timer.timeout.connect(on_timer_timeout)
+      timer.timeout.connect(on_timer_timeout)
       GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 
 
@@ -42,12 +45,22 @@ func on_timer_timeout():
       paw_instance.rotation = enemy_direction.angle()
 
 func on_ability_upgrade_added(upgrade : AbilityUpgrade, current_upgrades: Dictionary):
-      if upgrade.id != "paw_attackspeed":
-            return
-      var percent_reduction = current_upgrades["paw_attackspeed"]["quantity"] * .1
-      if percent_reduction > 0.8:
-            percent_reduction = 0.8
-      $Timer.wait_time = base_wait_time * (1- percent_reduction)
-      $Timer.start()
+      if upgrade.id == "paw_attack_damage":
+            on_upgrade_damage(current_upgrades["paw_attack_damage"]["quantity"])
 
-      print($Timer.wait_time)
+      if upgrade.id == "attack_speed":
+             on_upgrade_cooldown(current_upgrades["attack_speed"]["quantity"])
+
+func on_upgrade_cooldown(quantity : float):
+      var percent_reduction = quantity* .1
+      settings.gv_Settings["paw_ability_cooldown_level"] = (1- percent_reduction)
+      if percent_reduction > 0.99:
+            percent_reduction = 0.99
+      timer.wait_time = (1- percent_reduction)
+      timer.start()
+func on_upgrade_damage(quantity : float):
+      var new_damage =  BASEDAMAGE + quantity
+
+      settings.gv_Settings["paw_ability_damage_level"] = new_damage
+
+      damage = new_damage

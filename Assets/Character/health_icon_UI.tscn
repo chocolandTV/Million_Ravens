@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddjyt7n1306f5"]
+[gd_scene load_steps=4 format=3 uid="uid://ddjyt7n1306f5"]
 
+[ext_resource type="Script" path="res://Assets/Textures/UI/health_icon_UI.gd" id="1_5cpmu"]
 [ext_resource type="Texture2D" uid="uid://d02spmfnsbqb7" path="res://Assets/Textures/UI/Sprite-0022_health_icon.png" id="1_15bj6"]
 [ext_resource type="Texture2D" uid="uid://dd7f8u7ty2105" path="res://Assets/Textures/UI/Sprite-0022_health__prx_icon.png" id="2_bghrm"]
 
 [node name="Health_Icon" type="Panel"]
+script = ExtResource("1_5cpmu")
 
 [node name="healthBG" type="TextureRect" parent="."]
 layout_mode = 0

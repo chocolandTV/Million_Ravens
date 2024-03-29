@@ -40,4 +40,4 @@ func on_invincible_timeout():
 func on_ability_upgrade_added(upgrade : AbilityUpgrade, current_upgrades: Dictionary):
 	if upgrade.id == "player_movement_speed":
 		speed_multiplier  += 0.1 * (current_upgrades[upgrade.id]["quantity"])
-		globalVars.gv_Settings[ "player_movement_speed_level"]  =(current_upgrades[upgrade.id]["quantity"])
+		globalVars.gv_Settings[ "player_movement_speed_level"]  = SPEED * speed_multiplier

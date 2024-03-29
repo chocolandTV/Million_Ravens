@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://gbw6bwm54644"]
+[gd_scene load_steps=72 format=3 uid="uid://gbw6bwm54644"]
 
 [ext_resource type="PackedScene" uid="uid://dwsgmvwvvu86q" path="res://Assets/Scene/Manager/arena_time_manager.tscn" id="1_0trha"]
 [ext_resource type="PackedScene" uid="uid://dtmli75wgeic" path="res://Assets/Modules/Camera/camera.tscn" id="1_k1roq"]
@@ -13,13 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://qiblhkndhetr" path="res://Assets/Scene/Manager/upgrade_manager.tscn" id="4_n4msl"]
 [ext_resource type="PackedScene" uid="uid://ciomhcvfb7dvy" path="res://Assets/Scene/Manager/experience_manager.tscn" id="4_r8j7u"]
 [ext_resource type="PackedScene" uid="uid://b7yh6fykenerv" path="res://Assets/Scene/UI/highscore/highscore_entry.tscn" id="7_fogsb"]
-[ext_resource type="Resource" uid="uid://t0krl85i8cxq" path="res://Assets/Ressources/upgrades/auto_paw_attack.tres" id="8_dyfve"]
-[ext_resource type="Resource" uid="uid://ngyxmrfj4hmt" path="res://Assets/Ressources/upgrades/auto_paw_rate.tres" id="9_yebkq"]
 [ext_resource type="Resource" uid="uid://dj12d1yldvfva" path="res://Assets/Ressources/upgrades/paw_attack.tres" id="10_xsjqi"]
 [ext_resource type="Resource" uid="uid://dgdighcl0oiok" path="res://Assets/Ressources/upgrades/paw_rate.tres" id="11_6niny"]
 [ext_resource type="PackedScene" uid="uid://chbnahrkdklgj" path="res://Assets/Enemies/Raven_03_Boss.tscn" id="12_3peer"]
 [ext_resource type="PackedScene" uid="uid://5o1ko2576ded" path="res://Assets/Scene/game_objects/region_01.tscn" id="12_4s7cw"]
 [ext_resource type="Resource" uid="uid://d06c5nwvn7xfw" path="res://Assets/Ressources/upgrades/player_movement_speed.tres" id="12_neh7u"]
+[ext_resource type="Resource" uid="uid://b0b8fj6skvs12" path="res://Assets/Ressources/upgrades/paw_xlife.tres" id="13_8ce1q"]
 [ext_resource type="PackedScene" uid="uid://dtgnyemf7j7y4" path="res://Assets/Scene/game_objects/start_position.tscn" id="13_d18s3"]
 [ext_resource type="PackedScene" uid="uid://des0khalvaaf1" path="res://Assets/Scene/UI/global_ui.tscn" id="16_1mrm1"]
 [ext_resource type="PackedScene" uid="uid://q4eqbtjlxdw8" path="res://Assets/Scene/game_objects/region_start.tscn" id="17_cbkcn"]
@@ -302,14 +301,12 @@ end_screen_scene = ExtResource("4_83l3l")
 unique_name_in_owner = true
 process_mode = 3
 layer = 1
-visible = false
 
-[node name="Global_UI" parent="." node_paths=PackedStringArray("experience_manager", "upgrade_manager") instance=ExtResource("16_1mrm1")]
+[node name="Global_UI" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("16_1mrm1")]
 unique_name_in_owner = true
 layer = 2
 visible = false
 experience_manager = NodePath("../ExperienceManager")
-upgrade_manager = NodePath("../UpgradeManager")
 
 [node name="ArenaTimeUI" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("2_5ontx")]
 unique_name_in_owner = true
@@ -327,7 +324,7 @@ end_screen_scene = ExtResource("4_83l3l")
 myHighscoreEntry = ExtResource("7_fogsb")
 
 [node name="UpgradeManager" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("4_n4msl")]
-upgrade_pool = Array[Resource("res://Assets/Ressources/upgrades/ability_upgrade.gd")]([ExtResource("8_dyfve"), ExtResource("9_yebkq"), ExtResource("10_xsjqi"), ExtResource("11_6niny"), ExtResource("12_neh7u")])
+upgrade_pool = Array[Resource("res://Assets/Ressources/upgrades/ability_upgrade.gd")]([ExtResource("10_xsjqi"), ExtResource("11_6niny"), ExtResource("12_neh7u"), ExtResource("13_8ce1q")])
 experience_manager = NodePath("../ExperienceManager")
 
 [node name="ExperienceManager" parent="." instance=ExtResource("4_r8j7u")]
