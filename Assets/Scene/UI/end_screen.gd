@@ -37,7 +37,7 @@ func on_quit_button_pressed():
 func on_highscore_button_pressed():
 	filemanager.save_game()
 	#hide menu
-	get_tree().paused = false
+	# get_tree().paused = false
 	visible = false
 	#Instantiate Highscore
 	GameEvents.emit_highscore_button_pressed()

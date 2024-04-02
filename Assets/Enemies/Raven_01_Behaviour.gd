@@ -3,7 +3,7 @@ extends CharacterBody2D
 class_name Enemy01_Ravii
 
 @onready var health_component : HealthComponent = $HealthComponent
-@onready var hit_box : Area2D = $HitboxComponent
+# @onready var hit_box : Area2D = $HitboxComponent
 @onready var anim : AnimationPlayer = $AnimationPlayer
 @onready var timer : Timer = $Timer
 
@@ -12,8 +12,8 @@ const damage :int  = 1
 var isCooldown : bool  = false
 
 func _ready():
-      hit_box.damage = damage
-      hit_box.raven_01_kockback.connect(on_raven_01_knockback)
+      # hit_box.damage = damage
+      # hit_box.raven_01_kockback.connect(on_raven_01_knockback)
       timer.timeout.connect(on_timer_timeouti)
 func _process(_delta):
       if isCooldown:

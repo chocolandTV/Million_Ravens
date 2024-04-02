@@ -1,5 +1,5 @@
 extends Node
-
+class_name arena_time_manager
 @export var end_screen_scene: PackedScene
 @export var myHighscoreEntry : PackedScene
 
@@ -18,6 +18,9 @@ func _ready():
 
 func get_time_elapsed():
       return timer.wait_time - timer.time_left
+
+func get_delta_time():
+      return deltaTimer.time
 
 func on_timer_timeout():
       text="You win: You survived 10 minutes"

@@ -27,6 +27,8 @@ signal player_died()
 signal raven_died()
 #Signal das Highscore startet
 signal highscore_button_pressed()
+#signal update UI Collectables
+signal ui_update_collectable(switch : int, value : int)
 #Signal Menu Switch on Main Menu
 signal menu_switch()
 ##########################################################
@@ -63,6 +65,9 @@ func emit_ability_upgrade_newLife():
 
 func emit_PlayerLife_UI_update(_value : int):
 	PlayerLife_UI_update.emit(_value)
+
+func emit_UI_update_collectable(switch : int, value :int):
+	ui_update_collectable.emit(switch,value)
 
 func emit_winGame_boss_down_event():
 	winGame_boss_down.emit()

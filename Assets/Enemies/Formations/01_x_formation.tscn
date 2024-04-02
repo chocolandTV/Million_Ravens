@@ -1,0 +1,68 @@
+[gd_scene load_steps=2 format=3 uid="uid://3h8bu67idx0j"]
+
+[ext_resource type="PackedScene" uid="uid://dwp0tj0ahcgwn" path="res://Assets/Enemies/Raven_01_Default.tscn" id="1_30pt2"]
+
+[node name="01_x_Formation" type="Node2D"]
+
+[node name="Ravenspeedy" parent="." instance=ExtResource("1_30pt2")]
+position = Vector2(-136, -112)
+
+[node name="Ravenspeedy2" parent="." instance=ExtResource("1_30pt2")]
+position = Vector2(-110, -89)
+
+[node name="Ravenspeedy3" parent="." instance=ExtResource("1_30pt2")]
+position = Vector2(-84, -67)
+
+[node name="Ravenspeedy4" parent="." instance=ExtResource("1_30pt2")]
+position = Vector2(-56, -47)
+
+[node name="Ravenspeedy5" parent="." instance=ExtResource("1_30pt2")]
+position = Vector2(-29, -25)
+
+[node name="Ravenspeedy6" parent="." instance=ExtResource("1_30pt2")]
+position = Vector2(-1, -1)
+
+[node name="Ravenspeedy7" parent="." instance=ExtResource("1_30pt2")]
+position = Vector2(28, -25)
+
+[node name="Ravenspeedy8" parent="." instance=ExtResource("1_30pt2")]
+position = Vector2(58, -48)
+
+[node name="Ravenspeedy9" parent="." instance=ExtResource("1_30pt2")]
+position = Vector2(84, -72)
+
+[node name="Ravenspeedy10" parent="." instance=ExtResource("1_30pt2")]
+position = Vector2(107, -93)
+
+[node name="Ravenspeedy11" parent="." instance=ExtResource("1_30pt2")]
+position = Vector2(132, -118)
+
+[node name="Ravenspeedy12" parent="." instance=ExtResource("1_30pt2")]
+position = Vector2(-25, 24)
+
+[node name="Ravenspeedy13" parent="." instance=ExtResource("1_30pt2")]
+position = Vector2(-51, 47)
+
+[node name="Ravenspeedy14" parent="." instance=ExtResource("1_30pt2")]
+position = Vector2(-76, 73)
+
+[node name="Ravenspeedy15" parent="." instance=ExtResource("1_30pt2")]
+position = Vector2(-101, 99)
+
+[node name="Ravenspeedy16" parent="." instance=ExtResource("1_30pt2")]
+position = Vector2(-130, 127)
+
+[node name="Ravenspeedy17" parent="." instance=ExtResource("1_30pt2")]
+position = Vector2(26, 25)
+
+[node name="Ravenspeedy18" parent="." instance=ExtResource("1_30pt2")]
+position = Vector2(56, 48)
+
+[node name="Ravenspeedy19" parent="." instance=ExtResource("1_30pt2")]
+position = Vector2(85, 74)
+
+[node name="Ravenspeedy20" parent="." instance=ExtResource("1_30pt2")]
+position = Vector2(115, 99)
+
+[node name="Ravenspeedy21" parent="." instance=ExtResource("1_30pt2")]
+position = Vector2(140, 122)

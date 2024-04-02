@@ -44,6 +44,8 @@ func _ready():
       GameEvents.PlayerLife_UI_update.connect(on_lifeChange_UI)
       #show globalUI event
       GameEvents.level_up_show_upgrademenu.connect(_on_levelup_update_upgrades)
+      #update collectables
+      GameEvents.ui_update_collectable.connect(update_collectable_text)
       # RESET ALL STATS
       reset_stats()
       
@@ -81,6 +83,12 @@ func update_ability_text():
       _atkspeed_up_text.text = "%d - 100 ms" % settings.gv_Settings["paw_ability_cooldown_level"]
       _movspeed_up_text.text = "%d + 2,5 m/s" % settings.gv_Settings["player_movement_speed_level"]
       _lifeplus_up_text.text = "%d + 1 Life" % settings.gv_Settings["player_health_level"]
+
+func update_collectable_text(switch : int, value :int):
+      if switch == 0:
+            value_Feather.text = str(value)
+      if switch == 1:
+            value_coin.text =  str(value)
 
 func _showupgrades(_bool :bool):
       _player_Ability_Container.visible = _bool

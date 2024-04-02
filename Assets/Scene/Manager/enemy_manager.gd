@@ -1,9 +1,15 @@
 extends Node
 
 @export var enemyPool: Array[PackedScene]
-@export var Min_Dinstance : float =  400
+@export var arena_time_manager : arena_time_manager
 @onready var timer : Timer = $Timer
-var waittime : float = 0.095
+
+const MIN_DISTANCE : float =  400
+var waittime : float = 0.5
+var isPlayerHiding : bool = false
+var spawnPool : Array[Node2D]
+var current_wave :int = 0
+var time_running
 func _ready():
 	$Timer.timeout.connect(on_timer_timeout)
 	GameEvents.increase_raven_spawn.connect(increase_raven_spawn)
@@ -11,23 +17,34 @@ func _ready():
 func increase_raven_spawn():
 	waittime = min(0.01,waittime - 0.01)
 	timer.wait_time  =  waittime
-	print("EggEvent: decrased time to : " + str(waittime))
-func increase_dificult_over_time():
-	waittime = min(0.01,waittime - 0.01)
-	timer.wait_time  =  waittime
-	print("TimeEvent: decrased time to : " + str(waittime))
+	print("Wave: decrased time to : " + str(waittime))
+func increase_wave():
+	current_wave += 1
+	increase_raven_spawn()
+
 func on_timer_timeout():
 	if get_parent().isGameStatePaused():
 		return
 	var player = get_tree().get_first_node_in_group("player")
 	if player == null:
 		return
+	if isPlayerHiding:
+		return
+	checkWave()
+	spawnEnemy(player.global_position + (Vector2.RIGHT.rotated(randf_range(0,TAU)) * MIN_DISTANCE))
 
-	var random_direction = Vector2.RIGHT.rotated(randf_range(0,TAU))
-	var spawn_position = player.global_position + (random_direction * Min_Dinstance)
-	var rand_index:int = randi() % enemyPool.size()
-	var enemy = enemyPool[rand_index].instantiate() as Node2D
+func checkWave():
+	if arena_time_manager.get_delta_time() > current_wave * 6000:
+		increase_wave()
+func playerHides(value : bool):
+	for x in spawnPool:
+		x.queue_free()
+
+func spawnEnemy(pos : Vector2):
+
+	var enemy = enemyPool[current_wave].instantiate() as Node2D
 	var entities_layer = get_tree().get_first_node_in_group("entities_layer")
 
 	entities_layer.add_child(enemy)
-	enemy.global_position = spawn_position
+	enemy.global_position = pos
+	spawnPool.append(enemy)

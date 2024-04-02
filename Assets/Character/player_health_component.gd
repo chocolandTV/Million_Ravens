@@ -12,6 +12,7 @@ func _ready():
 
 func damage(damage_amount : int):
 	#Get Damage
+	print ("get damage :", damage_amount)
 	if player_health- damage_amount < 0:
 		# GAME OVER
 		player_health -= damage_amount
@@ -24,6 +25,11 @@ func damage(damage_amount : int):
 	#if !player_animations.is_playing:
 	player_animations.play("receive_damage")
 
+func on_damage_invisibility_on():
+	
+	#hitbox off
+	#Timer start
+	pass
 func onHealthChanged(value : int):
 	player_health += value
 	updateUI()
@@ -36,3 +42,7 @@ func on_ability_upgrade_added(upgrade : AbilityUpgrade, current_upgrades: Dictio
 
 func updateUI():
 	GameEvents.emit_ability_upgrade_newLife()
+
+func on_timer_timeout():
+	#hitbox on
+	pass

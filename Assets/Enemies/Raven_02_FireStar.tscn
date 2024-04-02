@@ -239,11 +239,11 @@ motion_mode = 1
 script = ExtResource("1_hx448")
 
 [node name="orb_drop_component" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_r1nj6")]
-highscore_amount = 50000
+highscore_amount = 1000
 health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_a3kop")]
-max_health = 100.0
+max_health = 25.0
 
 [node name="HealthBar" parent="." instance=ExtResource("4_7nywh")]
 offset_left = -24.0
@@ -264,6 +264,7 @@ debug_color = Color(0.984314, 0.121569, 0, 0.0823529)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("7_efyy5")
+damage = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_dehkm")

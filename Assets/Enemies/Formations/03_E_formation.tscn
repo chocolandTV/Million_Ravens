@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvyi7e1s0ql7d"]
+
+[ext_resource type="PackedScene" uid="uid://dwp0tj0ahcgwn" path="res://Assets/Enemies/Raven_01_Default.tscn" id="1_8lxqb"]
+
+[node name="V_Formation" type="Node2D"]
+
+[node name="Ravenspeedy" parent="." instance=ExtResource("1_8lxqb")]
+position = Vector2(-1, -125)
+
+[node name="Ravenspeedy2" parent="." instance=ExtResource("1_8lxqb")]
+position = Vector2(1, -85)
+
+[node name="Ravenspeedy3" parent="." instance=ExtResource("1_8lxqb")]
+position = Vector2(0, -43)
+
+[node name="Ravenspeedy4" parent="." instance=ExtResource("1_8lxqb")]
+position = Vector2(0, -2)
+
+[node name="Ravenspeedy5" parent="." instance=ExtResource("1_8lxqb")]
+position = Vector2(41, -127)
+
+[node name="Ravenspeedy6" parent="." instance=ExtResource("1_8lxqb")]
+position = Vector2(84, -128)
+
+[node name="Ravenspeedy7" parent="." instance=ExtResource("1_8lxqb")]
+position = Vector2(122, -129)
+
+[node name="Ravenspeedy8" parent="." instance=ExtResource("1_8lxqb")]
+position = Vector2(30, -3)
+
+[node name="Ravenspeedy9" parent="." instance=ExtResource("1_8lxqb")]
+position = Vector2(62, -3)
+
+[node name="Ravenspeedy10" parent="." instance=ExtResource("1_8lxqb")]
+position = Vector2(0, 25)
+
+[node name="Ravenspeedy11" parent="." instance=ExtResource("1_8lxqb")]
+position = Vector2(0, 52)
+
+[node name="Ravenspeedy12" parent="." instance=ExtResource("1_8lxqb")]
+position = Vector2(-1, 83)
+
+[node name="Ravenspeedy13" parent="." instance=ExtResource("1_8lxqb")]
+position = Vector2(0, 109)
+
+[node name="Ravenspeedy14" parent="." instance=ExtResource("1_8lxqb")]
+position = Vector2(35, 108)
+
+[node name="Ravenspeedy15" parent="." instance=ExtResource("1_8lxqb")]
+position = Vector2(72, 106)
+
+[node name="Ravenspeedy16" parent="." instance=ExtResource("1_8lxqb")]
+position = Vector2(108, 105)

@@ -120,7 +120,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.8, 1.2, 1.5, 1.7, 2),
@@ -136,6 +136,7 @@ _data = {
 
 [node name="Global_UI" type="CanvasLayer"]
 script = ExtResource("1_75rbs")
+life_icon_scene = ExtResource("8_1g2gw")
 
 [node name="PlayerInterface" type="MarginContainer" parent="."]
 offset_right = 265.0

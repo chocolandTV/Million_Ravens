@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://diqmbn2ls8nc0"]
+[gd_scene load_steps=11 format=3 uid="uid://diqmbn2ls8nc0"]
 
 [ext_resource type="Script" path="res://Assets/Scene/game_objects/Chest.gd" id="1_l23ae"]
 [ext_resource type="Script" path="res://Assets/Scene/Component/health_component.gd" id="2_kbjr5"]
 [ext_resource type="PackedScene" uid="uid://dmxsepl0ddne" path="res://Assets/Scene/Component/Drop_Components/chest_drop_component.tscn" id="3_7cc4c"]
 [ext_resource type="PackedScene" uid="uid://dng3vrp03i3j7" path="res://Assets/Scene/game_objects/Destroyed_Objects/Chest_destroyed.tscn" id="4_1bq4m"]
+[ext_resource type="PackedScene" uid="uid://bfnld4bny1jpn" path="res://Assets/Scene/game_objects/coin_collectable.tscn" id="5_sg61c"]
 [ext_resource type="Texture2D" uid="uid://dnbd61llyi4lr" path="res://Assets/Textures/chest.png" id="5_ytyta"]
 [ext_resource type="PackedScene" uid="uid://nro3glw2xb4p" path="res://Assets/Scene/Component/hurtbox_component.tscn" id="6_0sa5r"]
 [ext_resource type="PackedScene" uid="uid://csljirmwo8vcg" path="res://Assets/Scene/Component/health_bar.tscn" id="7_hdqjd"]
@@ -23,6 +24,7 @@ max_health = 10.0
 
 [node name="chest_drop_component" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_7cc4c")]
 orb_Scene = ExtResource("4_1bq4m")
+coin_Scene = ExtResource("5_sg61c")
 highscore_amount = 1000
 health_component = NodePath("../HealthComponent")
 

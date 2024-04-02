@@ -1,0 +1,92 @@
+[gd_scene load_steps=14 format=3 uid="uid://bfnld4bny1jpn"]
+
+[ext_resource type="Script" path="res://Assets/Scene/game_objects/coin_collectable.gd" id="1_uhcls"]
+[ext_resource type="Texture2D" uid="uid://dvt2i7qxy3l7b" path="res://Assets/Textures/coin_animated.png" id="2_nag2m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c2hjl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_or5dt"]
+atlas = ExtResource("2_nag2m")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1w32"]
+atlas = ExtResource("2_nag2m")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvrjs"]
+atlas = ExtResource("2_nag2m")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pkl0"]
+atlas = ExtResource("2_nag2m")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgodk"]
+atlas = ExtResource("2_nag2m")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lf4q8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_or5dt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1w32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvrjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1pkl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgodk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n3cll"]
+radius = 1.0
+
+[sub_resource type="Animation" id="Animation_mtmh1"]
+resource_name = "Feather_Hover"
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_s8dgq"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7kk2m"]
+_data = {
+"Feather_Hover": SubResource("Animation_mtmh1"),
+"RESET": SubResource("Animation_s8dgq")
+}
+
+[node name="Coin_item" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_uhcls")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_c2hjl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_lf4q8")
+frame_progress = 0.0956078
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n3cll")
+debug_color = Color(0.94902, 0, 0.572549, 0.419608)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7kk2m")
+}
+autoplay = "Feather_Hover"
