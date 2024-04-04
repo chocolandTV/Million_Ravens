@@ -248,18 +248,6 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_constants/h_separation = 32
 
-[node name="Label" type="Label" parent="PlayerInterface_Health/HFlowContainer"]
-visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 33
-text = "9"
-
-[node name="Label2" type="Label" parent="PlayerInterface_Health/HFlowContainer"]
-visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 33
-text = "x"
-
 [node name="Health_Icon" parent="PlayerInterface_Health/HFlowContainer" instance=ExtResource("8_1g2gw")]
 layout_mode = 2
 

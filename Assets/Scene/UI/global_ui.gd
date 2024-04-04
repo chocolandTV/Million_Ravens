@@ -29,6 +29,9 @@ extends CanvasLayer
 @export var life_icon_scene : PackedScene
 @onready var life_container : HFlowContainer  =$%HFlowContainer
 var health_array : Array[Panel]
+var current_level_points :int  =0
+
+
 func _ready():
       experience_manager.level_up.connect(on_level_up_change_ui)
       #GameEvents.ability_upgrade_added.connect(on_ability_levelup)
@@ -54,6 +57,7 @@ func _process(delta):
       highscore_value_text.text = str(highscore_manager.current_highscore)
 # when player levels up
 func on_level_up_change_ui(new_level : int):
+      
       value_playerLevel.text = str(new_level)
 #when ability levels up
 # func on_ability_levelup(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
@@ -75,6 +79,7 @@ func UpdatePlayerName():
       value_playername.text = settings.gv_Settings["player_name"]
 # On Level Up
 func _on_levelup_update_upgrades():
+      current_level_points +=1 
       _showupgrades(true)
       update_ability_text()
 
@@ -91,21 +96,24 @@ func update_collectable_text(switch : int, value :int):
             value_coin.text =  str(value)
 
 func _showupgrades(_bool :bool):
+      
       _player_Ability_Container.visible = _bool
 
 # BUTTON UPGRADES
 func _on_atk_up_Button():
-      _showupgrades(false)
-      GameEvents.emit_ability_upgrade_Button(0)
+      applyUpgrade(0)
 func _on_atkspeed_up():
-      _showupgrades(false)
-      GameEvents.emit_ability_upgrade_Button(1)
+      applyUpgrade(1)
 func on_movspeed_up():
-      _showupgrades(false)
-      GameEvents.emit_ability_upgrade_Button(2)
+     applyUpgrade(2)
 func on_lifeplus_up():
-      _showupgrades(false)
-      GameEvents.emit_ability_upgrade_Button(3)
+      applyUpgrade(3)
+
+func applyUpgrade(button_value : int):
+      if current_level_points <= 0:
+            _showupgrades(false)
+      current_level_points -=1
+      GameEvents.emit_ability_upgrade_Button(button_value)
 
 func on_lifeplus_UI():
       var life_instance = life_icon_scene.instantiate()

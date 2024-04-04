@@ -14,14 +14,12 @@ func on_died():
       if not owner is Node2D:
             return
       var spawn_position = (owner as Node2D).global_position
-      var random_a : int = randi_range(0,100)
+      var globalVars : Global_Variables = get_node("/root/GlobalVariables")
       var orb_instance
-      if random_a >95:
+      if globalVars.get_lucky_catmint_value() == 500:
             orb_instance = feather_Scene.instantiate() as Node2D
-            print("feather rolled :", random_a)
       else:
             orb_instance = orb_Scene.instantiate() as Node2D
-            print("highscore orb rolled :", random_a)
       var entities_layer = get_tree().get_first_node_in_group("entities_layer")
       if highscore_amount == 1000:
             GameEvents.emit_highscore_orb_collected(highscore_amount)

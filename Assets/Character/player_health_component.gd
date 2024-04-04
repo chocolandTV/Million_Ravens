@@ -11,14 +11,12 @@ func _ready():
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 
 func damage(damage_amount : int):
-	#Get Damage
-	print ("get damage :", damage_amount)
 	if player_health- damage_amount < 0:
 		# GAME OVER
 		player_health -= damage_amount
 		GameEvents.emit_PlayerLife_UI_update(player_health)
 		GameEvents.emit_player_died()
-	# GameEvents.emit_highscore_player_get_damage(int(damage_amount))
+	GameEvents.emit_player_damaged()
 	player_health -= damage_amount
 	GameEvents.emit_PlayerLife_UI_update(player_health)
 	# Animate

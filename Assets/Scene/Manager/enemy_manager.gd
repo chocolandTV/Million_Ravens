@@ -19,6 +19,8 @@ func increase_raven_spawn():
 	timer.wait_time  =  waittime
 	print("Wave: decrased time to : " + str(waittime))
 func increase_wave():
+	if current_wave == spawnPool.size():
+		return
 	current_wave += 1
 	increase_raven_spawn()
 
@@ -41,7 +43,7 @@ func playerHides(value : bool):
 		x.queue_free()
 
 func spawnEnemy(pos : Vector2):
-
+	print (current_wave)
 	var enemy = enemyPool[current_wave].instantiate() as Node2D
 	var entities_layer = get_tree().get_first_node_in_group("entities_layer")
 

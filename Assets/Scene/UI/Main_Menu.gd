@@ -15,6 +15,10 @@ extends Node
 @onready var creditButton : Button =$%Button_Credit
 @onready var credit_Panel : MarginContainer  = $%Credit_Panel
 @onready var credit_HighFrame_Image : ParallaxBackground = $%ParallaxBackground
+# GLOBAL UI
+@export var global_UI : CanvasLayer
+#Original Background
+@onready var base_background : TextureRect =$%base_BackgroundImage
 var  isCreditsOn :bool = false
 # TOGGLE SETTING VARIABLE
 var setting_enabled :bool = false
@@ -40,6 +44,7 @@ func _on_start_button_pressed():
 
 func _on_credit_button_pressed():
       isCreditsOn = !isCreditsOn
+      base_background.visible = !isCreditsOn
       credit_HighFrame_Image.visible = isCreditsOn
       credit_Panel.visible = isCreditsOn
       setting_enabled = !isCreditsOn
@@ -51,6 +56,7 @@ func _on_button_highscore_pressed():
       splash.visible = false
       menu.visible = false
       setting_enabled = false
+      global_UI.visible = false
       setting_menu.visible = setting_enabled
       # Turn highscore On
       highscore_ui.visible = true
@@ -58,6 +64,7 @@ func _on_button_highscore_pressed():
 func _on_highscore_back_button_pressed():
       splash.visible = true
       menu.visible = true
+      global_UI.visible = false
       # Turn highscore On
       highscore_ui.visible = false
 

@@ -2,6 +2,8 @@ extends CharacterBody2D
 @onready var globalVars : Global_Variables = get_node("/root/GlobalVariables")
 @onready var invincible_timer:Timer = $InvincibleTimer
 @onready var hurtboxComponent:Area2D = $HurtboxComponent
+@onready var animation_player : AnimationPlayer =$AnimationPlayer
+@onready var visual_body : Node2D = $Visuals
 const SPEED = 150.0
 const DASH_SPEED = 1500.0
 const ACCELERATION_SMOOTHING = 25
@@ -18,6 +20,17 @@ func _process(delta):
 	var target_velocity = direction * SPEED * speed_multiplier
 	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
 	move_and_slide()
+
+	if movement_vector.x !=0 || movement_vector.y !=0:
+		animation_player.play("walk")
+	else:
+		animation_player.play("RESET")
+	var move_sign = sign(movement_vector.x)
+	if move_sign == 0:
+		visual_body.scale = Vector2.ONE
+	else:
+		visual_body.scale = Vector2(move_sign, 1)
+	
 #Get Input in a Vector2 return
 func get_movement_vector():
 	var x_movement = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")

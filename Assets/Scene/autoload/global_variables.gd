@@ -1,7 +1,7 @@
 extends Node
 
 class_name Global_Variables
-
+const LUCKY_VALUE :int = 500
 var gv_Settings = {
       "setting_volume_master" : 0.5,
       "setting_volume_sound" : 0.5,
@@ -16,3 +16,17 @@ var gv_Settings = {
       "player_movement_speed_level" : 150,
       "player_health_level" : 1
 }
+var gv_lucky_catmint: int = 0
+
+
+func _on_timer_timeout():
+      luckyshuffle()
+
+func get_lucky_catmint_value():
+      if gv_lucky_catmint == 500:
+            luckyshuffle()
+            return LUCKY_VALUE
+      return gv_lucky_catmint
+
+func luckyshuffle():
+      gv_lucky_catmint = randi_range(0,1000)
