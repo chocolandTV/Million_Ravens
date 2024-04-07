@@ -32,6 +32,10 @@ func on_highscore_died():
 
 func switchMenu():
 	isMenuOpened = !isMenuOpened
+	if(isMenuOpened):
+		print("Menu is Visible")
+	else:
+		print("Menu is Hide")
 	canvas_Layer_menu.visible= isMenuOpened
 	get_tree().paused = isMenuOpened
 	canvas_Layer_Global_UI.visible  =!isMenuOpened

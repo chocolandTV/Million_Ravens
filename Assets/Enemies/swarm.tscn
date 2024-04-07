@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://bh7w3ikq7r38w"]
+
+[ext_resource type="Script" path="res://Assets/Enemies/swarm.gd" id="1_j7i4g"]
+[ext_resource type="Script" path="res://Assets/Enemies/Swarm/Enemy.gd" id="2_bma6o"]
+[ext_resource type="Texture2D" uid="uid://eton2y41np4j" path="res://Assets/Enemies/Raven_01_lowRes.png" id="2_l6f25"]
+[ext_resource type="Script" path="res://Assets/Scene/Component/hitbox_component.gd" id="3_si3op"]
+
+[sub_resource type="Curve" id="Curve_t8mm7"]
+_data = [Vector2(0.00303952, 1), 0.0, 0.0, 0, 0, Vector2(0.863222, 0.859544), 0.0, 0.0, 0, 0, Vector2(0.993921, 0.0168068), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xqvat"]
+radius = 33.27
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i4jdr"]
+
+[node name="Swarm" type="Node2D"]
+script = ExtResource("1_j7i4g")
+
+[node name="Enemy" type="CharacterBody2D" parent="."]
+unique_name_in_owner = true
+visible = false
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_bma6o")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Enemy"]
+unique_name_in_owner = true
+amount = 200
+lifetime = 60.0
+randomness = 1.0
+lifetime_randomness = 1.0
+texture = ExtResource("2_l6f25")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+angular_velocity_min = 1.15
+angular_velocity_max = 1.8
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.1
+linear_accel_min = 4.6
+linear_accel_max = 4.6
+radial_accel_min = -49.08
+radial_accel_max = -30.69
+damping_min = 0.575
+damping_max = 0.575
+scale_amount_curve = SubResource("Curve_t8mm7")
+
+[node name="HitboxComponent" type="Area2D" parent="Enemy"]
+script = ExtResource("3_si3op")
+damage = 1
+
+[node name="collision_Radius" type="CollisionShape2D" parent="Enemy/HitboxComponent"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_xqvat")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+shape = SubResource("CircleShape2D_i4jdr")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0

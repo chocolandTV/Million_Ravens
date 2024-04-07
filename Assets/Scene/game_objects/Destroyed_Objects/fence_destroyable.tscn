@@ -1,0 +1,198 @@
+[gd_scene load_steps=19 format=3 uid="uid://dnrrlmxf4k62u"]
+
+[ext_resource type="Script" path="res://Assets/Scene/game_objects/fence_destroyable.gd" id="1_jrmyw"]
+[ext_resource type="Script" path="res://Assets/Scene/Component/health_component.gd" id="2_xvncn"]
+[ext_resource type="Texture2D" uid="uid://d1ovnl0p8ys78" path="res://Assets/Textures/Sprite-0009_fence-Sheet.png" id="3_n4ium"]
+[ext_resource type="Script" path="res://Assets/Scene/Component/hurtbox_component.gd" id="4_yduje"]
+
+[sub_resource type="Animation" id="Animation_vprtv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_e4o7j"]
+resource_name = "damaged"
+length = 0.3
+step = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.2, 0.242, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.2, 0.242, 0.3),
+"transitions": PackedFloat32Array(0.707107, 1.86607, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.415388, 0.0331613, 0.0523599, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.2, 0.242, 0.3),
+"transitions": PackedFloat32Array(2.21914, 0.707107, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 0.83), Vector2(0.91, 0.755), Vector2(1.165, 0.76), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lfj08"]
+_data = {
+"RESET": SubResource("Animation_vprtv"),
+"damaged": SubResource("Animation_e4o7j")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdj3x"]
+atlas = ExtResource("3_n4ium")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avigr"]
+atlas = ExtResource("3_n4ium")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6f8d"]
+atlas = ExtResource("3_n4ium")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5pwm"]
+atlas = ExtResource("3_n4ium")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlmql"]
+atlas = ExtResource("3_n4ium")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sbxj"]
+atlas = ExtResource("3_n4ium")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8feo"]
+atlas = ExtResource("3_n4ium")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsmhg"]
+atlas = ExtResource("3_n4ium")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mx17q"]
+atlas = ExtResource("3_n4ium")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vdamm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdj3x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avigr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6f8d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5pwm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlmql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3sbxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8feo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsmhg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mx17q")
+}],
+"loop": true,
+"name": &"dying",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhxpf"]
+size = Vector2(52, 43)
+
+[node name="Fence_destroyable" type="Node2D"]
+script = ExtResource("1_jrmyw")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_xvncn")
+max_health = 25.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimatedSprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_lfj08")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vdamm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_vdamm")
+
+[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("4_yduje")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(-1, 4.5)
+shape = SubResource("RectangleShape2D_xhxpf")

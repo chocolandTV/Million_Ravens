@@ -327,21 +327,19 @@ wait_time = 2.0
 one_shot = true
 autostart = true
 
-[node name="Menu_CanvasLayer" type="CanvasLayer" parent="."]
-layer = 4
+[node name="Menu_CanvasLayer" type="MarginContainer" parent="."]
 
 [node name="Menu" type="MarginContainer" parent="Menu_CanvasLayer"]
 unique_name_in_owner = true
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 
 [node name="base_BackgroundImage" parent="Menu_CanvasLayer/Menu" instance=ExtResource("3_ixpla")]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_nxvqd")
+custom_minimum_size = Vector2(1280, 720)
 layout_mode = 2
+expand_mode = 2
+stretch_mode = 4
 
 [node name="PanelContainer" type="PanelContainer" parent="Menu_CanvasLayer/Menu"]
 layout_mode = 2

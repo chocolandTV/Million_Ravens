@@ -12,8 +12,6 @@ const damage :int  = 1
 var isCooldown : bool  = false
 
 func _ready():
-      # hit_box.damage = damage
-      # hit_box.raven_01_kockback.connect(on_raven_01_knockback)
       timer.timeout.connect(on_timer_timeouti)
 func _process(_delta):
       if isCooldown:
@@ -23,7 +21,6 @@ func _process(_delta):
       #start flying
       velocity = direction * speed
       move_and_slide()
-      # increase speed
 
 func get_direction_to_player():
       #get player
@@ -33,9 +30,7 @@ func get_direction_to_player():
       #return if not null
       return Vector2.ZERO
 func on_raven_01_knockback():
-      #animate 
       anim.play("Knockback")
-      #set position in back in direction of player * damage
       global_position += -get_direction_to_player() * damage * 10
       isCooldown = true
       timer.start()

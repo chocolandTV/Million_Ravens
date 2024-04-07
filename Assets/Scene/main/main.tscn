@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://gbw6bwm54644"]
+[gd_scene load_steps=40 format=3 uid="uid://gbw6bwm54644"]
 
 [ext_resource type="PackedScene" uid="uid://dwsgmvwvvu86q" path="res://Assets/Scene/Manager/arena_time_manager.tscn" id="1_0trha"]
 [ext_resource type="PackedScene" uid="uid://dtmli75wgeic" path="res://Assets/Modules/Camera/camera.tscn" id="1_k1roq"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://cg5id4dgxp4ub" path="res://Assets/Enemies/Raven_02_Spawner.tscn" id="18_vwc51"]
 [ext_resource type="PackedScene" uid="uid://diqmbn2ls8nc0" path="res://Assets/Scene/game_objects/Chest.tscn" id="19_2px30"]
 [ext_resource type="PackedScene" uid="uid://bs86m2ataw12m" path="res://Assets/Enemies/Formations/Wave_formation.tscn" id="19_td0u1"]
+[ext_resource type="PackedScene" uid="uid://bh7w3ikq7r38w" path="res://Assets/Enemies/swarm.tscn" id="29_cy8gv"]
 [ext_resource type="PackedScene" uid="uid://cyf8d7oi7fjsp" path="res://Assets/Scene/UI/vignette.tscn" id="33_n0ujm"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_tj4rp"]
@@ -68,6 +69,7 @@ shader_parameter/noise2 = SubResource("NoiseTexture2D_me3wv")
 [node name="Main" type="Node2D"]
 script = ExtResource("1_qc85t")
 end_screen_scene = ExtResource("4_83l3l")
+metadata/_edit_vertical_guides_ = [-251.0]
 
 [node name="Main_Menu" parent="." node_paths=PackedStringArray("global_UI") instance=ExtResource("3_q3nsa")]
 unique_name_in_owner = true
@@ -176,6 +178,9 @@ position = Vector2(1212, 3725)
 
 [node name="Raven_Boss3" parent="Entities" instance=ExtResource("12_3peer")]
 position = Vector2(15956, 5364)
+
+[node name="Swarm" parent="Entities" instance=ExtResource("29_cy8gv")]
+position = Vector2(7554, 2304)
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]
 

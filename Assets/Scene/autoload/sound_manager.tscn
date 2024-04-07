@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://5j3icwlg028v"]
+
+[ext_resource type="Script" path="res://Assets/Scene/autoload/sound_manager.gd" id="1_hr0pu"]
+[ext_resource type="AudioStream" uid="uid://blex13we662f1" path="res://Assets/Sounds/click(1).wav" id="1_ifr7y"]
+
+[node name="SoundManager" type="Node2D"]
+script = ExtResource("1_hr0pu")
+
+[node name="AudioSound" type="Node2D" parent="."]
+
+[node name="Gameplay_AS_Player" type="AudioStreamPlayer2D" parent="AudioSound"]
+stream = ExtResource("1_ifr7y")
+
+[node name="MusicSound" type="Node2D" parent="."]
+
+[node name="Music_AS_Player" type="AudioStreamPlayer2D" parent="MusicSound"]
+
+[node name="UISound" type="Node2D" parent="."]
+
+[node name="UI_AS_Player" type="AudioStreamPlayer" parent="UISound"]
