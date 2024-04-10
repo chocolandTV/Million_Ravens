@@ -8,6 +8,7 @@ extends Node
 @onready var highscore_ui_system : HighscoreUISystem = get_node("/root/HighscoreUiSystem")
 @onready var filemanager : FileManager = get_node("/root/File_Manager")
 @onready var highscore_ui : CanvasLayer = $%Highscore_Menu
+
 # START BUTTON TEXT 
 @onready var startButton_text : Button = $%Button_Start
 
@@ -29,6 +30,7 @@ func _ready():
       playername_textField.text_submitted.connect(on_playername_textfield_submitted)
       GameEvents.highscore_button_pressed.connect(on_highscore_button_pressed)
       creditButton.pressed.connect(_on_credit_button_pressed)
+      
 
 func _on_timer_timeout():
       splash.visible = false
@@ -40,16 +42,20 @@ func _on_quit_button_pressed():
 ################### START BUTTON ####################
 func _on_start_button_pressed():
       startButton_text.text = "Resume"
+      get_tree().paused = false
       GameEvents.emit_menu_switch()
+      SoundManager.Emit_Sound(SoundManager.soundType.s_ui_click,Vector2.ZERO)
 
 func _on_credit_button_pressed():
       isCreditsOn = !isCreditsOn
-      base_background.visible = !isCreditsOn
-      credit_HighFrame_Image.visible = isCreditsOn
+      #base_background.visible = !isCreditsOn
+      #credit_HighFrame_Image.visible = isCreditsOn
       credit_Panel.visible = isCreditsOn
-      setting_enabled = !isCreditsOn
-      setting_menu.visible = setting_enabled
-      
+      credit_Panel.resetName()
+      if isCreditsOn:
+            setting_enabled = !isCreditsOn
+            setting_menu.visible = setting_enabled
+      SoundManager.Emit_Sound(SoundManager.soundType.s_ui_click,Vector2.ZERO)
 
 func _on_button_highscore_pressed():
       highscore_ui.on_CanvasLayer_activate()
@@ -58,23 +64,29 @@ func _on_button_highscore_pressed():
       setting_enabled = false
       global_UI.visible = false
       setting_menu.visible = setting_enabled
+      isCreditsOn = false
+      credit_Panel.visible = isCreditsOn
       # Turn highscore On
       highscore_ui.visible = true
+      SoundManager.Emit_Sound(SoundManager.soundType.s_ui_click,Vector2.ZERO)
 
 func _on_highscore_back_button_pressed():
-      splash.visible = true
+      splash.visible = false
       menu.visible = true
       global_UI.visible = false
       # Turn highscore On
       highscore_ui.visible = false
+      SoundManager.Emit_Sound(SoundManager.soundType.s_ui_click,Vector2.ZERO)
 
 func _on_button_pressed():
       on_playername_textfield_submitted(playername_textField.text)
+      SoundManager.Emit_Sound(SoundManager.soundType.s_ui_click,Vector2.ZERO)
 
 func on_playername_textfield_submitted(_text : String):
       global_vars.gv_Settings["player_name"]  = _text
       highscore_ui_system._change_player_name(_text)
       get_parent().on_playerName_changed_Submit_to_UI()
+      SoundManager.Emit_Sound(SoundManager.soundType.s_ui_click,Vector2.ZERO)
 
 func _on_button_settings_pressed():
       toggleSettingMenu()
@@ -82,10 +94,14 @@ func _on_button_settings_pressed():
 func toggleSettingMenu():
       setting_enabled = !setting_enabled
       setting_menu.visible = setting_enabled
+      if setting_enabled:
+            isCreditsOn = !isCreditsOn
+            credit_Panel.visible = isCreditsOn
       highscore_ui_system._get_player_name()
       playername_textField.placeholder_text = global_vars.gv_Settings["player_name"]
       if !setting_enabled:
             filemanager.save_game()
+      SoundManager.Emit_Sound(SoundManager.soundType.s_ui_click,Vector2.ZERO)
 
 func on_highscore_button_pressed():
       _on_button_highscore_pressed()

@@ -1,8 +1,7 @@
-[gd_scene load_steps=40 format=3 uid="uid://c2po4yygqv25f"]
+[gd_scene load_steps=39 format=3 uid="uid://c2po4yygqv25f"]
 
 [ext_resource type="Script" path="res://Assets/Scene/UI/Main_Menu.gd" id="1_0kdyt"]
 [ext_resource type="Texture2D" uid="uid://b0gx35n3pyr1i" path="res://Assets/Textures/Sprite-0006_LootLocker-Sheet.png" id="2_cw1xd"]
-[ext_resource type="Texture2D" uid="uid://c4hulwdi3djki" path="res://banner.png" id="3_d3pxi"]
 [ext_resource type="PackedScene" uid="uid://bak46xmq64iyc" path="res://Assets/Textures/UI/texture_rect.tscn" id="3_ixpla"]
 [ext_resource type="Texture2D" uid="uid://y33fjpxbkh41" path="res://Assets/Textures/Sprite-0018_Raven_logo.png" id="4_5k81t"]
 [ext_resource type="StyleBox" uid="uid://dsubedcjd0m1g" path="res://Assets/Textures/UI/Normal_Button.tres" id="4_od8gl"]
@@ -14,6 +13,7 @@
 [ext_resource type="StyleBox" uid="uid://dikvv1e2y5t12" path="res://Assets/Textures/UI/Normal_Button_pressed.tres" id="6_qsrk2"]
 [ext_resource type="PackedScene" uid="uid://b7yh6fykenerv" path="res://Assets/Scene/UI/highscore/highscore_entry.tscn" id="7_g7t55"]
 [ext_resource type="Texture2D" uid="uid://c2qctfglsw8kq" path="res://Assets/Textures/UI/Sprite-0020_Card_Item.png" id="11_pgkrv"]
+[ext_resource type="Script" path="res://Assets/Scene/UI/Credit_Panel.gd" id="12_4voot"]
 [ext_resource type="Texture2D" uid="uid://bh5x2hfe7cl6s" path="res://Assets/Textures/UI/dev.png" id="12_yap77"]
 [ext_resource type="SpriteFrames" uid="uid://ddugwwces31m" path="res://Assets/Enemies/AnimatedSprite/Raven_02_FireStar.tres" id="13_djfnm"]
 [ext_resource type="Texture2D" uid="uid://dqf6yrnfld85x" path="res://Assets/Textures/Parallax/L1_Sun.png" id="13_lua0k"]
@@ -109,9 +109,6 @@ bg_color = Color(0.262745, 0.882353, 0.701961, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_442mh"]
 bg_color = Color(0.668416, 0.992682, 0.872438, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7fyp"]
-bg_color = Color(0.324376, 0.202315, 0.255942, 1)
-
 [node name="Main_Menu" type="CanvasLayer"]
 layer = 2
 script = ExtResource("1_0kdyt")
@@ -140,6 +137,126 @@ frame_progress = 1.0
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+unique_name_in_owner = true
+layer = 0
+offset = Vector2(984.08, 355.975)
+transform = Transform2D(1, 0, 0, 1, 984.08, 355.975)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="L1_Sun" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("13_lua0k")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(550, 0)
+script = ExtResource("14_2exku")
+
+[node name="L2_CloudsFar" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("14_soqag")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(550, 0)
+script = ExtResource("14_2exku")
+
+[node name="L3_MountainFar" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("15_v6tuy")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.25, 0.25)
+motion_mirroring = Vector2(550, 0)
+script = ExtResource("14_2exku")
+Cloud_Speed = -50.0
+
+[node name="L4_CloudsNear" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource("16_fav26")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.25, 0.25)
+motion_mirroring = Vector2(550, 0)
+script = ExtResource("14_2exku")
+Cloud_Speed = -100.0
+
+[node name="L5_MountainNear" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+texture = ExtResource("17_dua7v")
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.28, 0.28)
+
+[node name="L6_Particles" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6"]
+texture = ExtResource("18_r1o1o")
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer7"]
+z_index = 4
+position = Vector2(-27.08, -134.975)
+sprite_frames = ExtResource("13_djfnm")
+animation = &"flying"
+autoplay = "flying"
+frame_progress = 0.0803135
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer7"]
+z_index = 4
+position = Vector2(-14.08, -122.975)
+sprite_frames = ExtResource("13_djfnm")
+animation = &"flying"
+autoplay = "flying"
+frame_progress = 0.68033
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer7"]
+z_index = 4
+position = Vector2(1.91998, -111.975)
+sprite_frames = ExtResource("13_djfnm")
+animation = &"flying"
+autoplay = "flying"
+frame_progress = 0.68033
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer7"]
+z_index = 4
+position = Vector2(18.92, -99.975)
+sprite_frames = ExtResource("13_djfnm")
+animation = &"flying"
+autoplay = "flying"
+frame_progress = 0.68033
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer7"]
+z_index = 4
+position = Vector2(13.92, -85.975)
+sprite_frames = ExtResource("13_djfnm")
+animation = &"flying"
+autoplay = "flying"
+frame_progress = 0.68033
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer7"]
+z_index = 4
+position = Vector2(-5.08002, -71.975)
+sprite_frames = ExtResource("13_djfnm")
+animation = &"flying"
+autoplay = "flying"
+frame_progress = 0.68033
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer7"]
+z_index = 4
+position = Vector2(-28.08, -54.975)
+sprite_frames = ExtResource("13_djfnm")
+animation = &"flying"
+autoplay = "flying"
+frame_progress = 0.68033
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground"]
+offset_left = -981.0
+offset_top = -355.0
+offset_right = 297.0
+offset_bottom = 365.0
+pivot_offset = Vector2(-38.155, 0)
+texture = ExtResource("21_vmnqa")
+expand_mode = 1
+
 [node name="Credit_Panel" type="MarginContainer" parent="."]
 unique_name_in_owner = true
 visible = false
@@ -150,133 +267,14 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -900.0
 offset_top = -250.0
+offset_right = -597.0
 offset_bottom = 250.0
 grow_horizontal = 0
 grow_vertical = 2
+script = ExtResource("12_4voot")
 
 [node name="Panel" type="Panel" parent="Credit_Panel"]
 layout_mode = 2
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="Credit_Panel/Panel"]
-unique_name_in_owner = true
-layer = 4
-visible = false
-offset = Vector2(984.08, 355.975)
-transform = Transform2D(1, 0, 0, 1, 984.08, 355.975)
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Credit_Panel/Panel/ParallaxBackground"]
-motion_scale = Vector2(0, 0)
-
-[node name="L1_Sun" type="Sprite2D" parent="Credit_Panel/Panel/ParallaxBackground/ParallaxLayer"]
-texture = ExtResource("13_lua0k")
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="Credit_Panel/Panel/ParallaxBackground"]
-motion_scale = Vector2(0.1, 0.1)
-motion_mirroring = Vector2(550, 0)
-script = ExtResource("14_2exku")
-
-[node name="L2_CloudsFar" type="Sprite2D" parent="Credit_Panel/Panel/ParallaxBackground/ParallaxLayer2"]
-texture = ExtResource("14_soqag")
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="Credit_Panel/Panel/ParallaxBackground"]
-motion_scale = Vector2(0.1, 0.1)
-motion_mirroring = Vector2(550, 0)
-script = ExtResource("14_2exku")
-
-[node name="L3_MountainFar" type="Sprite2D" parent="Credit_Panel/Panel/ParallaxBackground/ParallaxLayer3"]
-texture = ExtResource("15_v6tuy")
-
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="Credit_Panel/Panel/ParallaxBackground"]
-motion_scale = Vector2(0.25, 0.25)
-motion_mirroring = Vector2(550, 0)
-script = ExtResource("14_2exku")
-Cloud_Speed = -50.0
-
-[node name="L4_CloudsNear" type="Sprite2D" parent="Credit_Panel/Panel/ParallaxBackground/ParallaxLayer4"]
-texture = ExtResource("16_fav26")
-
-[node name="ParallaxLayer5" type="ParallaxLayer" parent="Credit_Panel/Panel/ParallaxBackground"]
-motion_scale = Vector2(0.25, 0.25)
-motion_mirroring = Vector2(550, 0)
-script = ExtResource("14_2exku")
-Cloud_Speed = -100.0
-
-[node name="L5_MountainNear" type="Sprite2D" parent="Credit_Panel/Panel/ParallaxBackground/ParallaxLayer5"]
-texture = ExtResource("17_dua7v")
-
-[node name="ParallaxLayer6" type="ParallaxLayer" parent="Credit_Panel/Panel/ParallaxBackground"]
-motion_scale = Vector2(0.28, 0.28)
-
-[node name="L6_Particles" type="Sprite2D" parent="Credit_Panel/Panel/ParallaxBackground/ParallaxLayer6"]
-texture = ExtResource("18_r1o1o")
-
-[node name="ParallaxLayer7" type="ParallaxLayer" parent="Credit_Panel/Panel/ParallaxBackground"]
-motion_scale = Vector2(0, 0)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Credit_Panel/Panel/ParallaxBackground/ParallaxLayer7"]
-z_index = 4
-position = Vector2(-27.08, -134.975)
-sprite_frames = ExtResource("13_djfnm")
-animation = &"flying"
-autoplay = "flying"
-frame_progress = 0.0803135
-
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Credit_Panel/Panel/ParallaxBackground/ParallaxLayer7"]
-z_index = 4
-position = Vector2(-14.08, -122.975)
-sprite_frames = ExtResource("13_djfnm")
-animation = &"flying"
-autoplay = "flying"
-frame_progress = 0.68033
-
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Credit_Panel/Panel/ParallaxBackground/ParallaxLayer7"]
-z_index = 4
-position = Vector2(1.91998, -111.975)
-sprite_frames = ExtResource("13_djfnm")
-animation = &"flying"
-autoplay = "flying"
-frame_progress = 0.68033
-
-[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Credit_Panel/Panel/ParallaxBackground/ParallaxLayer7"]
-z_index = 4
-position = Vector2(18.92, -99.975)
-sprite_frames = ExtResource("13_djfnm")
-animation = &"flying"
-autoplay = "flying"
-frame_progress = 0.68033
-
-[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Credit_Panel/Panel/ParallaxBackground/ParallaxLayer7"]
-z_index = 4
-position = Vector2(13.92, -85.975)
-sprite_frames = ExtResource("13_djfnm")
-animation = &"flying"
-autoplay = "flying"
-frame_progress = 0.68033
-
-[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Credit_Panel/Panel/ParallaxBackground/ParallaxLayer7"]
-z_index = 4
-position = Vector2(-5.08002, -71.975)
-sprite_frames = ExtResource("13_djfnm")
-animation = &"flying"
-autoplay = "flying"
-frame_progress = 0.68033
-
-[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Credit_Panel/Panel/ParallaxBackground/ParallaxLayer7"]
-z_index = 4
-position = Vector2(-28.08, -54.975)
-sprite_frames = ExtResource("13_djfnm")
-animation = &"flying"
-autoplay = "flying"
-frame_progress = 0.68033
-
-[node name="TextureRect" type="TextureRect" parent="Credit_Panel/Panel/ParallaxBackground"]
-offset_left = -983.08
-offset_top = -354.975
-offset_right = 296.92
-offset_bottom = 365.025
-pivot_offset = Vector2(-38.155, 0)
-texture = ExtResource("21_vmnqa")
-expand_mode = 1
 
 [node name="Background" type="TextureRect" parent="Credit_Panel/Panel"]
 layout_mode = 0
@@ -321,6 +319,7 @@ theme_override_font_sizes/font_size = 23
 text = "Robert Mögenburg"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
@@ -335,6 +334,7 @@ layout_mode = 2
 
 [node name="base_BackgroundImage" parent="Menu_CanvasLayer/Menu" instance=ExtResource("3_ixpla")]
 unique_name_in_owner = true
+visible = false
 material = SubResource("ShaderMaterial_nxvqd")
 custom_minimum_size = Vector2(1280, 720)
 layout_mode = 2
@@ -342,6 +342,7 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="PanelContainer" type="PanelContainer" parent="Menu_CanvasLayer/Menu"]
+custom_minimum_size = Vector2(0, 720)
 layout_mode = 2
 size_flags_horizontal = 0
 
@@ -376,6 +377,9 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 69)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.262745, 0.882353, 0.701961, 1)
+theme_override_colors/font_outline_color = Color(0.202238, 0.118446, 0.155337, 1)
+theme_override_constants/outline_size = 14
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = ExtResource("4_od8gl")
 theme_override_styles/hover = ExtResource("5_2n3ur")
@@ -385,7 +389,7 @@ text = "Start"
 [node name="Button_Settings" type="Button" parent="Menu_CanvasLayer/Menu/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 69)
 layout_mode = 2
-theme_override_font_sizes/font_size = 37
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = ExtResource("4_od8gl")
 theme_override_styles/hover = ExtResource("5_2n3ur")
 theme_override_styles/pressed = ExtResource("6_qsrk2")
@@ -395,7 +399,7 @@ text = "Settings"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 69)
 layout_mode = 2
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = ExtResource("4_od8gl")
 theme_override_styles/hover = ExtResource("5_2n3ur")
 theme_override_styles/pressed = ExtResource("6_qsrk2")
@@ -404,7 +408,7 @@ text = "Credits"
 [node name="Button_Highscore" type="Button" parent="Menu_CanvasLayer/Menu/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 69)
 layout_mode = 2
-theme_override_font_sizes/font_size = 37
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = ExtResource("4_od8gl")
 theme_override_styles/hover = ExtResource("5_2n3ur")
 theme_override_styles/pressed = ExtResource("6_qsrk2")
@@ -413,7 +417,7 @@ text = "Highscore"
 [node name="Quit_Button" type="Button" parent="Menu_CanvasLayer/Menu/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 69)
 layout_mode = 2
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = ExtResource("4_od8gl")
 theme_override_styles/hover = ExtResource("5_2n3ur")
 theme_override_styles/pressed = ExtResource("6_qsrk2")
@@ -422,7 +426,7 @@ text = "Quit"
 [node name="Label2" type="Label" parent="Menu_CanvasLayer/Menu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
-text = "version 1.01"
+text = "version 1.00"
 horizontal_alignment = 1
 vertical_alignment = 2
 
@@ -457,16 +461,16 @@ Lose Conditition:
 [node name="Setting_Menu" type="MarginContainer" parent="."]
 unique_name_in_owner = true
 visible = false
-offset_left = 329.0
-offset_top = 54.0
-offset_right = 1129.0
-offset_bottom = 554.0
+offset_left = 259.0
+offset_top = 134.0
+offset_right = 659.0
+offset_bottom = 576.0
 
 [node name="Setting_VBox" type="VBoxContainer" parent="Setting_Menu"]
 layout_mode = 2
 
 [node name="Master_Volume_Slider_Panel" type="Panel" parent="Setting_Menu/Setting_VBox"]
-custom_minimum_size = Vector2(500, 100)
+custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wtfd7")
 
@@ -512,7 +516,7 @@ step = 0.01
 value = 0.4
 
 [node name="Music_Volume_Slider_Panel2" type="Panel" parent="Setting_Menu/Setting_VBox"]
-custom_minimum_size = Vector2(500, 100)
+custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wtfd7")
 
@@ -536,7 +540,7 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 25
 text = "Music Volume"
 
-[node name="Master_Volume_Slider" type="HSlider" parent="Setting_Menu/Setting_VBox/Music_Volume_Slider_Panel2"]
+[node name="music_Volume_Slider" type="HSlider" parent="Setting_Menu/Setting_VBox/Music_Volume_Slider_Panel2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -558,7 +562,7 @@ step = 0.01
 value = 0.4
 
 [node name="Sound_Volume_Slider_Panel3" type="Panel" parent="Setting_Menu/Setting_VBox"]
-custom_minimum_size = Vector2(500, 100)
+custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wtfd7")
 
@@ -582,7 +586,53 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 25
 text = "Sound Volume"
 
-[node name="Master_Volume_Slider" type="HSlider" parent="Setting_Menu/Setting_VBox/Sound_Volume_Slider_Panel3"]
+[node name="sound_Volume_Slider" type="HSlider" parent="Setting_Menu/Setting_VBox/Sound_Volume_Slider_Panel3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.0
+offset_top = 18.0
+offset_right = 167.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_icons/grabber = ExtResource("4_uq5w3")
+theme_override_icons/grabber_highlight = ExtResource("5_h5faj")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_cja07")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_442mh")
+max_value = 1.0
+step = 0.01
+value = 0.4
+
+[node name="Sound_Volume_Slider_Panel4" type="Panel" parent="Setting_Menu/Setting_VBox"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wtfd7")
+
+[node name="Label" type="Label" parent="Setting_Menu/Setting_VBox/Sound_Volume_Slider_Panel4"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = -11.5
+offset_right = 59.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.262745, 0.882353, 0.701961, 1)
+theme_override_colors/font_shadow_color = Color(0.324376, 0.202315, 0.255942, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 25
+text = "Ambience Volume"
+
+[node name="ambience_Volume_Slider" type="HSlider" parent="Setting_Menu/Setting_VBox/Sound_Volume_Slider_Panel4"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -604,7 +654,7 @@ step = 0.01
 value = 0.4
 
 [node name="Player_name_change_Panel" type="Panel" parent="Setting_Menu/Setting_VBox"]
-custom_minimum_size = Vector2(500, 130)
+custom_minimum_size = Vector2(400, 130)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wtfd7")
 
@@ -615,10 +665,10 @@ anchor_left = 0.5
 anchor_top = 0.259
 anchor_right = 0.5
 anchor_bottom = 0.259
-offset_left = -129.0
-offset_top = -10.67
-offset_right = 138.0
-offset_bottom = 24.33
+offset_left = -126.0
+offset_top = -20.67
+offset_right = 141.0
+offset_bottom = 14.33
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.262745, 0.882353, 0.701961, 1)
@@ -636,10 +686,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -138.0
-offset_top = 8.0
-offset_right = 162.0
-offset_bottom = 40.0
+offset_left = -94.0
+offset_top = -5.0
+offset_right = 106.0
+offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
 placeholder_text = "enter here your name"
@@ -647,10 +697,13 @@ max_length = 40
 
 [node name="Button" type="Button" parent="Setting_Menu/Setting_VBox/Player_name_change_Panel"]
 layout_mode = 0
-offset_left = 593.0
-offset_top = 73.0
-offset_right = 713.0
-offset_bottom = 104.0
+offset_left = 143.0
+offset_top = 96.0
+offset_right = 263.0
+offset_bottom = 127.0
+theme_override_styles/normal = ExtResource("4_od8gl")
+theme_override_styles/hover = ExtResource("5_2n3ur")
+theme_override_styles/pressed = ExtResource("6_qsrk2")
 text = "Submit"
 
 [node name="Highscore_Menu" type="CanvasLayer" parent="."]
@@ -659,21 +712,6 @@ process_mode = 3
 visible = false
 script = ExtResource("6_mv5we")
 highscore_entry = ExtResource("7_g7t55")
-
-[node name="TextureRect" type="TextureRect" parent="Highscore_Menu"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -994.0
-offset_top = -371.0
-offset_right = 294.0
-offset_bottom = 72.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.66, 1.66)
-texture = ExtResource("3_d3pxi")
 
 [node name="Highscore_panel" type="MarginContainer" parent="Highscore_Menu"]
 anchors_preset = 15
@@ -718,9 +756,12 @@ offset_bottom = 80.0
 theme_override_colors/font_color = Color(0.262745, 0.882353, 0.701961, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 34
-theme_override_styles/normal = SubResource("StyleBoxFlat_n7fyp")
-text = "<- Main Menu"
+theme_override_styles/normal = ExtResource("4_od8gl")
+theme_override_styles/hover = ExtResource("5_2n3ur")
+theme_override_styles/pressed = ExtResource("6_qsrk2")
+text = "Main Menu"
 
+[connection signal="pressed" from="Credit_Panel/Panel/Button" to="Credit_Panel" method="_on_enter_button"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Menu_CanvasLayer/Menu/PanelContainer/VBoxContainer/Button_Start" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Menu_CanvasLayer/Menu/PanelContainer/VBoxContainer/Button_Settings" to="." method="_on_button_settings_pressed"]

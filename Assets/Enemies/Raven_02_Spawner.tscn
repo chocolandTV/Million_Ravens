@@ -20,7 +20,7 @@ radius = 250.0
 [node name="RavenNest" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(0.5, 0.5)
 collision_layer = 16
-collision_mask = 17
+collision_mask = 18
 motion_mode = 1
 script = ExtResource("1_jxtgj")
 
@@ -30,7 +30,7 @@ highscore_amount = 1000
 health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_qgpfd")]
-max_health = 5.0
+max_health = 100.0
 
 [node name="HealthBar" parent="." instance=ExtResource("4_n333f")]
 

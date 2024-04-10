@@ -1,20 +1,57 @@
-[gd_scene load_steps=3 format=3 uid="uid://5j3icwlg028v"]
+[gd_scene load_steps=11 format=3 uid="uid://5j3icwlg028v"]
 
 [ext_resource type="Script" path="res://Assets/Scene/autoload/sound_manager.gd" id="1_hr0pu"]
-[ext_resource type="AudioStream" uid="uid://blex13we662f1" path="res://Assets/Sounds/click(1).wav" id="1_ifr7y"]
+[ext_resource type="AudioStream" uid="uid://dyallsh1nj1o4" path="res://Assets/Sounds/click(1).mp3" id="2_8sx76"]
+[ext_resource type="AudioStream" uid="uid://dobs3pp4jt1aq" path="res://Assets/Sounds/click(2).mp3" id="3_hwht1"]
+[ext_resource type="AudioStream" uid="uid://n5kfaev37y41" path="res://Assets/Sounds/click(3).mp3" id="4_sdprb"]
+[ext_resource type="AudioStream" uid="uid://ctyqbd00l7ll7" path="res://Assets/Sounds/click(4).mp3" id="5_nj2j4"]
+[ext_resource type="AudioStream" uid="uid://b42hbt0m6c1bf" path="res://Assets/Sounds/click(5).mp3" id="6_fki2w"]
+[ext_resource type="AudioStream" uid="uid://dqmoljllv5pko" path="res://Assets/Sounds/click(6).mp3" id="7_ykenh"]
+[ext_resource type="AudioStream" uid="uid://dqyfakco0jlm6" path="res://Assets/Sounds/click.wav" id="9_x34fw"]
+[ext_resource type="AudioStream" uid="uid://c31yjn26ccnlx" path="res://Assets/Sounds/menu_music_01.mp3" id="12_cgcvn"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_00npw"]
+streams_count = 7
+stream_0/stream = ExtResource("2_8sx76")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("3_hwht1")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("4_sdprb")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("5_nj2j4")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("6_fki2w")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("7_ykenh")
+stream_5/weight = 1.0
+stream_6/stream = ExtResource("9_x34fw")
+stream_6/weight = 1.0
 
 [node name="SoundManager" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_hr0pu")
+player_attack_sounds = Array[AudioStreamMP3]([ExtResource("7_ykenh")])
+player_isCooldown_sounds = Array[AudioStreamMP3]([ExtResource("7_ykenh")])
+player_dash_sounds = Array[AudioStreamMP3]([ExtResource("7_ykenh")])
+player_getDamage_sounds = Array[AudioStreamMP3]([ExtResource("7_ykenh")])
+player_dying_sounds = Array[AudioStreamMP3]([ExtResource("7_ykenh")])
+enemys_attack_sounds = Array[AudioStreamMP3]([ExtResource("7_ykenh")])
+enemys_hit_sounds = Array[AudioStreamMP3]([ExtResource("7_ykenh")])
+enemys_dying_sounds = Array[AudioStreamMP3]([ExtResource("7_ykenh")])
+swarm_sound = ExtResource("7_ykenh")
+gameobject_fence_hit_sound = ExtResource("7_ykenh")
+gameobject_fence_destroying_sound = ExtResource("7_ykenh")
+gameobject_chest_hit_sound = ExtResource("7_ykenh")
+gameobject_chest_destoying_sound = ExtResource("7_ykenh")
+gameobject_region_unlocked_sound = ExtResource("7_ykenh")
+raven_kraehh_sounds = Array[AudioStreamMP3]([ExtResource("7_ykenh")])
+grass_gentleBreeze_sound = ExtResource("7_ykenh")
+game_music_sounds = Array[AudioStreamMP3]([ExtResource("12_cgcvn")])
 
-[node name="AudioSound" type="Node2D" parent="."]
+[node name="ui_click" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_00npw")
+bus = &"Sound"
 
-[node name="Gameplay_AS_Player" type="AudioStreamPlayer2D" parent="AudioSound"]
-stream = ExtResource("1_ifr7y")
-
-[node name="MusicSound" type="Node2D" parent="."]
-
-[node name="Music_AS_Player" type="AudioStreamPlayer2D" parent="MusicSound"]
-
-[node name="UISound" type="Node2D" parent="."]
-
-[node name="UI_AS_Player" type="AudioStreamPlayer" parent="UISound"]
+[node name="menu_music_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_cgcvn")
+bus = &"Music"

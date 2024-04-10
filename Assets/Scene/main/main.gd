@@ -18,7 +18,7 @@ var isMenuOpened : bool = true
 func _ready():
 	GameEvents.player_died.connect(on_highscore_died)
 	game_state = 0
-	get_tree().paused = false
+	get_tree().paused = true
 	GameEvents.menu_switch.connect(on_menu_switch)
 
 # RETURN GAMESTATE FOR ALL MANAGERS

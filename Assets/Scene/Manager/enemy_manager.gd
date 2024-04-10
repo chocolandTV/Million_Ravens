@@ -43,7 +43,7 @@ func playerHides(value : bool):
 		x.queue_free()
 
 func spawnEnemy(pos : Vector2):
-	print (current_wave)
+	# print (current_wave)
 	var enemy = enemyPool[current_wave].instantiate() as Node2D
 	var entities_layer = get_tree().get_first_node_in_group("entities_layer")
 
