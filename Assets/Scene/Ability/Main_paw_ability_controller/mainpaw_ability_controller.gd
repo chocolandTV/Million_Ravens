@@ -7,7 +7,6 @@ var damage = 5
 const BASEDAMAGE = 5
 var max_attack_range = 150
 var isCooldown :bool  = false
-var cooldown_attack : float = 1
 var camera_node : Camera2D
 
 func _ready():

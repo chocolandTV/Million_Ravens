@@ -1,11 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://dnrrlmxf4k62u"]
+[gd_scene load_steps=23 format=3 uid="uid://qhsshyn5172g"]
 
-[ext_resource type="Script" path="res://Assets/Scene/game_objects/fence_destroyable.gd" id="1_jrmyw"]
-[ext_resource type="Script" path="res://Assets/Scene/Component/health_component.gd" id="2_xvncn"]
-[ext_resource type="PackedScene" uid="uid://csljirmwo8vcg" path="res://Assets/Scene/Component/health_bar.tscn" id="3_2dqu0"]
-[ext_resource type="Texture2D" uid="uid://d1ovnl0p8ys78" path="res://Assets/Textures/Sprite-0009_fence-Sheet.png" id="3_n4ium"]
-[ext_resource type="Script" path="res://Assets/Scene/Component/hurtbox_component.gd" id="4_yduje"]
-[ext_resource type="Texture2D" uid="uid://bxcq2lfxwew31" path="res://Assets/Textures/Sprite-0009_fence-particle.png" id="6_n7ndu"]
+[ext_resource type="Script" path="res://Assets/Scene/game_objects/fence_destroyable.gd" id="1_ll3iw"]
+[ext_resource type="Script" path="res://Assets/Scene/Component/health_component.gd" id="2_kc6j5"]
+[ext_resource type="PackedScene" uid="uid://csljirmwo8vcg" path="res://Assets/Scene/Component/health_bar.tscn" id="3_rjodh"]
+[ext_resource type="Texture2D" uid="uid://by2783rjb1md7" path="res://Assets/Textures/Sprite-0009_fence_between-Sheet.png" id="4_esd85"]
+[ext_resource type="Script" path="res://Assets/Scene/Component/hurtbox_component.gd" id="5_l3ro5"]
+[ext_resource type="Texture2D" uid="uid://bxcq2lfxwew31" path="res://Assets/Textures/Sprite-0009_fence-particle.png" id="6_4gdrq"]
 
 [sub_resource type="Animation" id="Animation_vprtv"]
 length = 0.001
@@ -87,7 +87,7 @@ tracks/2/keys = {
 "values": [Vector2(1, 1), Vector2(1.25, 0.83), Vector2(0.91, 0.755), Vector2(1.165, 0.76), Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_lkovs"]
+[sub_resource type="Animation" id="Animation_3t2nr"]
 resource_name = "died"
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -110,7 +110,7 @@ tracks/1/path = NodePath("..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.3),
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -122,50 +122,50 @@ tracks/1/keys = {
 _data = {
 "RESET": SubResource("Animation_vprtv"),
 "damaged": SubResource("Animation_e4o7j"),
-"died": SubResource("Animation_lkovs")
+"died": SubResource("Animation_3t2nr")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jdj3x"]
-atlas = ExtResource("3_n4ium")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tetn6"]
+atlas = ExtResource("4_esd85")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_avigr"]
-atlas = ExtResource("3_n4ium")
+[sub_resource type="AtlasTexture" id="AtlasTexture_iy3ge"]
+atlas = ExtResource("4_esd85")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u6f8d"]
-atlas = ExtResource("3_n4ium")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypwws"]
+atlas = ExtResource("4_esd85")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u5pwm"]
-atlas = ExtResource("3_n4ium")
+[sub_resource type="AtlasTexture" id="AtlasTexture_845fu"]
+atlas = ExtResource("4_esd85")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vlmql"]
-atlas = ExtResource("3_n4ium")
+[sub_resource type="AtlasTexture" id="AtlasTexture_li0p7"]
+atlas = ExtResource("4_esd85")
 region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3sbxj"]
-atlas = ExtResource("3_n4ium")
+[sub_resource type="AtlasTexture" id="AtlasTexture_l38mf"]
+atlas = ExtResource("4_esd85")
 region = Rect2(256, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d8feo"]
-atlas = ExtResource("3_n4ium")
+[sub_resource type="AtlasTexture" id="AtlasTexture_byf8p"]
+atlas = ExtResource("4_esd85")
 region = Rect2(320, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gsmhg"]
-atlas = ExtResource("3_n4ium")
+[sub_resource type="AtlasTexture" id="AtlasTexture_53ymi"]
+atlas = ExtResource("4_esd85")
 region = Rect2(384, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mx17q"]
-atlas = ExtResource("3_n4ium")
+[sub_resource type="AtlasTexture" id="AtlasTexture_reyaj"]
+atlas = ExtResource("4_esd85")
 region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vdamm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jdj3x")
+"texture": SubResource("AtlasTexture_tetn6")
 }],
 "loop": true,
 "name": &"default",
@@ -173,28 +173,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_avigr")
+"texture": SubResource("AtlasTexture_iy3ge")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u6f8d")
+"texture": SubResource("AtlasTexture_ypwws")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u5pwm")
+"texture": SubResource("AtlasTexture_845fu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vlmql")
+"texture": SubResource("AtlasTexture_li0p7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3sbxj")
+"texture": SubResource("AtlasTexture_l38mf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d8feo")
+"texture": SubResource("AtlasTexture_byf8p")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gsmhg")
+"texture": SubResource("AtlasTexture_53ymi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mx17q")
+"texture": SubResource("AtlasTexture_reyaj")
 }],
 "loop": true,
 "name": &"dying",
@@ -204,20 +204,19 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhxpf"]
 size = Vector2(52, 43)
 
-[sub_resource type="Curve" id="Curve_i10gf"]
+[sub_resource type="Curve" id="Curve_8ht6n"]
 _data = [Vector2(0, 0.956044), 0.0, 0.0, 0, 0, Vector2(0.984802, 0.0246099), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="Fence_destroyable" type="StaticBody2D"]
-z_index = -1
-script = ExtResource("1_jrmyw")
+script = ExtResource("1_ll3iw")
 
 [node name="HealthComponent" type="Node" parent="."]
-script = ExtResource("2_xvncn")
+script = ExtResource("2_kc6j5")
 isGameObject = true
-max_health = 25.0
+max_health = 10.0
 
-[node name="HealthBar" parent="." instance=ExtResource("3_2dqu0")]
+[node name="HealthBar" parent="." instance=ExtResource("3_rjodh")]
 visible = false
 offset_top = -31.0
 offset_bottom = -21.0
@@ -230,7 +229,7 @@ libraries = {
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vdamm")
-frame_progress = 0.664175
+animation = &"dying"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 4.5)
@@ -239,7 +238,7 @@ shape = SubResource("RectangleShape2D_xhxpf")
 [node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 collision_layer = 0
 collision_mask = 64
-script = ExtResource("4_yduje")
+script = ExtResource("5_l3ro5")
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
@@ -254,10 +253,10 @@ one_shot = true
 explosiveness = 1.0
 randomness = 1.0
 local_coords = true
-texture = ExtResource("6_n7ndu")
+texture = ExtResource("6_4gdrq")
 direction = Vector2(1, -1)
 spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 24.5
 initial_velocity_max = 24.5
-scale_amount_curve = SubResource("Curve_i10gf")
+scale_amount_curve = SubResource("Curve_8ht6n")

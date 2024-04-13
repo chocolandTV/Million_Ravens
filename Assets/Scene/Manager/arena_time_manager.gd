@@ -10,9 +10,9 @@ class_name arena_time_manager
 @onready var filemanager : FileManager = get_node("/root/File_Manager")
 @onready var deltaTimer : ArenaDeltaTimer = $%ArenaTimeUI
 
-var text : String ="You win: You survived 10 minutes"
+var text : String ="You win: The Ravenlord has fallen"
 func _ready():
-      timer.timeout.connect(on_timer_timeout)
+      # timer.timeout.connect(on_timer_timeout)
       GameEvents.winGame_boss_down.connect(on_boss_down)
 
 
@@ -27,7 +27,6 @@ func on_timer_timeout():
       win_game()
 
 func on_boss_down():
-      text="the Ravenlord has fallen, good job"
       win_game()
 
 func win_game():

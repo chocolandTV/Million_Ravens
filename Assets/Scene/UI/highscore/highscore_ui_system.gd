@@ -26,6 +26,8 @@ func _ready():
 	print("authenticate")
 	_authentication_request()
 	# _change_player_name(globalVars.gv_Settings["player_name"])
+	#_get_player_name()
+
 func _authentication_request():
 	# Check if a player session exists
 	player_session_exists = false
@@ -81,6 +83,7 @@ func _on_authentication_request_completed(result, response_code, headers, body):
 	auth_http.queue_free()
 	# Get leaderboards
 	_get_leaderboards()
+	_get_player_name()
 
 func _get_leaderboards():
 	print ("Getting Leaderboards")
@@ -185,5 +188,5 @@ func _on_player_get_name_request_completed(result, response_code, headers, body)
 	json.parse(body.get_string_from_utf8())
 	
 	print("HighscoreSystem: get Playername:" + json.get_data().name)
-	globalVars.gv_Settings["player_name"] = json.get_data().name
+	GlobalVariables.gv_Settings["player_name"] = json.get_data().name
 	get_name_http.queue_free()

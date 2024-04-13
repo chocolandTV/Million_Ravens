@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://gbw6bwm54644"]
+[gd_scene load_steps=42 format=3 uid="uid://gbw6bwm54644"]
 
 [ext_resource type="PackedScene" uid="uid://dwsgmvwvvu86q" path="res://Assets/Scene/Manager/arena_time_manager.tscn" id="1_0trha"]
 [ext_resource type="PackedScene" uid="uid://dtmli75wgeic" path="res://Assets/Modules/Camera/camera.tscn" id="1_k1roq"]
@@ -34,6 +34,8 @@
 [ext_resource type="PackedScene" uid="uid://bs86m2ataw12m" path="res://Assets/Enemies/Formations/Wave_formation.tscn" id="19_td0u1"]
 [ext_resource type="PackedScene" uid="uid://bh7w3ikq7r38w" path="res://Assets/Enemies/swarm.tscn" id="29_cy8gv"]
 [ext_resource type="PackedScene" uid="uid://cyf8d7oi7fjsp" path="res://Assets/Scene/UI/vignette.tscn" id="33_n0ujm"]
+[ext_resource type="PackedScene" uid="uid://dnrrlmxf4k62u" path="res://Assets/Scene/game_objects/Destroyed_Objects/fence_destroyable.tscn" id="34_uxvxy"]
+[ext_resource type="PackedScene" uid="uid://qhsshyn5172g" path="res://Assets/Scene/game_objects/Destroyed_Objects/fence_bt_destroyable.tscn" id="35_3rq2w"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_tj4rp"]
 noise_type = 0
@@ -91,7 +93,6 @@ arena_time_manager = NodePath("../ArenaTimeManager")
 
 [node name="ExperienceBar" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("3_aleo8")]
 unique_name_in_owner = true
-visible = false
 offset = Vector2(26, 173)
 transform = Transform2D(1, 0, 0, 1, 26, 173)
 experience_manager = NodePath("../ExperienceManager")
@@ -105,10 +106,13 @@ upgrade_pool = Array[Resource("res://Assets/Ressources/upgrades/ability_upgrade.
 experience_manager = NodePath("../ExperienceManager")
 
 [node name="ExperienceManager" parent="." instance=ExtResource("4_r8j7u")]
+start_experience = 9000.0
 
-[node name="EnemyManager" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("1_nk1n0")]
+[node name="EnemyManager" parent="." node_paths=PackedStringArray("amanager") instance=ExtResource("1_nk1n0")]
+isEnabled = false
+START_WAITTIME = 1.0
 enemyPool = Array[PackedScene]([ExtResource("16_iqjwo"), ExtResource("17_ylcx0"), ExtResource("18_k1wd0"), ExtResource("17_dhdr5"), ExtResource("18_2fti6"), ExtResource("19_td0u1")])
-arena_time_manager = NodePath("../ArenaTimeManager")
+amanager = NodePath("../ArenaTimeManager")
 
 [node name="Game_Camera" parent="." instance=ExtResource("1_k1roq")]
 position = Vector2(231, 203)
@@ -302,5 +306,27 @@ rotation = 6.28318
 position = Vector2(6916, 3593)
 rotation = -1.57079
 
+[node name="Fence_destroyable" parent="Foreground" instance=ExtResource("34_uxvxy")]
+position = Vector2(7189, 2167)
+
+[node name="Fence_destroyable5" parent="Foreground" instance=ExtResource("35_3rq2w")]
+z_index = 1
+position = Vector2(7228, 2166)
+
+[node name="Fence_destroyable2" parent="Foreground" instance=ExtResource("34_uxvxy")]
+position = Vector2(7267, 2167)
+
+[node name="Fence_destroyable6" parent="Foreground" instance=ExtResource("35_3rq2w")]
+z_index = 1
+position = Vector2(7305, 2167)
+
+[node name="Fence_destroyable3" parent="Foreground" instance=ExtResource("34_uxvxy")]
+position = Vector2(7342, 2167)
+
+[node name="Fence_destroyable4" parent="Foreground" instance=ExtResource("34_uxvxy")]
+position = Vector2(7394, 2167)
+
 [node name="Vignette" parent="." instance=ExtResource("33_n0ujm")]
 layer = 4
+
+[editable path="Main_Menu"]

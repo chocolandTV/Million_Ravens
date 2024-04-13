@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 class_name Enemy01_Ravii
 
-@onready var health_component : HealthComponent = $HealthComponent
 # @onready var hit_box : Area2D = $HitboxComponent
 @onready var anim : AnimationPlayer = $AnimationPlayer
 @onready var timer : Timer = $Timer

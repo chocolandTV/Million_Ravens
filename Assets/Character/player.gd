@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var hurtboxComponent:Area2D = $HurtboxComponent
 @onready var animation_player : AnimationPlayer =$AnimationPlayer
 @onready var visual_body : Node2D = $Visuals
+@onready var dash_particle_effect: CPUParticles2D = $%Shield_ParticleSys
 const SPEED = 150.0
 const DASH_SPEED = 1500.0
 const ACCELERATION_SMOOTHING = 25
@@ -44,6 +45,7 @@ func player_dash():
 	var direction = movement_vector.normalized()
 	var target_velocity = direction * DASH_SPEED * speed_multiplier
 	velocity += target_velocity
+	dash_particle_effect.emitting = true
 	move_and_slide()
 
 func on_invincible_timeout():

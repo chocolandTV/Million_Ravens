@@ -35,7 +35,8 @@ func _ready():
 func _on_timer_timeout():
       splash.visible = false
       menu.visible = true
-
+func setParallax(value : bool):
+      $%ParallaxBackground.visible = value
 func _on_quit_button_pressed():
       filemanager.save_game()
       get_tree().quit()
@@ -95,10 +96,10 @@ func toggleSettingMenu():
       setting_enabled = !setting_enabled
       setting_menu.visible = setting_enabled
       if setting_enabled:
-            isCreditsOn = !isCreditsOn
+            isCreditsOn = false
             credit_Panel.visible = isCreditsOn
-      highscore_ui_system._get_player_name()
-      playername_textField.placeholder_text = global_vars.gv_Settings["player_name"]
+      # highscore_ui_system._get_player_name()
+      # playername_textField.placeholder_text = global_vars.gv_Settings["player_name"]
       if !setting_enabled:
             filemanager.save_game()
       SoundManager.Emit_Sound(SoundManager.soundType.s_ui_click,Vector2.ZERO)

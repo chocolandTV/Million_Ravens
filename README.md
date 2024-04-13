@@ -22,3 +22,5 @@ if result.is_empty():
 -lighning
 ## Quality of Life
 - Observerraben radius
+- attack in direction
+-chest drop fix, coin bigger

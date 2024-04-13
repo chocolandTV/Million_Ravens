@@ -19,7 +19,8 @@ signal ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrade:Dictionary
 signal ability_upgrade_newLife()
 #signal update LIFE_UI
 signal PlayerLife_UI_update(value : int)
-
+#signal Player is Hiding
+signal playerIsHiding(value : bool)
 #PLAYER DAMAGE
 signal player_damaged()
 #signal player died
@@ -35,6 +36,9 @@ signal menu_switch()
 ##########################################################
 func emit_raven_died():
 	raven_died.emit()
+
+func emit_playerIsHiding(value:bool):
+	playerIsHiding.emit(value)
 
 func emit_player_damaged():
 	player_damaged.emit()

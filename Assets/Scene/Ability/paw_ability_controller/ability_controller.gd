@@ -2,47 +2,47 @@ extends Node
 
 @onready var settings : Global_Variables = get_node("/root/GlobalVariables")
 @onready var timer : Timer  =$Timer
-@export var paw_ability: PackedScene
-@export var damage = 5
+@export var left_paw_ability: PackedScene
+var damage = 5
 var base_wait_time
-
+var camera_node : Camera2D
+var isCooldown :bool  = false
 const BASEDAMAGE = 5
-const MAX_RANGE = 150
 
 func _ready():
       base_wait_time = $Timer.wait_time
       timer.timeout.connect(on_timer_timeout)
       GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
+      camera_node = get_tree().get_first_node_in_group("camera") as Camera2D
 
+func _input(event):
+      if event.is_action_pressed("left_attack"):
+            main_paw_attack()
 
-
-func on_timer_timeout():
-
+func main_paw_attack():
+      if isCooldown:
+            return
+      isCooldown = true
       var player = get_tree().get_first_node_in_group("player") as Node2D
       if player == null:
             return
-      var enemies = get_tree().get_nodes_in_group("enemy")
-      enemies = enemies.filter(func(enemy: Node2D):
-            return enemy.global_position.distance_squared_to(player.global_position) < pow (MAX_RANGE, 2)
-            )
-      if enemies.size() == 0:
-            return
-
-      enemies.sort_custom(func(a: Node2D, b: Node2D):
-            var a_distance = a.global_position.distance_squared_to(player.global_position)
-            var b_distance = b.global_position.distance_squared_to(player.global_position)
-            return a_distance < b_distance
-      )
-      var paw_instance = paw_ability.instantiate() as PawAbility
+      
+      var paw_instance = left_paw_ability.instantiate() as PawAbility
       var foreground_layer = get_tree().get_first_node_in_group("foreground_layer")
       foreground_layer.add_child(paw_instance)
       paw_instance.hitbox_component.damage = damage
-
-      paw_instance.global_position = enemies[0].global_position
+      
+      var camera_offset:Vector2 = camera_node.get_local_mouse_position() + camera_node.global_position
+      paw_instance.global_position = camera_offset
       paw_instance.global_position += Vector2.RIGHT.rotated(randf_range(0, TAU)) * 4
 
-      var enemy_direction = enemies[0].global_position - paw_instance.global_position
-      paw_instance.rotation = enemy_direction.angle()
+      var direction = paw_instance.global_position - paw_instance.global_position
+      paw_instance.rotation = direction.angle()
+
+func on_timer_timeout():
+      isCooldown = false
+      #GAME EVENT ABILITY 1 MAIN IS ACTIVE
+      # GameEvents.emit_ability_status_changed(0,true)
 
 func on_ability_upgrade_added(upgrade : AbilityUpgrade, current_upgrades: Dictionary):
       if upgrade.id == "paw_attack_damage":

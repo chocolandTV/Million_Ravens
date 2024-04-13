@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb5joebfqgqm1"]
+
+[ext_resource type="PackedScene" uid="uid://qhsshyn5172g" path="res://Assets/Scene/game_objects/Destroyed_Objects/fence_bt_destroyable.tscn" id="1_dxfq2"]
+[ext_resource type="PackedScene" uid="uid://dnrrlmxf4k62u" path="res://Assets/Scene/game_objects/Destroyed_Objects/fence_destroyable.tscn" id="2_5oqrk"]
+
+[node name="FenceTerrain" type="Node2D"]
+
+[node name="Fence_destroyable_bt" parent="." instance=ExtResource("1_dxfq2")]
+z_index = 1
+position = Vector2(38, 0)
+
+[node name="Fence_destroyable" parent="." instance=ExtResource("2_5oqrk")]
+
+[node name="Fence_destroyable_bt2" parent="." instance=ExtResource("1_dxfq2")]
+z_index = 1
+position = Vector2(114, 0)
+
+[node name="Fence_destroyable2" parent="." instance=ExtResource("2_5oqrk")]
+position = Vector2(76, 0)
+
+[node name="Fence_destroyable_bt3" parent="." instance=ExtResource("1_dxfq2")]
+z_index = 1
+position = Vector2(189, 0)
+
+[node name="Fence_destroyable3" parent="." instance=ExtResource("2_5oqrk")]
+position = Vector2(151, 0)
+
+[node name="Fence_destroyable_bt4" parent="." instance=ExtResource("1_dxfq2")]
+z_index = 1
+position = Vector2(266, 0)
+
+[node name="Fence_destroyable4" parent="." instance=ExtResource("2_5oqrk")]
+position = Vector2(228, 0)
+
+[node name="Fence_destroyable_bt5" parent="." instance=ExtResource("1_dxfq2")]
+z_index = 1
+position = Vector2(341, 0)
+
+[node name="Fence_destroyable5" parent="." instance=ExtResource("2_5oqrk")]
+position = Vector2(303, 0)

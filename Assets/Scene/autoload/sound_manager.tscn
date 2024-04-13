@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://5j3icwlg028v"]
+[gd_scene load_steps=17 format=3 uid="uid://5j3icwlg028v"]
 
 [ext_resource type="Script" path="res://Assets/Scene/autoload/sound_manager.gd" id="1_hr0pu"]
 [ext_resource type="AudioStream" uid="uid://dyallsh1nj1o4" path="res://Assets/Sounds/click(1).mp3" id="2_8sx76"]
@@ -8,7 +8,11 @@
 [ext_resource type="AudioStream" uid="uid://b42hbt0m6c1bf" path="res://Assets/Sounds/click(5).mp3" id="6_fki2w"]
 [ext_resource type="AudioStream" uid="uid://dqmoljllv5pko" path="res://Assets/Sounds/click(6).mp3" id="7_ykenh"]
 [ext_resource type="AudioStream" uid="uid://dqyfakco0jlm6" path="res://Assets/Sounds/click.wav" id="9_x34fw"]
+[ext_resource type="AudioStream" uid="uid://d05opjjmnx2yc" path="res://Assets/Sounds/ui_game_over.mp3" id="10_650gq"]
+[ext_resource type="AudioStream" uid="uid://8stx63mh2g4k" path="res://Assets/Sounds/ui_game_win.mp3" id="11_vkjo5"]
 [ext_resource type="AudioStream" uid="uid://c31yjn26ccnlx" path="res://Assets/Sounds/menu_music_01.mp3" id="12_cgcvn"]
+[ext_resource type="AudioStream" uid="uid://bxd5s8vtfvmqh" path="res://Assets/Sounds/ui_player_reached_next_level.mp3" id="12_lx61a"]
+[ext_resource type="AudioStream" uid="uid://d0sh8syh3q5ke" path="res://Assets/Sounds/ui_player_selected_upgrade.mp3" id="13_dpu3d"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_00npw"]
 streams_count = 7
@@ -26,6 +30,20 @@ stream_5/stream = ExtResource("7_ykenh")
 stream_5/weight = 1.0
 stream_6/stream = ExtResource("9_x34fw")
 stream_6/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bb3vf"]
+streams_count = 2
+stream_0/stream = ExtResource("2_8sx76")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_nj2j4")
+stream_1/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2isa8"]
+streams_count = 2
+stream_0/stream = ExtResource("2_8sx76")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_sdprb")
+stream_1/weight = 1.0
 
 [node name="SoundManager" type="Node2D"]
 process_mode = 3
@@ -55,3 +73,111 @@ bus = &"Sound"
 [node name="menu_music_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_cgcvn")
 bus = &"Music"
+
+[node name="ui_game_over" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_650gq")
+bus = &"Sound"
+
+[node name="ui_game_win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_vkjo5")
+bus = &"Sound"
+
+[node name="ui_player_reached_next_level" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_lx61a")
+bus = &"Sound"
+
+[node name="ui_player_selected_upgrade" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_dpu3d")
+bus = &"Sound"
+
+[node name="player_attack_sounds" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_bb3vf")
+bus = &"Sound"
+
+[node name="player_isCooldown_sounds" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_bb3vf")
+bus = &"Sound"
+
+[node name="player_dash_sounds" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_bb3vf")
+bus = &"Sound"
+
+[node name="player_getDamage_sounds" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_bb3vf")
+bus = &"Sound"
+
+[node name="player_dying_sounds" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_bb3vf")
+bus = &"Sound"
+
+[node name="enemy_01_attack" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_2isa8")
+bus = &"Sound"
+
+[node name="enemy_02_attack" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_2isa8")
+bus = &"Sound"
+
+[node name="enemy_03_attack" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_2isa8")
+bus = &"Sound"
+
+[node name="enemy_04_attack" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_2isa8")
+bus = &"Sound"
+
+[node name="enemy_05_Boss_attack" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_2isa8")
+bus = &"Sound"
+
+[node name="enemy_swarm" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_2isa8")
+bus = &"Sound"
+
+[node name="gameObject_fence_hit" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_2isa8")
+bus = &"Sound"
+
+[node name="gameObject_fence_dead" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_2isa8")
+bus = &"Sound"
+
+[node name="gameObject_chest_hit" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_2isa8")
+bus = &"Sound"
+
+[node name="gameObject_chest_dead" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_2isa8")
+bus = &"Sound"
+
+[node name="gameObject_region_unlocked" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_2isa8")
+bus = &"Sound"
+
+[node name="ambience_raven_kraeh" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_2isa8")
+bus = &"Ambience"
+
+[node name="ambience_grass_gentleBreeze" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_2isa8")
+bus = &"Ambience"
+
+[node name="ambience_storm" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_2isa8")
+bus = &"Ambience"
+
+[node name="music_01_christyBacon" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_2isa8")
+bus = &"Ambience"
+
+[node name="music_02_B-BiG_J" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_2isa8")
+bus = &"Ambience"
+
+[node name="music_02_B-BiG_J2" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_2isa8")
+bus = &"Ambience"
+
+[node name="music_04_boss_theme_The_Mblastr" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_2isa8")
+bus = &"Ambience"

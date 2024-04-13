@@ -1,19 +1,21 @@
-[gd_scene load_steps=39 format=3 uid="uid://c2po4yygqv25f"]
+[gd_scene load_steps=41 format=3 uid="uid://c2po4yygqv25f"]
 
 [ext_resource type="Script" path="res://Assets/Scene/UI/Main_Menu.gd" id="1_0kdyt"]
 [ext_resource type="Texture2D" uid="uid://b0gx35n3pyr1i" path="res://Assets/Textures/Sprite-0006_LootLocker-Sheet.png" id="2_cw1xd"]
 [ext_resource type="PackedScene" uid="uid://bak46xmq64iyc" path="res://Assets/Textures/UI/texture_rect.tscn" id="3_ixpla"]
 [ext_resource type="Texture2D" uid="uid://y33fjpxbkh41" path="res://Assets/Textures/Sprite-0018_Raven_logo.png" id="4_5k81t"]
 [ext_resource type="StyleBox" uid="uid://dsubedcjd0m1g" path="res://Assets/Textures/UI/Normal_Button.tres" id="4_od8gl"]
-[ext_resource type="Shader" path="res://Assets/Shaders/TitleScreen.gdshader" id="4_svw16"]
 [ext_resource type="Texture2D" uid="uid://p6rt41s08b7g" path="res://Assets/Textures/UI/Sprite-0015_UI_knob.png" id="4_uq5w3"]
 [ext_resource type="StyleBox" uid="uid://d16hmc62p4hhg" path="res://Assets/Textures/UI/Normal_Button_Highlighted.tres" id="5_2n3ur"]
 [ext_resource type="Texture2D" uid="uid://c1x0dbwb20jea" path="res://Assets/Textures/target.png" id="5_h5faj"]
 [ext_resource type="Script" path="res://Assets/Scene/UI/highscore/highscore_menu.gd" id="6_mv5we"]
 [ext_resource type="StyleBox" uid="uid://dikvv1e2y5t12" path="res://Assets/Textures/UI/Normal_Button_pressed.tres" id="6_qsrk2"]
 [ext_resource type="PackedScene" uid="uid://b7yh6fykenerv" path="res://Assets/Scene/UI/highscore/highscore_entry.tscn" id="7_g7t55"]
+[ext_resource type="Script" path="res://Assets/Scene/UI/menu_raven_random_speed.gd" id="11_gpy2b"]
 [ext_resource type="Texture2D" uid="uid://c2qctfglsw8kq" path="res://Assets/Textures/UI/Sprite-0020_Card_Item.png" id="11_pgkrv"]
 [ext_resource type="Script" path="res://Assets/Scene/UI/Credit_Panel.gd" id="12_4voot"]
+[ext_resource type="Script" path="res://Assets/Textures/UI/TitleScreenEffect.gd" id="12_4yuxu"]
+[ext_resource type="Texture2D" uid="uid://dxqs4sgggdrdp" path="res://Assets/Textures/UI/parallax_frame.png" id="12_r0hkl"]
 [ext_resource type="Texture2D" uid="uid://bh5x2hfe7cl6s" path="res://Assets/Textures/UI/dev.png" id="12_yap77"]
 [ext_resource type="SpriteFrames" uid="uid://ddugwwces31m" path="res://Assets/Enemies/AnimatedSprite/Raven_02_FireStar.tres" id="13_djfnm"]
 [ext_resource type="Texture2D" uid="uid://dqf6yrnfld85x" path="res://Assets/Textures/Parallax/L1_Sun.png" id="13_lua0k"]
@@ -23,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://2r4i23pnn6vt" path="res://Assets/Textures/Parallax/L4_CloudsNear.png" id="16_fav26"]
 [ext_resource type="Texture2D" uid="uid://hdvyv0e1p1ud" path="res://Assets/Textures/Parallax/L5_MountainNear.png" id="17_dua7v"]
 [ext_resource type="Texture2D" uid="uid://dg7j30k6eivfw" path="res://Assets/Textures/Parallax/L6_Particles.png" id="18_r1o1o"]
+[ext_resource type="Material" uid="uid://dh0w08d804bmn" path="res://Assets/Shaders/main_menu_backgroundImage.tres" id="21_i2m5y"]
 [ext_resource type="Texture2D" uid="uid://bd23l8wwluunr" path="res://Assets/Textures/TitleScreen-MaskEffect.png" id="21_vmnqa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jnhba"]
@@ -95,10 +98,6 @@ animations = [{
 "name": &"default",
 "speed": 6.0
 }]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nxvqd"]
-shader = ExtResource("4_svw16")
-shader_parameter/bright_amount = 0.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtfd7"]
 bg_color = Color(0, 0, 0, 0.729412)
@@ -194,11 +193,17 @@ motion_scale = Vector2(0, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer7"]
 z_index = 4
-position = Vector2(-27.08, -134.975)
+position = Vector2(200, -134.975)
 sprite_frames = ExtResource("13_djfnm")
 animation = &"flying"
 autoplay = "flying"
 frame_progress = 0.0803135
+script = ExtResource("11_gpy2b")
+timer_random_range = Vector2(5, 20)
+
+[node name="Timer" type="Timer" parent="ParallaxBackground/ParallaxLayer7/AnimatedSprite2D"]
+wait_time = 2.0
+autostart = true
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer7"]
 z_index = 4
@@ -207,6 +212,15 @@ sprite_frames = ExtResource("13_djfnm")
 animation = &"flying"
 autoplay = "flying"
 frame_progress = 0.68033
+script = ExtResource("11_gpy2b")
+min_position = -150.0
+max_position = 150.0
+floating_angle = 15.0
+timer_random_range = Vector2(5, 20)
+
+[node name="Timer" type="Timer" parent="ParallaxBackground/ParallaxLayer7/AnimatedSprite2D2"]
+wait_time = 2.0
+autostart = true
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer7"]
 z_index = 4
@@ -215,6 +229,15 @@ sprite_frames = ExtResource("13_djfnm")
 animation = &"flying"
 autoplay = "flying"
 frame_progress = 0.68033
+script = ExtResource("11_gpy2b")
+min_position = -120.0
+max_position = 120.0
+floating_angle = 10.0
+timer_random_range = Vector2(2, 5)
+
+[node name="Timer" type="Timer" parent="ParallaxBackground/ParallaxLayer7/AnimatedSprite2D3"]
+wait_time = 2.0
+autostart = true
 
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer7"]
 z_index = 4
@@ -223,6 +246,14 @@ sprite_frames = ExtResource("13_djfnm")
 animation = &"flying"
 autoplay = "flying"
 frame_progress = 0.68033
+script = ExtResource("11_gpy2b")
+min_position = -100.0
+max_position = 100.0
+timer_random_range = Vector2(5, 20)
+
+[node name="Timer" type="Timer" parent="ParallaxBackground/ParallaxLayer7/AnimatedSprite2D4"]
+wait_time = 2.0
+autostart = true
 
 [node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer7"]
 z_index = 4
@@ -231,6 +262,11 @@ sprite_frames = ExtResource("13_djfnm")
 animation = &"flying"
 autoplay = "flying"
 frame_progress = 0.68033
+script = ExtResource("11_gpy2b")
+
+[node name="Timer" type="Timer" parent="ParallaxBackground/ParallaxLayer7/AnimatedSprite2D5"]
+wait_time = 2.0
+autostart = true
 
 [node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer7"]
 z_index = 4
@@ -239,6 +275,11 @@ sprite_frames = ExtResource("13_djfnm")
 animation = &"flying"
 autoplay = "flying"
 frame_progress = 0.68033
+script = ExtResource("11_gpy2b")
+
+[node name="Timer" type="Timer" parent="ParallaxBackground/ParallaxLayer7/AnimatedSprite2D6"]
+wait_time = 2.0
+autostart = true
 
 [node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer7"]
 z_index = 4
@@ -247,8 +288,14 @@ sprite_frames = ExtResource("13_djfnm")
 animation = &"flying"
 autoplay = "flying"
 frame_progress = 0.68033
+script = ExtResource("11_gpy2b")
+
+[node name="Timer" type="Timer" parent="ParallaxBackground/ParallaxLayer7/AnimatedSprite2D7"]
+wait_time = 2.0
+autostart = true
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxBackground"]
+material = ExtResource("21_i2m5y")
 offset_left = -981.0
 offset_top = -355.0
 offset_right = 297.0
@@ -256,6 +303,22 @@ offset_bottom = 365.0
 pivot_offset = Vector2(-38.155, 0)
 texture = ExtResource("21_vmnqa")
 expand_mode = 1
+script = ExtResource("12_4yuxu")
+
+[node name="Timer" type="Timer" parent="ParallaxBackground/TextureRect"]
+wait_time = 120.0
+autostart = true
+
+[node name="effect_Timer" type="Timer" parent="ParallaxBackground/TextureRect"]
+wait_time = 0.05
+one_shot = true
+
+[node name="parallax_frame" type="TextureRect" parent="ParallaxBackground"]
+offset_left = -284.08
+offset_top = -256.975
+offset_right = 305.92
+offset_bottom = 233.025
+texture = ExtResource("12_r0hkl")
 
 [node name="Credit_Panel" type="MarginContainer" parent="."]
 unique_name_in_owner = true
@@ -335,7 +398,7 @@ layout_mode = 2
 [node name="base_BackgroundImage" parent="Menu_CanvasLayer/Menu" instance=ExtResource("3_ixpla")]
 unique_name_in_owner = true
 visible = false
-material = SubResource("ShaderMaterial_nxvqd")
+material = ExtResource("21_i2m5y")
 custom_minimum_size = Vector2(1280, 720)
 layout_mode = 2
 expand_mode = 2
