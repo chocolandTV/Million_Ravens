@@ -1,12 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://dawavi4jsphc"]
 
 [ext_resource type="Script" path="res://Assets/Scene/Ability/paw_ability_controller/ability_controller.gd" id="1_w82jg"]
-[ext_resource type="PackedScene" uid="uid://4mlj1c18armv" path="res://Assets/Scene/Ability/paw_ability/paw_ability.tscn" id="2_dj1gb"]
+[ext_resource type="PackedScene" uid="uid://epeek0shrop0" path="res://Assets/Scene/Ability/Right_paw_ability/paw_ability.tscn" id="2_nq3l7"]
 
 [node name="AbilityController" type="Node"]
 script = ExtResource("1_w82jg")
-paw_ability = ExtResource("2_dj1gb")
-damage = 1
+right_paw_ability = ExtResource("2_nq3l7")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

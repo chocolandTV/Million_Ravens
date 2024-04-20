@@ -15,6 +15,10 @@ run/main_scene="res://Assets/Scene/main/main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+driver/mix_rate=48000
+
 [autoload]
 
 File_Manager="*res://Assets/Scene/autoload/file_manager.tscn"

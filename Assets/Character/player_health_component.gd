@@ -5,8 +5,8 @@ class_name PlayerHealthComponent
 @export var player_animations : AnimationPlayer
 @onready var globalVars : Global_Variables = get_node("/root/GlobalVariables")
 signal died
-var player_health : int  = 1
-const BASEHEALTH : int  =1 
+var player_health : int  = 100
+const BASEHEALTH : int  =100 
 func _ready():
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 
@@ -15,6 +15,7 @@ func damage(damage_amount : int):
 		# GAME OVER
 		player_health -= damage_amount
 		GameEvents.emit_PlayerLife_UI_update(player_health)
+		SoundManager.Emit_Sound(SoundManager.soundType.s_player_dying_sounds,Vector2.ZERO)
 		GameEvents.emit_player_died()
 	GameEvents.emit_player_damaged()
 	player_health -= damage_amount
@@ -22,6 +23,7 @@ func damage(damage_amount : int):
 	# Animate
 	#if !player_animations.is_playing:
 	player_animations.play("receive_damage")
+	SoundManager.Emit_Sound(SoundManager.soundType.s_player_getDamage_sounds,Vector2.ZERO)
 
 func on_damage_invisibility_on():
 	

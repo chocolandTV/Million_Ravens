@@ -5,7 +5,7 @@ extends Node
 @export var amanager : arena_time_manager
 @onready var timer : Timer = $Timer
 
-const MIN_DISTANCE : float =  400
+const MIN_DISTANCE : float =  1200
 var waittime : float = 0.5
 var isPlayerHiding : bool = false
 var spawnPool : Array[Node2D]
@@ -25,7 +25,7 @@ func resetAll():
 	waittime = START_WAITTIME
 	current_wave = 0
 func increase_raven_spawn():
-	waittime = min(0.01,waittime - 0.01)
+	waittime = max(0.01,waittime - 0.01)
 	timer.wait_time  =  waittime
 	print("Wave: decrased time to : " + str(waittime))
 func increase_wave():

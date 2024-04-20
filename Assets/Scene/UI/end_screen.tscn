@@ -1,10 +1,48 @@
-[gd_scene load_steps=2 format=3 uid="uid://cusf0eprmxqmi"]
+[gd_scene load_steps=9 format=3 uid="uid://cusf0eprmxqmi"]
 
 [ext_resource type="Script" path="res://Assets/Scene/UI/end_screen.gd" id="1_eagpv"]
+[ext_resource type="Texture2D" uid="uid://tdqul4ymtndy" path="res://Assets/Textures/feather.png" id="2_mcs6w"]
+[ext_resource type="Texture2D" uid="uid://dxqs4sgggdrdp" path="res://Assets/Textures/UI/parallax_frame.png" id="2_tm7dx"]
+[ext_resource type="StyleBox" uid="uid://dsubedcjd0m1g" path="res://Assets/Textures/UI/Normal_Button.tres" id="3_r3eer"]
+[ext_resource type="StyleBox" uid="uid://d16hmc62p4hhg" path="res://Assets/Textures/UI/Normal_Button_Highlighted.tres" id="4_5esgs"]
+[ext_resource type="StyleBox" uid="uid://dikvv1e2y5t12" path="res://Assets/Textures/UI/Normal_Button_pressed.tres" id="5_vsrfa"]
+
+[sub_resource type="Gradient" id="Gradient_ee5e6"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.0863787, 0.255814, 0.401993, 0.521595, 0.684385, 0.82392, 0.900332, 1)
+colors = PackedColorArray(1, 1, 0, 1, 0.960784, 0, 0.0117647, 1, 0.262745, 0.882353, 0.701961, 1, 0.215686, 0, 0.670588, 1, 1, 0, 0.596078, 1, 0.701961, 1, 0, 1, 1, 1, 1, 1, 0.705882, 0, 0.733333, 1, 0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8pnnn"]
+texture = ExtResource("2_tm7dx")
+texture_margin_left = 50.0
+texture_margin_top = 50.0
+texture_margin_right = 50.0
+texture_margin_bottom = 50.0
 
 [node name="EndScreen" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_eagpv")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(631, 360)
+amount = 40
+lifetime = 5.0
+speed_scale = 1.5
+randomness = 1.0
+local_coords = true
+texture = ExtResource("2_mcs6w")
+direction = Vector2(0, -1)
+spread = 46.25
+initial_velocity_min = 719.62
+initial_velocity_max = 719.62
+angular_velocity_min = 273.1
+angular_velocity_max = 455.17
+linear_accel_min = 100.0
+linear_accel_max = 100.0
+angle_max = 720.0
+color_ramp = SubResource("Gradient_ee5e6")
+hue_variation_min = 1.0
+hue_variation_max = 1.0
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -17,6 +55,7 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_8pnnn")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
 custom_minimum_size = Vector2(350, 0)
@@ -32,7 +71,12 @@ layout_mode = 2
 [node name="TitleLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 45
+theme_override_colors/font_color = Color(0.262745, 0.882353, 0.701961, 1)
+theme_override_colors/font_shadow_color = Color(0.247059, 0.14902, 0.192157, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 6
+theme_override_font_sizes/font_size = 80
 text = "Victory"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -41,30 +85,69 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
-text = "____________
-You survived 10 minutes
-____________"
+text = "You Killed the Ravenlord.
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RestartButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="newHighscoreLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0.262745, 0.882353, 0.701961, 1)
+theme_override_colors/font_shadow_color = Color(0.247059, 0.14902, 0.192157, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 4
 theme_override_font_sizes/font_size = 45
+text = "+New highscore!
+"
+horizontal_alignment = 1
+
+[node name="ContinueButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(440, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_r3eer")
+theme_override_styles/hover = ExtResource("4_5esgs")
+theme_override_styles/pressed = ExtResource("5_vsrfa")
+theme_override_styles/disabled = ExtResource("3_r3eer")
+disabled = true
+text = "Continue"
+
+[node name="RestartButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(440, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_r3eer")
+theme_override_styles/hover = ExtResource("4_5esgs")
+theme_override_styles/pressed = ExtResource("5_vsrfa")
+theme_override_styles/disabled = ExtResource("3_r3eer")
 disabled = true
 text = "Restart"
 
 [node name="HighscoreButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(440, 80)
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_r3eer")
+theme_override_styles/hover = ExtResource("4_5esgs")
+theme_override_styles/pressed = ExtResource("5_vsrfa")
+theme_override_styles/disabled = ExtResource("3_r3eer")
 disabled = true
 text = "highscore"
 
 [node name="QuitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(440, 80)
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = ExtResource("3_r3eer")
+theme_override_styles/hover = ExtResource("4_5esgs")
+theme_override_styles/pressed = ExtResource("5_vsrfa")
+theme_override_styles/disabled = ExtResource("3_r3eer")
 disabled = true
 text = "Quit"
 

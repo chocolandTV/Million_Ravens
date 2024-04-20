@@ -37,6 +37,7 @@ func main_paw_attack():
 
       var direction = paw_instance.global_position - paw_instance.global_position
       paw_instance.rotation = direction.angle()
+      SoundManager.Emit_Sound(SoundManager.soundType.s_player_attack_sounds,Vector2.ZERO)
 
 func on_timer_timeout():
       isCooldown = false

@@ -33,6 +33,11 @@ signal highscore_button_pressed()
 signal ui_update_collectable(switch : int, value : int)
 #Signal Menu Switch on Main Menu
 signal menu_switch()
+# SIGNAL Sound_UI_Change integer for type 1:Master 2: Music 3: Sound 4: Ambience, float for value 0-1
+signal menu_sound_volume_change(type : int, newVolume : float)
+
+signal ui_update_highscore_multiplier(type : int)
+### WÜRDE AUCH FUNKTIONEN GAME_EVENTS.raven_died.emit()
 ##########################################################
 func emit_raven_died():
 	raven_died.emit()
@@ -86,3 +91,5 @@ func emit_increase_raven_spawn_event():
 func emit_highscore_button_pressed():
 	highscore_button_pressed.emit()
 
+func emit_menu_sound_volume_change(type:int, newVolume : float):
+	menu_sound_volume_change.emit(type,newVolume)

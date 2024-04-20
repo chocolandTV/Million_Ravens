@@ -31,7 +31,8 @@ extends CanvasLayer
 var health_array : Array[Panel]
 var current_level_points :int  =0
 
-
+# Multiplier Value
+@onready var highscore_multiplier_text : Label = $%Value_multiplier
 func _ready():
       experience_manager.level_up.connect(on_level_up_change_ui)
       #GameEvents.ability_upgrade_added.connect(on_ability_levelup)
@@ -49,6 +50,8 @@ func _ready():
       GameEvents.level_up_show_upgrademenu.connect(_on_levelup_update_upgrades)
       #update collectables
       GameEvents.ui_update_collectable.connect(update_collectable_text)
+      #update Highscore multiplier
+      GameEvents.ui_update_highscore_multiplier.connect(update_highscore_multiplier)
       # RESET ALL STATS
       reset_stats()
       
@@ -73,6 +76,7 @@ func reset_stats():
       value_playerLevel.text = "1"
       value_coin.text  = "0"
       value_Feather.text = "0"
+      highscore_multiplier_text.text = "1"
 
 func UpdatePlayerName():
       print ("update playername")
@@ -128,3 +132,12 @@ func on_lifeChange_UI(value : int):
             else:
                   i.setstatus(false)
             county += 1
+
+func update_highscore_multiplier(type : int):
+      match type: 
+            1:
+                  # add effect increase 
+                  highscore_multiplier_text.text = str(settings.gv_score_multiplier)
+            2:
+                  # add effect for reset to 1
+                  highscore_multiplier_text.text = str(settings.gv_score_multiplier)

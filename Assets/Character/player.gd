@@ -46,6 +46,7 @@ func player_dash():
 	var target_velocity = direction * DASH_SPEED * speed_multiplier
 	velocity += target_velocity
 	dash_particle_effect.emitting = true
+	SoundManager.Emit_Sound(SoundManager.soundType.s_player_dash_sounds,Vector2.ZERO)
 	move_and_slide()
 
 func on_invincible_timeout():

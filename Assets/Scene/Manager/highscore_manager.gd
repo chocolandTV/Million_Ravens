@@ -5,7 +5,7 @@ var current_highscore : int= 0
 var current_feathers : int= 0
 var current_coins : int= 0
 var current_ravenkills : int =0
-
+@onready var settings : Global_Variables = get_node("/root/GlobalVariables")
 # signal highscore_died()
 # update ravenkills
 signal UI_ravenkilled(raven_killed_amount : int)
@@ -46,7 +46,7 @@ func increment_raven():
       UI_ravenkilled.emit(current_ravenkills)
 
 func on_highscore_orb_collected(number : int):
-      increment_highscore(number)
+      increment_highscore(number* settings.gv_score_multiplier)
 
 func on_highscore_coin_collected():
       increment_coins()

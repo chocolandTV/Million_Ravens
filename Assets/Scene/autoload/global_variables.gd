@@ -6,6 +6,7 @@ var gv_Settings = {
       "setting_volume_master" : 0.5,
       "setting_volume_sound" : 0.5,
       "setting_volume_music" : 0.5,
+      "setting_volume_ambience":0.5,
       "offline_modus" : 0,
       "player_name" : "Player_Default",
       "player_identifier": "",
@@ -17,16 +18,26 @@ var gv_Settings = {
       "player_health_level" : 1
 }
 var gv_lucky_catmint: int = 0
-
-
+# multiplier will increase every Score +
+# get signal by game_events
+var gv_score_multiplier : int = 2
+func _ready():
+      pass
 func _on_timer_timeout():
       luckyshuffle()
 
 func get_lucky_catmint_value():
       if gv_lucky_catmint == 500:
+            print("LUCKY EVENT")
             luckyshuffle()
+            increase_multiplier()
             return LUCKY_VALUE
       return gv_lucky_catmint
 
 func luckyshuffle():
       gv_lucky_catmint = randi_range(0,1000)
+
+func increase_multiplier():
+      gv_score_multiplier *= gv_score_multiplier
+func reset_multiplier():
+      gv_score_multiplier = 2

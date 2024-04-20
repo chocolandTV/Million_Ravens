@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwp0tj0ahcgwn"]
+[gd_scene load_steps=14 format=3 uid="uid://dwp0tj0ahcgwn"]
 
 [ext_resource type="Script" path="res://Assets/Enemies/Raven_01_Behaviour.gd" id="1_i2ncy"]
 [ext_resource type="Texture2D" uid="uid://ctw0qgngcx0gn" path="res://Assets/Enemies/Raven_01.png" id="2_4oblf"]
@@ -6,9 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://csljirmwo8vcg" path="res://Assets/Scene/Component/health_bar.tscn" id="4_ipg1o"]
 [ext_resource type="PackedScene" uid="uid://nro3glw2xb4p" path="res://Assets/Scene/Component/hurtbox_component.tscn" id="4_phfd6"]
 [ext_resource type="PackedScene" uid="uid://c1gnol8gqyu7s" path="res://Assets/Scene/Component/health_component.tscn" id="4_ru232"]
+[ext_resource type="Script" path="res://Assets/Scene/Component/hitbox_component.gd" id="6_xdsba"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ercf5"]
 radius = 23.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xh70"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n74e4"]
 radius = 13.0
@@ -52,7 +55,7 @@ _data = {
 [node name="Ravenspeedy" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(0.5, 0.5)
 collision_layer = 4
-collision_mask = 18
+collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_i2ncy")
 
@@ -71,6 +74,14 @@ health_component = NodePath("../HealthComponent")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 shape = SubResource("CircleShape2D_ercf5")
 debug_color = Color(0.984314, 0.121569, 0, 0.0823529)
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("6_xdsba")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_0xh70")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_4oblf")

@@ -38,3 +38,90 @@ position = Vector2(341, 0)
 
 [node name="Fence_destroyable5" parent="." instance=ExtResource("2_5oqrk")]
 position = Vector2(303, 0)
+
+[node name="Fence_destroyable_bt6" parent="." instance=ExtResource("1_dxfq2")]
+z_index = 1
+position = Vector2(417, 0)
+
+[node name="Fence_destroyable6" parent="." instance=ExtResource("2_5oqrk")]
+position = Vector2(379, 0)
+
+[node name="Fence_destroyable_bt7" parent="." instance=ExtResource("1_dxfq2")]
+z_index = 1
+position = Vector2(494, 0)
+
+[node name="Fence_destroyable7" parent="." instance=ExtResource("2_5oqrk")]
+position = Vector2(456, 0)
+
+[node name="Fence_destroyable_bt8" parent="." instance=ExtResource("1_dxfq2")]
+z_index = 1
+position = Vector2(571, 0)
+
+[node name="Fence_destroyable8" parent="." instance=ExtResource("2_5oqrk")]
+position = Vector2(533, 0)
+
+[node name="Fence_destroyable_bt9" parent="." instance=ExtResource("1_dxfq2")]
+z_index = 1
+position = Vector2(648, 0)
+
+[node name="Fence_destroyable9" parent="." instance=ExtResource("2_5oqrk")]
+position = Vector2(610, 0)
+
+[node name="Fence_destroyable_bt10" parent="." instance=ExtResource("1_dxfq2")]
+z_index = 1
+position = Vector2(724, 0)
+
+[node name="Fence_destroyable10" parent="." instance=ExtResource("2_5oqrk")]
+position = Vector2(686, 0)
+
+[node name="Fence_destroyable_bt11" parent="." instance=ExtResource("1_dxfq2")]
+z_index = 1
+position = Vector2(801, 0)
+
+[node name="Fence_destroyable11" parent="." instance=ExtResource("2_5oqrk")]
+position = Vector2(763, 0)
+
+[node name="Fence_destroyable_bt12" parent="." instance=ExtResource("1_dxfq2")]
+z_index = 1
+position = Vector2(877, 0)
+
+[node name="Fence_destroyable12" parent="." instance=ExtResource("2_5oqrk")]
+position = Vector2(839, 0)
+
+[node name="Fence_destroyable_bt13" parent="." instance=ExtResource("1_dxfq2")]
+z_index = 1
+position = Vector2(954, 0)
+
+[node name="Fence_destroyable13" parent="." instance=ExtResource("2_5oqrk")]
+position = Vector2(916, 0)
+
+[node name="Fence_destroyable_bt14" parent="." instance=ExtResource("1_dxfq2")]
+z_index = 1
+position = Vector2(1031, 0)
+
+[node name="Fence_destroyable14" parent="." instance=ExtResource("2_5oqrk")]
+position = Vector2(993, 0)
+
+[node name="Fence_destroyable_bt15" parent="." instance=ExtResource("1_dxfq2")]
+z_index = 1
+position = Vector2(1108, 0)
+
+[node name="Fence_destroyable15" parent="." instance=ExtResource("2_5oqrk")]
+position = Vector2(1070, 0)
+
+[node name="Fence_destroyable_bt16" parent="." instance=ExtResource("1_dxfq2")]
+z_index = 1
+position = Vector2(1185, 0)
+
+[node name="Fence_destroyable16" parent="." instance=ExtResource("2_5oqrk")]
+position = Vector2(1147, 0)
+
+[node name="Fence_destroyable18" parent="." instance=ExtResource("2_5oqrk")]
+position = Vector2(1300, 0)
+
+[node name="Fence_destroyable_bt17" parent="." instance=ExtResource("1_dxfq2")]
+z_index = 1
+position = Vector2(1262, 0)
+
+[node name="Fence_destroyable17" parent="." instance=ExtResource("2_5oqrk")]
+position = Vector2(1224, 0)

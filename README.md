@@ -11,7 +11,7 @@ if result.is_empty():
 - neuer Rabe
 - Enemy Manager überarbeiten, das nur Raben in der oberwelt kommen, und Observer und Zeit die Anzahl beeinflussen
 - Rabe 1 animieren
-- sonne deal damage if burn, hide behind objects in shadow
+- swarm deal damage if nearby, hide behind objects or in Trees
 
 
 
@@ -19,8 +19,11 @@ if result.is_empty():
 
 ## NÜTZLICH
 - shadow
--lighning
+- lights
 ## Quality of Life
 - Observerraben radius
 - attack in direction
--chest drop fix, coin bigger
+- chest drop fix, coin bigger
+- stat bildschirm after Victory< kills, meters, damage taken, damage dealed, level, time, max ability,
+ speedrun timesteps
+ -

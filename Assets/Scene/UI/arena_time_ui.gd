@@ -2,7 +2,7 @@ extends CanvasLayer
 
 class_name ArenaDeltaTimer
 
-@export var arena_time_manager: Node
+@export var _arena_time_manager: Node
 @onready var label = $%Label
 var timestart = 0
 var time = 0
@@ -15,7 +15,7 @@ func _ready():
 func _process(_delta):
       if get_parent().isGameStatePaused():
             return
-      if arena_time_manager == null:
+      if _arena_time_manager == null:
             return
       if(!timer_on):
             return

@@ -21,7 +21,6 @@ func update_health_display():
 	health_bar.value = health_component.get_health_percent()
 
 func on_health_changed():
-	print("get damage egg")
 	update_health_display()
 
 func on_death_increase_spawnrate():

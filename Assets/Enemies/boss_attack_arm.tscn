@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://brepligxcenrd"]
+
+[ext_resource type="Texture2D" uid="uid://dthp6s4o1vdmh" path="res://Assets/Enemies/Sprite-0028_raven_Final_boss_attackArm.png" id="1_xpxpp"]
+[ext_resource type="Script" path="res://Assets/Scene/Component/hitbox_component.gd" id="2_cfbxn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_423m4"]
+radius = 137.154
+
+[node name="Boss_Attack_Arm" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xpxpp")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+script = ExtResource("2_cfbxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(17, -9.5)
+shape = SubResource("CircleShape2D_423m4")

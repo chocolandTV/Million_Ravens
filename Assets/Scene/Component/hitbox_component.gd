@@ -1,7 +1,8 @@
 extends Area2D
 class_name HitboxComponent
 
-@export var damage = 5
+var damage = 5
+@export var damage_type : int = 0
 signal raven_01_kockback
 
 

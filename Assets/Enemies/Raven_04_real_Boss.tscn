@@ -1,0 +1,98 @@
+[gd_scene load_steps=15 format=3 uid="uid://chperhkqtthpf"]
+
+[ext_resource type="Script" path="res://Assets/Enemies/Raven_03_Boss.gd" id="1_4gp5p"]
+[ext_resource type="PackedScene" uid="uid://bo1ri05hjk1sx" path="res://Assets/Scene/Component/Drop_Components/Boss_drop_component.tscn" id="2_fev5j"]
+[ext_resource type="PackedScene" uid="uid://c1gnol8gqyu7s" path="res://Assets/Scene/Component/health_component.tscn" id="3_kbjw5"]
+[ext_resource type="PackedScene" uid="uid://csljirmwo8vcg" path="res://Assets/Scene/Component/health_bar.tscn" id="4_20f3g"]
+[ext_resource type="PackedScene" uid="uid://nro3glw2xb4p" path="res://Assets/Scene/Component/hurtbox_component.tscn" id="5_0cu3g"]
+[ext_resource type="Texture2D" uid="uid://c2ddadlfiipf7" path="res://Assets/Enemies/Sprite-0028_raven_Final_boss.png" id="6_xotr6"]
+[ext_resource type="Script" path="res://Assets/Scene/Component/hitbox_component.gd" id="7_61cpa"]
+[ext_resource type="PackedScene" uid="uid://brepligxcenrd" path="res://Assets/Enemies/boss_attack_arm.tscn" id="7_r2cht"]
+[ext_resource type="Texture2D" uid="uid://dthp6s4o1vdmh" path="res://Assets/Enemies/Sprite-0028_raven_Final_boss_attackArm.png" id="8_1dppf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ercf5"]
+radius = 80.025
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n74e4"]
+radius = 19.0267
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_423m4"]
+radius = 137.154
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mbnsr"]
+radius = 400.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aawj4"]
+radius = 82.5
+
+[node name="Final_Raven_Boss" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(0.5, 0.5)
+collision_layer = 0
+collision_mask = 4
+motion_mode = 1
+script = ExtResource("1_4gp5p")
+damage = 5
+
+[node name="Boss_drop_component" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_fev5j")]
+highscore_amount = 1000000
+health_component = NodePath("../HealthComponent")
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_kbjw5")]
+max_health = 200.0
+
+[node name="HealthBar" parent="." instance=ExtResource("4_20f3g")]
+offset_left = -96.0
+offset_top = -132.0
+offset_right = 104.0
+offset_bottom = -107.0
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_0cu3g")]
+collision_mask = 2
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("CircleShape2D_ercf5")
+debug_color = Color(0.984314, 0.121569, 0, 0.0823529)
+
+[node name="Body_Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("6_xotr6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3.79, 3.79)
+shape = SubResource("CircleShape2D_n74e4")
+
+[node name="Boss_Attack_Arm_Right" parent="." instance=ExtResource("7_r2cht")]
+position = Vector2(794, 152)
+scale = Vector2(2, 2)
+
+[node name="Boss_Attack_Arm_Left" type="Node2D" parent="."]
+position = Vector2(-640, 164)
+scale = Vector2(-2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Boss_Attack_Arm_Left"]
+texture = ExtResource("8_1dppf")
+
+[node name="HitboxComponent" type="Area2D" parent="Boss_Attack_Arm_Left"]
+script = ExtResource("7_61cpa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss_Attack_Arm_Left/HitboxComponent"]
+position = Vector2(17, -9.5)
+shape = SubResource("CircleShape2D_423m4")
+
+[node name="Vision_radius" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision_radius"]
+shape = SubResource("CircleShape2D_mbnsr")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("7_61cpa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_aawj4")
+debug_color = Color(0, 0.65098, 0.12549, 0.419608)
+
+[connection signal="area_entered" from="Vision_radius" to="." method="_on_vision_radius_area_entered"]

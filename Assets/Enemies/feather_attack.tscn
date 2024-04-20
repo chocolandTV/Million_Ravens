@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv8kkm3lrajtq"]
+
+[ext_resource type="Texture2D" uid="uid://tdqul4ymtndy" path="res://Assets/Textures/feather.png" id="1_fdm1e"]
+[ext_resource type="Script" path="res://Assets/Scene/Component/hitbox_component.gd" id="2_a8q0y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3sh43"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v2k5q"]
+
+[node name="Feather_attack" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3sh43")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -2.26893
+texture = ExtResource("1_fdm1e")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+script = ExtResource("2_a8q0y")
+damage = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_v2k5q")

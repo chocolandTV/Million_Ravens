@@ -2,7 +2,7 @@ extends Node
 
 @onready var settings : Global_Variables = get_node("/root/GlobalVariables")
 @onready var timer : Timer  =$Timer
-@export var left_paw_ability: PackedScene
+@export var right_paw_ability: PackedScene
 var damage = 5
 var base_wait_time
 var camera_node : Camera2D
@@ -27,7 +27,7 @@ func main_paw_attack():
       if player == null:
             return
       
-      var paw_instance = left_paw_ability.instantiate() as PawAbility
+      var paw_instance = right_paw_ability.instantiate() as PawAbility
       var foreground_layer = get_tree().get_first_node_in_group("foreground_layer")
       foreground_layer.add_child(paw_instance)
       paw_instance.hitbox_component.damage = damage
@@ -38,6 +38,8 @@ func main_paw_attack():
 
       var direction = paw_instance.global_position - paw_instance.global_position
       paw_instance.rotation = direction.angle()
+
+      SoundManager.Emit_Sound(SoundManager.soundType.s_player_attack_sounds,Vector2.ZERO)
 
 func on_timer_timeout():
       isCooldown = false

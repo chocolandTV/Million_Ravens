@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://des0khalvaaf1"]
+[gd_scene load_steps=31 format=3 uid="uid://des0khalvaaf1"]
 
 [ext_resource type="Texture2D" uid="uid://tdqul4ymtndy" path="res://Assets/Textures/feather.png" id="1_62ja5"]
 [ext_resource type="Script" path="res://Assets/Scene/UI/global_ui.gd" id="1_75rbs"]
@@ -10,7 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://irud0f84orvx" path="res://Assets/Character/player_Icon_filled.png" id="5_5wto8"]
 [ext_resource type="Texture2D" uid="uid://jso0dy5gjf8k" path="res://Assets/Textures/UI/Sprite-0015_Player_Interface_UI2Layer.png" id="5_pddqb"]
 [ext_resource type="PackedScene" uid="uid://ddjyt7n1306f5" path="res://Assets/Character/health_icon_UI.tscn" id="8_1g2gw"]
-[ext_resource type="Texture2D" uid="uid://duu8t2hhde8sj" path="res://Assets/Textures/UI/Sprite-0015_Player_Interface_Collectables.png" id="8_i16wt"]
+[ext_resource type="Texture2D" uid="uid://gmux10mk8raw" path="res://Assets/Textures/UI_Panel.png" id="9_0fmsf"]
+[ext_resource type="Texture2D" uid="uid://dp7apyuxjgkj7" path="res://Assets/Textures/UI/Sprite-0027_Player_Collectable_frame.png" id="9_kb5cw"]
 [ext_resource type="Texture2D" uid="uid://bctq5espwykm6" path="res://Assets/Textures/UI/Sprite-0015_Player_Interface_Ability_01.png" id="12_imf22"]
 [ext_resource type="Texture2D" uid="uid://c573jitq0ax1" path="res://Assets/Textures/UI/Sprite-0023-ability_up-export.png" id="13_83hpb"]
 [ext_resource type="Texture2D" uid="uid://bldwm7gq7mem" path="res://Assets/Textures/UI/Sprite-0025_Ability_player_movementspeed.png" id="14_ubjgm"]
@@ -88,6 +89,8 @@ _data = {
 "RESET": SubResource("Animation_noshg"),
 "newScore": SubResource("Animation_gdxr3")
 }
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2qlbv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4w7bl"]
 
@@ -276,6 +279,14 @@ texture = ExtResource("3_a58jh")
 expand_mode = 1
 flip_v = true
 
+[node name="TextureRect2" type="TextureRect" parent="HighscoreInterface/Panel"]
+layout_mode = 0
+offset_left = 202.0
+offset_top = 82.0
+offset_right = 294.0
+offset_bottom = 122.0
+texture = ExtResource("9_0fmsf")
+
 [node name="Highscore_Values" type="MarginContainer" parent="."]
 offset_left = 425.0
 offset_top = 83.0
@@ -299,14 +310,35 @@ libraries = {
 "": SubResource("AnimationLibrary_80aae")
 }
 
+[node name="Panel" type="Panel" parent="Highscore_Values"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2qlbv")
+
+[node name="Value_multiplier" type="Label" parent="Highscore_Values/Panel"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = -3.0
+offset_top = 48.0
+offset_right = 447.0
+offset_bottom = 103.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.0918319, 0.0437336, 0.0649302, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "X 1"
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [node name="Collectable_Background" type="MarginContainer" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -232.0
-offset_top = 86.0
-offset_right = -100.0
-offset_bottom = 150.0
+offset_left = -341.0
+offset_top = 82.0
+offset_right = -57.0
+offset_bottom = 146.0
 grow_horizontal = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Collectable_Background"]
@@ -314,20 +346,20 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="Collectable_Background/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("8_i16wt")
+texture = ExtResource("9_kb5cw")
 
 [node name="TextureRect2" type="TextureRect" parent="Collectable_Background/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("8_i16wt")
+texture = ExtResource("9_kb5cw")
 
 [node name="Collectable_icons" type="MarginContainer" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -223.0
-offset_top = 95.0001
-offset_right = -32.0001
-offset_bottom = 159.0
+offset_left = -333.0
+offset_top = 93.0
+offset_right = -37.0
+offset_bottom = 157.0
 grow_horizontal = 0
 scale = Vector2(0.62, 0.62)
 
@@ -341,7 +373,7 @@ stretch_mode = 2
 
 [node name="VSeparator" type="VSeparator" parent="Collectable_icons/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 160
 theme_override_styles/separator = SubResource("StyleBoxEmpty_4w7bl")
 
 [node name="coin_test" type="TextureRect" parent="Collectable_icons/HBoxContainer"]
@@ -350,10 +382,10 @@ texture = ExtResource("2_q8n1d")
 stretch_mode = 2
 
 [node name="Collectable_values" type="MarginContainer" parent="."]
-offset_left = 1067.0
-offset_top = 96.0
-offset_right = 1258.0
-offset_bottom = 160.0
+offset_left = 999.0
+offset_top = 81.0
+offset_right = 1227.0
+offset_bottom = 145.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Collectable_values"]
 layout_mode = 2
@@ -363,14 +395,15 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.247059, 0.14902, 0.192157, 1)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/font_size = 15
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/font_size = 18
 text = "x 55"
 
 [node name="VSeparator2" type="VSeparator" parent="Collectable_values/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 32
+theme_override_constants/separation = 110
 theme_override_styles/separator = SubResource("StyleBoxEmpty_4w7bl")
 
 [node name="Coin_Value" type="Label" parent="Collectable_values/HBoxContainer"]
@@ -378,9 +411,10 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.247059, 0.14902, 0.192157, 1)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/font_size = 15
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/font_size = 18
 text = "x 55"
 
 [node name="Player_Ability_Container" type="MarginContainer" parent="."]
