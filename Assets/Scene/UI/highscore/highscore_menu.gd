@@ -7,6 +7,8 @@ extends CanvasLayer
 @export var highscore_entry : PackedScene
 
 var highscorelist : Array[Panel]
+func _ready():
+      @warning_ignore("integer_division")
 
 func on_CanvasLayer_activate():
       #Delete old leaderboard

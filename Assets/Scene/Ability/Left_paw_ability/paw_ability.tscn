@@ -129,6 +129,7 @@ autoplay = "punch"
 
 [node name="HitboxComponent" parent="." instance=ExtResource("3_1wvoj")]
 collision_layer = 66
+damage_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(50.5, 0)

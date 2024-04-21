@@ -11,11 +11,10 @@ func on_area_entered(area :Area2D):
       #HIDE PLAYER
       # DISABLE SPAWNING / DELETE CURRENT SPAWN POOL
       # GLOBAL EVENT HIDE MINIGAME
-      pass
 
-func on_area_exit():
+
+func on_area_exit(Area :Area2D):
       print("player exit")
       # UNHIDE PLAYER
       # ENABLE SPAWNING
       # IF MINIGAME FAILS  EXIT 
-      pass

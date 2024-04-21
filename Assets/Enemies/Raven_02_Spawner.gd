@@ -23,5 +23,5 @@ func update_health_display():
 func on_health_changed():
 	update_health_display()
 
-func on_death_increase_spawnrate():
+func on_death_increase_spawnrate(_type: int):
 	GameEvents.increase_raven_spawn.emit()

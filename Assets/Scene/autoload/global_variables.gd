@@ -17,7 +17,7 @@ var gv_Settings = {
       "player_movement_speed_level" : 150,
       "player_health_level" : 1
 }
-var gv_lucky_catmint: int = 0
+var gv_lucky_catmint: int = 1000
 # multiplier will increase every Score +
 # get signal by game_events
 var gv_score_multiplier : int = 2
@@ -38,6 +38,6 @@ func luckyshuffle():
       gv_lucky_catmint = randi_range(0,1000)
 
 func increase_multiplier():
-      gv_score_multiplier *= gv_score_multiplier
+      gv_score_multiplier += 1
 func reset_multiplier():
-      gv_score_multiplier = 2
+      gv_score_multiplier = 1

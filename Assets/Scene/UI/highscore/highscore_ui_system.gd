@@ -14,12 +14,12 @@ var highscore_Table : Array[HighScore]
 var player_session_exists = false
 
 # HTTP Request node can only handle one call per node
-var auth_http  = HTTPRequest.new()
-var leaderboard_http = HTTPRequest.new()
-var submit_score_http = HTTPRequest.new()
+var auth_http
+var leaderboard_http
+var submit_score_http
 
-var set_name_http = HTTPRequest.new()
-var get_name_http = HTTPRequest.new()
+var set_name_http
+var get_name_http
 
 
 func _ready():
@@ -123,9 +123,9 @@ func _on_leaderboard_request_complete(result, response_code, headers, body):
 
 	print(json.get_data().items.size())
 	# clear node
-	if leaderboard_http != null:
-		print("is null request_token")
-		leaderboard_http.queue_free()
+	# if leaderboard_http != null:
+	# 	print("is null request_token")
+	leaderboard_http.queue_free()
 	
 
 func _upload_score(score :int, _metadata : String):

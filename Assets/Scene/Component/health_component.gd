@@ -6,26 +6,32 @@ signal health_changed
 @export var isGameObject : bool = false
 @export var max_health : float = 1
 var current_health
-
+var _damage_type = 0
 func _ready():
 	#Set Current Health to Max Health
 	current_health = max_health
 
-func damage(damage_amount : float, damage_type : int):
+func initialize_health(max_health_amount : int):
+	max_health = max_health_amount
+	current_health =max_health
+	health_changed.emit()
+
+func damage(damage_amount, damage_type : int):
 	current_health = max(current_health - damage_amount,0)
 	health_changed.emit()
+	_damage_type = damage_type
 	#Callable to avoid Godot Error while checking multiply time if entity is dead...
-	Callable(check_death(damage_type)).call_deferred()
+	Callable(check_death).call_deferred()
 
 func get_health_percent():
 	if max_health<=0:
 		return 0
 	return min(current_health / max_health,1)
 
-func check_death(damage_type : int):
+func check_death():
 	
 	if current_health == 0:
-		died.emit(damage_type)
+		died.emit(_damage_type)
 		if !isGameObject:
 			GameEvents.emit_raven_died()
 			owner.queue_free()

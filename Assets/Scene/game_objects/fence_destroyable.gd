@@ -11,7 +11,7 @@ func _ready():
       health_component.health_changed.connect(on_fence_damaged)
       health_bar.value = health_component.get_health_percent()
 
-func on_fence_died():
+func on_fence_died(_type: int):
       # player_animations.animation="dying"
       animationPlayer.play("died")
 func on_fence_damaged():

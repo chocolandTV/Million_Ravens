@@ -5,6 +5,8 @@ extends CharacterBody2D
 @onready var animation_player : AnimationPlayer =$AnimationPlayer
 @onready var visual_body : Node2D = $Visuals
 @onready var dash_particle_effect: CPUParticles2D = $%Shield_ParticleSys
+@onready var dash_damage_Hitbox: Area2D = $%Dash_damage_Hitbox
+
 const SPEED = 150.0
 const DASH_SPEED = 1500.0
 const ACCELERATION_SMOOTHING = 25
@@ -41,6 +43,8 @@ func get_movement_vector():
 func player_dash():
 	hurtboxComponent.monitoring = false
 	invincible_timer.start()
+	dash_damage_Hitbox.monitorable = true
+	
 	var movement_vector = get_movement_vector()
 	var direction = movement_vector.normalized()
 	var target_velocity = direction * DASH_SPEED * speed_multiplier
@@ -51,6 +55,8 @@ func player_dash():
 
 func on_invincible_timeout():
 	hurtboxComponent.monitoring = true
+	
+	dash_damage_Hitbox.monitorable = false
 
 
 func on_ability_upgrade_added(upgrade : AbilityUpgrade, current_upgrades: Dictionary):

@@ -22,6 +22,6 @@ func on_died(_type: int):
             orb_instance = orb_Scene.instantiate() as Node2D
       var entities_layer = get_tree().get_first_node_in_group("entities_layer")
       if highscore_amount == 1000:
-            Callable(GameEvents.emit_highscore_orb_collected(highscore_amount)).call_deferred()
+            GameEvents.emit_highscore_orb_collected(highscore_amount)
       entities_layer.add_child(orb_instance)
       orb_instance.global_position = spawn_position

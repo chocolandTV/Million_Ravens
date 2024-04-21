@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://Assets/Scene/UI/highscore/highscore_ui_system.gd" id="1_4fkhd"]
 
 [node name="HighscoreUISystem" type="Node"]
+process_mode = 3
 script = ExtResource("1_4fkhd")

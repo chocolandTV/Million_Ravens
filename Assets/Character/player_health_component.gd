@@ -5,25 +5,27 @@ class_name PlayerHealthComponent
 @export var player_animations : AnimationPlayer
 @onready var globalVars : Global_Variables = get_node("/root/GlobalVariables")
 signal died
-var player_health : int  = 100
-const BASEHEALTH : int  =100 
+var current_player_health : int  = 1000
+const BASEHEALTH : int  =1000
 func _ready():
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 
 func damage(damage_amount : int):
-	if player_health- damage_amount < 0:
+	if current_player_health- damage_amount < 0:
 		# GAME OVER
-		player_health -= damage_amount
-		GameEvents.emit_PlayerLife_UI_update(player_health)
+		current_player_health -= damage_amount
+		GameEvents.emit_PlayerLife_UI_update(current_player_health)
 		SoundManager.Emit_Sound(SoundManager.soundType.s_player_dying_sounds,Vector2.ZERO)
 		GameEvents.emit_player_died()
-	GameEvents.emit_player_damaged()
-	player_health -= damage_amount
-	GameEvents.emit_PlayerLife_UI_update(player_health)
-	# Animate
-	#if !player_animations.is_playing:
-	player_animations.play("receive_damage")
-	SoundManager.Emit_Sound(SoundManager.soundType.s_player_getDamage_sounds,Vector2.ZERO)
+	current_player_health -= damage_amount
+	if damage_amount > 500:
+		# start invisible timer & effect
+		GameEvents.emit_player_damaged()
+		GameEvents.emit_PlayerLife_UI_update(current_player_health)
+		player_animations.play("receive_damage")
+		SoundManager.Emit_Sound(SoundManager.soundType.s_player_getDamage_sounds,Vector2.ZERO)
+	else:
+		print (current_player_health)
 
 func on_damage_invisibility_on():
 	
@@ -31,18 +33,14 @@ func on_damage_invisibility_on():
 	#Timer start
 	pass
 func onHealthChanged(value : int):
-	player_health += value
+	current_player_health += value
 	updateUI()
 
 func on_ability_upgrade_added(upgrade : AbilityUpgrade, current_upgrades: Dictionary):
 	if upgrade.id == "extraHealth":
-		player_health = BASEHEALTH + (current_upgrades[upgrade.id]["quantity"])
-		globalVars.gv_Settings["player_health_level"]  = player_health
+		current_player_health = BASEHEALTH + (current_upgrades[upgrade.id]["quantity"])
+		globalVars.gv_Settings["player_health_level"]  = current_player_health
 		updateUI()
 
 func updateUI():
 	GameEvents.emit_ability_upgrade_newLife()
-
-func on_timer_timeout():
-	#hitbox on
-	pass

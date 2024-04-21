@@ -14,10 +14,10 @@ func on_timer_timeout():
 func imageEffect():
       # print("imageEffect")
       # SOUND EFFECT
-      material.set("shader_param/bright_amount", 0.75)
-      material.set("shader_param/bright_amount", 0.45)
-      material.set("shader_param/bright_amount", 0.35)
+      material.set_shader_parameter("shader_param/bright_amount", 0.75)
+      material.set_shader_parameter("shader_param/bright_amount", 0.45)
+      material.set_shader_parameter("shader_param/bright_amount", 0.35)
       effect_Timer.start()
 
 func on_image_effect_timeout():
-      material.set("shader_param/bright_amount",0)
+      material.set_shader_parameter("shader_param/bright_amount",0)

@@ -9,7 +9,7 @@ func _ready():
       ( health_component as HealthComponent).died.connect(on_died)
       regionname = get_parent().get_region_text()
       #print(regionname)
-func on_died():
+func on_died(_type : int):
       if orb_Scene == null:
             return
       if not owner is Node2D:

@@ -49,7 +49,6 @@ scale_amount_curve = SubResource("Curve_t8mm7")
 [node name="HitboxComponent" type="Area2D" parent="Enemy"]
 visible = false
 script = ExtResource("3_si3op")
-damage = 1
 
 [node name="collision_Radius" type="CollisionShape2D" parent="Enemy/HitboxComponent"]
 unique_name_in_owner = true

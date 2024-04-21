@@ -2,13 +2,13 @@ extends Node
 class_name arena_time_manager
 @export var end_screen_scene: PackedScene
 @export var myHighscoreEntry : PackedScene
+@export var deltaTimer : ArenaDeltaTimer
 
 @onready var timer = $Timer
 @onready var highscore_ui_system : HighscoreUISystem = get_node("/root/HighscoreUiSystem")
 @onready var highscore_manager : Highscore_Manager = get_node("/root/Highscore_Manager")
 @onready var globalVars : Global_Variables = get_node("/root/GlobalVariables")
 @onready var filemanager : FileManager = get_node("/root/File_Manager")
-@onready var deltaTimer : ArenaDeltaTimer = $%ArenaTimeUI
 
 var text : String ="You win: The Ravenlord has fallen"
 func _ready():
@@ -31,7 +31,7 @@ func on_boss_down():
 
 func win_game():
       # Upload Current Score
-      var metadata = str(deltaTimer.time) +"," + str(highscore_manager.current_feathers) + "," + str(highscore_manager.current_coins)
+      var metadata = str(deltaTimer.get_formated_time_elapsed()) +"," + str(highscore_manager.current_feathers) + "," + str(highscore_manager.current_coins)
       highscore_ui_system._upload_score(highscore_manager.current_highscore,metadata)
       #update Leaderboard and get player index as new Highscore_entry Panel
       highscore_ui_system._get_leaderboards()

@@ -6,6 +6,6 @@ extends Node
 func _ready():
       ( health_component as HealthComponent).died.connect(on_died)
 
-func on_died():
+func on_died(_type: int):
       GameEvents.emit_highscore_orb_collected(highscore_amount)
       GameEvents.emit_winGame_boss_down_event()

@@ -2,10 +2,12 @@ extends Node
 @export var isEnabled : bool = true
 @export var START_WAITTIME : float = 0.5
 @export var enemyPool: Array[PackedScene]
+
 @export var amanager : arena_time_manager
 @onready var timer : Timer = $Timer
 
 const MIN_DISTANCE : float =  1200
+const MIN_TIME_BETWEEN_WAVES : float = 6000
 var waittime : float = 0.5
 var isPlayerHiding : bool = false
 var spawnPool : Array[Node2D]
@@ -45,11 +47,14 @@ func on_timer_timeout():
 	if isPlayerHiding:
 		return
 	checkWave()
-	spawnEnemy(player.global_position + (Vector2.RIGHT.rotated(randf_range(0,TAU)) * MIN_DISTANCE))
+	for i in range(0,current_wave):	
+		spawnEnemy(player.global_position + (Vector2.RIGHT.rotated(randf_range(0,TAU)) * MIN_DISTANCE))
 
 func checkWave():
-	if amanager.get_delta_time() > current_wave * 6000:
+	print (amanager.get_delta_time())
+	if amanager.get_delta_time() > current_wave * MIN_TIME_BETWEEN_WAVES:
 		increase_wave()
+
 func playerHides(value : bool):
 	for x in spawnPool:
 		if isPlayerHiding:
@@ -57,7 +62,7 @@ func playerHides(value : bool):
 
 func spawnEnemy(pos : Vector2):
 	# print (current_wave)
-	var enemy = enemyPool[current_wave].instantiate() as Node2D
+	var enemy = enemyPool[enemyPool.pick_random()].instantiate() as Node2D
 	var entities_layer = get_tree().get_first_node_in_group("entities_layer")
 
 	entities_layer.add_child(enemy)

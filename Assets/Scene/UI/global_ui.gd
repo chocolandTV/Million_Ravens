@@ -57,7 +57,7 @@ func _ready():
       
 func _process(delta):
       value_fps_text.text = ("FPS: %d" % Engine.get_frames_per_second())
-      highscore_value_text.text = str(highscore_manager.current_highscore)
+      highscore_value_text.text = str(highscore_manager.current_highscore).lpad(4,"0")
 # when player levels up
 func on_level_up_change_ui(new_level : int):
       
@@ -77,6 +77,7 @@ func reset_stats():
       value_coin.text  = "0"
       value_Feather.text = "0"
       highscore_multiplier_text.text = "1"
+      highscore_value_text.text = "0"
 
 func UpdatePlayerName():
       print ("update playername")
@@ -100,7 +101,6 @@ func update_collectable_text(switch : int, value :int):
             value_coin.text =  str(value)
 
 func _showupgrades(_bool :bool):
-      
       _player_Ability_Container.visible = _bool
 
 # BUTTON UPGRADES
@@ -137,7 +137,7 @@ func update_highscore_multiplier(type : int):
       match type: 
             1:
                   # add effect increase 
-                  highscore_multiplier_text.text = str(settings.gv_score_multiplier)
+                  highscore_multiplier_text.text = "x " + str(settings.gv_score_multiplier)
             2:
                   # add effect for reset to 1
-                  highscore_multiplier_text.text = str(settings.gv_score_multiplier)
+                  highscore_multiplier_text.text = "x " + str(settings.gv_score_multiplier)
