@@ -25,6 +25,6 @@ func on_died(_type: int):
             print("destroyed chest rolled :", random_a)
       var entities_layer = get_tree().get_first_node_in_group("entities_layer")
       if highscore_amount == 1000:
-            GameEvents.emit_highscore_orb_collected(highscore_amount)
+            GameEvents.highscore_orb_collected.emit(highscore_amount)
       entities_layer.add_child(orb_instance)
       orb_instance.global_position = spawn_position

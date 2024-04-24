@@ -44,7 +44,7 @@ func _on_quit_button_pressed():
 func _on_start_button_pressed():
       startButton_text.text = "Resume"
       get_tree().paused = false
-      GameEvents.emit_menu_switch()
+      GameEvents.menu_switch.emit()
       SoundManager.Emit_Sound(SoundManager.soundType.s_ui_click,Vector2.ZERO)
 
 func _on_credit_button_pressed():

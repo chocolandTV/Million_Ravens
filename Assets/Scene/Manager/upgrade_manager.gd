@@ -11,7 +11,7 @@ func _ready():
 	experience_manager.level_up.connect(on_level_up)
 	GameEvents.ability_upgrade_Button.connect(on_button_clicked)
 func on_level_up(current_level : int):
-	GameEvents.emit_level_up_show_upgrademenu()
+	GameEvents.level_up_show_upgrademenu.emit()
 
 # SIGNAL ON BUTTON ENTERED HERE
 
@@ -33,4 +33,4 @@ func apply_upgrade(upgrade:AbilityUpgrade):
 	else:
 		current_upgrades[upgrade.id]["quantity"] +=1
 	print(upgrade.name,current_upgrades[upgrade.id]["quantity"])
-	GameEvents.emit_ability_upgrade_added(upgrade, current_upgrades)
+	GameEvents.ability_upgrade_added.emit(upgrade, current_upgrades)

@@ -6,7 +6,7 @@ class_name Enemy01_Ravii
 @onready var anim : AnimationPlayer = $AnimationPlayer
 @onready var timer : Timer = $Timer
 
-const speed : float  = 325.0
+var speed : float  = 300.0
 const mutation_multiplier_chance : float = 0.01
 const damage :int  = 1 
 var isCooldown : bool  = false
@@ -17,7 +17,7 @@ var player_node : Node2D
 func _ready():
       timer.timeout.connect(on_timer_timeouti)
       $HealthComponent.health_changed.connect(on_raven_01_knockback)
-      apply_difficult_multiplier()
+      
       #get player
       player_node = get_tree().get_first_node_in_group("player") as Node2D
       #get lucky int
@@ -70,7 +70,8 @@ func on_colorEvent_triggered():
             $Sprite2D.modulate = Color.RED
             damage_type_enemy = 2
 
-func apply_difficult_multiplier():
-      $HealthComponent.initialize_health(randi_range(1,5))
-      #speed
-      #Damage
+func apply_bonus(enemy_damage_bonus : int, enemy_speed_bonus: int, enemy_health_bonus: int):
+      speed += enemy_speed_bonus
+      $HitboxComponent.apply_damage_bonus(enemy_damage_bonus)
+      $HealthComponent.apply_health_bonus(enemy_health_bonus)
+      print("enemy02: Stats: ",damage + (enemy_damage_bonus*6)," damage, +",speed," speed, + ",$HealthComponent.current_health," health")

@@ -14,6 +14,7 @@ var text : String ="You win: The Ravenlord has fallen"
 func _ready():
       # timer.timeout.connect(on_timer_timeout)
       GameEvents.winGame_boss_down.connect(on_boss_down)
+      GameEvents.get_leaderboards_is_finished.connect(win_game_highscore_fill)
 
 
 func get_time_elapsed():
@@ -35,14 +36,16 @@ func win_game():
       highscore_ui_system._upload_score(highscore_manager.current_highscore,metadata)
       #update Leaderboard and get player index as new Highscore_entry Panel
       highscore_ui_system._get_leaderboards()
+      # Wait for signal then cast win_game_highscore_show_after_signal()
+      var end_screen_instance = end_screen_scene.instantiate() as CanvasLayer
+      add_child(end_screen_instance)
+      end_screen_instance.setText(text)
+      filemanager.save_game()
+
+func win_game_highscore_fill():
       for x in highscore_ui_system.highscore_Table:
             if x.playername == globalVars.gv_Settings["player_name"]:
                   print("Game Win Debug: Player found, create Entry for Highscore")
                   var playerUIHighscore = myHighscoreEntry.instantiate()
                   add_child(playerUIHighscore)
                   playerUIHighscore.on_initialize_text(x.rank,x.playername,x.score,x.time,x.feather,x.coins)
-
-      var end_screen_instance = end_screen_scene.instantiate() as CanvasLayer
-      add_child(end_screen_instance)
-      end_screen_instance.setText(text)
-      filemanager.save_game()

@@ -10,7 +10,8 @@ class_name Enemy02_FireStarter
 @onready var attackTimer :Timer = $AttackTimer
 @onready var health_bar = $HealthBar
 
-const speed : float  = 1000.0
+var speed : float  = 800.0
+const damage :float = 500
 
 var isCooldown : bool  = false
 var isPlayerInVision :bool = false
@@ -80,3 +81,9 @@ func on_health_changed():
 
 func on_timer_timeout_attackTimer():
       on_raven_reached_target_position()
+
+func apply_bonus(enemy_damage_bonus : int, enemy_speed_bonus: int, enemy_health_bonus: int):
+      speed += (enemy_speed_bonus)
+      $HitboxComponent.apply_damage_bonus(damage + (enemy_damage_bonus))
+      $HealthComponent.apply_health_bonus(enemy_health_bonus)
+      print("enemy02: Stats: ",damage + (enemy_damage_bonus)," damage, +",speed," speed, + ",$HealthComponent.current_health," health")

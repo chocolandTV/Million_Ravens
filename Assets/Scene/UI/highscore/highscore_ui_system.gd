@@ -122,6 +122,7 @@ func _on_leaderboard_request_complete(result, response_code, headers, body):
 		metadata[2]))
 
 	print(json.get_data().items.size())
+	GameEvents.win_game_highscore_show_after_signal.emit()
 	# clear node
 	# if leaderboard_http != null:
 	# 	print("is null request_token")

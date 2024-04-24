@@ -20,8 +20,6 @@ func _ready():
       GameEvents.highscore_coin_collected.connect(on_highscore_coin_collected)
       # get event for orb collecting
       GameEvents.highscore_orb_collected.connect(on_highscore_orb_collected)
-      # GameEvents.highscore_player_get_damage.connect(on_highscore_player_get_damage)
-      #get event for raven died
       GameEvents.raven_died.connect(on_raven_died)
       on_highscore_reset()
 
@@ -33,12 +31,12 @@ func increment_highscore(number: int):
 func increment_feathers():
       current_feathers += 1
       print("Feather collected, current:",current_feathers)
-      GameEvents.emit_UI_update_collectable(0, current_feathers)
+      GameEvents.UI_update_collectable.emit(0, current_feathers)
 
 func increment_coins():
       current_coins +=1
       print("Coins collected, current:",current_coins)
-      GameEvents.emit_UI_update_collectable(1, current_coins)
+      GameEvents.UI_update_collectable.emit(1, current_coins)
       
 
 func increment_raven():

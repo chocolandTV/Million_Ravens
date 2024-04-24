@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://me5npjowj6pr"]
+
+[ext_resource type="Script" path="res://Assets/Enemies/Formations/01_x_formation.gd" id="1_gu8y2"]
+[ext_resource type="PackedScene" uid="uid://dwp0tj0ahcgwn" path="res://Assets/Enemies/Raven_01_Default.tscn" id="2_s2sxi"]
+
+[node name="01_x_Formation" type="Node2D"]
+script = ExtResource("1_gu8y2")
+
+[node name="Ravenspeedy" parent="." instance=ExtResource("2_s2sxi")]

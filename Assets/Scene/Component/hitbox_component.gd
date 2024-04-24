@@ -9,3 +9,6 @@ signal raven_01_kockback
 func knockback() :
      
      raven_01_kockback.emit()
+
+func apply_damage_bonus(enemy_damage_bonus):
+     damage =enemy_damage_bonus

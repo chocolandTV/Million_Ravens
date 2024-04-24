@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://des0khalvaaf1"]
+[gd_scene load_steps=36 format=3 uid="uid://des0khalvaaf1"]
 
 [ext_resource type="Texture2D" uid="uid://tdqul4ymtndy" path="res://Assets/Textures/feather.png" id="1_62ja5"]
 [ext_resource type="Script" path="res://Assets/Scene/UI/global_ui.gd" id="1_75rbs"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://4baj1cphpr71" path="res://Assets/Textures/coin_base.png" id="2_q8n1d"]
 [ext_resource type="Texture2D" uid="uid://dcvcbhlivxce0" path="res://Assets/Textures/UI/Sprite-0016_highscore_Interface_UI.png" id="3_a58jh"]
 [ext_resource type="Texture2D" uid="uid://c44qipqfvmbpd" path="res://Assets/Character/player_Icon_normal.png" id="3_iky0r"]
+[ext_resource type="Texture2D" uid="uid://dbjig6mwhoubf" path="res://Assets/Textures/UI/health/hearth_100p.png" id="4_8nlrv"]
 [ext_resource type="Texture2D" uid="uid://c3yfsi68xaecw" path="res://Assets/Character/player_Icon_happy.png" id="4_atrb5"]
 [ext_resource type="Texture2D" uid="uid://irud0f84orvx" path="res://Assets/Character/player_Icon_filled.png" id="5_5wto8"]
 [ext_resource type="Texture2D" uid="uid://jso0dy5gjf8k" path="res://Assets/Textures/UI/Sprite-0015_Player_Interface_UI2Layer.png" id="5_pddqb"]
@@ -17,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://bldwm7gq7mem" path="res://Assets/Textures/UI/Sprite-0025_Ability_player_movementspeed.png" id="14_ubjgm"]
 [ext_resource type="Texture2D" uid="uid://yx82xo4cixma" path="res://Assets/Textures/UI/Sprite-0024_Ability_atkSpeed_icon.png" id="14_vrimc"]
 [ext_resource type="Texture2D" uid="uid://byanvxjmxtlyb" path="res://Assets/Textures/UI/Sprite-0026_Ability_lifeup.png" id="15_kyq3j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ritd1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ypq7u"]
 
@@ -94,6 +97,93 @@ _data = {
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4w7bl"]
 
+[sub_resource type="Animation" id="Animation_i17uo"]
+resource_name = "Levelup_highlight"
+length = 10.0
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player_Ability_Container/VBoxContainer/Levelup_Panel/Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.71, 3.58, 5.15, 6.69, 8.61, 9.83),
+"transitions": PackedFloat32Array(1, 1.93187, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1), Vector2(1.1, 1), Vector2(1, 1), Vector2(1.1, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player_Ability_Container/VBoxContainer/Levelup_Panel/Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.71, 3.58, 5.15, 6.69, 8.61, 9.83),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1.79), Vector2(0, 0), Vector2(0, -1.79), Vector2(0, 0), Vector2(0, -1.79), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player_Ability_Container/VBoxContainer/Levelup_Panel/Label:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.71, 3.58, 5.15, 6.69, 8.61, 9.83),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0174533, 0.0, -0.0174533, 0.0, -0.0174533, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_x43qo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player_Ability_Container/VBoxContainer/Levelup_Panel/Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player_Ability_Container/VBoxContainer/Levelup_Panel/Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player_Ability_Container/VBoxContainer/Levelup_Panel/Label:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jmgdj"]
+_data = {
+"Levelup_highlight": SubResource("Animation_i17uo"),
+"RESET": SubResource("Animation_x43qo")
+}
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tkobw"]
 
 [sub_resource type="Animation" id="Animation_77u8n"]
@@ -151,6 +241,23 @@ size_flags_horizontal = 0
 [node name="TextureRect" type="TextureRect" parent="PlayerInterface"]
 layout_mode = 2
 texture = ExtResource("2_cw6pl")
+
+[node name="BigLife_indicator" type="Panel" parent="PlayerInterface/TextureRect"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 263.0
+offset_top = 72.0
+offset_right = 303.0
+offset_bottom = 112.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ritd1")
+
+[node name="BigLife_Sprite" type="Sprite2D" parent="PlayerInterface/TextureRect/BigLife_indicator"]
+unique_name_in_owner = true
+light_mask = 4
+visibility_layer = 4
+position = Vector2(64, 64)
+texture = ExtResource("4_8nlrv")
+region_rect = Rect2(77, 77, 120, 120)
 
 [node name="PlayerInterface_Values" type="MarginContainer" parent="."]
 offset_left = 114.0
@@ -248,9 +355,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -640.0
-offset_top = -32.0
-offset_right = 640.0
+offset_left = -632.0
+offset_top = -587.0
+offset_right = 648.0
+offset_bottom = -555.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -261,6 +369,12 @@ layout_mode = 2
 theme_override_constants/h_separation = 32
 
 [node name="Health_Icon" parent="PlayerInterface_Health/HFlowContainer" instance=ExtResource("8_1g2gw")]
+layout_mode = 2
+
+[node name="Health_Icon2" parent="PlayerInterface_Health/HFlowContainer" instance=ExtResource("8_1g2gw")]
+layout_mode = 2
+
+[node name="Health_Icon3" parent="PlayerInterface_Health/HFlowContainer" instance=ExtResource("8_1g2gw")]
 layout_mode = 2
 
 [node name="HighscoreInterface" type="MarginContainer" parent="."]
@@ -409,11 +523,11 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 3
 theme_override_font_sizes/font_size = 18
-text = "x 55"
+text = "1"
 
 [node name="VSeparator2" type="VSeparator" parent="Collectable_values/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 110
+theme_override_constants/separation = 130
 theme_override_styles/separator = SubResource("StyleBoxEmpty_4w7bl")
 
 [node name="Coin_Value" type="Label" parent="Collectable_values/HBoxContainer"]
@@ -425,18 +539,44 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 3
 theme_override_font_sizes/font_size = 18
-text = "x 55"
+text = "1"
 
 [node name="Player_Ability_Container" type="MarginContainer" parent="."]
 unique_name_in_owner = true
-offset_left = 897.0
-offset_top = 432.0
-offset_right = 1297.0
-offset_bottom = 632.0
+visible = false
+offset_left = 893.0
+offset_top = 402.0
+offset_right = 1293.0
+offset_bottom = 642.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Player_Ability_Container"]
 layout_mode = 2
 theme_override_constants/separation = 60
+
+[node name="Levelup_Panel" type="Panel" parent="Player_Ability_Container/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Player_Ability_Container/VBoxContainer/Levelup_Panel"]
+custom_minimum_size = Vector2(400, 60)
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 63.0
+theme_override_colors/font_color = Color(0.262745, 0.882353, 0.701961, 1)
+theme_override_colors/font_shadow_color = Color(0.247059, 0.14902, 0.192157, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 45
+text = "+ Level up"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player_Ability_Container/VBoxContainer/Levelup_Panel"]
+root_node = NodePath("../../../..")
+libraries = {
+"": SubResource("AnimationLibrary_jmgdj")
+}
+autoplay = "Levelup_highlight"
 
 [node name="AttackDmg_panel" type="Panel" parent="Player_Ability_Container/VBoxContainer"]
 layout_mode = 2

@@ -13,13 +13,11 @@ func _input(event):
 
 func on_timer_timeout():
       isCooldown = false
-      # GameEvents.emit_ability_status_changed(1,true)
 
 func dashing():
       if isCooldown:
             return
       isCooldown =true
-      # GameEvents.emit_ability_status_changed(1,false)
       timer.start()
       player.player_dash()
       #animate

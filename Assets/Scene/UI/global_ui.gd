@@ -12,8 +12,6 @@ extends CanvasLayer
 @onready var highscore_manager : Highscore_Manager = get_node("/root/Highscore_Manager")
 @onready var settings : Global_Variables = get_node("/root/GlobalVariables")
 @export var experience_manager : ExperienceManager
-
-
 #Ability Upgrades
 @onready var _player_Ability_Container : MarginContainer = $%Player_Ability_Container
 @onready var _atk_up_Button : TextureButton =$%atk_up_Button
@@ -24,18 +22,17 @@ extends CanvasLayer
 @onready var _movspeed_up_text : Label =$%movspeed_up_text
 @onready var _lifeplus_up_Button : TextureButton =$%lifeplus_up_Button
 @onready var _lifeplus_up_text : Label = $%lifeplus_up_text
-
 # Life Container + Icons
 @export var life_icon_scene : PackedScene
 @onready var life_container : HFlowContainer  =$%HFlowContainer
 var health_array : Array[Panel]
 var current_level_points :int  =0
-
 # Multiplier Value
 @onready var highscore_multiplier_text : Label = $%Value_multiplier
+# BigLife Sprite
+@onready var bigLife_sprite : Sprite2D = $%BigLife_Sprite
 func _ready():
       experience_manager.level_up.connect(on_level_up_change_ui)
-      #GameEvents.ability_upgrade_added.connect(on_ability_levelup)
       #get ravenKilledAmount
       highscore_manager.UI_ravenkilled.connect(on_ravenscore_update)
       # ability upgrade buttons
@@ -74,8 +71,8 @@ func on_ravenscore_update(amount : int):
 func reset_stats():
       value_ravenkills.text = "0 kills"
       value_playerLevel.text = "1"
-      value_coin.text  = "0"
-      value_Feather.text = "0"
+      value_coin.text  = "X 0"
+      value_Feather.text = "X 0"
       highscore_multiplier_text.text = "1"
       highscore_value_text.text = "0"
 
@@ -96,13 +93,22 @@ func update_ability_text():
 
 func update_collectable_text(switch : int, value :int):
       if switch == 0:
-            value_Feather.text = str(value)
+            value_Feather.text = "X "+str(value)
       if switch == 1:
-            value_coin.text =  str(value)
+            value_coin.text =  "X "+str(value)
 
 func _showupgrades(_bool :bool):
       _player_Ability_Container.visible = _bool
-
+# GET INPUT 1,2,3,4 if level up == applyUpgrade
+func _input(event):
+      if event.is_action_pressed("upgrade_button_01") && current_level_points > 0:
+            applyUpgrade(0)
+      if event.is_action_pressed("upgrade_button_02") && current_level_points > 0:
+            applyUpgrade(1)
+      if event.is_action_pressed("upgrade_button_03") && current_level_points > 0:
+            applyUpgrade(2)
+      if event.is_action_pressed("upgrade_button_04") && current_level_points > 0:
+            applyUpgrade(3)
 # BUTTON UPGRADES
 func _on_atk_up_Button():
       applyUpgrade(0)
@@ -116,8 +122,11 @@ func on_lifeplus_up():
 func applyUpgrade(button_value : int):
       if current_level_points <= 0:
             _showupgrades(false)
-      current_level_points -=1
-      GameEvents.emit_ability_upgrade_Button(button_value)
+      if current_level_points > 0:
+            current_level_points -=1
+            GameEvents.ability_upgrade_Button.emit(button_value)
+            if current_level_points <= 0:
+                  _showupgrades(false)
 
 func on_lifeplus_UI():
       var life_instance = life_icon_scene.instantiate()

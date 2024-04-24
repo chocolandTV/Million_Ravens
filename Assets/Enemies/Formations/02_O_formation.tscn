@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://1aak0ykkx0xn"]
+[gd_scene load_steps=3 format=3 uid="uid://1aak0ykkx0xn"]
 
+[ext_resource type="Script" path="res://Assets/Enemies/Formations/02_O_formation.gd" id="1_3igfw"]
 [ext_resource type="PackedScene" uid="uid://dwp0tj0ahcgwn" path="res://Assets/Enemies/Raven_01_Default.tscn" id="1_rqboh"]
 
 [node name="02_O_Formation" type="Node2D"]
+script = ExtResource("1_3igfw")
 
 [node name="Ravenspeedy" parent="." instance=ExtResource("1_rqboh")]
 position = Vector2(-1, -164)

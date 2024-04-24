@@ -11,8 +11,8 @@ func _ready():
 	#Set Current Health to Max Health
 	current_health = max_health
 
-func initialize_health(max_health_amount : int):
-	max_health = max_health_amount
+func apply_health_bonus(health_amount : int):
+	max_health += health_amount
 	current_health =max_health
 	health_changed.emit()
 
@@ -33,5 +33,5 @@ func check_death():
 	if current_health == 0:
 		died.emit(_damage_type)
 		if !isGameObject:
-			GameEvents.emit_raven_died()
+			GameEvents.raven_died.emit()
 			owner.queue_free()

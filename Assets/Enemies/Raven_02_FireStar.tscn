@@ -243,7 +243,7 @@ highscore_amount = 1000
 health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_a3kop")]
-max_health = 25.0
+max_health = 12.0
 
 [node name="HealthBar" parent="." instance=ExtResource("4_7nywh")]
 offset_left = -24.0
@@ -264,7 +264,6 @@ debug_color = Color(0.984314, 0.121569, 0, 0.0823529)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("7_efyy5")
-damage = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_dehkm")

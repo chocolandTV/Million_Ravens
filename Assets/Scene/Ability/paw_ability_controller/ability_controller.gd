@@ -43,8 +43,6 @@ func main_paw_attack():
 
 func on_timer_timeout():
       isCooldown = false
-      #GAME EVENT ABILITY 1 MAIN IS ACTIVE
-      # GameEvents.emit_ability_status_changed(0,true)
 
 func on_ability_upgrade_added(upgrade : AbilityUpgrade, current_upgrades: Dictionary):
       if upgrade.id == "paw_attack_damage":

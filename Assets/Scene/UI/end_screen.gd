@@ -40,7 +40,7 @@ func on_highscore_button_pressed():
 	# get_tree().paused = false
 	visible = false
 	#Instantiate Highscore
-	GameEvents.emit_highscore_button_pressed()
+	GameEvents.highscore_button_pressed.emit()
 
 func on_timer_timeout():
 	#enable all buttons

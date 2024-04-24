@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://wgk6hnirb8p7"]
+
+[ext_resource type="Script" path="res://Assets/Enemies/Formations/01_x_formation.gd" id="1_mbffa"]
+[ext_resource type="PackedScene" uid="uid://cagxkvae0a0n5" path="res://Assets/Enemies/Raven_02_FireStar.tscn" id="2_81yk3"]
+
+[node name="01_x_Formation" type="Node2D"]
+script = ExtResource("1_mbffa")
+
+[node name="Raven_fireStarter" parent="." instance=ExtResource("2_81yk3")]
