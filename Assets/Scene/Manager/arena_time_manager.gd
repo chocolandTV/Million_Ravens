@@ -5,9 +5,7 @@ class_name arena_time_manager
 @export var deltaTimer : ArenaDeltaTimer
 
 @onready var timer = $Timer
-@onready var highscore_ui_system : HighscoreUISystem = get_node("/root/HighscoreUiSystem")
 @onready var highscore_manager : Highscore_Manager = get_node("/root/Highscore_Manager")
-@onready var globalVars : Global_Variables = get_node("/root/GlobalVariables")
 @onready var filemanager : FileManager = get_node("/root/File_Manager")
 
 var text : String ="You win: The Ravenlord has fallen"
@@ -33,9 +31,10 @@ func on_boss_down():
 func win_game():
       # Upload Current Score
       var metadata = str(deltaTimer.get_formated_time_elapsed()) +"," + str(highscore_manager.current_feathers) + "," + str(highscore_manager.current_coins)
-      highscore_ui_system._upload_score(highscore_manager.current_highscore,metadata)
+      HighscoreUiSystem._upload_score(highscore_manager.current_highscore,metadata)
       #update Leaderboard and get player index as new Highscore_entry Panel
-      highscore_ui_system._get_leaderboards()
+      HighscoreUiSystem._get_leaderboards()
+      GameEvents.win_game_highscore_show_after_signal.emit()
       # Wait for signal then cast win_game_highscore_show_after_signal()
       var end_screen_instance = end_screen_scene.instantiate() as CanvasLayer
       add_child(end_screen_instance)
@@ -43,8 +42,8 @@ func win_game():
       filemanager.save_game()
 
 func win_game_highscore_fill():
-      for x in highscore_ui_system.highscore_Table:
-            if x.playername == globalVars.gv_Settings["player_name"]:
+      for x in HighscoreUiSystem.highscore_Table:
+            if x.playername == GlobalVariables.gv_Settings["player_name"]:
                   print("Game Win Debug: Player found, create Entry for Highscore")
                   var playerUIHighscore = myHighscoreEntry.instantiate()
                   add_child(playerUIHighscore)

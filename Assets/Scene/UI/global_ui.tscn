@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://des0khalvaaf1"]
+[gd_scene load_steps=37 format=3 uid="uid://des0khalvaaf1"]
 
 [ext_resource type="Texture2D" uid="uid://tdqul4ymtndy" path="res://Assets/Textures/feather.png" id="1_62ja5"]
 [ext_resource type="Script" path="res://Assets/Scene/UI/global_ui.gd" id="1_75rbs"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dbjig6mwhoubf" path="res://Assets/Textures/UI/health/hearth_100p.png" id="4_8nlrv"]
 [ext_resource type="Texture2D" uid="uid://c3yfsi68xaecw" path="res://Assets/Character/player_Icon_happy.png" id="4_atrb5"]
 [ext_resource type="Texture2D" uid="uid://irud0f84orvx" path="res://Assets/Character/player_Icon_filled.png" id="5_5wto8"]
+[ext_resource type="Script" path="res://Assets/Scene/UI/BigLife_Sprite.gd" id="5_66wp3"]
 [ext_resource type="Texture2D" uid="uid://jso0dy5gjf8k" path="res://Assets/Textures/UI/Sprite-0015_Player_Interface_UI2Layer.png" id="5_pddqb"]
 [ext_resource type="PackedScene" uid="uid://ddjyt7n1306f5" path="res://Assets/Character/health_icon_UI.tscn" id="8_1g2gw"]
 [ext_resource type="Texture2D" uid="uid://gmux10mk8raw" path="res://Assets/Textures/UI_Panel.png" id="9_0fmsf"]
@@ -253,11 +254,10 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_ritd1")
 
 [node name="BigLife_Sprite" type="Sprite2D" parent="PlayerInterface/TextureRect/BigLife_indicator"]
 unique_name_in_owner = true
-light_mask = 4
-visibility_layer = 4
 position = Vector2(64, 64)
 texture = ExtResource("4_8nlrv")
 region_rect = Rect2(77, 77, 120, 120)
+script = ExtResource("5_66wp3")
 
 [node name="PlayerInterface_Values" type="MarginContainer" parent="."]
 offset_left = 114.0

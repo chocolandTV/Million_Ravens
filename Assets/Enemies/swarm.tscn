@@ -26,7 +26,8 @@ script = ExtResource("2_bma6o")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Enemy"]
 unique_name_in_owner = true
 amount = 200
-lifetime = 60.0
+lifetime = 600.0
+preprocess = 212.5
 randomness = 1.0
 lifetime_randomness = 1.0
 texture = ExtResource("2_l6f25")

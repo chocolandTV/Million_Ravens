@@ -5,7 +5,7 @@ extends Node
 @onready var setting_menu : MarginContainer = $%Setting_Menu
 # MANAGERS
 @onready var global_vars : Global_Variables = get_node("/root/GlobalVariables")
-@onready var highscore_ui_system : HighscoreUISystem = get_node("/root/HighscoreUiSystem")
+
 @onready var filemanager : FileManager = get_node("/root/File_Manager")
 @onready var highscore_ui : CanvasLayer = $%Highscore_Menu
 
@@ -85,7 +85,7 @@ func _on_button_pressed():
 
 func on_playername_textfield_submitted(_text : String):
       global_vars.gv_Settings["player_name"]  = _text
-      highscore_ui_system._change_player_name(_text)
+      HighscoreUiSystem._change_player_name(_text)
       get_parent().on_playerName_changed_Submit_to_UI()
       SoundManager.Emit_Sound(SoundManager.soundType.s_ui_click,Vector2.ZERO)
 

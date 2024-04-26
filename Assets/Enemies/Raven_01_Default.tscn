@@ -66,6 +66,12 @@ health_component = NodePath("../HealthComponent")
 
 [node name="HealthBar" parent="." instance=ExtResource("4_ipg1o")]
 visible = false
+light_mask = 2
+visibility_layer = 2
+offset_left = -24.0
+offset_top = -36.0
+offset_right = 26.0
+offset_bottom = -26.0
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_phfd6")]
 collision_mask = 2

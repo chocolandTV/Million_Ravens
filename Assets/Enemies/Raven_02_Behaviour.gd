@@ -86,4 +86,4 @@ func apply_bonus(enemy_damage_bonus : int, enemy_speed_bonus: int, enemy_health_
       speed += (enemy_speed_bonus)
       $HitboxComponent.apply_damage_bonus(damage + (enemy_damage_bonus))
       $HealthComponent.apply_health_bonus(enemy_health_bonus)
-      print("enemy02: Stats: ",damage + (enemy_damage_bonus)," damage, +",speed," speed, + ",$HealthComponent.current_health," health")
+      

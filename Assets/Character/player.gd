@@ -41,8 +41,10 @@ func get_movement_vector():
 	return Vector2(x_movement, y_movement)
 
 func player_dash():
+	# PLAYER DONT GET ANY DAMAGE
 	hurtboxComponent.monitoring = false
 	invincible_timer.start()
+	# PLAYER DEAL AROUND DAMAGE
 	dash_damage_Hitbox.monitorable = true
 	
 	var movement_vector = get_movement_vector()

@@ -246,6 +246,8 @@ health_component = NodePath("../HealthComponent")
 max_health = 12.0
 
 [node name="HealthBar" parent="." instance=ExtResource("4_7nywh")]
+light_mask = 2
+visibility_layer = 2
 offset_left = -24.0
 offset_top = -48.0
 offset_right = 26.0

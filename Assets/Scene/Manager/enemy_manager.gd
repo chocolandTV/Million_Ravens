@@ -9,18 +9,18 @@ extends Node
 const MIN_DISTANCE : float =  1200
 const SEC_TIME_BETWEEN_WAVES : float = 3000
 # ENEMY WAVE MULTIPLIER
-const BASE_DAMAGE_MULTIPLIER : float = 1.01
-const BASE_SPEED_MULTIPLIER : float  = 1.02
-const BASE_HEALTH_MULTIPLIER : float = 1.01
+const BASE_DAMAGE_MULTIPLIER : float = 0.05
+const BASE_SPEED_MULTIPLIER : float  = 0.02
+const BASE_HEALTH_MULTIPLIER : float = 0.05
 var waittime : float = 0.5
 var isPlayerHiding : bool = false
 var spawnPool : Array[Node2D]
 var current_wave :int = 1
 var time_running
 # ENEMY MODIFIER
-var enemy_damage_bonus :int = 0
-var enemy_speed_bonus :int = 0
-var enemy_health_bonus :int = 0
+var enemy_damage_bonus :int = 1
+var enemy_speed_bonus :int = 1
+var enemy_health_bonus :int = 1
 #Enemy weight variable
 var allWeights :int = 0
 func _ready():
@@ -48,12 +48,10 @@ func increase_wave():
 	# 	return
 	current_wave += 1
 	print("current_wave:", current_wave)
-	enemy_damage_bonus += int(current_wave*BASE_DAMAGE_MULTIPLIER)
-	enemy_speed_bonus += int(current_wave*BASE_SPEED_MULTIPLIER)
-	enemy_health_bonus += int(current_wave*BASE_HEALTH_MULTIPLIER)
-	print("Enemy_Manager: DamageBonus:", enemy_damage_bonus)
-	print("Enemy_Manager: SpeedBonus:", enemy_speed_bonus)
-	print("Enemy_Manager: HealthBonus:", enemy_health_bonus)
+	enemy_damage_bonus = min(int(current_wave*BASE_DAMAGE_MULTIPLIER),1)
+	enemy_speed_bonus = min(int(current_wave*BASE_SPEED_MULTIPLIER),1)
+	enemy_health_bonus = min(int(current_wave*BASE_HEALTH_MULTIPLIER),1)
+
 	increase_raven_spawn()
 
 func on_timer_timeout():
@@ -67,7 +65,7 @@ func on_timer_timeout():
 	if isPlayerHiding:
 		return
 	checkWave()
-	print("current_wave:", current_wave)
+
 	for i in range(0,current_wave):	
 		spawnEnemy(player.global_position + (Vector2.RIGHT.rotated(randf_range(0,TAU)) * MIN_DISTANCE))
 

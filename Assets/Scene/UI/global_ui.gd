@@ -32,6 +32,7 @@ var current_level_points :int  =0
 # BigLife Sprite
 @onready var bigLife_sprite : Sprite2D = $%BigLife_Sprite
 func _ready():
+      print(bigLife_sprite.name)
       experience_manager.level_up.connect(on_level_up_change_ui)
       #get ravenKilledAmount
       highscore_manager.UI_ravenkilled.connect(on_ravenscore_update)
@@ -134,9 +135,11 @@ func on_lifeplus_UI():
       health_array.append(life_instance)
 
 func on_lifeChange_UI(value : int):
-      var county :int = 0
+      bigLife_sprite.update_bigLife(value%1000)
+      var littleheart : int  = value / 1000
+      var county :int = 1
       for i in health_array:
-            if value > county:
+            if littleheart > county:
                   i.setstatus(true)
             else:
                   i.setstatus(false)

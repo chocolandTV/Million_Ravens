@@ -2,12 +2,8 @@ extends CharacterBody2D
 
 class_name Enemy01_Ravii
 
-# @onready var hit_box : Area2D = $HitboxComponent
-@onready var anim : AnimationPlayer = $AnimationPlayer
-@onready var timer : Timer = $Timer
-
-var speed : float  = 300.0
-const mutation_multiplier_chance : float = 0.01
+var speed : float  = 290.0
+const MUTATION_CHANCE : float = 0.01
 const damage :int  = 1 
 var isCooldown : bool  = false
 
@@ -15,14 +11,12 @@ var isCooldown : bool  = false
 var damage_type_enemy : int = 0
 var player_node : Node2D
 func _ready():
-      timer.timeout.connect(on_timer_timeouti)
-      $HealthComponent.health_changed.connect(on_raven_01_knockback)
-      
-      #get player
+      $Timer.timeout.connect(on_timer_timeouti)
+      $HealthComponent.health_damage_knockback.connect(on_raven_01_knockback)
       player_node = get_tree().get_first_node_in_group("player") as Node2D
       #get lucky int
       $HealthComponent.died.connect(on_colorEvent_died)
-      if randf_range(0,1) < mutation_multiplier_chance:
+      if randf_range(0,1) < MUTATION_CHANCE:
             on_colorEvent_triggered()
 
 func _process(_delta):
@@ -41,10 +35,12 @@ func get_direction_to_player():
       #return if not null
       return Vector2.ZERO
 func on_raven_01_knockback():
-      anim.play("Knockback")
-      global_position += -get_direction_to_player() * damage * 10
+      print("knockback shit")
+      $HealthBar.visible = true
+      $AnimationPlayer.play("Knockback")
+      global_position += -get_direction_to_player() * 50
       isCooldown = true
-      timer.start()
+      $Timer.start()
 
 func on_timer_timeouti():
       isCooldown = false
@@ -56,13 +52,12 @@ func on_colorEvent_died(_damage_type : int):
             get_node("/root/GlobalVariables").increase_multiplier()
             GameEvents.ui_update_highscore_multiplier.emit(1)
             print("increase multiplier")
-      if damage_type_enemy != damage_type_enemy:
+      else:
             print("reset Multiplier")
             get_node("/root/GlobalVariables").reset_multiplier()
             GameEvents.ui_update_highscore_multiplier.emit(0)
-# func on Ready if raven chanced 0,2%
+# func on Ready if raven chanced 0,1%
 func on_colorEvent_triggered():
-
       if randi_range(0,10) >=5:
             $Sprite2D.modulate = Color.CYAN
             damage_type_enemy = 1
@@ -74,4 +69,4 @@ func apply_bonus(enemy_damage_bonus : int, enemy_speed_bonus: int, enemy_health_
       speed += enemy_speed_bonus
       $HitboxComponent.apply_damage_bonus(enemy_damage_bonus)
       $HealthComponent.apply_health_bonus(enemy_health_bonus)
-      print("enemy02: Stats: ",damage + (enemy_damage_bonus*6)," damage, +",speed," speed, + ",$HealthComponent.current_health," health")
+      

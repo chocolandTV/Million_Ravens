@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b0k7pkd8w6bgf"]
+[gd_scene load_steps=28 format=3 uid="uid://b0k7pkd8w6bgf"]
 
 [ext_resource type="Script" path="res://Assets/Character/player.gd" id="1_mc8ud"]
 [ext_resource type="PackedScene" uid="uid://dawavi4jsphc" path="res://Assets/Scene/Ability/paw_ability_controller/ability_controller.tscn" id="2_35odb"]
@@ -7,8 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bj3q25jgd6xj4" path="res://Assets/Scene/Ability/Dash/dash_ability_controller.tscn" id="5_c7kej"]
 [ext_resource type="Texture2D" uid="uid://becdm7xbjf21n" path="res://Assets/Character/Sprite-0019.png" id="6_6h511"]
 [ext_resource type="Script" path="res://Assets/Character/PlayerHurtboxComponent.gd" id="6_8ivss"]
-[ext_resource type="Script" path="res://Assets/Scene/Component/hitbox_component.gd" id="9_ejk72"]
+[ext_resource type="Script" path="res://Assets/Character/Dash_damage_Hitbox.gd" id="9_fb7gv"]
 [ext_resource type="Texture2D" uid="uid://daedr36yg12ap" path="res://Assets/Character/player_shield_effect_02.png" id="9_jqyk2"]
+[ext_resource type="Texture2D" uid="uid://chxrpu14dxq05" path="res://Assets/Textures/light_player.png" id="10_f6pq4"]
 
 [sub_resource type="Animation" id="Animation_gk7r7"]
 length = 0.001
@@ -212,7 +213,7 @@ radius = 19.0263
 size = Vector2(20, 22)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mu8jk"]
-radius = 34.92
+radius = 75.65
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 2
@@ -231,11 +232,14 @@ autoplay = "walk"
 
 [node name="Right_Arm_AbilityController" parent="." instance=ExtResource("3_xomax")]
 
-[node name="PlayerHealthComponent" parent="." node_paths=PackedStringArray("player_animations") instance=ExtResource("2_ehluf")]
+[node name="PlayerHealthComponent" parent="." node_paths=PackedStringArray("player_animations", "player_invincible_timer", "player_hurtbox") instance=ExtResource("2_ehluf")]
 player_animations = NodePath("../AnimationPlayer")
+player_invincible_timer = NodePath("../InvincibleTimer")
+player_hurtbox = NodePath("../HurtboxComponent")
 
-[node name="DashAbilityController" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_c7kej")]
+[node name="DashAbilityController" parent="." node_paths=PackedStringArray("player", "dashDamageComponent") instance=ExtResource("5_c7kej")]
 player = NodePath("..")
+dashDamageComponent = NodePath("../Dash_damage_Hitbox")
 
 [node name="PickupArea2D" type="Area2D" parent="."]
 position = Vector2(0, -27)
@@ -291,7 +295,6 @@ position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_lm6um")
 
 [node name="InvincibleTimer" type="Timer" parent="."]
-unique_name_in_owner = true
 wait_time = 0.5
 one_shot = true
 
@@ -301,9 +304,13 @@ collision_layer = 66
 collision_mask = 0
 monitoring = false
 monitorable = false
-script = ExtResource("9_ejk72")
-damage_type = 3
+script = ExtResource("9_fb7gv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dash_damage_Hitbox"]
 position = Vector2(0, -27)
 shape = SubResource("CircleShape2D_mu8jk")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -23)
+shadow_color = Color(0, 0, 0, 0.898039)
+texture = ExtResource("10_f6pq4")

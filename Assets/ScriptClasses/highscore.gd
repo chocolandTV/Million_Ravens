@@ -1,4 +1,4 @@
-extends Resource
+
 class_name  HighScore
 
 var rank : String ="0"

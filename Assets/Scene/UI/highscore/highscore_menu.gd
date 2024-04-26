@@ -1,7 +1,5 @@
 extends CanvasLayer
 
-@onready var highscore_ui_system : HighscoreUISystem = get_node("/root/HighscoreUiSystem")
-
 @onready var vbox_container : VBoxContainer = $%VBoxContainer
 
 @export var highscore_entry : PackedScene
@@ -16,8 +14,8 @@ func on_CanvasLayer_activate():
             x.queue_free()
       highscorelist.clear()
       #GET HIGHSCORE DATA
-      highscore_ui_system._get_leaderboards()
-      for x in highscore_ui_system.highscore_Table:
+      HighscoreUiSystem._get_leaderboards()
+      for x in HighscoreUiSystem.highscore_Table:
             # INSTANTIATE AS PANEL AND AD IN TABLE
             var score_entry = highscore_entry.instantiate() as Panel
             vbox_container.add_child(score_entry)
