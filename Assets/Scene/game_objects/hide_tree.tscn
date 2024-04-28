@@ -22,10 +22,11 @@ shader_parameter/balance = 0.5
 shader_parameter/octaves = 4.0
 
 [node name="HideTree" type="StaticBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_2cnor")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 71)
+position = Vector2(0, 152)
 shape = SubResource("CircleShape2D_ynhid")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

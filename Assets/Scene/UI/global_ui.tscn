@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://des0khalvaaf1"]
+[gd_scene load_steps=38 format=3 uid="uid://des0khalvaaf1"]
 
 [ext_resource type="Texture2D" uid="uid://tdqul4ymtndy" path="res://Assets/Textures/feather.png" id="1_62ja5"]
 [ext_resource type="Script" path="res://Assets/Scene/UI/global_ui.gd" id="1_75rbs"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bldwm7gq7mem" path="res://Assets/Textures/UI/Sprite-0025_Ability_player_movementspeed.png" id="14_ubjgm"]
 [ext_resource type="Texture2D" uid="uid://yx82xo4cixma" path="res://Assets/Textures/UI/Sprite-0024_Ability_atkSpeed_icon.png" id="14_vrimc"]
 [ext_resource type="Texture2D" uid="uid://byanvxjmxtlyb" path="res://Assets/Textures/UI/Sprite-0026_Ability_lifeup.png" id="15_kyq3j"]
+[ext_resource type="Texture2D" uid="uid://c2fuommjhfhkt" path="res://Assets/Textures/UI/text_bubble_02.png" id="20_0iu5y"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ritd1"]
 
@@ -543,7 +544,6 @@ text = "1"
 
 [node name="Player_Ability_Container" type="MarginContainer" parent="."]
 unique_name_in_owner = true
-visible = false
 offset_left = 893.0
 offset_top = 402.0
 offset_right = 1293.0
@@ -741,3 +741,47 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 33
 text = "- 0 extra Health"
+
+[node name="Dialog_Container" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+
+[node name="Dialog_Panel" type="Panel" parent="Dialog_Container"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Dialog_Container/Dialog_Panel"]
+layout_mode = 0
+offset_left = -240.0
+offset_top = -163.0
+offset_right = 60.0
+offset_bottom = -73.0
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("20_0iu5y")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Dialog_Container/Dialog_Panel"]
+custom_minimum_size = Vector2(465, 120)
+layout_mode = 0
+offset_left = -211.0
+offset_top = -144.0
+offset_right = 274.0
+offset_bottom = -24.0
+theme_override_colors/font_shadow_color = Color(0.137088, 0.07428, 0.10195, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 9
+theme_override_font_sizes/font_size = 20
+text = "Hallo little Cat, do you have any food,
+i am really hungry.I am Tutoravi.
+I am here to help you,
+do you need introductions? "
+max_lines_visible = 4

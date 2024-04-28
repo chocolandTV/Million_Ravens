@@ -216,7 +216,7 @@ size = Vector2(20, 22)
 radius = 75.65
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-z_index = 2
+y_sort_enabled = true
 collision_layer = 10
 collision_mask = 5
 motion_mode = 1
@@ -232,13 +232,11 @@ autoplay = "walk"
 
 [node name="Right_Arm_AbilityController" parent="." instance=ExtResource("3_xomax")]
 
-[node name="PlayerHealthComponent" parent="." node_paths=PackedStringArray("player_animations", "player_invincible_timer", "player_hurtbox") instance=ExtResource("2_ehluf")]
+[node name="PlayerHealthComponent" parent="." node_paths=PackedStringArray("player_animations", "player_hurtbox") instance=ExtResource("2_ehluf")]
 player_animations = NodePath("../AnimationPlayer")
-player_invincible_timer = NodePath("../InvincibleTimer")
 player_hurtbox = NodePath("../HurtboxComponent")
 
-[node name="DashAbilityController" parent="." node_paths=PackedStringArray("player", "dashDamageComponent") instance=ExtResource("5_c7kej")]
-player = NodePath("..")
+[node name="DashAbilityController" parent="." node_paths=PackedStringArray("dashDamageComponent") instance=ExtResource("5_c7kej")]
 dashDamageComponent = NodePath("../Dash_damage_Hitbox")
 
 [node name="PickupArea2D" type="Area2D" parent="."]
@@ -290,12 +288,12 @@ player_health_comonent = NodePath("../PlayerHealthComponent")
 shape = SubResource("CircleShape2D_5s175")
 debug_color = Color(0.976471, 0, 0, 0.419608)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Body_CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_lm6um")
 
-[node name="InvincibleTimer" type="Timer" parent="."]
-wait_time = 0.5
+[node name="Dash_InvincibleTimer" type="Timer" parent="."]
+wait_time = 0.3
 one_shot = true
 
 [node name="Dash_damage_Hitbox" type="Area2D" parent="."]
@@ -314,3 +312,4 @@ shape = SubResource("CircleShape2D_mu8jk")
 position = Vector2(0, -23)
 shadow_color = Color(0, 0, 0, 0.898039)
 texture = ExtResource("10_f6pq4")
+texture_scale = 2.0

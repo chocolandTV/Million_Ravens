@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://tkcwmwnsn5ck"]
+
+[ext_resource type="PackedScene" uid="uid://du0ftrpg13b6m" path="res://Assets/Textures/Tutorial/tutoravii_character.tscn" id="1_x3i3f"]
+[ext_resource type="Texture2D" uid="uid://d1qfc6xapcmxg" path="res://Assets/Textures/text_bubble_highlighted.png" id="3_0eg03"]
+[ext_resource type="Script" path="res://Assets/Scene/game_objects/Tutorials/Label.gd" id="4_7x1p4"]
+[ext_resource type="PackedScene" uid="uid://dijunhnwfry8k" path="res://Assets/Textures/Tutorial/tutorial_shield.tscn" id="4_dcts2"]
+
+[sub_resource type="Animation" id="Animation_f6b01"]
+resource_name = "tutorial_text_anim"
+length = 2.0
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text_bubble/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.69, 1.06, 1.36, 1.65, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["...", ".", "..", "...", ".", "..", "..."]
+}
+
+[sub_resource type="Animation" id="Animation_pv0wc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text_bubble/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["..."]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lmyt0"]
+_data = {
+"RESET": SubResource("Animation_pv0wc"),
+"tutorial_text_anim": SubResource("Animation_f6b01")
+}
+
+[node name="Tutorial_01" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Tutoravii_character" parent="." instance=ExtResource("1_x3i3f")]
+position = Vector2(0, -77)
+
+[node name="Text_bubble" type="Sprite2D" parent="."]
+position = Vector2(42, -115)
+texture = ExtResource("3_0eg03")
+
+[node name="Label" type="Label" parent="Text_bubble"]
+custom_minimum_size = Vector2(16, 16)
+offset_left = -9.0
+offset_top = -19.0
+offset_right = 8.0
+offset_bottom = 9.0
+theme_override_font_sizes/font_size = 20
+text = "..."
+script = ExtResource("4_7x1p4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Text_bubble"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_lmyt0")
+}
+autoplay = "tutorial_text_anim"
+
+[node name="Tutorial_Shield" parent="." instance=ExtResource("4_dcts2")]
+init_text = "hey geiler text, test next line"

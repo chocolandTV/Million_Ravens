@@ -4,3 +4,5 @@
 
 [node name="PlayerHealthComponent" type="Node"]
 script = ExtResource("1_l4w38")
+
+[node name="InvincibleTimer" type="Timer" parent="."]
