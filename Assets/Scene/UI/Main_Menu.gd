@@ -20,9 +20,10 @@ extends Node
 @export var global_UI : CanvasLayer
 #Original Background
 @onready var base_background : TextureRect =$%base_BackgroundImage
-var  isCreditsOn :bool = false
 # TOGGLE SETTING VARIABLE
+var  isCreditsOn :bool = false
 var setting_enabled :bool = false
+var isHighscoreOn :bool = false
 
 func _ready():
       # Load Savegame Data if persists
@@ -59,14 +60,16 @@ func _on_credit_button_pressed():
       SoundManager.Emit_Sound(SoundManager.soundType.s_ui_click,Vector2.ZERO)
 
 func _on_button_highscore_pressed():
-      highscore_ui.on_CanvasLayer_activate()
+      #TOGGLE HIGHSCORE
+      isHighscoreOn = !isHighscoreOn
+      if isHighscoreOn:
+            highscore_ui.on_CanvasLayer_activate()
       splash.visible = false
-      menu.visible = false
-      setting_enabled = false
+      setting_enabled = !isHighscoreOn
       global_UI.visible = false
-      setting_menu.visible = setting_enabled
-      isCreditsOn = false
-      credit_Panel.visible = isCreditsOn
+      setting_menu.visible = false
+      isCreditsOn = !isHighscoreOn
+      credit_Panel.visible = false
       # Turn highscore On
       highscore_ui.visible = true
       SoundManager.Emit_Sound(SoundManager.soundType.s_ui_click,Vector2.ZERO)

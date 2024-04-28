@@ -112,6 +112,7 @@ func _on_leaderboard_request_completed(result, response_code, headers, body):
 	print(json.get_data().items.size())
 	# Clear node
 	leaderboard_http.queue_free()
+	GameEvents.get_leaderboards_is_finished.emit()
 
 func d_on_leaderboard_request_complete(result, response_code, headers, body):
 	# new json

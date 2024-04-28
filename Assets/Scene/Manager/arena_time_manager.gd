@@ -30,7 +30,7 @@ func on_boss_down():
 
 func win_game():
       # Upload Current Score
-      var metadata = str(deltaTimer.get_formated_time_elapsed()) +"," + str(highscore_manager.current_feathers) + "," + str(highscore_manager.current_coins)
+      var metadata :String = str(deltaTimer.get_formated_time_elapsed()) +"," + str(highscore_manager.current_feathers) + "," + str(highscore_manager.current_coins)
       HighscoreUiSystem._upload_score(highscore_manager.current_highscore,metadata)
       #update Leaderboard and get player index as new Highscore_entry Panel
       HighscoreUiSystem._get_leaderboards()

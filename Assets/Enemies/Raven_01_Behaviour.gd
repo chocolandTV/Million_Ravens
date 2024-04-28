@@ -18,7 +18,8 @@ func _ready():
       $HealthComponent.died.connect(on_colorEvent_died)
       if randf_range(0,1) < MUTATION_CHANCE:
             on_colorEvent_triggered()
-      $AnimatedSprite2D.look_at(player_node.global_position)
+      $AnimatedSprite2D.rotation= (player_node.global_position - self.global_position).angle()
+
 
 func _process(_delta):
       if isCooldown:

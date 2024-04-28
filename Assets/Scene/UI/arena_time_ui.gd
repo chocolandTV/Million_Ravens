@@ -16,7 +16,6 @@ func get_formated_time_elapsed():
       return get_string_elapsed_time(time)
       
 func get_string_elapsed_time(_time : int):
-
       #millseconds calculated: time mod 1000
       var msec = _time%1000
       # ZwischenStep #01 convert time seconds : time /1000 int
@@ -35,11 +34,7 @@ func get_string_elapsed_time(_time : int):
       #stunden ausrechnen time mod 24
       var hr = _time%24
       # Zwischenstep 04 convert time days:  time / 24 int
-      @warning_ignore("integer_division")
-      _time = _time /24
-      #tage ausrechnen  time
-      
-      return "Time : %02d :%02d : %02d : %02d : %03d" % [_time,hr,mins,secs,msec]
+      return "Time : %02d : %02d : %02d : %03d" % [hr,mins,secs,msec]
 func _process(_delta):
       if get_parent().isGameStatePaused():
             return
