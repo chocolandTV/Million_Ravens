@@ -18,6 +18,7 @@ func _ready():
       $HealthComponent.died.connect(on_colorEvent_died)
       if randf_range(0,1) < MUTATION_CHANCE:
             on_colorEvent_triggered()
+      $AnimatedSprite2D.look_at(player_node.global_position)
 
 func _process(_delta):
       if isCooldown:
@@ -35,7 +36,6 @@ func get_direction_to_player():
       #return if not null
       return Vector2.ZERO
 func on_raven_01_knockback():
-      print("knockback shit")
       $HealthBar.visible = true
       $AnimationPlayer.play("Knockback")
       global_position += -get_direction_to_player() * 50
@@ -59,10 +59,10 @@ func on_colorEvent_died(_damage_type : int):
 # func on Ready if raven chanced 0,1%
 func on_colorEvent_triggered():
       if randi_range(0,10) >=5:
-            $Sprite2D.modulate = Color.CYAN
+            $AnimatedSprite2D.modulate = Color.CYAN
             damage_type_enemy = 1
       else:
-            $Sprite2D.modulate = Color.RED
+            $AnimatedSprite2D.modulate = Color.RED
             damage_type_enemy = 2
 
 func apply_bonus(enemy_damage_bonus : int, enemy_speed_bonus: int, enemy_health_bonus: int):

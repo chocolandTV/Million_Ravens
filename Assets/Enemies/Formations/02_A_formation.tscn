@@ -3,86 +3,72 @@
 [ext_resource type="Script" path="res://Assets/Enemies/Formations/02_O_formation.gd" id="1_3igfw"]
 [ext_resource type="PackedScene" uid="uid://dwp0tj0ahcgwn" path="res://Assets/Enemies/Raven_01_Default.tscn" id="1_rqboh"]
 
-[node name="02_O_Formation" type="Node2D"]
+[node name="02_A_Formation" type="Node2D"]
+position = Vector2(12, 2)
 script = ExtResource("1_3igfw")
 
-[node name="Ravenspeedy" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(-1, -164)
-
 [node name="Ravenspeedy2" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(35, -157)
+position = Vector2(9, -125)
 
 [node name="Ravenspeedy3" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(72, -144)
+position = Vector2(31, -94)
 
 [node name="Ravenspeedy4" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(106, -121)
+position = Vector2(52, -64)
 
 [node name="Ravenspeedy5" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(128, -96)
+position = Vector2(70, -35)
 
 [node name="Ravenspeedy6" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(145, -64)
+position = Vector2(89, -7)
 
 [node name="Ravenspeedy7" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(158, -35)
+position = Vector2(101, 23)
 
 [node name="Ravenspeedy8" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(157, -2)
+position = Vector2(118, 52)
 
 [node name="Ravenspeedy9" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(155, 35)
-
-[node name="Ravenspeedy10" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(143, 66)
+position = Vector2(132, 76)
 
 [node name="Ravenspeedy11" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(130, 92)
+position = Vector2(58, -3)
 
 [node name="Ravenspeedy12" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(106, 119)
+position = Vector2(25, -4)
 
 [node name="Ravenspeedy13" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(79, 140)
+position = Vector2(-8, -4)
 
 [node name="Ravenspeedy14" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(42, 154)
+position = Vector2(-38, -3)
 
 [node name="Ravenspeedy15" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(0, 160)
+position = Vector2(-69, -3)
 
 [node name="Ravenspeedy16" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(-38, 156)
+position = Vector2(-19, -140)
 
 [node name="Ravenspeedy17" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(-77, 141)
+position = Vector2(-39, -119)
 
 [node name="Ravenspeedy18" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(-112, 117)
+position = Vector2(-58, -99)
 
 [node name="Ravenspeedy19" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(-139, 80)
+position = Vector2(-74, -75)
 
 [node name="Ravenspeedy20" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(-156, 46)
+position = Vector2(-87, -47)
 
 [node name="Ravenspeedy21" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(-163, 1)
+position = Vector2(-96, -19)
 
 [node name="Ravenspeedy22" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(-158, -38)
+position = Vector2(-106, 10)
 
 [node name="Ravenspeedy23" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(-145, -72)
+position = Vector2(-118, 39)
 
 [node name="Ravenspeedy24" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(-123, -105)
-
-[node name="Ravenspeedy25" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(-97, -129)
-
-[node name="Ravenspeedy26" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(-66, -148)
-
-[node name="Ravenspeedy27" parent="." instance=ExtResource("1_rqboh")]
-position = Vector2(-34, -158)
+position = Vector2(-130, 65)

@@ -1,22 +1,25 @@
 extends Node
 @export var isEnabled : bool = true
 @export var START_WAITTIME : float = 0.5
-@export var enemyPool: Array[Enemy_Spawn_Weight]
-
+@export var enemyPool: Array[PackedScene]
 @export var amanager : arena_time_manager
+
 @onready var timer : Timer = $Timer
 
 const MIN_DISTANCE : float =  1200
 const SEC_TIME_BETWEEN_WAVES : float = 3000
+const SEC_TIMES_WAITTIME_INCREASER : int = 10
 # ENEMY WAVE MULTIPLIER
 const BASE_DAMAGE_MULTIPLIER : float = 0.05
 const BASE_SPEED_MULTIPLIER : float  = 0.02
 const BASE_HEALTH_MULTIPLIER : float = 0.05
 var waittime : float = 0.5
+var waittimer_wave_counter : int = 0
 var isPlayerHiding : bool = false
 var spawnPool : Array[Node2D]
 var current_wave :int = 1
-var time_running
+
+var time_running : float = 0
 # ENEMY MODIFIER
 var enemy_damage_bonus :int = 1
 var enemy_speed_bonus :int = 1
@@ -30,9 +33,9 @@ func _ready():
 	timer.wait_time = waittime
 	GameEvents.increase_raven_spawn.connect(increase_raven_spawn)
 	GameEvents.playerIsHiding.connect(change_player_isHiding)
-	#enemy weight pool# get max weight
-	for x in enemyPool:
-		allWeights+= x.enemy_weight
+
+func _process(delta):
+	time_running += delta
 
 func change_player_isHiding(value :bool):
 	isPlayerHiding = value
@@ -40,12 +43,12 @@ func resetAll():
 	waittime = START_WAITTIME
 	current_wave = 1
 func increase_raven_spawn():
-	waittime = max(0.01,waittime - 0.01)
-	timer.wait_time  =  waittime
+	waittimer_wave_counter +=1
+	if waittimer_wave_counter >= 10:
+		waittime = max(0.01,waittime - 0.01)
+		timer.wait_time  =  waittime
 	
 func increase_wave():
-	# if current_wave == spawnPool.size():
-	# 	return
 	current_wave += 1
 	print("current_wave:", current_wave)
 	enemy_damage_bonus = min(int(current_wave*BASE_DAMAGE_MULTIPLIER),1)
@@ -70,8 +73,7 @@ func on_timer_timeout():
 		spawnEnemy(player.global_position + (Vector2.RIGHT.rotated(randf_range(0,TAU)) * MIN_DISTANCE))
 
 func checkWave():
-	# print (amanager.get_delta_time())
-	if amanager.get_delta_time() > current_wave * SEC_TIME_BETWEEN_WAVES:
+	if time_running > current_wave * SEC_TIME_BETWEEN_WAVES:
 		increase_wave()
 
 func playerHides(value : bool):
@@ -92,9 +94,23 @@ func spawnEnemy(pos : Vector2):
 	spawnPool.append(enemy)
 
 func pick_random_enemy():
-	var random :int = randi_range(1, allWeights)
-	var _allweights :int = 0
-	for x in enemyPool:
-		_allweights += x.enemy_weight
-		if random <= _allweights:
-			return x.enemy_type
+	var random :int = randi_range(1, 100)
+	if random == 20:# FIRESTARTER
+		return enemyPool[1]
+
+	if random ==30 :# Formation R
+		return enemyPool[2]
+
+	if random ==40 :# Formation A
+		return enemyPool[3]
+
+	if random ==50 :# Formation V
+		return enemyPool[4]
+
+	if random ==60 :# Formation E
+		return enemyPool[5]
+
+	if random ==70 :# Formation N
+		return enemyPool[6]
+
+	return enemyPool[0]

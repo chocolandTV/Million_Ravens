@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://gbw6bwm54644"]
+[gd_scene load_steps=37 format=3 uid="uid://gbw6bwm54644"]
 
 [ext_resource type="PackedScene" uid="uid://dwsgmvwvvu86q" path="res://Assets/Scene/Manager/arena_time_manager.tscn" id="1_0trha"]
 [ext_resource type="PackedScene" uid="uid://dtmli75wgeic" path="res://Assets/Modules/Camera/camera.tscn" id="1_k1roq"]
@@ -21,63 +21,21 @@
 [ext_resource type="Resource" uid="uid://b0b8fj6skvs12" path="res://Assets/Ressources/upgrades/paw_xlife.tres" id="13_8ce1q"]
 [ext_resource type="PackedScene" uid="uid://dtgnyemf7j7y4" path="res://Assets/Scene/game_objects/start_position.tscn" id="13_d18s3"]
 [ext_resource type="PackedScene" uid="uid://des0khalvaaf1" path="res://Assets/Scene/UI/global_ui.tscn" id="16_1mrm1"]
-[ext_resource type="PackedScene" uid="uid://3h8bu67idx0j" path="res://Assets/Enemies/Formations/01_x_formation.tscn" id="16_iqjwo"]
+[ext_resource type="PackedScene" uid="uid://3h8bu67idx0j" path="res://Assets/Enemies/Formations/01_R_formation.tscn" id="16_iqjwo"]
 [ext_resource type="PackedScene" uid="uid://me5npjowj6pr" path="res://Assets/Enemies/Formations/00_base_enemy01.tscn" id="16_jff52"]
 [ext_resource type="PackedScene" uid="uid://q4eqbtjlxdw8" path="res://Assets/Scene/game_objects/region_start.tscn" id="17_cbkcn"]
 [ext_resource type="PackedScene" uid="uid://c81ldk362rn2p" path="res://Assets/Enemies/Formations/04_V_formation.tscn" id="17_dhdr5"]
-[ext_resource type="Script" path="res://Assets/ScriptClasses/enemy_class.gd" id="17_xm7f6"]
-[ext_resource type="PackedScene" uid="uid://1aak0ykkx0xn" path="res://Assets/Enemies/Formations/02_O_formation.tscn" id="17_ylcx0"]
-[ext_resource type="PackedScene" uid="uid://3etyyu5pcjdb" path="res://Assets/Enemies/Formations/05_L02_formation.tscn" id="18_2fti6"]
 [ext_resource type="PackedScene" uid="uid://bvyi7e1s0ql7d" path="res://Assets/Enemies/Formations/03_E_formation.tscn" id="18_k1wd0"]
 [ext_resource type="PackedScene" uid="uid://cg5id4dgxp4ub" path="res://Assets/Enemies/Raven_02_Spawner.tscn" id="18_vwc51"]
 [ext_resource type="PackedScene" uid="uid://wgk6hnirb8p7" path="res://Assets/Enemies/Formations/00_base_enemy02.tscn" id="18_wjt28"]
 [ext_resource type="PackedScene" uid="uid://diqmbn2ls8nc0" path="res://Assets/Scene/game_objects/Chest.tscn" id="19_2px30"]
-[ext_resource type="PackedScene" uid="uid://bs86m2ataw12m" path="res://Assets/Enemies/Formations/Wave_formation.tscn" id="19_td0u1"]
+[ext_resource type="PackedScene" uid="uid://1aak0ykkx0xn" path="res://Assets/Enemies/Formations/02_A_formation.tscn" id="19_cshna"]
+[ext_resource type="PackedScene" uid="uid://3etyyu5pcjdb" path="res://Assets/Enemies/Formations/05_N_formation.tscn" id="22_fmqoo"]
 [ext_resource type="PackedScene" uid="uid://cyf8d7oi7fjsp" path="res://Assets/Scene/UI/vignette.tscn" id="33_n0ujm"]
 [ext_resource type="PackedScene" uid="uid://bb5joebfqgqm1" path="res://Assets/Scene/game_objects/Obstacles/fence_terrain.tscn" id="35_3uyua"]
 [ext_resource type="PackedScene" uid="uid://deat1nhy73bi0" path="res://Assets/Shaders/water.tscn" id="36_1g0e0"]
 [ext_resource type="PackedScene" uid="uid://di6ndr22rngwd" path="res://Assets/Scene/game_objects/hide_tree.tscn" id="36_b2q01"]
 [ext_resource type="PackedScene" uid="uid://tkcwmwnsn5ck" path="res://Assets/Scene/game_objects/Tutorials/tutorial_01.tscn" id="38_q8bnp"]
-
-[sub_resource type="Resource" id="Resource_kyla8"]
-script = ExtResource("17_xm7f6")
-enemy_type = ExtResource("16_jff52")
-enemy_weight = 100
-
-[sub_resource type="Resource" id="Resource_gmbwt"]
-script = ExtResource("17_xm7f6")
-enemy_type = ExtResource("18_wjt28")
-enemy_weight = 3
-
-[sub_resource type="Resource" id="Resource_0kbcy"]
-script = ExtResource("17_xm7f6")
-enemy_type = ExtResource("16_iqjwo")
-enemy_weight = 5
-
-[sub_resource type="Resource" id="Resource_kka5j"]
-script = ExtResource("17_xm7f6")
-enemy_type = ExtResource("17_ylcx0")
-enemy_weight = 3
-
-[sub_resource type="Resource" id="Resource_r3vhc"]
-script = ExtResource("17_xm7f6")
-enemy_type = ExtResource("18_k1wd0")
-enemy_weight = 3
-
-[sub_resource type="Resource" id="Resource_ibach"]
-script = ExtResource("17_xm7f6")
-enemy_type = ExtResource("17_dhdr5")
-enemy_weight = 3
-
-[sub_resource type="Resource" id="Resource_7e72i"]
-script = ExtResource("17_xm7f6")
-enemy_type = ExtResource("18_2fti6")
-enemy_weight = 2
-
-[sub_resource type="Resource" id="Resource_3u3a6"]
-script = ExtResource("17_xm7f6")
-enemy_type = ExtResource("19_td0u1")
-enemy_weight = 1
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_qc85t")
@@ -124,7 +82,7 @@ experience_manager = NodePath("../ExperienceManager")
 
 [node name="EnemyManager" parent="." node_paths=PackedStringArray("amanager") instance=ExtResource("1_nk1n0")]
 START_WAITTIME = 1.0
-enemyPool = Array[ExtResource("17_xm7f6")]([SubResource("Resource_kyla8"), SubResource("Resource_gmbwt"), SubResource("Resource_0kbcy"), SubResource("Resource_kka5j"), SubResource("Resource_r3vhc"), SubResource("Resource_ibach"), SubResource("Resource_7e72i"), SubResource("Resource_3u3a6")])
+enemyPool = Array[PackedScene]([ExtResource("16_jff52"), ExtResource("18_wjt28"), ExtResource("16_iqjwo"), ExtResource("19_cshna"), ExtResource("17_dhdr5"), ExtResource("18_k1wd0"), ExtResource("22_fmqoo")])
 amanager = NodePath("../ArenaTimeManager")
 
 [node name="Game_Camera" parent="." instance=ExtResource("1_k1roq")]
@@ -348,11 +306,12 @@ rotation = 1.5708
 layer = 4
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+visible = false
 light_mask = 2
 visibility_layer = 2
 position = Vector2(7196.23, 2099.45)
 scale = Vector2(270, 100)
-color = Color(0.122252, 0.122252, 0.122252, 1)
+color = Color(0.306923, 0.306923, 0.306923, 1)
 blend_mode = 1
 range_z_min = 0
 range_z_max = 0

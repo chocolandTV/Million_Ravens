@@ -544,6 +544,7 @@ text = "1"
 
 [node name="Player_Ability_Container" type="MarginContainer" parent="."]
 unique_name_in_owner = true
+visible = false
 offset_left = 893.0
 offset_top = 402.0
 offset_right = 1293.0
@@ -743,6 +744,7 @@ theme_override_font_sizes/font_size = 33
 text = "- 0 extra Health"
 
 [node name="Dialog_Container" type="MarginContainer" parent="."]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

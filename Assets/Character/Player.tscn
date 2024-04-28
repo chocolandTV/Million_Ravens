@@ -271,6 +271,8 @@ scale_amount_curve = SubResource("Curve_3hapn")
 color = Color(0.262745, 0.882353, 0.701961, 1)
 
 [node name="Animatedsprite2D" type="AnimatedSprite2D" parent="Visuals"]
+light_mask = 2
+visibility_layer = 2
 position = Vector2(-2, -32)
 sprite_frames = SubResource("SpriteFrames_obf75")
 animation = &"Idle"
@@ -285,6 +287,7 @@ script = ExtResource("6_8ivss")
 player_health_comonent = NodePath("../PlayerHealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, 11)
 shape = SubResource("CircleShape2D_5s175")
 debug_color = Color(0.976471, 0, 0, 0.419608)
 
@@ -298,6 +301,7 @@ one_shot = true
 
 [node name="Dash_damage_Hitbox" type="Area2D" parent="."]
 unique_name_in_owner = true
+visible = false
 collision_layer = 66
 collision_mask = 0
 monitoring = false

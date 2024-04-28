@@ -1,68 +1,67 @@
-[gd_scene load_steps=4 format=3 uid="uid://3etyyu5pcjdb"]
+[gd_scene load_steps=3 format=3 uid="uid://3etyyu5pcjdb"]
 
 [ext_resource type="PackedScene" uid="uid://dwp0tj0ahcgwn" path="res://Assets/Enemies/Raven_01_Default.tscn" id="1_amx0h"]
 [ext_resource type="Script" path="res://Assets/Enemies/Formations/05_L02_formation.gd" id="1_mu8pe"]
-[ext_resource type="PackedScene" uid="uid://cagxkvae0a0n5" path="res://Assets/Enemies/Raven_02_FireStar.tscn" id="2_jmgvq"]
 
-[node name="05_L02_formation" type="Node2D"]
+[node name="05_N_formation" type="Node2D"]
 script = ExtResource("1_mu8pe")
 
 [node name="Ravenspeedy" parent="." instance=ExtResource("1_amx0h")]
-position = Vector2(-1, 27)
+position = Vector2(-42, 90)
 
 [node name="Ravenspeedy4" parent="." instance=ExtResource("1_amx0h")]
-position = Vector2(-35, 26)
+position = Vector2(-42, 59)
 
 [node name="Ravenspeedy5" parent="." instance=ExtResource("1_amx0h")]
-position = Vector2(-77, 25)
+position = Vector2(-42, 27)
 
 [node name="Ravenspeedy6" parent="." instance=ExtResource("1_amx0h")]
-position = Vector2(-119, 24)
+position = Vector2(-42, -5)
 
 [node name="Ravenspeedy7" parent="." instance=ExtResource("1_amx0h")]
-position = Vector2(-163, 24)
+position = Vector2(-42, -39)
 
 [node name="Ravenspeedy8" parent="." instance=ExtResource("1_amx0h")]
-position = Vector2(-206, 24)
+position = Vector2(-42, -72)
 
 [node name="Ravenspeedy9" parent="." instance=ExtResource("1_amx0h")]
-position = Vector2(-253, 23)
+position = Vector2(-27, -100)
 
 [node name="Ravenspeedy10" parent="." instance=ExtResource("1_amx0h")]
-position = Vector2(-287, 24)
+position = Vector2(-11, -72)
 
 [node name="Ravenspeedy2" parent="." instance=ExtResource("1_amx0h")]
-position = Vector2(-27, 0)
+position = Vector2(-6, -42)
 
 [node name="Ravenspeedy3" parent="." instance=ExtResource("1_amx0h")]
-position = Vector2(27, 0)
+position = Vector2(-3, -13)
 
 [node name="Ravenspeedy12" parent="." instance=ExtResource("1_amx0h")]
-position = Vector2(35, 27)
+position = Vector2(6, 16)
 
 [node name="Ravenspeedy13" parent="." instance=ExtResource("1_amx0h")]
-position = Vector2(75, 27)
+position = Vector2(18, 43)
 
 [node name="Ravenspeedy14" parent="." instance=ExtResource("1_amx0h")]
-position = Vector2(112, 27)
+position = Vector2(33, 69)
 
 [node name="Ravenspeedy15" parent="." instance=ExtResource("1_amx0h")]
-position = Vector2(149, 28)
+position = Vector2(51, 93)
 
 [node name="Ravenspeedy16" parent="." instance=ExtResource("1_amx0h")]
-position = Vector2(186, 26)
+position = Vector2(64, 66)
 
 [node name="Ravenspeedy17" parent="." instance=ExtResource("1_amx0h")]
-position = Vector2(222, 26)
+position = Vector2(67, 37)
 
 [node name="Ravenspeedy18" parent="." instance=ExtResource("1_amx0h")]
-position = Vector2(257, 25)
+position = Vector2(69, 7)
 
 [node name="Ravenspeedy19" parent="." instance=ExtResource("1_amx0h")]
-position = Vector2(295, 25)
+position = Vector2(72, -23)
 
-[node name="Raven_fireStarter" parent="." instance=ExtResource("2_jmgvq")]
-position = Vector2(70, -31)
+[node name="Ravenspeedy20" parent="." instance=ExtResource("1_amx0h")]
+position = Vector2(72, -58)
 
-[node name="Raven_fireStarter2" parent="." instance=ExtResource("2_jmgvq")]
-position = Vector2(-72, -33)
+[node name="Ravenspeedy21" parent="." instance=ExtResource("1_amx0h")]
+position = Vector2(76, -93)

@@ -1,12 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://dwp0tj0ahcgwn"]
+[gd_scene load_steps=22 format=3 uid="uid://dwp0tj0ahcgwn"]
 
 [ext_resource type="Script" path="res://Assets/Enemies/Raven_01_Behaviour.gd" id="1_i2ncy"]
-[ext_resource type="Texture2D" uid="uid://ctw0qgngcx0gn" path="res://Assets/Enemies/Raven_01.png" id="2_4oblf"]
 [ext_resource type="PackedScene" uid="uid://dmbodtb67ycs3" path="res://Assets/Scene/Component/Drop_Components/orb_drop_component.tscn" id="2_ojryt"]
 [ext_resource type="PackedScene" uid="uid://csljirmwo8vcg" path="res://Assets/Scene/Component/health_bar.tscn" id="4_ipg1o"]
 [ext_resource type="PackedScene" uid="uid://nro3glw2xb4p" path="res://Assets/Scene/Component/hurtbox_component.tscn" id="4_phfd6"]
 [ext_resource type="PackedScene" uid="uid://c1gnol8gqyu7s" path="res://Assets/Scene/Component/health_component.tscn" id="4_ru232"]
 [ext_resource type="Script" path="res://Assets/Scene/Component/hitbox_component.gd" id="6_xdsba"]
+[ext_resource type="Texture2D" uid="uid://yvyubfn0wc1g" path="res://Assets/Enemies/Raven_01-Sheet.png" id="7_dx5ll"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ercf5"]
 radius = 23.0
@@ -52,6 +52,63 @@ _data = {
 "RESET": SubResource("Animation_yts2b")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vby6h"]
+atlas = ExtResource("7_dx5ll")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkc08"]
+atlas = ExtResource("7_dx5ll")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfeok"]
+atlas = ExtResource("7_dx5ll")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3i0j"]
+atlas = ExtResource("7_dx5ll")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3ndo"]
+atlas = ExtResource("7_dx5ll")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wl3j"]
+atlas = ExtResource("7_dx5ll")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4sjo"]
+atlas = ExtResource("7_dx5ll")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qfjwq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vby6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkc08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfeok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3i0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3ndo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wl3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4sjo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="Ravenspeedy" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(0.5, 0.5)
 collision_layer = 4
@@ -89,9 +146,6 @@ script = ExtResource("6_xdsba")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_0xh70")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_4oblf")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_n74e4")
 
@@ -102,3 +156,8 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qfjwq")
+autoplay = "default"
+frame_progress = 0.90758

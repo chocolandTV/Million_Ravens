@@ -319,7 +319,7 @@ max_health = 10000.0
 [node name="AnimatedSprite_Raven" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_touex")
 autoplay = "default"
-frame_progress = 0.474004
+frame_progress = 0.78155
 
 [node name="CPUParticles_raven_damage" type="CPUParticles2D" parent="AnimatedSprite_Raven"]
 emitting = false

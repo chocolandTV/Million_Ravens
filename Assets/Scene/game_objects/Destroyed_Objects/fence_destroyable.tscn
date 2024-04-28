@@ -210,6 +210,7 @@ point_count = 2
 
 [node name="Fence_destroyable" type="StaticBody2D"]
 z_index = -1
+collision_mask = 2
 script = ExtResource("1_jrmyw")
 
 [node name="HealthComponent" type="Node" parent="."]
@@ -253,6 +254,7 @@ initial_velocity_max = 24.5
 scale_amount_curve = SubResource("Curve_i10gf")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_0wbw2")]
+collision_mask = 2
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtboxComponent"]

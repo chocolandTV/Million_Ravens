@@ -3,56 +3,55 @@
 [ext_resource type="PackedScene" uid="uid://dwp0tj0ahcgwn" path="res://Assets/Enemies/Raven_01_Default.tscn" id="1_30pt2"]
 [ext_resource type="Script" path="res://Assets/Enemies/Formations/01_x_formation.gd" id="1_jy1lb"]
 
-[node name="01_x_Formation" type="Node2D"]
+[node name="01_R_Formation" type="Node2D"]
 script = ExtResource("1_jy1lb")
 
 [node name="Ravenspeedy" parent="." instance=ExtResource("1_30pt2")]
-position = Vector2(-136, -112)
+position = Vector2(0, -125)
 
 [node name="Ravenspeedy2" parent="." instance=ExtResource("1_30pt2")]
-position = Vector2(-110, -89)
+position = Vector2(-1, -94)
 
 [node name="Ravenspeedy3" parent="." instance=ExtResource("1_30pt2")]
-position = Vector2(-84, -67)
+position = Vector2(-1, -63)
 
 [node name="Ravenspeedy4" parent="." instance=ExtResource("1_30pt2")]
-position = Vector2(-56, -47)
+position = Vector2(0, -30)
 
 [node name="Ravenspeedy5" parent="." instance=ExtResource("1_30pt2")]
-position = Vector2(-29, -25)
 
 [node name="Ravenspeedy6" parent="." instance=ExtResource("1_30pt2")]
-position = Vector2(-1, -1)
+position = Vector2(1, 28)
 
 [node name="Ravenspeedy7" parent="." instance=ExtResource("1_30pt2")]
-position = Vector2(28, -25)
+position = Vector2(-1, 60)
 
 [node name="Ravenspeedy8" parent="." instance=ExtResource("1_30pt2")]
-position = Vector2(58, -48)
+position = Vector2(-2, 92)
 
 [node name="Ravenspeedy9" parent="." instance=ExtResource("1_30pt2")]
-position = Vector2(84, -72)
+position = Vector2(-1, 122)
 
 [node name="Ravenspeedy10" parent="." instance=ExtResource("1_30pt2")]
-position = Vector2(107, -93)
+position = Vector2(36, -125)
 
 [node name="Ravenspeedy11" parent="." instance=ExtResource("1_30pt2")]
-position = Vector2(132, -118)
+position = Vector2(69, -113)
 
 [node name="Ravenspeedy12" parent="." instance=ExtResource("1_30pt2")]
-position = Vector2(-25, 24)
+position = Vector2(97, -97)
 
 [node name="Ravenspeedy13" parent="." instance=ExtResource("1_30pt2")]
-position = Vector2(-51, 47)
+position = Vector2(115, -70)
 
 [node name="Ravenspeedy14" parent="." instance=ExtResource("1_30pt2")]
-position = Vector2(-76, 73)
+position = Vector2(122, -41)
 
 [node name="Ravenspeedy15" parent="." instance=ExtResource("1_30pt2")]
-position = Vector2(-101, 99)
+position = Vector2(97, -11)
 
 [node name="Ravenspeedy16" parent="." instance=ExtResource("1_30pt2")]
-position = Vector2(-130, 127)
+position = Vector2(61, 8)
 
 [node name="Ravenspeedy17" parent="." instance=ExtResource("1_30pt2")]
 position = Vector2(26, 25)

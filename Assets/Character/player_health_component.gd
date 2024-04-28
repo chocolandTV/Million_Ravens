@@ -25,7 +25,7 @@ func damage(damage_amount : int):
 		current_player_health -= damage_amount
 		if damage_amount > 500:
 			# start invisible timer & effect
-			on_damage_invisibility_on()
+			Callable(on_damage_invisibility_on).call_deferred()
 			GameEvents.player_damaged.emit()
 			GameEvents.PlayerLife_UI_update.emit(current_player_health)
 			player_animations.play("receive_damage")
@@ -36,12 +36,12 @@ func damage(damage_amount : int):
 
 func on_damage_invisibility_on():
 	print("invincible on")
-	player_hurtbox.monitoring = false
+	player_hurtbox.set_deferred("monitoring",false)
 	timer.start()
 
 func on_invincible_timeout():
 	print("invincible off")
-	player_hurtbox.monitoring = true
+	player_hurtbox.set_deferred("monitoring",true)
 
 func onHealthChanged(value : int):
 	current_player_health += value

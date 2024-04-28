@@ -12,6 +12,7 @@ extends Node2D
 @onready var canvas_Layer_Arena_Time_UI : CanvasLayer = $%ArenaTimeUI
 @onready var canvas_Layer_Experience_bar : CanvasLayer = $%ExperienceBar
 @onready var canvas_Layer_paralax : ParallaxBackground = $Main_Menu/ParallaxBackground
+@onready var global_Light : DirectionalLight2D = $DirectionalLight2D
 var game_state : int = 0
 var isMenuOpened : bool = true
 # Called when the node enters the scene tree for the first time.
@@ -36,6 +37,7 @@ func switchMenu():
 		print("Menu is Visible")
 	else:
 		print("Menu is Hide")
+	global_Light.visible = !isMenuOpened
 	canvas_Layer_menu.visible= isMenuOpened
 	canvas_Layer_menu.setParallax(isMenuOpened)
 	get_tree().paused = isMenuOpened

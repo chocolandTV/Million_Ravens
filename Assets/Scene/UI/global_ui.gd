@@ -136,7 +136,6 @@ func on_lifeplus_UI():
       health_array.append(life_instance)
 
 func on_lifeChange_UI(value : int):
-      print ("doing lifeshit")
       bigLife_sprite.update_bigLife(value%1000)
       @warning_ignore("integer_division")
       var littleheart : int  = value / 1000
