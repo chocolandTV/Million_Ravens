@@ -3,6 +3,7 @@ extends Node2D
 func _ready():
       pass
 func start(text: String):
+      visible = true
       $Label.text = text
 
       var tween = create_tween()
@@ -25,3 +26,5 @@ func start(text: String):
 
       scale_tween.tween_property(self,"scale", Vector2.ONE, .15)\
       .set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+
+      visible = false

@@ -35,4 +35,4 @@ func check_death():
 		died.emit(damage_type)
 		if !isGameObject:
 			GameEvents.raven_died.emit()
-			owner.queue_free()
+			owner.hide()

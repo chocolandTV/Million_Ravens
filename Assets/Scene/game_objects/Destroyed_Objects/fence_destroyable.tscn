@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Assets/Scene/Component/health_component.gd" id="2_xvncn"]
 [ext_resource type="PackedScene" uid="uid://csljirmwo8vcg" path="res://Assets/Scene/Component/health_bar.tscn" id="3_2dqu0"]
 [ext_resource type="Texture2D" uid="uid://d1ovnl0p8ys78" path="res://Assets/Textures/Sprite-0009_fence-Sheet.png" id="3_n4ium"]
-[ext_resource type="Script" path="res://Assets/Scene/Component/hurtbox_component.gd" id="4_yduje"]
+[ext_resource type="PackedScene" uid="uid://nro3glw2xb4p" path="res://Assets/Scene/Component/hurtbox_component.tscn" id="6_0wbw2"]
 [ext_resource type="Texture2D" uid="uid://bxcq2lfxwew31" path="res://Assets/Textures/Sprite-0009_fence-particle.png" id="6_n7ndu"]
 
 [sub_resource type="Animation" id="Animation_vprtv"]
@@ -236,16 +236,6 @@ frame_progress = 0.664175
 position = Vector2(-1, 4.5)
 shape = SubResource("RectangleShape2D_xhxpf")
 
-[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
-collision_layer = 0
-collision_mask = 64
-script = ExtResource("4_yduje")
-health_component = NodePath("../HealthComponent")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
-position = Vector2(-1, 4.5)
-shape = SubResource("RectangleShape2D_xhxpf")
-
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(0, 5)
 emitting = false
@@ -261,3 +251,10 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 24.5
 initial_velocity_max = 24.5
 scale_amount_curve = SubResource("Curve_i10gf")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_0wbw2")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(-1, 4.5)
+shape = SubResource("RectangleShape2D_xhxpf")

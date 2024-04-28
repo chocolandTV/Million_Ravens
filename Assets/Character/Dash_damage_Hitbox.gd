@@ -1,7 +1,7 @@
 extends Area2D
 class_name Dash_Damage_Component
 
-@export var damage = 1
+var damage = 4
 @export var damage_type : int = 0
 const BASEDAMAGE = 4
 

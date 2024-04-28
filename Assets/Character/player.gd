@@ -47,7 +47,7 @@ func player_dash():
 	dash_invincible_timer.start()
 	# PLAYER DEAL AROUND DAMAGE
 	dash_damage_Hitbox.monitorable = true
-	
+	dash_damage_Hitbox.monitoring = true
 	var movement_vector = get_movement_vector()
 	var direction = movement_vector.normalized()
 	var target_velocity = direction * DASH_SPEED * speed_multiplier
@@ -60,6 +60,7 @@ func on_invincible_timeout():
 	hurtboxComponent.monitoring = true
 	body_collision.disabled = false
 	dash_damage_Hitbox.monitorable = false
+	dash_damage_Hitbox.monitoring = false
 
 func on_ability_upgrade_added(upgrade : AbilityUpgrade, current_upgrades: Dictionary):
 	if upgrade.id == "player_movement_speed":

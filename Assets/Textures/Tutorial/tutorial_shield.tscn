@@ -132,6 +132,7 @@ color_ramp = SubResource("Gradient_bdk5v")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_6uaxd")
+max_health = 10000.0
 
 [node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 collision_layer = 0

@@ -12,7 +12,7 @@ var hearth_20p :Texture2D= load("res://Assets/Textures/UI/health/hearth_20p.png"
 var hearth_10p :Texture2D= load("res://Assets/Textures/UI/health/hearth_10p.png")
 var hearth_00p :Texture2D= load("res://Assets/Textures/UI/health/hearth_00p.png")
 func _ready():
-      update_bigLife(100)
+      update_bigLife(0)
 
 func update_bigLife(value : int):
       #ausgabe 0- 999

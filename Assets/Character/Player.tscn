@@ -213,7 +213,7 @@ radius = 19.0263
 size = Vector2(20, 22)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mu8jk"]
-radius = 75.65
+radius = 123.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
@@ -307,6 +307,7 @@ script = ExtResource("9_fb7gv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dash_damage_Hitbox"]
 position = Vector2(0, -27)
 shape = SubResource("CircleShape2D_mu8jk")
+debug_color = Color(0.792515, 0.426059, 0.066304, 0.42)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, -23)

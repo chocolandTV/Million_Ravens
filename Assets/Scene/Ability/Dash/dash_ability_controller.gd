@@ -2,7 +2,7 @@ extends Node
 
 
 @onready var timer :Timer = $Timer
-var parent : Node = get_parent()
+@onready var parent : CharacterBody2D = get_parent()
 @export var dashDamageComponent : Dash_Damage_Component
 var isCooldown :bool = false
 

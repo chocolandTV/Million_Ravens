@@ -93,8 +93,8 @@ func spawnEnemy(pos : Vector2):
 
 func pick_random_enemy():
 	var random :int = randi_range(1, allWeights)
+	var _allweights :int = 0
 	for x in enemyPool:
-		allWeights += x.enemy_weight
-		if random <= allWeights:
-			print (x.enemy_type)
-			return x.enemy_weight
+		_allweights += x.enemy_weight
+		if random <= _allweights:
+			return x.enemy_type

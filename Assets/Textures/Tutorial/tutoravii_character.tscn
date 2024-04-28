@@ -314,12 +314,12 @@ script = ExtResource("1_pqsyl")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("2_ud76o")
-max_health = 1000.0
+max_health = 10000.0
 
 [node name="AnimatedSprite_Raven" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_touex")
 autoplay = "default"
-frame_progress = 0.652365
+frame_progress = 0.474004
 
 [node name="CPUParticles_raven_damage" type="CPUParticles2D" parent="AnimatedSprite_Raven"]
 emitting = false

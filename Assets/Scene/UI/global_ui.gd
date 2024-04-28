@@ -76,6 +76,7 @@ func reset_stats():
       value_Feather.text = "X 0"
       highscore_multiplier_text.text = "1"
       highscore_value_text.text = "0"
+      on_lifeChange_UI(0)
 
 func UpdatePlayerName():
       print ("update playername")
@@ -135,7 +136,9 @@ func on_lifeplus_UI():
       health_array.append(life_instance)
 
 func on_lifeChange_UI(value : int):
+      print ("doing lifeshit")
       bigLife_sprite.update_bigLife(value%1000)
+      @warning_ignore("integer_division")
       var littleheart : int  = value / 1000
       var county :int = 1
       for i in health_array:
