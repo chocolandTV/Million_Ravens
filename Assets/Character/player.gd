@@ -1,19 +1,19 @@
 extends CharacterBody2D
 @onready var globalVars : Global_Variables = get_node("/root/GlobalVariables")
-@onready var invincible_timer:Timer = $InvincibleTimer
+@onready var dash_invincible_timer:Timer = $Dash_InvincibleTimer
 @onready var hurtboxComponent:Area2D = $HurtboxComponent
 @onready var animation_player : AnimationPlayer =$AnimationPlayer
 @onready var visual_body : Node2D = $Visuals
 @onready var dash_particle_effect: CPUParticles2D = $%Shield_ParticleSys
 @onready var dash_damage_Hitbox: Area2D = $%Dash_damage_Hitbox
-
+@onready var body_collision : CollisionShape2D = $Body_CollisionShape2D
 const SPEED = 150.0
 const DASH_SPEED = 1500.0
 const ACCELERATION_SMOOTHING = 25
 var speed_multiplier : float = 1
 
 func _ready():
-	invincible_timer.timeout.connect(on_invincible_timeout)
+	dash_invincible_timer.timeout.connect(on_invincible_timeout)
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 func _process(delta):
 	# Define Movement
@@ -42,8 +42,9 @@ func get_movement_vector():
 
 func player_dash():
 	# PLAYER DONT GET ANY DAMAGE
+	body_collision.disabled = true
 	hurtboxComponent.monitoring = false
-	invincible_timer.start()
+	dash_invincible_timer.start()
 	# PLAYER DEAL AROUND DAMAGE
 	dash_damage_Hitbox.monitorable = true
 	
@@ -57,9 +58,8 @@ func player_dash():
 
 func on_invincible_timeout():
 	hurtboxComponent.monitoring = true
-	
+	body_collision.disabled = false
 	dash_damage_Hitbox.monitorable = false
-
 
 func on_ability_upgrade_added(upgrade : AbilityUpgrade, current_upgrades: Dictionary):
 	if upgrade.id == "player_movement_speed":

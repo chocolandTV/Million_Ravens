@@ -2,7 +2,7 @@ extends Node
 
 
 @onready var timer :Timer = $Timer
-@export var player :CharacterBody2D
+var parent : Node = get_parent()
 @export var dashDamageComponent : Dash_Damage_Component
 var isCooldown :bool = false
 
@@ -22,7 +22,7 @@ func dashing():
             return
       isCooldown =true
       timer.start()
-      player.player_dash()
+      parent.player_dash()
       #animate
 
 

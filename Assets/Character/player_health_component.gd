@@ -3,21 +3,21 @@ extends Node
 class_name PlayerHealthComponent
 
 @export var player_animations : AnimationPlayer
-@export var player_invincible_timer :Timer
 @export var player_hurtbox : PlayerHurtboxComponent
 
+@onready var timer : Timer =$InvincibleTimer
 @onready var globalVars : Global_Variables = get_node("/root/GlobalVariables")
 signal died
 var current_player_health : int  = 3000
 const BASEHEALTH : int  =3000
 func _ready():
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
-	player_invincible_timer.timeout.connect(on_invincible_timeout)
+	timer.timeout.connect(on_invincible_timeout)
 
 func damage(damage_amount : int):
 	if current_player_health- damage_amount < 0:
 		# GAME OVER
-		current_player_health -= damage_amount
+		current_player_health = 0
 		GameEvents.PlayerLife_UI_update.emit(current_player_health)
 		SoundManager.Emit_Sound(SoundManager.soundType.s_player_dying_sounds,Vector2.ZERO)
 		GameEvents.player_died.emit()
@@ -25,7 +25,7 @@ func damage(damage_amount : int):
 		current_player_health -= damage_amount
 		if damage_amount > 500:
 			# start invisible timer & effect
-			# on_damage_invisibility_on()
+			on_damage_invisibility_on()
 			GameEvents.player_damaged.emit()
 			GameEvents.PlayerLife_UI_update.emit(current_player_health)
 			player_animations.play("receive_damage")
@@ -37,7 +37,7 @@ func damage(damage_amount : int):
 func on_damage_invisibility_on():
 	print("invincible on")
 	player_hurtbox.monitoring = false
-	player_invincible_timer.start()
+	timer.start()
 
 func on_invincible_timeout():
 	print("invincible off")

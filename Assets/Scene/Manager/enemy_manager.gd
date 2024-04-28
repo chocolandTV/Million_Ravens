@@ -42,7 +42,7 @@ func resetAll():
 func increase_raven_spawn():
 	waittime = max(0.01,waittime - 0.01)
 	timer.wait_time  =  waittime
-	print("Wave: decrased time to : " + str(waittime))
+	
 func increase_wave():
 	# if current_wave == spawnPool.size():
 	# 	return
@@ -96,4 +96,5 @@ func pick_random_enemy():
 	for x in enemyPool:
 		allWeights += x.enemy_weight
 		if random <= allWeights:
-			return x.enemy_type
+			print (x.enemy_type)
+			return x.enemy_weight
