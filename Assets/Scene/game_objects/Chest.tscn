@@ -16,6 +16,7 @@ radius = 35.0143
 size = Vector2(57, 31)
 
 [node name="Chest_Destoyable" type="StaticBody2D"]
+collision_mask = 0
 script = ExtResource("1_l23ae")
 
 [node name="HealthComponent" type="Node" parent="."]

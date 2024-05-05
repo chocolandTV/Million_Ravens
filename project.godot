@@ -129,7 +129,7 @@ upgrade_button_04={
 2d_physics/layer_4="Collectable"
 2d_physics/layer_5="EnemyCollision"
 2d_physics/layer_6="PlayerPickup"
-2d_physics/layer_7="Chests"
+2d_physics/layer_7="Player_Attack"
 
 [rendering]
 

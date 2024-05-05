@@ -253,7 +253,7 @@ offset_bottom = -29.0
 value = 1.0
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_p3i21")]
-collision_mask = 2
+collision_mask = 64
 monitorable = false
 health_component = NodePath("../HealthComponent")
 

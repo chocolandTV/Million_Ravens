@@ -66,12 +66,12 @@ func on_colorEvent_died(_damage_type : int):
 func on_colorEvent_triggered():
       if randi_range(0,10) >=5:
             $AnimatedSprite2D.modulate = Color.CYAN
-            $AnimatedSprite2D.apply_scale(2)
+            $AnimatedSprite2D.scale=(Vector2i.ONE*2)
             damage_type_enemy = 1
             speed*=1.2
       else:
             $AnimatedSprite2D.modulate = Color.RED
-            $AnimatedSprite2D.apply_scale(2)
+            $AnimatedSprite2D.scale=Vector2(2,2)
             damage_type_enemy = 2
             speed*=1.2
 

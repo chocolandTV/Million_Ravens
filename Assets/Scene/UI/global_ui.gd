@@ -6,7 +6,7 @@ extends CanvasLayer
 @onready var value_playername : Label  =$%Value_PlayerName
 # BOTTOM TEXT VARIABLES
 @onready var value_ravenkills : Label  =$%Value_Ravenkills
-@onready var value_Feather : Label = $%Feather_Value
+@onready var value_Raven_idicator = $%ProgressBar
 @onready var value_coin : Label  =$%Coin_Value
 # MANAGERS 
 @onready var highscore_manager : Highscore_Manager = get_node("/root/Highscore_Manager")
@@ -70,7 +70,7 @@ func reset_stats():
       value_ravenkills.text = "0 kills"
       value_playerLevel.text = "1"
       value_coin.text  = "X 0"
-      value_Feather.text = "X 0"
+      value_Raven_idicator.value=0
       highscore_multiplier_text.text = "1"
       highscore_value_text.text = "0"
       on_lifeChange_UI(0)
@@ -90,11 +90,13 @@ func update_ability_text():
       _movspeed_up_text.text = "%d + 2,5 m/s" % settings.gv_Settings["player_movement_speed_level"]
       _lifeplus_up_text.text = "%d + 1 Life" % settings.gv_Settings["player_health_level"]
 
-func update_collectable_text(switch : int, value :int):
+func update_collectable_text(switch : int, _value :int):
       if switch == 0:
-            value_Feather.text = "X "+str(value)
+            # RAVEN IDICATOR
+            value_Raven_idicator.value=_value
+            # switch Sprite if reached 25%, 50%, 75% + 100%
       if switch == 1:
-            value_coin.text =  "X "+str(value)
+            value_coin.text =  "X "+str(_value)
 
 func _showupgrades(_bool :bool):
       _player_Ability_Container.visible = _bool

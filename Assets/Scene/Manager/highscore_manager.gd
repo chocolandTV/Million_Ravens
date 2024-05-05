@@ -31,12 +31,12 @@ func increment_highscore(number: int):
 func increment_feathers():
       current_feathers += 1
       print("Feather collected, current:",current_feathers)
-      GameEvents.UI_update_collectable.emit(0, current_feathers)
+      GameEvents.ui_update_collectable.emit(0, current_feathers)
 
 func increment_coins():
       current_coins +=1
       print("Coins collected, current:",current_coins)
-      GameEvents.UI_update_collectable.emit(1, current_coins)
+      GameEvents.ui_update_collectable.emit(1, current_coins)
       
 
 func increment_raven():

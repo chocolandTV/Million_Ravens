@@ -6,7 +6,8 @@ signal highscore_feather_collected()
 # Coins was collected
 signal highscore_coin_collected()
 # WIN EVENTS
-signal winGame_region_cleared()
+signal midGame_region_boss_spawned(health_component : HealthComponent)
+signal midGame_region_raven_cleared(pos: Vector2)
 signal winGame_boss_down()
 signal win_game_highscore_show_after_signal()
 

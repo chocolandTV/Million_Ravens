@@ -20,21 +20,21 @@ var gv_Settings = {
 var gv_lucky_catmint: int = 1000
 # multiplier will increase every Score +
 # get signal by game_events
-var gv_score_multiplier : int = 2
+var gv_score_multiplier : int = 1
 func _ready():
       pass
 func _on_timer_timeout():
-      luckyshuffle()
+      newLuckyInt()
 
 func get_lucky_catmint_value():
       if gv_lucky_catmint == 500:
             print("LUCKY EVENT")
-            luckyshuffle()
+            newLuckyInt()
             increase_multiplier()
             return LUCKY_VALUE
       return gv_lucky_catmint
 
-func luckyshuffle():
+func newLuckyInt():
       gv_lucky_catmint = randi_range(0,1000)
 
 func increase_multiplier():

@@ -4,22 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://cjw4t5jh47xbf" path="res://Assets/Textures/chest_Destroyed.png" id="5_42g67"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7t41"]
-size = Vector2(19, 20)
+size = Vector2(51, 22)
 
 [node name="ChestDestroyed" type="StaticBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -32)
 texture = ExtResource("5_42g67")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(15.5, -31)
-shape = SubResource("RectangleShape2D_b7t41")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(-18, -37)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_b7t41")
 
 [node name="OnFreeScoreAnimation" parent="." instance=ExtResource("3_qguwt")]
-position = Vector2(0, -32)
 score_value = 1000

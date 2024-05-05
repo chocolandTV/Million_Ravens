@@ -1,12 +1,82 @@
-[gd_scene load_steps=41 format=3 uid="uid://5o1ko2576ded"]
+[gd_scene load_steps=44 format=3 uid="uid://5o1ko2576ded"]
 
-[ext_resource type="Texture2D" uid="uid://bls7r12yn7w85" path="res://Assets/Textures/checkPoint_New Region.png" id="1_4tytu"]
 [ext_resource type="Script" path="res://Assets/Scene/Component/health_component.gd" id="1_88d0i"]
 [ext_resource type="Script" path="res://Assets/Scene/game_objects/region_01.gd" id="1_wslgf"]
 [ext_resource type="PackedScene" uid="uid://c8fehafkiu66p" path="res://Assets/Scene/game_objects/region_checked.tscn" id="3_6hpll"]
 [ext_resource type="PackedScene" uid="uid://vhc5r3ex6oou" path="res://Assets/Scene/Component/Drop_Components/flag_drop_component.tscn" id="3_y2g5g"]
 [ext_resource type="Texture2D" uid="uid://dm7kgnv6u6phf" path="res://Assets/Textures/checkPoint_New Region_Animated.png" id="5_2qgp3"]
 [ext_resource type="PackedScene" uid="uid://nro3glw2xb4p" path="res://Assets/Scene/Component/hurtbox_component.tscn" id="5_5qubd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_evxei"]
+radius = 700.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lhuhs"]
+radius = 70.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8yqdt"]
+radius = 9.05539
+
+[sub_resource type="Animation" id="Animation_o2dtt"]
+resource_name = "wriggle"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.24, 0.32, 0.4, 0.45, 0.5),
+"transitions": PackedFloat32Array(1, 1.8025, 1.8025, 1.8025, 1, 1, 2.63902, 1),
+"update": 0,
+"values": [0.0, -0.383972, 0.523599, -0.174533, 0.174533, -0.0872665, 0.0872665, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.24, 0.32, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 0.757858, 0.757858, 0.757858, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.9), Vector2(1, 0.9), Vector2(1, 0.9), Vector2(1.1, 0.8), Vector2(1, 0.885), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_y6gl1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hjtjp"]
+_data = {
+"RESET": SubResource("Animation_y6gl1"),
+"wriggle": SubResource("Animation_o2dtt")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1fq6u"]
 atlas = ExtResource("5_2qgp3")
@@ -226,34 +296,17 @@ animations = [{
 "speed": 30.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lhuhs"]
-radius = 70.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_8yqdt"]
-radius = 9.05539
-
 [node name="Region_01" type="StaticBody2D"]
 script = ExtResource("1_wslgf")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("1_88d0i")
+max_health = 500000.0
 
 [node name="flag_drop_component" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_y2g5g")]
 orb_Scene = ExtResource("3_6hpll")
 highscore_amount = 1000
 health_component = NodePath("../HealthComponent")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
-position = Vector2(43, -45)
-sprite_frames = SubResource("SpriteFrames_3nx7o")
-autoplay = "default"
-frame_progress = 0.191041
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(0, -33)
-texture = ExtResource("1_4tytu")
 
 [node name="Label" type="Label" parent="."]
 unique_name_in_owner = true
@@ -263,9 +316,17 @@ offset_right = 50.0
 offset_bottom = -97.0
 text = "Region - 01"
 
+[node name="AgressionComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AgressionComponent"]
+shape = SubResource("CircleShape2D_evxei")
+debug_color = Color(0.509804, 0.541176, 1, 0.223529)
+
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_5qubd")]
 position = Vector2(0, -42)
-collision_mask = 2
+collision_mask = 66
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
@@ -276,3 +337,20 @@ debug_color = Color(0.984314, 0.121569, 0, 0.0823529)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_8yqdt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Node2D")
+libraries = {
+"": SubResource("AnimationLibrary_hjtjp")
+}
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(43, -45)
+sprite_frames = SubResource("SpriteFrames_3nx7o")
+autoplay = "default"
+frame_progress = 0.191041
+
+[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_changed"]

@@ -2,10 +2,11 @@ extends Node
 @export var isEnabled : bool = true
 @export var START_WAITTIME : float = 0.1
 @export var enemyPool: Array[PackedScene]
+@export var ravenLord_Scene : PackedScene
 @export var amanager : arena_time_manager
 
 @onready var timer : Timer = $Timer
-
+@onready var entities_layer = get_tree().get_first_node_in_group("entities_layer")
 const MIN_DISTANCE : float =  1200
 const SEC_TIME_BETWEEN_WAVES : float = 3000
 const SEC_TIMES_WAITTIME_INCREASER : int = 10
@@ -33,7 +34,7 @@ func _ready():
 	timer.wait_time = waittime
 	GameEvents.increase_raven_spawn.connect(increase_raven_spawn)
 	GameEvents.playerIsHiding.connect(change_player_isHiding)
-
+	GameEvents.midGame_region_raven_cleared.connect(spawnRavenLord)
 func _process(delta):
 	time_running += delta
 
@@ -47,7 +48,7 @@ func increase_raven_spawn():
 	if waittimer_wave_counter >= 10:
 		waittime = max(0.01,waittime - 0.01)
 		timer.wait_time  =  waittime
-	
+
 func increase_wave():
 	current_wave += 1
 	print("current_wave:", current_wave)
@@ -70,7 +71,7 @@ func on_timer_timeout():
 	checkWave()
 
 	for i in range(0,current_wave):	
-		spawnEnemy(player.global_position + (Vector2.RIGHT.rotated(randf_range(0,TAU)) * MIN_DISTANCE))
+		spawnEnemy(pick_random_enemy(),player.global_position + (Vector2.RIGHT.rotated(randf_range(0,TAU)) * MIN_DISTANCE))
 
 func checkWave():
 	if time_running > current_wave * SEC_TIME_BETWEEN_WAVES:
@@ -81,17 +82,21 @@ func playerHides(value : bool):
 		if isPlayerHiding:
 			x.queue_free()
 
-func spawnEnemy(pos : Vector2):
-
-	var enemy = pick_random_enemy().instantiate() as Node2D
-	var entities_layer = get_tree().get_first_node_in_group("entities_layer")
-
+func spawnEnemy(_vary : PackedScene, pos : Vector2):
+	var enemy = _vary.instantiate() as Node2D
 	entities_layer.add_child(enemy)
 	enemy.global_position = pos
 	# APPLY WAVE MODIFIER ON EACH ENEMY + COULD CHANGE VARIABLES WITH SOME FLOAT 0-1* 
 	enemy.apply_bonus(enemy_damage_bonus, enemy_speed_bonus, enemy_health_bonus)
-
 	spawnPool.append(enemy)
+func spawnRavenLord(pos : Vector2):
+	var enemy = ravenLord_Scene.instantiate() as Node2D
+	entities_layer.add_child(enemy)
+	enemy.global_position = pos
+	# APPLY WAVE MODIFIER ON EACH ENEMY + COULD CHANGE VARIABLES WITH SOME FLOAT 0-1* 
+	enemy.apply_bonus(enemy_damage_bonus, enemy_speed_bonus, enemy_health_bonus)
+	spawnPool.append(enemy)
+	GameEvents.midGame_region_boss_spawned.emit(enemy.get_node("HealthComponent") as HealthComponent)
 
 func pick_random_enemy():
 	var random :int = randi_range(1, 100)

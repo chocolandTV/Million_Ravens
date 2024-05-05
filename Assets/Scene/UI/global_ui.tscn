@@ -1,6 +1,5 @@
-[gd_scene load_steps=37 format=3 uid="uid://des0khalvaaf1"]
+[gd_scene load_steps=40 format=3 uid="uid://des0khalvaaf1"]
 
-[ext_resource type="Texture2D" uid="uid://tdqul4ymtndy" path="res://Assets/Textures/feather.png" id="1_62ja5"]
 [ext_resource type="Script" path="res://Assets/Scene/UI/global_ui.gd" id="1_75rbs"]
 [ext_resource type="Texture2D" uid="uid://ccckw757ttxyl" path="res://Assets/Textures/UI/Sprite-0015_Player_Interface_UI.png" id="2_cw6pl"]
 [ext_resource type="Texture2D" uid="uid://4baj1cphpr71" path="res://Assets/Textures/coin_base.png" id="2_q8n1d"]
@@ -14,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://gmux10mk8raw" path="res://Assets/Textures/UI_Panel.png" id="9_0fmsf"]
 [ext_resource type="Texture2D" uid="uid://dp7apyuxjgkj7" path="res://Assets/Textures/UI/Sprite-0027_Player_Collectable_frame.png" id="9_kb5cw"]
 [ext_resource type="Texture2D" uid="uid://bctq5espwykm6" path="res://Assets/Textures/UI/Sprite-0015_Player_Interface_Ability_01.png" id="12_imf22"]
+[ext_resource type="Texture2D" uid="uid://bmxijgrp64hfh" path="res://Assets/Textures/Sprite-0002_Ravii.png" id="13_2ldss"]
 [ext_resource type="Texture2D" uid="uid://c573jitq0ax1" path="res://Assets/Textures/UI/Sprite-0023-ability_up-export.png" id="13_83hpb"]
 [ext_resource type="Texture2D" uid="uid://bldwm7gq7mem" path="res://Assets/Textures/UI/Sprite-0025_Ability_player_movementspeed.png" id="14_ubjgm"]
 [ext_resource type="Texture2D" uid="uid://yx82xo4cixma" path="res://Assets/Textures/UI/Sprite-0024_Ability_atkSpeed_icon.png" id="14_vrimc"]
@@ -97,6 +97,15 @@ _data = {
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2qlbv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4w7bl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwp6l"]
+atlas = ExtResource("13_2ldss")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ft683"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7sixh"]
+bg_color = Color(0.262745, 0.882353, 0.701961, 1)
 
 [sub_resource type="Animation" id="Animation_i17uo"]
 resource_name = "Levelup_highlight"
@@ -460,9 +469,9 @@ scale = Vector2(0.62, 0.62)
 [node name="HBoxContainer" type="HBoxContainer" parent="Collectable_icons"]
 layout_mode = 2
 
-[node name="feather_text" type="TextureRect" parent="Collectable_icons/HBoxContainer"]
+[node name="Coin_text" type="TextureRect" parent="Collectable_icons/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_62ja5")
+texture = ExtResource("2_q8n1d")
 stretch_mode = 2
 
 [node name="VSeparator" type="VSeparator" parent="Collectable_icons/HBoxContainer"]
@@ -470,9 +479,9 @@ layout_mode = 2
 theme_override_constants/separation = 160
 theme_override_styles/separator = SubResource("StyleBoxEmpty_4w7bl")
 
-[node name="coin_test" type="TextureRect" parent="Collectable_icons/HBoxContainer"]
+[node name="raven_test" type="TextureRect" parent="Collectable_icons/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("2_q8n1d")
+texture = SubResource("AtlasTexture_fwp6l")
 stretch_mode = 2
 
 [node name="Collectable_values" type="MarginContainer" parent="."]
@@ -484,7 +493,7 @@ offset_bottom = 84.0
 [node name="HBoxContainer" type="HBoxContainer" parent="Collectable_values"]
 layout_mode = 2
 
-[node name="Feather_Value" type="Label" parent="Collectable_values/HBoxContainer"]
+[node name="Coin_Value" type="Label" parent="Collectable_values/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -500,16 +509,21 @@ layout_mode = 2
 theme_override_constants/separation = 130
 theme_override_styles/separator = SubResource("StyleBoxEmpty_4w7bl")
 
-[node name="Coin_Value" type="Label" parent="Collectable_values/HBoxContainer"]
-unique_name_in_owner = true
+[node name="Panel" type="Panel" parent="Collectable_values/HBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.247059, 0.14902, 0.192157, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_outline_size = 3
-theme_override_font_sizes/font_size = 18
-text = "1"
+
+[node name="ProgressBar" type="ProgressBar" parent="Collectable_values/HBoxContainer/Panel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(85, 28)
+layout_mode = 2
+offset_left = -12.0
+offset_top = 20.0
+offset_right = 72.0
+offset_bottom = 48.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_ft683")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7sixh")
+max_value = 1.0
+value = 0.26
 
 [node name="Player_Ability_Container" type="MarginContainer" parent="."]
 unique_name_in_owner = true

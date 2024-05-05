@@ -1,5 +1,6 @@
-[gd_scene load_steps=34 format=3 uid="uid://q4eqbtjlxdw8"]
+[gd_scene load_steps=35 format=3 uid="uid://q4eqbtjlxdw8"]
 
+[ext_resource type="Script" path="res://Assets/Scene/game_objects/region_start.gd" id="1_m204m"]
 [ext_resource type="Texture2D" uid="uid://dm7kgnv6u6phf" path="res://Assets/Textures/checkPoint_New Region_Animated.png" id="1_omuut"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8yqdt"]
@@ -224,13 +225,14 @@ animations = [{
 }]
 
 [node name="Region_start" type="StaticBody2D"]
+script = ExtResource("1_m204m")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -43.0
 offset_top = -119.0
 offset_right = 202.0
 offset_bottom = -96.0
-text = "Region - Start  - Sunset Raviland"
+text = "Region - Start  - Sunset Raviluar"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -1)

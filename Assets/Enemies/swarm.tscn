@@ -20,7 +20,7 @@ script = ExtResource("1_j7i4g")
 [node name="Enemy" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
 collision_layer = 0
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("2_bma6o")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Enemy"]
@@ -48,7 +48,8 @@ damping_max = 0.575
 scale_amount_curve = SubResource("Curve_t8mm7")
 
 [node name="HitboxComponent" type="Area2D" parent="Enemy"]
-visible = false
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("3_si3op")
 
 [node name="collision_Radius" type="CollisionShape2D" parent="Enemy/HitboxComponent"]

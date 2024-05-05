@@ -4,6 +4,7 @@ class_name HealthComponent
 signal died (_damage_type : int)
 signal health_changed
 signal health_damage_knockback
+# isGameObject for Chests
 @export var isGameObject : bool = false
 @export var max_health : float = 1
 var current_health

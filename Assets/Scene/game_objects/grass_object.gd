@@ -5,6 +5,6 @@ func _ready():
 
 
 func on_health_changed():
-      $CPUParticles2D.emit()
+      $CPUParticles2D.emitting = true
       $AnimationPlayer.play("Kaktus")
       $HealthBar.value =$HealthComponent.get_health_percent()

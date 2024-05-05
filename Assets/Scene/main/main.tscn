@@ -84,6 +84,7 @@ start_experience = 5000.0
 
 [node name="EnemyManager" parent="." node_paths=PackedStringArray("amanager") instance=ExtResource("1_nk1n0")]
 enemyPool = Array[PackedScene]([ExtResource("16_jff52"), ExtResource("18_wjt28"), ExtResource("16_iqjwo"), ExtResource("19_cshna"), ExtResource("17_dhdr5"), ExtResource("18_k1wd0"), ExtResource("22_fmqoo")])
+ravenLord_Scene = ExtResource("12_3peer")
 amanager = NodePath("../ArenaTimeManager")
 
 [node name="Game_Camera" parent="." instance=ExtResource("1_k1roq")]

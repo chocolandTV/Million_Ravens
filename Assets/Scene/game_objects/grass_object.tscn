@@ -175,6 +175,7 @@ color = Color(0.215686, 0.580392, 0.431373, 1)
 color_ramp = SubResource("Gradient_xd05t")
 
 [node name="HealthBar" parent="." instance=ExtResource("4_brkac")]
+visible = false
 offset_left = -23.0
 offset_top = -46.0
 offset_right = 27.0
@@ -183,12 +184,13 @@ offset_bottom = -36.0
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_17w6t")
 isGameObject = true
-max_health = 10.0
+max_health = 50.0
 
-[node name="HurtboxComponent" type="Area2D" parent="."]
+[node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 64
 script = ExtResource("4_w37t5")
+health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(1, 2)
