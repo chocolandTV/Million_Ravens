@@ -64,6 +64,7 @@ radius = 400.0
 radius = 82.5
 
 [node name="Raven_Boss" type="CharacterBody2D" groups=["enemy"]]
+y_sort_enabled = true
 scale = Vector2(0.5, 0.5)
 collision_layer = 0
 collision_mask = 4
@@ -85,6 +86,7 @@ offset_bottom = -107.0
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_mjkxg")]
 collision_mask = 2
+monitorable = false
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
@@ -111,6 +113,7 @@ shape = SubResource("CircleShape2D_mbnsr")
 [node name="HitboxComponent" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 0
+monitoring = false
 script = ExtResource("8_tp4l1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]

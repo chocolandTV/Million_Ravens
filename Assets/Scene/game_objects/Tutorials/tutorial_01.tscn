@@ -5,6 +5,21 @@
 [ext_resource type="Script" path="res://Assets/Scene/game_objects/Tutorials/Label.gd" id="4_7x1p4"]
 [ext_resource type="PackedScene" uid="uid://dijunhnwfry8k" path="res://Assets/Textures/Tutorial/tutorial_shield.tscn" id="4_dcts2"]
 
+[sub_resource type="Animation" id="Animation_pv0wc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text_bubble/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["..."]
+}
+
 [sub_resource type="Animation" id="Animation_f6b01"]
 resource_name = "tutorial_text_anim"
 length = 2.0
@@ -21,21 +36,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": ["...", ".", "..", "...", ".", "..", "..."]
-}
-
-[sub_resource type="Animation" id="Animation_pv0wc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Text_bubble/Label:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["..."]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lmyt0"]

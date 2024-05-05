@@ -277,7 +277,7 @@ position = Vector2(-2, -32)
 sprite_frames = SubResource("SpriteFrames_obf75")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.238001
+frame_progress = 0.176217
 
 [node name="HurtboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("player_health_comonent")]
 position = Vector2(0, -11)
@@ -315,6 +315,7 @@ debug_color = Color(0.792515, 0.426059, 0.066304, 0.42)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, -23)
+energy = 0.5
 shadow_color = Color(0, 0, 0, 0.898039)
 texture = ExtResource("10_f6pq4")
 texture_scale = 2.0

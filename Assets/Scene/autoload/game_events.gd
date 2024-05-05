@@ -5,8 +5,10 @@ signal highscore_orb_collected(number: int)
 signal highscore_feather_collected()
 # Coins was collected
 signal highscore_coin_collected()
-
+# WIN EVENTS
+signal winGame_region_cleared()
 signal winGame_boss_down()
+signal win_game_highscore_show_after_signal()
 
 signal increase_raven_spawn()
 #abilityUpgradeSignal
@@ -16,7 +18,7 @@ signal level_up_show_upgrademenu()
 #ability has been upgraded
 signal ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrade:Dictionary)
 #signal update Healthup
-signal ability_upgrade_newLife()
+signal ability_upgrade_newLife(value : int)
 #signal update LIFE_UI
 signal PlayerLife_UI_update(value : int)
 #signal Player is Hiding

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cgmdcfxwdgh2l" path="res://Assets/Textures/Hide_portal.png" id="4_2msmn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ynhid"]
-radius = 14.15
+radius = 41.0488
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mm7jh"]
 radius = 34.0
@@ -26,7 +26,7 @@ y_sort_enabled = true
 script = ExtResource("1_2cnor")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 152)
+position = Vector2(0, 116)
 shape = SubResource("CircleShape2D_ynhid")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cagxkvae0a0n5"]
+[gd_scene load_steps=36 format=3 uid="uid://cagxkvae0a0n5"]
 
 [ext_resource type="Script" path="res://Assets/Enemies/Raven_02_Behaviour.gd" id="1_hx448"]
 [ext_resource type="PackedScene" uid="uid://dmbodtb67ycs3" path="res://Assets/Scene/Component/Drop_Components/orb_drop_component.tscn" id="2_r1nj6"]
@@ -229,10 +229,8 @@ _data = {
 "Raven_walking": SubResource("Animation_plh1b")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6h3xg"]
-radius = 400.0
-
 [node name="Raven_fireStarter" type="CharacterBody2D" groups=["enemy"]]
+y_sort_enabled = true
 collision_layer = 4
 collision_mask = 2
 motion_mode = 1
@@ -249,13 +247,14 @@ max_health = 12.0
 light_mask = 2
 visibility_layer = 2
 offset_left = -24.0
-offset_top = -48.0
+offset_top = -39.0
 offset_right = 26.0
-offset_bottom = -38.0
+offset_bottom = -29.0
 value = 1.0
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_p3i21")]
 collision_mask = 2
+monitorable = false
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
@@ -265,6 +264,7 @@ debug_color = Color(0.984314, 0.121569, 0, 0.0823529)
 [node name="HitboxComponent" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 0
+monitoring = false
 script = ExtResource("7_efyy5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
@@ -279,6 +279,7 @@ autoplay = "Idle"
 frame_progress = 0.576464
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 25)
 shape = SubResource("CircleShape2D_n74e4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -291,15 +292,5 @@ autoplay = "Raven_walking"
 wait_time = 5.0
 one_shot = true
 
-[node name="Vision_radius" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision_radius"]
-shape = SubResource("CircleShape2D_6h3xg")
-
 [node name="AttackTimer" type="Timer" parent="."]
 one_shot = true
-
-[connection signal="area_entered" from="Vision_radius" to="." method="on_area_entered_player"]
-[connection signal="area_exited" from="Vision_radius" to="." method="_on_vision_radius_area_exited"]

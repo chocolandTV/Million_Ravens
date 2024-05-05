@@ -1,0 +1,200 @@
+[gd_scene load_steps=23 format=3 uid="uid://bx38dxvmnowkm"]
+
+[ext_resource type="Script" path="res://Assets/Scene/game_objects/grass_object.gd" id="1_cex2h"]
+[ext_resource type="Texture2D" uid="uid://uk3ncn85lbmy" path="res://Assets/Textures/Sprite-0007_kaktus-Sheet.png" id="2_4rk0k"]
+[ext_resource type="Texture2D" uid="uid://cd4lnh3owmjru" path="res://Assets/Textures/Sprite-0009_particle.png" id="2_todjf"]
+[ext_resource type="Script" path="res://Assets/Scene/Component/health_component.gd" id="3_17w6t"]
+[ext_resource type="PackedScene" uid="uid://csljirmwo8vcg" path="res://Assets/Scene/Component/health_bar.tscn" id="4_brkac"]
+[ext_resource type="Script" path="res://Assets/Scene/Component/hurtbox_component.gd" id="4_w37t5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7prxm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ia7ww"]
+atlas = ExtResource("2_4rk0k")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_112kv"]
+atlas = ExtResource("2_4rk0k")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1en2"]
+atlas = ExtResource("2_4rk0k")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdmvx"]
+atlas = ExtResource("2_4rk0k")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qp06u"]
+atlas = ExtResource("2_4rk0k")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p47ft"]
+atlas = ExtResource("2_4rk0k")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ws4o"]
+atlas = ExtResource("2_4rk0k")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fvj26"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ia7ww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_112kv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1en2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdmvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qp06u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p47ft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ws4o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rrx3"]
+size = Vector2(25, 11)
+
+[sub_resource type="Curve" id="Curve_6gcdd"]
+_data = [Vector2(0, 0.956044), 0.0, 0.0, 0, 0, Vector2(0.984802, 0.0246099), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_xd05t"]
+offsets = PackedFloat32Array(0, 0.727575, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3lsam"]
+radius = 27.0
+
+[sub_resource type="Animation" id="Animation_wrc56"]
+resource_name = "Kaktus"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.21, 0.3),
+"transitions": PackedFloat32Array(1, 2.21914, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0506145, 0.0, -0.101229, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.21, 0.3),
+"transitions": PackedFloat32Array(1, 2.21914, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.925, 1.125), Vector2(1, 1), Vector2(0.94, 0.865), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yntu8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_crfo6"]
+_data = {
+"Kaktus": SubResource("Animation_wrc56"),
+"RESET": SubResource("Animation_yntu8")
+}
+
+[node name="Grass_Object" type="StaticBody2D"]
+y_sort_enabled = true
+collision_mask = 2
+script = ExtResource("1_cex2h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_7prxm")
+sprite_frames = SubResource("SpriteFrames_fvj26")
+autoplay = "default"
+frame_progress = 0.864295
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 16.5)
+shape = SubResource("RectangleShape2D_2rrx3")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 2)
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+local_coords = true
+texture = ExtResource("2_todjf")
+spread = 180.0
+gravity = Vector2(0, 49.05)
+initial_velocity_min = 24.5
+initial_velocity_max = 24.5
+scale_amount_curve = SubResource("Curve_6gcdd")
+color = Color(0.215686, 0.580392, 0.431373, 1)
+color_ramp = SubResource("Gradient_xd05t")
+
+[node name="HealthBar" parent="." instance=ExtResource("4_brkac")]
+offset_left = -23.0
+offset_top = -46.0
+offset_right = 27.0
+offset_bottom = -36.0
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_17w6t")
+isGameObject = true
+max_health = 10.0
+
+[node name="HurtboxComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_w37t5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(1, 2)
+shape = SubResource("CircleShape2D_3lsam")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_crfo6")
+}

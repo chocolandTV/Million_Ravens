@@ -13,6 +13,7 @@ var player_node : Node2D
 func _ready():
       $Timer.timeout.connect(on_timer_timeouti)
       $HealthComponent.health_damage_knockback.connect(on_raven_01_knockback)
+      $HealthComponent.health_changed.connect(on_health_changed)
       player_node = get_tree().get_first_node_in_group("player") as Node2D
       #get lucky int
       $HealthComponent.died.connect(on_colorEvent_died)
@@ -36,8 +37,12 @@ func get_direction_to_player():
             return (player_node.global_position - global_position).normalized()
       #return if not null
       return Vector2.ZERO
-func on_raven_01_knockback():
+
+func on_health_changed():
       $HealthBar.visible = true
+      $HealthBar.value = $HealthComponent.get_health_percent()
+
+func on_raven_01_knockback():
       $AnimationPlayer.play("Knockback")
       global_position += -get_direction_to_player() * 50
       isCooldown = true
@@ -61,10 +66,14 @@ func on_colorEvent_died(_damage_type : int):
 func on_colorEvent_triggered():
       if randi_range(0,10) >=5:
             $AnimatedSprite2D.modulate = Color.CYAN
+            $AnimatedSprite2D.apply_scale(2)
             damage_type_enemy = 1
+            speed*=1.2
       else:
             $AnimatedSprite2D.modulate = Color.RED
+            $AnimatedSprite2D.apply_scale(2)
             damage_type_enemy = 2
+            speed*=1.2
 
 func apply_bonus(enemy_damage_bonus : int, enemy_speed_bonus: int, enemy_health_bonus: int):
       speed += enemy_speed_bonus

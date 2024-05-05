@@ -15,24 +15,20 @@ func _ready():
 	timer.timeout.connect(on_invincible_timeout)
 
 func damage(damage_amount : int):
+	current_player_health -= damage_amount
+	GameEvents.PlayerLife_UI_update.emit(current_player_health)
+
 	if current_player_health- damage_amount < 0:
 		# GAME OVER
 		current_player_health = 0
-		GameEvents.PlayerLife_UI_update.emit(current_player_health)
 		SoundManager.Emit_Sound(SoundManager.soundType.s_player_dying_sounds,Vector2.ZERO)
 		GameEvents.player_died.emit()
-	else:
-		current_player_health -= damage_amount
-		if damage_amount > 500:
-			# start invisible timer & effect
-			Callable(on_damage_invisibility_on).call_deferred()
-			GameEvents.player_damaged.emit()
-			GameEvents.PlayerLife_UI_update.emit(current_player_health)
-			player_animations.play("receive_damage")
-			SoundManager.Emit_Sound(SoundManager.soundType.s_player_getDamage_sounds,Vector2.ZERO)
-		else:
-			#player_animations.play("receive_damage")
-			GameEvents.PlayerLife_UI_update.emit(current_player_health)
+	if damage_amount > 250:
+		# start invisible timer & effect
+		Callable(on_damage_invisibility_on).call_deferred()
+		GameEvents.player_damaged.emit()
+		player_animations.play("receive_damage")
+		SoundManager.Emit_Sound(SoundManager.soundType.s_player_getDamage_sounds,Vector2.ZERO)
 
 func on_damage_invisibility_on():
 	print("invincible on")
@@ -54,4 +50,4 @@ func on_ability_upgrade_added(upgrade : AbilityUpgrade, current_upgrades: Dictio
 		updateUI()
 
 func updateUI():
-	GameEvents.ability_upgrade_newLife.emit()
+	GameEvents.ability_upgrade_newLife.emit(current_player_health)

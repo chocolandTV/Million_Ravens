@@ -25,6 +25,7 @@ script = ExtResource("1_eagpv")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(631, 360)
+emitting = false
 amount = 40
 lifetime = 5.0
 speed_scale = 1.5
@@ -99,8 +100,6 @@ theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 4
 theme_override_constants/shadow_outline_size = 4
 theme_override_font_sizes/font_size = 45
-text = "+New highscore!
-"
 horizontal_alignment = 1
 
 [node name="ContinueButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]

@@ -22,10 +22,7 @@ extends CanvasLayer
 @onready var _movspeed_up_text : Label =$%movspeed_up_text
 @onready var _lifeplus_up_Button : TextureButton =$%lifeplus_up_Button
 @onready var _lifeplus_up_text : Label = $%lifeplus_up_text
-# Life Container + Icons
-@export var life_icon_scene : PackedScene
-@onready var life_container : HFlowContainer  =$%HFlowContainer
-var health_array : Array[Panel]
+
 var current_level_points :int  =0
 # Multiplier Value
 @onready var highscore_multiplier_text : Label = $%Value_multiplier
@@ -130,22 +127,12 @@ func applyUpgrade(button_value : int):
             if current_level_points <= 0:
                   _showupgrades(false)
 
-func on_lifeplus_UI():
-      var life_instance = life_icon_scene.instantiate()
-      life_container.add_child(life_instance)
-      health_array.append(life_instance)
+func on_lifeplus_UI(value:int):
+      bigLife_sprite.update_newlife(value)
 
 func on_lifeChange_UI(value : int):
-      bigLife_sprite.update_bigLife(value%1000)
-      @warning_ignore("integer_division")
-      var littleheart : int  = value / 1000
-      var county :int = 1
-      for i in health_array:
-            if littleheart > county:
-                  i.setstatus(true)
-            else:
-                  i.setstatus(false)
-            county += 1
+      bigLife_sprite.update_bigLife(value)
+
 
 func update_highscore_multiplier(type : int):
       match type: 

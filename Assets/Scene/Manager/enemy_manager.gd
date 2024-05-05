@@ -1,6 +1,6 @@
 extends Node
 @export var isEnabled : bool = true
-@export var START_WAITTIME : float = 0.5
+@export var START_WAITTIME : float = 0.1
 @export var enemyPool: Array[PackedScene]
 @export var amanager : arena_time_manager
 

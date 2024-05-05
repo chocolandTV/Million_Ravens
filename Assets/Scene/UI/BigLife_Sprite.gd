@@ -11,32 +11,41 @@ var hearth_30p :Texture2D= load("res://Assets/Textures/UI/health/hearth_30p.png"
 var hearth_20p :Texture2D= load("res://Assets/Textures/UI/health/hearth_20p.png")
 var hearth_10p :Texture2D= load("res://Assets/Textures/UI/health/hearth_10p.png")
 var hearth_00p :Texture2D= load("res://Assets/Textures/UI/health/hearth_00p.png")
+
+var player_max_life : float = 3000
+
 func _ready():
-      update_bigLife(1000)
+      update_bigLife(3000)
+
+func update_newlife(value: int):
+      player_max_life +=1000
+      update_bigLife(value)
 
 func update_bigLife(value : int):
-      texture = get_life_texture(value)
+      var _value = value / player_max_life
+      texture = get_life_texture(_value)
+
 func get_life_texture(_value):
-      if _value == 1000:
+      if _value == 1:
             return hearth_100p
-      if _value >900:
+      if _value >0.9:
             return hearth_90p
-      if _value >800:
+      if _value >0.8:
             return hearth_80p
-      if _value >700:
+      if _value >0.7:
             return hearth_70p
-      if _value >600:
+      if _value >0.6:
             return hearth_60p
-      if _value >500:
+      if _value >0.5:
             return hearth_50p
-      if _value >400:
+      if _value >0.4:
             return hearth_40p
-      if _value >300:
+      if _value >0.3:
             return hearth_30p
-      if _value >200:
+      if _value >0.2:
             return hearth_20p
-      if _value >100:
+      if _value >0.1:
             return hearth_10p
       if _value == 0:
-            return hearth_100p
+            return hearth_00p
       

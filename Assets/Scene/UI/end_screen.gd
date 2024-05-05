@@ -18,11 +18,14 @@ func _ready():
 
 func set_defeat():
 	$%TitleLabel.text = "Defeat"
-	$%DescriptionLabel.text = "You have no Scorepoints left- it is your health"
+	$%DescriptionLabel.text = "You have no health left"
 # set text after winning
 func setText(_text : String):
 	$%TitleLabel.text = "Victory"
 	$%DescriptionLabel.text = _text
+	#if HIGHSCORE IS BETTER  : 
+	#$%newHighscoreLabel.text = "+New highscore!"
+	$CPUParticles2D.emit()
 
 func on_restart_button_pressed():
 	filemanager.save_game()
