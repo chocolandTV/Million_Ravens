@@ -1,0 +1,107 @@
+[gd_scene load_steps=12 format=3 uid="uid://dksj0sy04e26a"]
+
+[ext_resource type="Script" path="res://Assets/Scene/game_objects/Tutorials/raven_lord_ui.gd" id="1_g4xpb"]
+[ext_resource type="Texture2D" uid="uid://bk4q125xtsfgv" path="res://Assets/Textures/text_bubble.png" id="1_k5ocq"]
+[ext_resource type="Texture2D" uid="uid://bmxijgrp64hfh" path="res://Assets/Textures/Sprite-0002_Ravii.png" id="2_7q0kd"]
+[ext_resource type="PackedScene" uid="uid://csljirmwo8vcg" path="res://Assets/Scene/Component/health_bar.tscn" id="3_d81he"]
+
+[sub_resource type="Animation" id="Animation_4r4tg"]
+resource_name = "Pulsing"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/AnimatedSprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.465, 0.465), Vector2(0.485, 0.485), Vector2(0.445, 0.445), Vector2(0.465, 0.465)]
+}
+
+[sub_resource type="Animation" id="Animation_ng8pe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.465, 0.465)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8lbtb"]
+_data = {
+"Pulsing": SubResource("Animation_4r4tg"),
+"RESET": SubResource("Animation_ng8pe")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i50re"]
+atlas = ExtResource("2_7q0kd")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wvy2"]
+atlas = ExtResource("2_7q0kd")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnfpp"]
+atlas = ExtResource("2_7q0kd")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_18yho"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i50re")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wvy2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnfpp")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Raven_lord_UI" type="Node2D"]
+script = ExtResource("1_g4xpb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8lbtb")
+}
+autoplay = "Pulsing"
+
+[node name="HealthBar" parent="." instance=ExtResource("3_d81he")]
+light_mask = 2
+visibility_layer = 2
+custom_minimum_size = Vector2(200, 0)
+offset_left = -84.0
+offset_top = 11.0
+offset_right = 116.0
+offset_bottom = 21.0
+value = 0.0
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="TextureRect2" type="TextureRect" parent="Node2D"]
+offset_left = 108.0
+offset_top = -39.0
+offset_right = 458.0
+offset_bottom = 311.0
+scale = Vector2(0.158694, 0.158694)
+texture = ExtResource("1_k5ocq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(139, -13)
+scale = Vector2(0.465, 0.465)
+sprite_frames = SubResource("SpriteFrames_18yho")
+frame = 2

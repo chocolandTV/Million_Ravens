@@ -46,6 +46,7 @@ func _on_start_button_pressed():
       startButton_text.text = "Resume"
       get_tree().paused = false
       GameEvents.menu_switch.emit()
+      highscore_ui.visible = false
       SoundManager.Emit_Sound(SoundManager.soundType.s_ui_click,Vector2.ZERO)
 
 func _on_credit_button_pressed():
@@ -64,11 +65,11 @@ func _on_button_highscore_pressed():
       isHighscoreOn = !isHighscoreOn
       if isHighscoreOn:
             highscore_ui.on_CanvasLayer_activate()
-      splash.visible = false
       setting_enabled = !isHighscoreOn
+      isCreditsOn = !isHighscoreOn
+      splash.visible = false
       global_UI.visible = false
       setting_menu.visible = false
-      isCreditsOn = !isHighscoreOn
       credit_Panel.visible = false
       # Turn highscore On
       highscore_ui.visible = true

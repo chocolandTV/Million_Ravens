@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dv8kkm3lrajtq"]
+[gd_scene load_steps=9 format=3 uid="uid://dv8kkm3lrajtq"]
 
 [ext_resource type="Texture2D" uid="uid://tdqul4ymtndy" path="res://Assets/Textures/feather.png" id="1_fdm1e"]
+[ext_resource type="Script" path="res://Assets/Scene/Component/feather_attack.gd" id="1_yt7ha"]
 [ext_resource type="Script" path="res://Assets/Scene/Component/hitbox_component.gd" id="2_a8q0y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3sh43"]
@@ -32,6 +33,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 0.170755, 1, 1, 1, 1),
 "update": 0,
 "values": [-3.85892, 0.563741, -0.211185, 0.211185, -0.211185, 0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_animation_done"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_jpow2"]
@@ -68,8 +83,10 @@ _data = {
 }
 
 [node name="Feather_attack" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
 collision_layer = 0
 collision_mask = 2
+script = ExtResource("1_yt7ha")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3sh43")
@@ -80,6 +97,8 @@ rotation = -3.85892
 texture = ExtResource("1_fdm1e")
 
 [node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("2_a8q0y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]

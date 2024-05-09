@@ -5,9 +5,11 @@ signal highscore_orb_collected(number: int)
 signal highscore_feather_collected()
 # Coins was collected
 signal highscore_coin_collected()
+signal highscore_ravenlord_collected()
 # WIN EVENTS
 signal midGame_region_boss_spawned(health_component : HealthComponent)
 signal midGame_region_raven_cleared(pos: Vector2)
+
 signal winGame_boss_down()
 signal win_game_highscore_show_after_signal()
 
@@ -33,7 +35,7 @@ signal raven_died()
 #Signal das Highscore startet
 signal highscore_button_pressed()
 #signal update UI Collectables
-signal ui_update_collectable(switch : int, value : int)
+signal ui_update_collectable(switch : int, value : float)
 #Signal Menu Switch on Main Menu
 signal menu_switch()
 # SIGNAL Sound_UI_Change integer for type 1:Master 2: Music 3: Sound 4: Ambience, float for value 0-1

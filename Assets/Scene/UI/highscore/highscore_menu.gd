@@ -24,6 +24,4 @@ func _wait_for_finished():
             # ADD DATA TO HIGHSCORE ENTRY 
             score_entry.on_initialize_text(x.rank, x.playername, x.score, x.time, x.feather, x.coins)
       # CREATE ENTRY FOR EACH HIGHSCORE 
-func _on_button_pressed():
-      # CHANGE to INSTANCE VISIBLE OFF
-      get_tree().change_scene_to_file("res://Assets/Scene/main/main_menu.tscn")
+

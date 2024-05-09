@@ -25,7 +25,7 @@ func setText(_text : String):
 	$%DescriptionLabel.text = _text
 	#if HIGHSCORE IS BETTER  : 
 	#$%newHighscoreLabel.text = "+New highscore!"
-	$CPUParticles2D.emit()
+	$CPUParticles2D.emitting = true
 
 func on_restart_button_pressed():
 	filemanager.save_game()

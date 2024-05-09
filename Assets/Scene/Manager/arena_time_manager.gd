@@ -5,16 +5,17 @@ class_name arena_time_manager
 @export var deltaTimer : ArenaDeltaTimer
 
 @onready var timer = $Timer
-
+@onready var settings : Global_Variables = get_node("/root/GlobalVariables")
 var text : String ="You win: The Ravenlord has fallen"
 var raven_lords_collected :int = 0
-@export var raven_lords_max : int = 4
+var raven_lords_max :int = 4
 
 func _ready():
       timer.timeout.connect(on_timer_timeout)
       GameEvents.winGame_boss_down.connect(on_boss_down)
       GameEvents.get_leaderboards_is_finished.connect(win_game_highscore_fill)
-      GameEvents.win_game_highscore_show_after_signal.connect(show_highscore)
+      # raven_lords_max = settings.gv_Settings["raven_lords_max"]
+
 
 func get_time_elapsed():
       return timer.wait_time - timer.time_left
@@ -28,19 +29,18 @@ func on_timer_timeout():
 
 func on_boss_down():
       raven_lords_collected +=1
+      
       if raven_lords_collected >=raven_lords_max:
             #Win Condition defeat 4 ravenlords
             win_game()
-      else:
-            #region cleared
-            GameEvents.winGame_region_cleared.emit()
-
 func win_game():
       # Upload Current Score
-      var metadata :String = str(deltaTimer.get_formated_time_elapsed()) +"," + str(Highscore_Manager.current_feathers) + "," + str(Highscore_Manager.current_coins)
+      var metadata :String = str(deltaTimer.get_formated_time_elapsed()) +"," + str(Highscore_Manager.current_RavenLords) + "," + str(Highscore_Manager.current_coins)
       HighscoreUiSystem._upload_score(Highscore_Manager.current_highscore,metadata)
       #update Leaderboard and get player index as new Highscore_entry Panel
       HighscoreUiSystem._get_leaderboards()
+      show_highscore()
+
 func show_highscore():
       # Wait for signal then cast win_game_highscore_show_after_signal()
       var end_screen_instance = end_screen_scene.instantiate() as CanvasLayer

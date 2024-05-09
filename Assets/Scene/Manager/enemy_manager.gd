@@ -71,7 +71,7 @@ func on_timer_timeout():
 	checkWave()
 
 	for i in range(0,current_wave):	
-		spawnEnemy(pick_random_enemy(),player.global_position + (Vector2.RIGHT.rotated(randf_range(0,TAU)) * MIN_DISTANCE))
+		spawnEnemy(player.global_position + (Vector2.RIGHT.rotated(randf_range(0,TAU)) * MIN_DISTANCE))
 
 func checkWave():
 	if time_running > current_wave * SEC_TIME_BETWEEN_WAVES:
@@ -82,21 +82,20 @@ func playerHides(value : bool):
 		if isPlayerHiding:
 			x.queue_free()
 
-func spawnEnemy(_vary : PackedScene, pos : Vector2):
-	var enemy = _vary.instantiate() as Node2D
+func spawnEnemy( pos : Vector2):
+	var enemy = pick_random_enemy().instantiate() as Node2D
 	entities_layer.add_child(enemy)
 	enemy.global_position = pos
 	# APPLY WAVE MODIFIER ON EACH ENEMY + COULD CHANGE VARIABLES WITH SOME FLOAT 0-1* 
 	enemy.apply_bonus(enemy_damage_bonus, enemy_speed_bonus, enemy_health_bonus)
 	spawnPool.append(enemy)
-func spawnRavenLord(pos : Vector2):
-	var enemy = ravenLord_Scene.instantiate() as Node2D
-	entities_layer.add_child(enemy)
-	enemy.global_position = pos
-	# APPLY WAVE MODIFIER ON EACH ENEMY + COULD CHANGE VARIABLES WITH SOME FLOAT 0-1* 
-	enemy.apply_bonus(enemy_damage_bonus, enemy_speed_bonus, enemy_health_bonus)
-	spawnPool.append(enemy)
-	GameEvents.midGame_region_boss_spawned.emit(enemy.get_node("HealthComponent") as HealthComponent)
+
+func spawnRavenLord(pos: Vector2):
+	await get_tree().physics_frame
+	var _enemy = ravenLord_Scene.instantiate() as CharacterBody2D
+	entities_layer.add_child(_enemy)
+	_enemy.global_position = pos
+	GameEvents.midGame_region_boss_spawned.emit(_enemy.get_node("HealthComponent") as HealthComponent)
 
 func pick_random_enemy():
 	var random :int = randi_range(1, 100)

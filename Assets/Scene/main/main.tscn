@@ -143,15 +143,6 @@ position = Vector2(10722, 1483)
 [node name="RavenNest10" parent="Entities" instance=ExtResource("18_vwc51")]
 position = Vector2(10822, 1654)
 
-[node name="Raven_Boss" parent="Entities" instance=ExtResource("12_3peer")]
-position = Vector2(664, 373)
-
-[node name="Raven_Boss2" parent="Entities" instance=ExtResource("12_3peer")]
-position = Vector2(1212, 3725)
-
-[node name="Raven_Boss3" parent="Entities" instance=ExtResource("12_3peer")]
-position = Vector2(15956, 5364)
-
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]
 
 [node name="Region_01" parent="Foreground" instance=ExtResource("12_4s7cw")]

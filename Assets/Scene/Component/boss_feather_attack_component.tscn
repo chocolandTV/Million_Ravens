@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://qfgq5d5tb6px"]
+[gd_scene load_steps=3 format=3 uid="uid://qfgq5d5tb6px"]
 
 [ext_resource type="Script" path="res://Assets/Scene/Component/boss_feather_attack_component.gd" id="1_w74e8"]
+[ext_resource type="PackedScene" uid="uid://dv8kkm3lrajtq" path="res://Assets/Enemies/feather_attack.tscn" id="2_ny6if"]
 
-[node name="Boss_Feather_attack_Component" type="Node2D"]
+[node name="Boss_Feather_attack_Component" type="Node"]
 script = ExtResource("1_w74e8")
+feather_attack_scene = ExtResource("2_ny6if")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.3
 autostart = true

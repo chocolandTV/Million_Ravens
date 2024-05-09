@@ -2,7 +2,7 @@ extends Node
 class_name  HighscoreManager
 
 var current_highscore : int= 0
-var current_feathers : int= 0
+var current_RavenLords : int= 0
 var current_coins : int= 0
 var current_ravenkills : int =0
 @onready var settings : Global_Variables = get_node("/root/GlobalVariables")
@@ -14,8 +14,7 @@ signal UI_ravenkilled(raven_killed_amount : int)
 signal UI_bigScore_collected()
 
 func _ready():
-      # get event for feather collecting
-      GameEvents.highscore_feather_collected.connect(on_highscore_feather_collected)
+      GameEvents.highscore_ravenlord_collected.connect(on_highscore_ravenlord_collected)
       #get event for coins collecting
       GameEvents.highscore_coin_collected.connect(on_highscore_coin_collected)
       # get event for orb collecting
@@ -28,10 +27,10 @@ func increment_highscore(number: int):
             UI_bigScore_collected.emit()
       current_highscore += number
 
-func increment_feathers():
-      current_feathers += 1
-      print("Feather collected, current:",current_feathers)
-      GameEvents.ui_update_collectable.emit(0, current_feathers)
+func increment_RavenLord():
+      current_RavenLords +=1
+      print("Ravenlord collected, current:",current_RavenLords)
+      GameEvents.ui_update_collectable.emit(1, current_RavenLords)
 
 func increment_coins():
       current_coins +=1
@@ -49,15 +48,15 @@ func on_highscore_orb_collected(number : int):
 func on_highscore_coin_collected():
       increment_coins()
 
-func on_highscore_feather_collected():
-      increment_feathers()
+func on_highscore_ravenlord_collected():
+      increment_RavenLord()
 
 func on_raven_died():
       increment_raven()
 
 func on_highscore_reset():
       current_highscore = 0
-      current_feathers = 0
+      current_RavenLords = 0
       current_coins = 0
       current_ravenkills=0
 

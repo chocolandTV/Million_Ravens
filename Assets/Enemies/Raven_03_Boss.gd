@@ -29,4 +29,3 @@ func get_direction_to_player():
 		return (player_node.global_position - global_position).normalized()
       #return if not null
 	return Vector2.ZERO
-

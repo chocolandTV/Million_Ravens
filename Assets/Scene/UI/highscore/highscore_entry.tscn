@@ -6,20 +6,25 @@
 [ext_resource type="StyleBox" uid="uid://bibgjpl06a4xn" path="res://Assets/Scene/UI/new_style_box_flat_Main.tres" id="4_bo4jp"]
 
 [node name="highscore_entry" type="Panel"]
-custom_minimum_size = Vector2(1230, 75)
-offset_right = 300.0
-offset_bottom = 75.0
+custom_minimum_size = Vector2(1024, 75)
+offset_right = 1024.0
+offset_bottom = 82.0
 theme_override_styles/panel = ExtResource("1_ip5qk")
 script = ExtResource("2_pogo2")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(1024, 70)
+layout_direction = 1
 layout_mode = 1
-anchors_preset = -1
-anchor_left = -1.533
-anchor_right = 2.533
-anchor_bottom = 1.0
-offset_left = 459.9
-offset_right = -459.9
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -35.0
+offset_right = 512.0
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -27,14 +32,13 @@ size_flags_vertical = 4
 alignment = 1
 
 [node name="PanelContainer1" type="PanelContainer" parent="HBoxContainer"]
-custom_minimum_size = Vector2(200, 65)
+custom_minimum_size = Vector2(150, 65)
 layout_mode = 2
-size_flags_vertical = 4
 theme_override_styles/panel = ExtResource("2_o5wbm")
 
 [node name="Rank_value" type="Label" parent="HBoxContainer/PanelContainer1"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 12)
+custom_minimum_size = Vector2(150, 12)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.262745, 0.882353, 0.701961, 1)
 theme_override_colors/font_shadow_color = Color(0.247059, 0.14902, 0.192157, 1)
@@ -44,18 +48,16 @@ theme_override_font_sizes/font_size = 20
 text = "Rank"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 1
 max_lines_visible = 1
 
 [node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer"]
-custom_minimum_size = Vector2(200, 65)
+custom_minimum_size = Vector2(150, 65)
 layout_mode = 2
-size_flags_vertical = 4
 theme_override_styles/panel = ExtResource("4_bo4jp")
 
 [node name="Playername_value" type="Label" parent="HBoxContainer/PanelContainer2"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 12)
+custom_minimum_size = Vector2(150, 12)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.262745, 0.882353, 0.701961, 1)
 theme_override_colors/font_shadow_color = Color(0.247059, 0.14902, 0.192157, 1)
@@ -65,18 +67,16 @@ theme_override_font_sizes/font_size = 20
 text = "Playername"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 1
 max_lines_visible = 1
 
 [node name="PanelContainer3" type="PanelContainer" parent="HBoxContainer"]
-custom_minimum_size = Vector2(200, 65)
+custom_minimum_size = Vector2(150, 65)
 layout_mode = 2
-size_flags_vertical = 4
 theme_override_styles/panel = ExtResource("2_o5wbm")
 
 [node name="Score_value" type="Label" parent="HBoxContainer/PanelContainer3"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 12)
+custom_minimum_size = Vector2(150, 12)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.262745, 0.882353, 0.701961, 1)
 theme_override_colors/font_shadow_color = Color(0.247059, 0.14902, 0.192157, 1)
@@ -86,18 +86,16 @@ theme_override_font_sizes/font_size = 20
 text = "Score"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 1
 max_lines_visible = 1
 
 [node name="PanelContainer4" type="PanelContainer" parent="HBoxContainer"]
-custom_minimum_size = Vector2(200, 65)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-size_flags_vertical = 4
 theme_override_styles/panel = ExtResource("4_bo4jp")
 
 [node name="Time_value" type="Label" parent="HBoxContainer/PanelContainer4"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 12)
+custom_minimum_size = Vector2(150, 12)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.262745, 0.882353, 0.701961, 1)
 theme_override_colors/font_shadow_color = Color(0.247059, 0.14902, 0.192157, 1)
@@ -107,39 +105,35 @@ theme_override_font_sizes/font_size = 20
 text = "Playtime"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 1
 max_lines_visible = 1
 
 [node name="PanelContainer5" type="PanelContainer" parent="HBoxContainer"]
-custom_minimum_size = Vector2(200, 65)
+custom_minimum_size = Vector2(150, 65)
 layout_mode = 2
-size_flags_vertical = 4
 theme_override_styles/panel = ExtResource("2_o5wbm")
 
 [node name="Feather_value" type="Label" parent="HBoxContainer/PanelContainer5"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 12)
+custom_minimum_size = Vector2(150, 12)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.262745, 0.882353, 0.701961, 1)
 theme_override_colors/font_shadow_color = Color(0.247059, 0.14902, 0.192157, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_outline_size = 11
 theme_override_font_sizes/font_size = 20
-text = "Feathers"
+text = "Ravenlords"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 1
 max_lines_visible = 1
 
 [node name="PanelContainer6" type="PanelContainer" parent="HBoxContainer"]
-custom_minimum_size = Vector2(200, 65)
+custom_minimum_size = Vector2(150, 65)
 layout_mode = 2
-size_flags_vertical = 4
 theme_override_styles/panel = ExtResource("4_bo4jp")
 
 [node name="Coins_value" type="Label" parent="HBoxContainer/PanelContainer6"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 12)
+custom_minimum_size = Vector2(150, 12)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.262745, 0.882353, 0.701961, 1)
 theme_override_colors/font_shadow_color = Color(0.247059, 0.14902, 0.192157, 1)
@@ -149,5 +143,4 @@ theme_override_font_sizes/font_size = 20
 text = "Coins"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 1
 max_lines_visible = 1

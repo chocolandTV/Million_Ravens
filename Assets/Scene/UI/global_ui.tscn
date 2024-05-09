@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://des0khalvaaf1"]
+[gd_scene load_steps=38 format=3 uid="uid://des0khalvaaf1"]
 
 [ext_resource type="Script" path="res://Assets/Scene/UI/global_ui.gd" id="1_75rbs"]
 [ext_resource type="Texture2D" uid="uid://ccckw757ttxyl" path="res://Assets/Textures/UI/Sprite-0015_Player_Interface_UI.png" id="2_cw6pl"]
@@ -101,11 +101,6 @@ _data = {
 [sub_resource type="AtlasTexture" id="AtlasTexture_fwp6l"]
 atlas = ExtResource("13_2ldss")
 region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ft683"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7sixh"]
-bg_color = Color(0.262745, 0.882353, 0.701961, 1)
 
 [sub_resource type="Animation" id="Animation_i17uo"]
 resource_name = "Levelup_highlight"
@@ -512,18 +507,20 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_4w7bl")
 [node name="Panel" type="Panel" parent="Collectable_values/HBoxContainer"]
 layout_mode = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="Collectable_values/HBoxContainer/Panel"]
+[node name="RavenLord_Value" type="Label" parent="Collectable_values/HBoxContainer/Panel"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(85, 28)
-layout_mode = 2
-offset_left = -12.0
-offset_top = 20.0
-offset_right = 72.0
-offset_bottom = 48.0
-theme_override_styles/background = SubResource("StyleBoxEmpty_ft683")
-theme_override_styles/fill = SubResource("StyleBoxFlat_7sixh")
-max_value = 1.0
-value = 0.26
+layout_mode = 0
+offset_left = -4.0
+offset_top = 19.0
+offset_right = 33.0
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.247059, 0.14902, 0.192157, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/font_size = 18
+text = "0 / 4"
 
 [node name="Player_Ability_Container" type="MarginContainer" parent="."]
 unique_name_in_owner = true

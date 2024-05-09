@@ -11,6 +11,8 @@ var gv_Settings = {
       "player_name" : "Player_Default",
       "player_identifier": "",
       "game_version" : "1",
+#Game settings
+      "raven_lords_max" : 4,
 #ability settings
       "paw_ability_damage_level" : 1,
       "paw_ability_cooldown_level" : 0.01,
