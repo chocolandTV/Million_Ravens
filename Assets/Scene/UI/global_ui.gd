@@ -1,6 +1,7 @@
 extends CanvasLayer
 # TOP TEXT VARIABLES 
 @onready var highscore_value_text : Label = $%Value_Highscore
+@onready var highscore_continue_warning_text :Label =$%continue_warning
 @onready var value_fps_text : Label =$%Value_FPS
 @onready var value_playerLevel : Label = $%Value_PlayerLevel
 @onready var value_playername : Label  =$%Value_PlayerName
@@ -47,6 +48,7 @@ func _ready():
       GameEvents.ui_update_collectable.connect(update_collectable_text)
       #update Highscore multiplier
       GameEvents.ui_update_highscore_multiplier.connect(update_highscore_multiplier)
+      GameEvents.endgame_continue_warning.connect(continue_warning)
       # RESET ALL STATS
       reset_stats()
       
@@ -55,13 +57,11 @@ func _process(delta):
       highscore_value_text.text = str(highscore_manager.current_highscore).lpad(4,"0")
 # when player levels up
 func on_level_up_change_ui(new_level : int):
-      
       value_playerLevel.text = str(new_level)
-#when ability levels up
-# func on_ability_levelup(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
-#       pass
-#       # var pawAttackAndRate :String = current_upgrades[0]
-#       # value_pawAttackAndRate.text =  
+
+func continue_warning():
+      highscore_continue_warning_text.visible = true
+      highscore_value_text.visible = false
 
 func on_ravenscore_update(amount : int):
       value_ravenkills.text = str(amount) + "kills"

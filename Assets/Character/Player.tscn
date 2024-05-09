@@ -218,7 +218,6 @@ radius = 123.0
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
 collision_layer = 2
-collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_mc8ud")
 

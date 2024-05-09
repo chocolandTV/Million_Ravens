@@ -9,14 +9,16 @@ class_name Enemy02_FireStarter
 @onready var timer : Timer = $Timer
 @onready var attackTimer :Timer = $AttackTimer
 @onready var health_bar = $HealthBar
+@onready var player_node = get_tree().get_first_node_in_group("player") as Node2D
+const flying_speed : float  = 1500.0
+const walking_speed: float = 100
+var current_speed: float =100
+var speed_bonus : float = 0
+const damage :float = 1000
 
-var speed : float  = 800.0
-const damage :float = 500
-
-var isCooldown : bool  = false
-var isPlayerInVision :bool = false
 var target_pos : Vector2 = Vector2.ZERO
 var isAttacking : bool = false
+var isdashing : bool  =false
 func _ready():
       
       animated_sprite.set_animation("Idle")
@@ -26,14 +28,11 @@ func _ready():
       attackTimer.timeout.connect(on_timer_timeout_attackTimer)
 
 func _process(_delta):
-      if isCooldown:
-            return
-      if !isPlayerInVision:
-            return
-      #get direction
-      var direction = get_direction_to_target()
+      #start attack
+      start_attack()
       #start flying
-      velocity = direction * speed
+      var direction = get_direction_to_target()
+      velocity = direction * (current_speed + speed_bonus)
       move_and_slide()
 
 func get_direction_to_target():
@@ -42,36 +41,38 @@ func get_direction_to_target():
       #return if not null
       return Vector2.ZERO
 func get_target_pos():
-      var player_node = get_tree().get_first_node_in_group("player") as Node2D
       if player_node != null:
             return player_node.global_position
       return Vector2.ZERO
 
-func on_area_entered_player(_area :Area2D):
+func start_attack():
+      if isAttacking && !isdashing:
+            target_pos = get_target_pos()
+
+      if (Vector2((target_pos- global_position).normalized().x,1)) == Vector2(-1,1):
+            animated_sprite.flip_h = false
+      else:
+            animated_sprite.flip_h = true
       if !isAttacking:
             isAttacking = true
             attackTimer.start()
-            target_pos = get_target_pos()
-            
-            animated_sprite.flip_h = true
-            if (Vector2((target_pos- global_position).normalized().x,1)) == Vector2(-1,1):
-                  animated_sprite.flip_h = false
-            isPlayerInVision = true
-            animated_sprite.set_animation("start")
+            isdashing = true
+            current_speed = flying_speed
+            animated_sprite.set_animation("flying")
 func on_raven_reached_target_position():
-      
-      isPlayerInVision = false
-      isCooldown = true
+      isdashing =false
+      $CPUParticles2D.emitting = true
+      $Tear_Sprite2D.visible = true
       timer.start()
       animated_sprite.set_animation("Idle")
+      anim.play("Raven_walking")
+      current_speed = walking_speed
 
 func on_timer_timeouti():
-      isCooldown = false
+      $Tear_Sprite2D.visible = false
       isAttacking = false
-
-
-func _on_vision_radius_area_exited(_area:Area2D):
-      isPlayerInVision = false
+      animated_sprite.set_animation("start")
+      anim.stop()
 
 func update_health_display():
       health_bar.value = health_component.get_health_percent()
@@ -83,8 +84,6 @@ func on_timer_timeout_attackTimer():
       on_raven_reached_target_position()
 
 func apply_bonus(enemy_damage_bonus : int, enemy_speed_bonus: int, enemy_health_bonus: int):
-      speed += (enemy_speed_bonus)
+      speed_bonus += (enemy_speed_bonus)
       $HitboxComponent.apply_damage_bonus(damage + (enemy_damage_bonus))
       $HealthComponent.apply_health_bonus(enemy_health_bonus)
-      print ("healthupgrade Raven2 :", $HealthComponent.current_health)
-      

@@ -402,6 +402,7 @@ scale = Vector2(270, 100)
 position = Vector2(7460, 1974)
 
 [editable path="Main_Menu"]
+[editable path="Main_Menu/Highscore_Menu/Highscore_panel/VBoxContainer/HeaderScoreboard"]
 [editable path="Foreground/Chest_Destoyable5"]
 [editable path="Foreground/Chest_Destoyable6"]
 [editable path="Foreground/Chest_Destoyable8"]

@@ -7,7 +7,7 @@ extends Node
 @onready var global_vars : Global_Variables = get_node("/root/GlobalVariables")
 
 @onready var filemanager : FileManager = get_node("/root/File_Manager")
-@onready var highscore_ui : CanvasLayer = $%Highscore_Menu
+@onready var highscore_ui : MarginContainer = $%Highscore_Menu
 
 # START BUTTON TEXT 
 @onready var startButton_text : Button = $%Button_Start
@@ -72,7 +72,7 @@ func _on_button_highscore_pressed():
       setting_menu.visible = false
       credit_Panel.visible = false
       # Turn highscore On
-      highscore_ui.visible = true
+      highscore_ui.visible = isHighscoreOn
       SoundManager.Emit_Sound(SoundManager.soundType.s_ui_click,Vector2.ZERO)
 
 func _on_highscore_back_button_pressed():

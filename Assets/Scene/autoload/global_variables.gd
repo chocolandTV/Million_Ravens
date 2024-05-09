@@ -10,7 +10,7 @@ var gv_Settings = {
       "offline_modus" : 0,
       "player_name" : "Player_Default",
       "player_identifier": "",
-      "game_version" : "1",
+      "game_version" : "1.0",
 #Game settings
       "raven_lords_max" : 4,
 #ability settings
@@ -23,8 +23,7 @@ var gv_lucky_catmint: int = 1000
 # multiplier will increase every Score +
 # get signal by game_events
 var gv_score_multiplier : int = 1
-func _ready():
-      pass
+
 func _on_timer_timeout():
       newLuckyInt()
 
@@ -38,8 +37,15 @@ func get_lucky_catmint_value():
 
 func newLuckyInt():
       gv_lucky_catmint = randi_range(0,1000)
+      if gv_lucky_catmint == 500:
+            print("LUCKY EVENT")
+            luckyEvent_Start()
 
 func increase_multiplier():
       gv_score_multiplier += 1
 func reset_multiplier():
       gv_score_multiplier = 1
+
+func luckyEvent_Start():
+      #pinjata event for 5 sec
+      pass

@@ -33,6 +33,7 @@ func _ready():
 		waittime = START_WAITTIME
 	timer.wait_time = waittime
 	GameEvents.increase_raven_spawn.connect(increase_raven_spawn)
+	GameEvents.decrease_raven_spawn.connect(decrease_raven_spawn)
 	GameEvents.playerIsHiding.connect(change_player_isHiding)
 	GameEvents.midGame_region_raven_cleared.connect(spawnRavenLord)
 func _process(delta):
@@ -40,23 +41,32 @@ func _process(delta):
 
 func change_player_isHiding(value :bool):
 	isPlayerHiding = value
+
 func resetAll():
 	waittime = START_WAITTIME
 	current_wave = 1
+
 func increase_raven_spawn():
+	waittime = max(0.01,waittime - 0.01)
+	timer.wait_time  =  waittime
+
+func decrease_raven_spawn():
+	waittime = max(0.01,waittime + 0.01)
+	timer.wait_time  =  waittime
+
+func wave_increase_raven_spawner():
 	waittimer_wave_counter +=1
 	if waittimer_wave_counter >= 10:
-		waittime = max(0.01,waittime - 0.01)
-		timer.wait_time  =  waittime
+		increase_raven_spawn()
 
 func increase_wave():
 	current_wave += 1
 	print("current_wave:", current_wave)
-	enemy_damage_bonus = min(int(current_wave*BASE_DAMAGE_MULTIPLIER),1)
-	enemy_speed_bonus = min(int(current_wave*BASE_SPEED_MULTIPLIER),1)
-	enemy_health_bonus = min(int(current_wave*BASE_HEALTH_MULTIPLIER),1)
+	enemy_damage_bonus = current_wave
+	enemy_speed_bonus = current_wave
+	enemy_health_bonus = current_wave
 
-	increase_raven_spawn()
+	wave_increase_raven_spawner()
 
 func on_timer_timeout():
 	if !isEnabled:

@@ -34,7 +34,7 @@ func get_string_elapsed_time(_time : int):
       #stunden ausrechnen time mod 24
       var hr = _time%24
       # Zwischenstep 04 convert time days:  time / 24 int
-      return "Time : %02d : %02d : %02d : %03d" % [hr,mins,secs,msec]
+      return "%02d : %02d : %02d : %03d" % [hr,mins,secs,msec]
 func _process(_delta):
       if get_parent().isGameStatePaused():
             return

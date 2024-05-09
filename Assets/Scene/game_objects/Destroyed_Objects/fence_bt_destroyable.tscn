@@ -209,7 +209,7 @@ _data = [Vector2(0, 0.956044), 0.0, 0.0, 0, 0, Vector2(0.984802, 0.0246099), 0.0
 point_count = 2
 
 [node name="Fence_destroyable" type="StaticBody2D"]
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("1_ll3iw")
 
 [node name="HealthComponent" type="Node" parent="."]
@@ -239,8 +239,9 @@ shape = SubResource("RectangleShape2D_xhxpf")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(0, 5)
 emitting = false
-amount = 20
+amount = 5
 one_shot = true
+speed_scale = 3.0
 explosiveness = 1.0
 randomness = 1.0
 local_coords = true
@@ -253,7 +254,7 @@ initial_velocity_max = 24.5
 scale_amount_curve = SubResource("Curve_8ht6n")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_7liee")]
-collision_mask = 2
+collision_mask = 64
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtboxComponent"]

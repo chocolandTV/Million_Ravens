@@ -1,5 +1,4 @@
-extends CanvasLayer
-
+extends MarginContainer
 @onready var vbox_container : VBoxContainer = $%VBoxContainer
 
 @export var highscore_entry : PackedScene

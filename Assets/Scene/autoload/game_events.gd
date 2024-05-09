@@ -13,7 +13,10 @@ signal midGame_region_raven_cleared(pos: Vector2)
 signal winGame_boss_down()
 signal win_game_highscore_show_after_signal()
 
+signal endgame_continue_warning()
+
 signal increase_raven_spawn()
+signal decrease_raven_spawn()
 #abilityUpgradeSignal
 signal ability_upgrade_Button(index:int)
 # signal show abilitys in globalUI

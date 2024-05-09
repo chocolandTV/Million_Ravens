@@ -9,12 +9,16 @@ extends CanvasLayer
 @onready var highscoreButton : Button =$%HighscoreButton
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	restartButton.pressed.connect(on_restart_button_pressed)
-	quitButton.pressed.connect(on_quit_button_pressed)
-	highscoreButton.pressed.connect(on_highscore_button_pressed)
-	timer.timeout.connect(on_timer_timeout)
-	get_tree().paused = true
+	if highscore_manager.isGameFinished:
+		print("End Screen Error: Instance allready exists")
+		queue_free()
+	else:
+		restartButton.pressed.connect(on_restart_button_pressed)
+		quitButton.pressed.connect(on_quit_button_pressed)
+		highscoreButton.pressed.connect(on_highscore_button_pressed)
+		timer.timeout.connect(on_timer_timeout)
+		get_tree().paused = true
+		highscore_manager.isGameFinished = true
 
 func set_defeat():
 	$%TitleLabel.text = "Defeat"
@@ -51,3 +55,10 @@ func on_timer_timeout():
 	restartButton.disabled = false
 	quitButton.disabled = false
 	highscoreButton.disabled = false
+
+func _on_continue_button_pressed():
+	filemanager.save_game()
+	highscore_manager.on_highscore_reset()
+	GameEvents.endgame_continue_warning.emit()
+	get_tree().paused = false
+	visible = false

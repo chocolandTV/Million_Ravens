@@ -86,7 +86,7 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
-text = "You Killed the Ravenlord.
+text = "You Killed the Ravenlords.
 "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -111,7 +111,6 @@ theme_override_styles/normal = ExtResource("3_r3eer")
 theme_override_styles/hover = ExtResource("4_5esgs")
 theme_override_styles/pressed = ExtResource("5_vsrfa")
 theme_override_styles/disabled = ExtResource("3_r3eer")
-disabled = true
 text = "Continue"
 
 [node name="RestartButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -155,3 +154,5 @@ unique_name_in_owner = true
 wait_time = 1.5
 one_shot = true
 autostart = true
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]

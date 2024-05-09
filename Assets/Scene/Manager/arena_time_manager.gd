@@ -9,12 +9,12 @@ class_name arena_time_manager
 var text : String ="You win: The Ravenlord has fallen"
 var raven_lords_collected :int = 0
 var raven_lords_max :int = 4
-
+var isgamedone = false
 func _ready():
       timer.timeout.connect(on_timer_timeout)
       GameEvents.winGame_boss_down.connect(on_boss_down)
       GameEvents.get_leaderboards_is_finished.connect(win_game_highscore_fill)
-      # raven_lords_max = settings.gv_Settings["raven_lords_max"]
+      isgamedone =false
 
 
 func get_time_elapsed():
@@ -29,14 +29,16 @@ func on_timer_timeout():
 
 func on_boss_down():
       raven_lords_collected +=1
-      
+      print ("ArenaTimeManager Debug:", isgamedone)
       if raven_lords_collected >=raven_lords_max:
             #Win Condition defeat 4 ravenlords
-            win_game()
+            if !isgamedone:
+                  win_game()
 func win_game():
       # Upload Current Score
       var metadata :String = str(deltaTimer.get_formated_time_elapsed()) +"," + str(Highscore_Manager.current_RavenLords) + "," + str(Highscore_Manager.current_coins)
       HighscoreUiSystem._upload_score(Highscore_Manager.current_highscore,metadata)
+      isgamedone = true
       #update Leaderboard and get player index as new Highscore_entry Panel
       HighscoreUiSystem._get_leaderboards()
       show_highscore()

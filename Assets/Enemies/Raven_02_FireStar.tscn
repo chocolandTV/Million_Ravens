@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cagxkvae0a0n5"]
+[gd_scene load_steps=41 format=3 uid="uid://cagxkvae0a0n5"]
 
 [ext_resource type="Script" path="res://Assets/Enemies/Raven_02_Behaviour.gd" id="1_hx448"]
 [ext_resource type="PackedScene" uid="uid://dmbodtb67ycs3" path="res://Assets/Scene/Component/Drop_Components/orb_drop_component.tscn" id="2_r1nj6"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://nro3glw2xb4p" path="res://Assets/Scene/Component/hurtbox_component.tscn" id="5_p3i21"]
 [ext_resource type="Script" path="res://Assets/Scene/Component/hitbox_component.gd" id="7_efyy5"]
 [ext_resource type="Texture2D" uid="uid://qgsrjktoq5c1" path="res://Assets/Enemies/Sprite-0017_1Raven_Enemy-Sheet.png" id="7_taii0"]
+[ext_resource type="Texture2D" uid="uid://cd4lnh3owmjru" path="res://Assets/Textures/Sprite-0009_particle.png" id="8_cwg3d"]
+[ext_resource type="Texture2D" uid="uid://bht4pyd5lel6" path="res://Assets/Textures/Tear_icon.png" id="9_aloby"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ercf5"]
 radius = 23.0
@@ -125,7 +127,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"flying",
-"speed": 4.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -167,9 +169,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k0d1j")
 }],
-"loop": true,
+"loop": false,
 "name": &"start",
-"speed": 20.0
+"speed": 12.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n74e4"]
@@ -204,6 +206,42 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tear_Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tear_Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.262745, 0.882353, 0.701961, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tear_Sprite2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_plh1b"]
 resource_name = "Raven_walking"
@@ -222,17 +260,67 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, -3.62), Vector2(0, 0), Vector2(0, -6.84), Vector2(0, -5.175), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_w3oh2"]
+resource_name = "cooldown_effect"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tear_Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.4, 3.7, 4.1, 4.5, 4.7, 4.8, 4.9, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, true, false, true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tear_Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.14902, 0.192157, 1), Color(0.262745, 0.882353, 0.701961, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tear_Sprite2D:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1.86607),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ulpw8"]
 _data = {
 "Knockback": SubResource("Animation_rikkm"),
 "RESET": SubResource("Animation_yts2b"),
-"Raven_walking": SubResource("Animation_plh1b")
+"Raven_walking": SubResource("Animation_plh1b"),
+"cooldown_effect": SubResource("Animation_w3oh2")
 }
+
+[sub_resource type="Curve" id="Curve_brdf8"]
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.753799, 0.937575), -7.72363, -7.72363, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_yvxt7"]
+offsets = PackedFloat32Array(0, 0.774086, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0.278431)
 
 [node name="Raven_fireStarter" type="CharacterBody2D" groups=["enemy"]]
 y_sort_enabled = true
 collision_layer = 4
-collision_mask = 2
+collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_hx448")
 
@@ -241,7 +329,7 @@ highscore_amount = 1000
 health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_a3kop")]
-max_health = 12.0
+max_health = 100.0
 
 [node name="HealthBar" parent="." instance=ExtResource("4_7nywh")]
 light_mask = 2
@@ -274,9 +362,8 @@ debug_color = Color(0, 0.65098, 0.12549, 0.419608)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_fg0ag")
-animation = &"start"
-autoplay = "Idle"
-frame_progress = 0.576464
+animation = &"Idle"
+offset = Vector2(0, 3.08884)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 25)
@@ -286,11 +373,35 @@ shape = SubResource("CircleShape2D_n74e4")
 libraries = {
 "": SubResource("AnimationLibrary_ulpw8")
 }
-autoplay = "Raven_walking"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 
 [node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 250
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+texture = ExtResource("8_cwg3d")
+spread = 180.0
+initial_velocity_min = 568.05
+initial_velocity_max = 568.35
+linear_accel_min = -11.49
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_brdf8")
+color = Color(0.262745, 0.882353, 0.701961, 1)
+color_ramp = SubResource("Gradient_yvxt7")
+
+[node name="Tear_Sprite2D" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.262745, 0.882353, 0.701961, 1)
+position = Vector2(4, 0)
+texture = ExtResource("9_aloby")

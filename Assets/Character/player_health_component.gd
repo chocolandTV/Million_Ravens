@@ -9,10 +9,11 @@ class_name PlayerHealthComponent
 @onready var globalVars : Global_Variables = get_node("/root/GlobalVariables")
 signal died
 var current_player_health : int  = 3000
-const BASEHEALTH : int  =3000
+var basehealth : int  =3000
 func _ready():
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 	timer.timeout.connect(on_invincible_timeout)
+	GameEvents.endgame_continue_warning.connect(on_endgame_continue)
 
 func damage(damage_amount : int):
 	current_player_health -= damage_amount
@@ -45,9 +46,13 @@ func onHealthChanged(value : int):
 
 func on_ability_upgrade_added(upgrade : AbilityUpgrade, current_upgrades: Dictionary):
 	if upgrade.id == "extraHealth":
-		current_player_health = BASEHEALTH + ((current_upgrades[upgrade.id]["quantity"])*1000)
+		current_player_health = basehealth + ((current_upgrades[upgrade.id]["quantity"])*1000)
 		globalVars.gv_Settings["player_health_level"]  = current_player_health
 		updateUI()
 
 func updateUI():
 	GameEvents.ability_upgrade_newLife.emit(current_player_health)
+
+func on_endgame_continue():
+	current_player_health = 99999
+	basehealth = 99999

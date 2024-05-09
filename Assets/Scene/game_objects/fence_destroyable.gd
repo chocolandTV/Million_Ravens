@@ -18,4 +18,5 @@ func on_fence_damaged():
       if !health_bar.is_visible_in_tree():
             health_bar.visible = true
       animationPlayer.play("damaged")
+      $CPUParticles2D.emitting = true
       health_bar.value = health_component.get_health_percent()

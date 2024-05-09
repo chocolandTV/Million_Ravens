@@ -402,6 +402,19 @@ theme_override_font_sizes/font_size = 40
 text = "400.000.000.000"
 horizontal_alignment = 1
 
+[node name="continue_warning" type="Label" parent="Highscore_Values"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.247059, 0.14902, 0.192157, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Free Play"
+horizontal_alignment = 1
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Highscore_Values"]
 libraries = {
 "": SubResource("AnimationLibrary_80aae")

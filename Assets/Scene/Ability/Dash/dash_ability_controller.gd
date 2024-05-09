@@ -34,7 +34,7 @@ func on_ability_upgrade_added(upgrade : AbilityUpgrade, current_upgrades: Dictio
              on_upgrade_cooldown(current_upgrades["attack_speed"]["quantity"])
 
 func on_upgrade_cooldown(quantity : float):
-      var percent_reduction = quantity* .1
+      var percent_reduction = quantity* .01
 
       if percent_reduction > 0.99:
             percent_reduction = 0.99

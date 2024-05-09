@@ -33,7 +33,7 @@ func _process(delta):
 		visual_body.scale = Vector2.ONE
 	else:
 		visual_body.scale = Vector2(move_sign, 1)
-	
+
 #Get Input in a Vector2 return
 func get_movement_vector():
 	var x_movement = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -64,5 +64,5 @@ func on_invincible_timeout():
 
 func on_ability_upgrade_added(upgrade : AbilityUpgrade, current_upgrades: Dictionary):
 	if upgrade.id == "player_movement_speed":
-		speed_multiplier  += 0.1 * (current_upgrades[upgrade.id]["quantity"])
+		speed_multiplier  += 0.01 * (current_upgrades[upgrade.id]["quantity"])
 		globalVars.gv_Settings[ "player_movement_speed_level"]  = SPEED * speed_multiplier

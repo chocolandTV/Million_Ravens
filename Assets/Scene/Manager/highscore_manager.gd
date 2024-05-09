@@ -6,7 +6,7 @@ var current_RavenLords : int= 0
 var current_coins : int= 0
 var current_ravenkills : int =0
 @onready var settings : Global_Variables = get_node("/root/GlobalVariables")
-# signal highscore_died()
+var isGameFinished : bool = false
 # update ravenkills
 signal UI_ravenkilled(raven_killed_amount : int)
 
@@ -47,6 +47,11 @@ func on_highscore_orb_collected(number : int):
 
 func on_highscore_coin_collected():
       increment_coins()
+# STILL NOT IMPLEMENTED
+func on_region_pay_coins(_value : int):
+      current_coins -=_value
+      print("Coins payed, current:",current_coins)
+      GameEvents.ui_update_collectable.emit(1, current_coins)
 
 func on_highscore_ravenlord_collected():
       increment_RavenLord()

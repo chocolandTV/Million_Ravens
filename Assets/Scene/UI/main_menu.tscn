@@ -813,6 +813,9 @@ vertical_alignment = 1
 [node name="HeaderScoreboard" parent="Highscore_Menu/Highscore_panel/VBoxContainer" instance=ExtResource("7_g7t55")]
 layout_mode = 2
 
+[node name="Time_value" parent="Highscore_Menu/Highscore_panel/VBoxContainer/HeaderScoreboard/HBoxContainer/PanelContainer4" index="0"]
+theme_override_font_sizes/font_size = 20
+
 [node name="HSeparator" type="HSeparator" parent="Highscore_Menu/Highscore_panel/VBoxContainer"]
 layout_mode = 2
 
@@ -827,3 +830,5 @@ layout_mode = 2
 [connection signal="value_changed" from="Setting_Menu/Setting_VBox/Sound_Volume_Slider_Panel3/sound_Volume_Slider" to="Setting_Menu/Setting_VBox/Sound_Volume_Slider_Panel3/sound_Volume_Slider" method="_on_value_changed"]
 [connection signal="value_changed" from="Setting_Menu/Setting_VBox/Sound_Volume_Slider_Panel4/ambience_Volume_Slider" to="Setting_Menu/Setting_VBox/Sound_Volume_Slider_Panel4/ambience_Volume_Slider" method="_on_value_changed"]
 [connection signal="pressed" from="Setting_Menu/Setting_VBox/Player_name_change_Panel/Button" to="." method="_on_button_pressed"]
+
+[editable path="Highscore_Menu/Highscore_panel/VBoxContainer/HeaderScoreboard"]
