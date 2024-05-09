@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Assets/Scene/Component/hitbox_component.gd" id="7_efyy5"]
 [ext_resource type="Texture2D" uid="uid://qgsrjktoq5c1" path="res://Assets/Enemies/Sprite-0017_1Raven_Enemy-Sheet.png" id="7_taii0"]
 [ext_resource type="Texture2D" uid="uid://cd4lnh3owmjru" path="res://Assets/Textures/Sprite-0009_particle.png" id="8_cwg3d"]
+[ext_resource type="Animation" uid="uid://bpvf2moht2ixq" path="res://Assets/Enemies/Animation/cooldown_effect.res" id="8_keujg"]
 [ext_resource type="Texture2D" uid="uid://bht4pyd5lel6" path="res://Assets/Textures/Tear_icon.png" id="9_aloby"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ercf5"]
@@ -209,7 +210,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Tear_Sprite2D:visible")
+tracks/1/path = NodePath("AnimatedSprite2D/Tear_Sprite2D:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -221,7 +222,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Tear_Sprite2D:modulate")
+tracks/2/path = NodePath("AnimatedSprite2D/Tear_Sprite2D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -233,7 +234,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Tear_Sprite2D:scale")
+tracks/3/path = NodePath("AnimatedSprite2D/Tear_Sprite2D:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -260,52 +261,12 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, -3.62), Vector2(0, 0), Vector2(0, -6.84), Vector2(0, -5.175), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_w3oh2"]
-resource_name = "cooldown_effect"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Tear_Sprite2D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3.4, 3.7, 4.1, 4.5, 4.7, 4.8, 4.9, 5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [true, true, false, true, false, true, false, true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Tear_Sprite2D:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 0.14902, 0.192157, 1), Color(0.262745, 0.882353, 0.701961, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Tear_Sprite2D:scale")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1.86607),
-"update": 0,
-"values": [Vector2(2, 2), Vector2(1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ulpw8"]
 _data = {
 "Knockback": SubResource("Animation_rikkm"),
 "RESET": SubResource("Animation_yts2b"),
 "Raven_walking": SubResource("Animation_plh1b"),
-"cooldown_effect": SubResource("Animation_w3oh2")
+"cooldown_effect": ExtResource("8_keujg")
 }
 
 [sub_resource type="Curve" id="Curve_brdf8"]
@@ -350,6 +311,7 @@ shape = SubResource("CircleShape2D_ercf5")
 debug_color = Color(0.984314, 0.121569, 0, 0.0823529)
 
 [node name="HitboxComponent" type="Area2D" parent="."]
+scale = Vector2(0.5, 0.5)
 collision_layer = 4
 collision_mask = 0
 monitoring = false
@@ -365,11 +327,22 @@ sprite_frames = SubResource("SpriteFrames_fg0ag")
 animation = &"Idle"
 offset = Vector2(0, 3.08884)
 
+[node name="Tear_Sprite2D" type="Sprite2D" parent="AnimatedSprite2D"]
+visible = false
+modulate = Color(0.262745, 0.882353, 0.701961, 1)
+position = Vector2(4, 0)
+texture = ExtResource("9_aloby")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 25)
 shape = SubResource("CircleShape2D_n74e4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ulpw8")
+}
+
+[node name="Animation_Cooldown" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ulpw8")
 }
@@ -399,9 +372,3 @@ scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_brdf8")
 color = Color(0.262745, 0.882353, 0.701961, 1)
 color_ramp = SubResource("Gradient_yvxt7")
-
-[node name="Tear_Sprite2D" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(0.262745, 0.882353, 0.701961, 1)
-position = Vector2(4, 0)
-texture = ExtResource("9_aloby")

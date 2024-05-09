@@ -117,8 +117,8 @@ offset = Vector2(1.945, -28.9)
 [node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
 modulate = Color(1, 0.431373, 0.254902, 1)
 z_index = -1
-position = Vector2(0, 5)
-scale = Vector2(1.15, 1.15)
+position = Vector2(0, 13)
+scale = Vector2(1.495, 1.495)
 texture = ExtResource("2_7k1n1")
 offset = Vector2(1.945, -28.9)
 

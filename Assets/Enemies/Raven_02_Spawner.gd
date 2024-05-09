@@ -8,7 +8,7 @@ var isTriggered :bool  = false
 func _ready():
 	detect_area.body_entered.connect(on_body_entered)
 	health_component.health_changed.connect(on_health_changed)
-	health_component.died.connect(on_death_increase_spawnrate)
+	health_component.died.connect(on_death_decrease_spawnrate)
 	update_health_display()
 	
 
@@ -23,5 +23,5 @@ func update_health_display():
 func on_health_changed():
 	update_health_display()
 
-func on_death_increase_spawnrate(_type: int):
-	GameEvents.increase_raven_spawn.emit()
+func on_death_decrease_spawnrate(_type: int):
+	GameEvents.decrease_raven_spawn.emit()

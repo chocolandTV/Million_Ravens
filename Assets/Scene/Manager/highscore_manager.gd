@@ -59,6 +59,14 @@ func on_highscore_ravenlord_collected():
 func on_raven_died():
       increment_raven()
 
+func on_region_activate_with_coins():
+      if current_coins >= (current_RavenLords +1):
+            current_coins-=(current_RavenLords +1)
+            print("Region_Event: payed %s Coins",(current_RavenLords +1))
+            GameEvents.ui_update_collectable.emit(1, current_coins)
+            return true
+      else:
+            return false
 func on_highscore_reset():
       current_highscore = 0
       current_RavenLords = 0

@@ -1,10 +1,12 @@
-[gd_scene load_steps=43 format=3 uid="uid://5o1ko2576ded"]
+[gd_scene load_steps=56 format=3 uid="uid://5o1ko2576ded"]
 
 [ext_resource type="Script" path="res://Assets/Scene/Component/health_component.gd" id="1_88d0i"]
 [ext_resource type="Script" path="res://Assets/Scene/game_objects/region_01.gd" id="1_wslgf"]
 [ext_resource type="PackedScene" uid="uid://dksj0sy04e26a" path="res://Assets/Scene/game_objects/Tutorials/raven_lord_ui.tscn" id="3_ei8a5"]
 [ext_resource type="Texture2D" uid="uid://dm7kgnv6u6phf" path="res://Assets/Textures/checkPoint_New Region_Animated.png" id="5_2qgp3"]
 [ext_resource type="PackedScene" uid="uid://nro3glw2xb4p" path="res://Assets/Scene/Component/hurtbox_component.tscn" id="5_5qubd"]
+[ext_resource type="Texture2D" uid="uid://jso0dy5gjf8k" path="res://Assets/Textures/UI/Sprite-0015_Player_Interface_UI2Layer.png" id="6_eojmv"]
+[ext_resource type="Texture2D" uid="uid://b1ikqyeu84qrx" path="res://Assets/Textures/Sprite-0032_coin_remastered-Sheet.png" id="7_vtnkn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_evxei"]
 radius = 700.0
@@ -295,6 +297,84 @@ animations = [{
 "speed": 30.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ev2rw"]
+atlas = ExtResource("7_vtnkn")
+region = Rect2(0, 0, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6unnk"]
+atlas = ExtResource("7_vtnkn")
+region = Rect2(46, 0, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sku8"]
+atlas = ExtResource("7_vtnkn")
+region = Rect2(92, 0, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dljjs"]
+atlas = ExtResource("7_vtnkn")
+region = Rect2(138, 0, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35brc"]
+atlas = ExtResource("7_vtnkn")
+region = Rect2(184, 0, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mo4b6"]
+atlas = ExtResource("7_vtnkn")
+region = Rect2(230, 0, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4ipv"]
+atlas = ExtResource("7_vtnkn")
+region = Rect2(276, 0, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c18lf"]
+atlas = ExtResource("7_vtnkn")
+region = Rect2(322, 0, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htxon"]
+atlas = ExtResource("7_vtnkn")
+region = Rect2(368, 0, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ut4wm"]
+atlas = ExtResource("7_vtnkn")
+region = Rect2(414, 0, 46, 46)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2hju0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ev2rw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6unnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sku8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dljjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35brc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mo4b6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4ipv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c18lf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htxon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ut4wm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="Region_01" type="StaticBody2D"]
 collision_mask = 0
 script = ExtResource("1_wslgf")
@@ -352,5 +432,25 @@ position = Vector2(43, -45)
 sprite_frames = SubResource("SpriteFrames_3nx7o")
 autoplay = "default"
 frame_progress = 0.191041
+
+[node name="Sprite2D_Coins_to_activate" type="Sprite2D" parent="Node2D"]
+visible = false
+position = Vector2(2, -114)
+texture = ExtResource("6_eojmv")
+
+[node name="Sprite2D_Coins_need_Activate" type="AnimatedSprite2D" parent="Node2D/Sprite2D_Coins_to_activate"]
+position = Vector2(4.76837e-07, -7)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_2hju0")
+autoplay = "default"
+frame_progress = 0.941959
+
+[node name="Label_Coins_needed" type="Label" parent="Node2D/Sprite2D_Coins_to_activate"]
+offset_left = -10.0
+offset_top = 1.0
+offset_right = 30.0
+offset_bottom = 24.0
+theme_override_font_sizes/font_size = 15
+text = "x 1"
 
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_changed"]

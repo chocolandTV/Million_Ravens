@@ -17,6 +17,8 @@ signal endgame_continue_warning()
 
 signal increase_raven_spawn()
 signal decrease_raven_spawn()
+# LUCKY EVENT FOR ENEMY SPAWN MANAGER
+signal lucky_event(_value : bool)
 #abilityUpgradeSignal
 signal ability_upgrade_Button(index:int)
 # signal show abilitys in globalUI
@@ -41,6 +43,8 @@ signal highscore_button_pressed()
 signal ui_update_collectable(switch : int, value : float)
 #Signal Menu Switch on Main Menu
 signal menu_switch()
+#Signal Game Starts
+signal menu_start_game()
 # SIGNAL Sound_UI_Change integer for type 1:Master 2: Music 3: Sound 4: Ambience, float for value 0-1
 signal menu_sound_volume_change(type : int, newVolume : float)
 

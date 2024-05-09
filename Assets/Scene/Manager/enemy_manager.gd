@@ -27,6 +27,9 @@ var enemy_speed_bonus :int = 1
 var enemy_health_bonus :int = 1
 #Enemy weight variable
 var allWeights :int = 0
+# Lucky enemy bool
+var isLuckyEvent : bool  =false
+var _tempWaitTime: float = 0
 func _ready():
 	timer.timeout.connect(on_timer_timeout)
 	if START_WAITTIME != waittime:
@@ -36,6 +39,8 @@ func _ready():
 	GameEvents.decrease_raven_spawn.connect(decrease_raven_spawn)
 	GameEvents.playerIsHiding.connect(change_player_isHiding)
 	GameEvents.midGame_region_raven_cleared.connect(spawnRavenLord)
+	GameEvents.lucky_event.connect(on_lucky_Event)
+	
 func _process(delta):
 	time_running += delta
 
@@ -65,8 +70,20 @@ func increase_wave():
 	enemy_damage_bonus = current_wave
 	enemy_speed_bonus = current_wave
 	enemy_health_bonus = current_wave
-
 	wave_increase_raven_spawner()
+
+# FUNCTION FOR LUCKY EVENT
+func on_lucky_Event(_value : bool):
+	isLuckyEvent =_value
+	if isLuckyEvent:
+		#Start Lucky Event
+		print("Lucky_Event: Start")
+		_tempWaitTime = waittime
+		timer.wait_time = 0.01
+	if !isLuckyEvent:
+		isLuckyEvent =_value
+		timer.wait_time = 0.5
+		_tempWaitTime = 0
 
 func on_timer_timeout():
 	if !isEnabled:
@@ -107,7 +124,10 @@ func spawnRavenLord(pos: Vector2):
 	_enemy.global_position = pos
 	GameEvents.midGame_region_boss_spawned.emit(_enemy.get_node("HealthComponent") as HealthComponent)
 
+
 func pick_random_enemy():
+	if isLuckyEvent:
+		return enemyPool[7]
 	var random :int = randi_range(1, 100)
 	if random == 20:# FIRESTARTER
 		return enemyPool[1]

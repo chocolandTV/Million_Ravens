@@ -21,9 +21,9 @@ driver/mix_rate=48000
 
 [autoload]
 
+GameEvents="*res://Assets/Scene/autoload/game_events.tscn"
 GlobalVariables="*res://Assets/Scene/autoload/global_variables.tscn"
 File_Manager="*res://Assets/Scene/autoload/file_manager.tscn"
-GameEvents="*res://Assets/Scene/autoload/game_events.tscn"
 Highscore_Manager="*res://Assets/Scene/Manager/highscore_manager.gd"
 HighscoreUiSystem="*res://Assets/Scene/UI/highscore/highscore_ui_system.tscn"
 SoundManager="*res://Assets/Scene/autoload/sound_manager.tscn"

@@ -215,7 +215,7 @@ script = ExtResource("1_ll3iw")
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("2_kc6j5")
 isGameObject = true
-max_health = 10.0
+max_health = 25.0
 
 [node name="HealthBar" parent="." instance=ExtResource("3_rjodh")]
 visible = false

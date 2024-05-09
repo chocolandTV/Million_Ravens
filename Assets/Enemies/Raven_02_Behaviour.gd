@@ -5,6 +5,7 @@ class_name Enemy02_FireStarter
 @onready var health_component : HealthComponent = $HealthComponent
 @onready var hit_box : Area2D = $HitboxComponent
 @onready var anim : AnimationPlayer = $AnimationPlayer
+@onready var anim_cooldown : AnimationPlayer = $Animation_Cooldown
 @onready var animated_sprite : AnimatedSprite2D = $%AnimatedSprite2D
 @onready var timer : Timer = $Timer
 @onready var attackTimer :Timer = $AttackTimer
@@ -14,7 +15,7 @@ const flying_speed : float  = 1500.0
 const walking_speed: float = 100
 var current_speed: float =100
 var speed_bonus : float = 0
-const damage :float = 1000
+const damage :float = 500
 
 var target_pos : Vector2 = Vector2.ZERO
 var isAttacking : bool = false
@@ -59,17 +60,20 @@ func start_attack():
             isdashing = true
             current_speed = flying_speed
             animated_sprite.set_animation("flying")
+            hit_box.monitorable =true
 func on_raven_reached_target_position():
+      # ENEMY COOLDOWN
+      hit_box.monitorable =false
       isdashing =false
       $CPUParticles2D.emitting = true
-      $Tear_Sprite2D.visible = true
+      anim_cooldown.play("cooldown_effect")
       timer.start()
       animated_sprite.set_animation("Idle")
       anim.play("Raven_walking")
       current_speed = walking_speed
 
 func on_timer_timeouti():
-      $Tear_Sprite2D.visible = false
+      
       isAttacking = false
       animated_sprite.set_animation("start")
       anim.stop()

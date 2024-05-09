@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://gbw6bwm54644"]
+[gd_scene load_steps=39 format=3 uid="uid://gbw6bwm54644"]
 
 [ext_resource type="PackedScene" uid="uid://dwsgmvwvvu86q" path="res://Assets/Scene/Manager/arena_time_manager.tscn" id="1_0trha"]
 [ext_resource type="PackedScene" uid="uid://dtmli75wgeic" path="res://Assets/Modules/Camera/camera.tscn" id="1_k1roq"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://diqmbn2ls8nc0" path="res://Assets/Scene/game_objects/Chest.tscn" id="19_2px30"]
 [ext_resource type="PackedScene" uid="uid://1aak0ykkx0xn" path="res://Assets/Enemies/Formations/02_A_formation.tscn" id="19_cshna"]
 [ext_resource type="PackedScene" uid="uid://3etyyu5pcjdb" path="res://Assets/Enemies/Formations/05_N_formation.tscn" id="22_fmqoo"]
+[ext_resource type="PackedScene" uid="uid://0iv0w8cg1m1x" path="res://Assets/Enemies/Raven_08_Lucky.tscn" id="23_bc1n8"]
 [ext_resource type="PackedScene" uid="uid://cyf8d7oi7fjsp" path="res://Assets/Scene/UI/vignette.tscn" id="33_n0ujm"]
 [ext_resource type="PackedScene" uid="uid://bx38dxvmnowkm" path="res://Assets/Scene/game_objects/grass_object.tscn" id="34_4vkl1"]
 [ext_resource type="PackedScene" uid="uid://bb5joebfqgqm1" path="res://Assets/Scene/game_objects/Obstacles/fence_terrain.tscn" id="35_3uyua"]
@@ -83,7 +84,7 @@ experience_manager = NodePath("../ExperienceManager")
 start_experience = 5000.0
 
 [node name="EnemyManager" parent="." node_paths=PackedStringArray("amanager") instance=ExtResource("1_nk1n0")]
-enemyPool = Array[PackedScene]([ExtResource("16_jff52"), ExtResource("18_wjt28"), ExtResource("16_iqjwo"), ExtResource("19_cshna"), ExtResource("17_dhdr5"), ExtResource("18_k1wd0"), ExtResource("22_fmqoo")])
+enemyPool = Array[PackedScene]([ExtResource("16_jff52"), ExtResource("18_wjt28"), ExtResource("16_iqjwo"), ExtResource("19_cshna"), ExtResource("17_dhdr5"), ExtResource("18_k1wd0"), ExtResource("22_fmqoo"), ExtResource("23_bc1n8")])
 ravenLord_Scene = ExtResource("12_3peer")
 amanager = NodePath("../ArenaTimeManager")
 

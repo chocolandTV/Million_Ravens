@@ -46,6 +46,7 @@ func _on_start_button_pressed():
       startButton_text.text = "Resume"
       get_tree().paused = false
       GameEvents.menu_switch.emit()
+      GameEvents.menu_start_game.emit()
       highscore_ui.visible = false
       SoundManager.Emit_Sound(SoundManager.soundType.s_ui_click,Vector2.ZERO)
 
