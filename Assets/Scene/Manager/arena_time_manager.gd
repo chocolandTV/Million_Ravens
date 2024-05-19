@@ -24,19 +24,20 @@ func get_delta_time():
       return deltaTimer.time
 
 func on_timer_timeout():
-      text="You lose: 60 minutes done"
-      GameEvents.player_died.emit()
+      pass
+      # text="You lose: 60 minutes done"
+      # GameEvents.player_died.emit()
 
 func on_boss_down():
       raven_lords_collected +=1
-      print ("ArenaTimeManager Debug:", isgamedone)
+      # print ("ArenaTimeManager Debug:", isgamedone)
       if raven_lords_collected >=raven_lords_max:
             #Win Condition defeat 4 ravenlords
             if !isgamedone:
                   win_game()
 func win_game():
       # Upload Current Score
-      var metadata :String = str(deltaTimer.get_formated_time_elapsed()) +"," + str(Highscore_Manager.current_RavenLords) + "," + str(Highscore_Manager.current_coins)
+      var metadata :String = str(deltaTimer.get_formated_time_elapsed()) +"," + str(raven_lords_max) + "," + str(Highscore_Manager.current_coins)
       HighscoreUiSystem._upload_score(Highscore_Manager.current_highscore,metadata)
       isgamedone = true
       #update Leaderboard and get player index as new Highscore_entry Panel

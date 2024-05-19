@@ -56,7 +56,7 @@ func newLuckyInt():
 func increase_multiplier():
       gv_score_multiplier += 1
 func reset_multiplier():
-      gv_score_multiplier = 1
+      print("no Reset")
 
 func luckyEvent_Start():
       #START EVENT
@@ -64,3 +64,4 @@ func luckyEvent_Start():
       GameEvents.lucky_event.emit(true)
       temp_score_multiplier = gv_score_multiplier
       gv_score_multiplier = 500
+      GameEvents.ui_update_highscore_multiplier.emit(1)

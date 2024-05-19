@@ -42,7 +42,7 @@ func get_movement_vector():
 
 func player_dash():
 	# PLAYER DONT GET ANY DAMAGE
-	body_collision.disabled = true
+	# body_collision.disabled = true
 	hurtboxComponent.monitoring = false
 	dash_invincible_timer.start()
 	# PLAYER DEAL AROUND DAMAGE
@@ -58,7 +58,7 @@ func player_dash():
 
 func on_invincible_timeout():
 	hurtboxComponent.monitoring = true
-	body_collision.disabled = false
+	# body_collision.disabled = false
 	dash_damage_Hitbox.monitorable = false
 	dash_damage_Hitbox.monitoring = false
 

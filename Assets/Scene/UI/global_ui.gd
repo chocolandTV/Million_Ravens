@@ -90,14 +90,13 @@ func update_ability_text():
       _movspeed_up_text.text = "%d + 2,5 m/s" % settings.gv_Settings["player_movement_speed_level"]
       _lifeplus_up_text.text = "%d + 1 Life" % settings.gv_Settings["player_health_level"]
 
-func update_collectable_text(switch : int, _value :float):
+func update_collectable_text(switch : int, value :float):
       if switch == 0:
             # RAVEN IDICATOR
-            print ("increase ravenboss indicator")
-            value_Ravenlord_count.text = ("%s / 4" %int(_value))
+            value_Ravenlord_count.text = "X "+str(value)
             # switch Sprite if reached 25%, 50%, 75% + 100%
       if switch == 1:
-            value_coin.text =  "X "+str(_value)
+            value_coin.text =  "X "+str(value)
 
 func _showupgrades(_bool :bool):
       _player_Ability_Container.visible = _bool

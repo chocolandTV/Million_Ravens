@@ -1,0 +1,201 @@
+[gd_scene load_steps=17 format=3 uid="uid://buykbnfwf6hhp"]
+
+[ext_resource type="Texture2D" uid="uid://b1ikqyeu84qrx" path="res://Assets/Textures/Sprite-0032_coin_remastered-Sheet.png" id="1_daetq"]
+[ext_resource type="Texture2D" uid="uid://bh2an7q8dl4nb" path="res://Assets/Textures/Metallic_Light.png" id="2_rapgg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4sdu"]
+atlas = ExtResource("1_daetq")
+region = Rect2(0, 0, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27gwx"]
+atlas = ExtResource("1_daetq")
+region = Rect2(46, 0, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wis2d"]
+atlas = ExtResource("1_daetq")
+region = Rect2(92, 0, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv3vm"]
+atlas = ExtResource("1_daetq")
+region = Rect2(138, 0, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icvnk"]
+atlas = ExtResource("1_daetq")
+region = Rect2(184, 0, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81o3u"]
+atlas = ExtResource("1_daetq")
+region = Rect2(230, 0, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ndor"]
+atlas = ExtResource("1_daetq")
+region = Rect2(276, 0, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iiwav"]
+atlas = ExtResource("1_daetq")
+region = Rect2(322, 0, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3m8j8"]
+atlas = ExtResource("1_daetq")
+region = Rect2(368, 0, 46, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_827vi"]
+atlas = ExtResource("1_daetq")
+region = Rect2(414, 0, 46, 46)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y5ego"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4sdu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27gwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wis2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hv3vm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icvnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81o3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ndor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iiwav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3m8j8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_827vi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_kh8cb"]
+resource_name = "Fly_up"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.6, 1.8, 3),
+"transitions": PackedFloat32Array(1, 1, 1.93187, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -20), Vector2(0, -100), Vector2(0, -200)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:speed_scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 3),
+"transitions": PackedFloat32Array(1, 0.34151, 6.06286),
+"update": 0,
+"values": [1.0, 2.0, 10.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.8, 3),
+"transitions": PackedFloat32Array(1, 1, 6.06287),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4vg4u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:speed_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ph0rh"]
+_data = {
+"Fly_up": SubResource("Animation_kh8cb"),
+"RESET": SubResource("Animation_4vg4u")
+}
+
+[node name="Coin_Fly_Effect" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_y5ego")
+autoplay = "default"
+frame_progress = 0.631592
+
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D"]
+show_behind_parent = true
+position = Vector2(-5, -16)
+energy = 0.55
+texture = ExtResource("2_rapgg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ph0rh")
+}
+autoplay = "Fly_up"
+speed_scale = 4.0

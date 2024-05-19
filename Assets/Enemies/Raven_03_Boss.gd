@@ -2,7 +2,7 @@ extends CharacterBody2D
 @export var damage = 1000
 
 @onready var health_component : HealthComponent = $HealthComponent
-const speed : float  = 145.0
+const speed : float  = 185.0
 
 @onready var health_bar = $HealthBar
 @onready var player_node = get_tree().get_first_node_in_group("player") as Node2D

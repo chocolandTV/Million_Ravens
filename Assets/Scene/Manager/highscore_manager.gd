@@ -30,7 +30,7 @@ func increment_highscore(number: int):
 func increment_RavenLord():
       current_RavenLords +=1
       print("Ravenlord collected, current:",current_RavenLords)
-      GameEvents.ui_update_collectable.emit(1, current_RavenLords)
+      GameEvents.ui_update_collectable.emit(0, current_RavenLords)
 
 func increment_coins():
       current_coins +=1

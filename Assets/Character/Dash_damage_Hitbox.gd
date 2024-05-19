@@ -10,4 +10,4 @@ func apply_damage_bonus(enemy_damage_bonus):
      damage =enemy_damage_bonus
 
 func on_upgrade_damage(quantity : float):
-      damage = quantity * BASEDAMAGE
+      damage = quantity + BASEDAMAGE

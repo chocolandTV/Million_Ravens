@@ -16,6 +16,7 @@ func _ready():
       $AgressionComponent.body_entered.connect(player_entered_zone)
       $AgressionComponent.body_exited.connect(player_exited_zone)
       GameEvents.raven_died.connect(raven_died_in_zone)
+      GameEvents.midGame_region_boss_spawned.connect(on_boss_dead)
       
 
 
@@ -28,11 +29,9 @@ func set_region_text(_text : String):
 
 func player_entered_zone(body : Node2D):
       isPlayerInRange = true
-      GameEvents.midGame_region_boss_spawned.connect(on_boss_dead)
-      
+
 func player_exited_zone(body : Node2D):
       isPlayerInRange = false
-      GameEvents.midGame_region_boss_spawned.disconnect(on_boss_dead)
 
 func raven_died_in_zone():
       if isPlayerInRange && game_state == 1:
@@ -77,7 +76,8 @@ func check_coins():
             #SetText to Region progress
 
 func on_boss_dead(health_component : HealthComponent):
-      health_component.died.connect(_on_boss_dead_event)
+      if game_state == 2:
+            health_component.died.connect(_on_boss_dead_event)
 
 func _on_boss_dead_event(_damageType :int):
       game_state = 3

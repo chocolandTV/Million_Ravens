@@ -14,7 +14,7 @@ const SEC_TIMES_WAITTIME_INCREASER : int = 10
 const BASE_DAMAGE_MULTIPLIER : float = 0.05
 const BASE_SPEED_MULTIPLIER : float  = 0.02
 const BASE_HEALTH_MULTIPLIER : float = 0.05
-var waittime : float = 0.5
+var waittime : float = 0.1
 var waittimer_wave_counter : int = 0
 var isPlayerHiding : bool = false
 var spawnPool : Array[Node2D]
@@ -27,6 +27,7 @@ var enemy_speed_bonus :int = 1
 var enemy_health_bonus :int = 1
 #Enemy weight variable
 var allWeights :int = 0
+var raven_gamble_max : int =100
 # Lucky enemy bool
 var isLuckyEvent : bool  =false
 var _tempWaitTime: float = 0
@@ -40,6 +41,7 @@ func _ready():
 	GameEvents.playerIsHiding.connect(change_player_isHiding)
 	GameEvents.midGame_region_raven_cleared.connect(spawnRavenLord)
 	GameEvents.lucky_event.connect(on_lucky_Event)
+	raven_gamble_max = 100
 	
 func _process(delta):
 	time_running += delta
@@ -66,7 +68,8 @@ func wave_increase_raven_spawner():
 
 func increase_wave():
 	current_wave += 1
-	print("current_wave:", current_wave)
+	raven_gamble_max = max(20,raven_gamble_max - 1)
+	print("Raven_Small_Spawning_Chance:", raven_gamble_max)
 	enemy_damage_bonus = current_wave
 	enemy_speed_bonus = current_wave
 	enemy_health_bonus = current_wave
@@ -82,7 +85,8 @@ func on_lucky_Event(_value : bool):
 		timer.wait_time = 0.01
 	if !isLuckyEvent:
 		isLuckyEvent =_value
-		timer.wait_time = 0.5
+		waittime = 0.01
+		timer.wait_time = 0.01
 		_tempWaitTime = 0
 
 func on_timer_timeout():
@@ -128,23 +132,23 @@ func spawnRavenLord(pos: Vector2):
 func pick_random_enemy():
 	if isLuckyEvent:
 		return enemyPool[7]
-	var random :int = randi_range(1, 100)
-	if random == 20:# FIRESTARTER
+	var random :int = randi_range(1, raven_gamble_max)
+	if random == 1:# FIRESTARTER
 		return enemyPool[1]
 
-	if random ==30 :# Formation R
+	if random ==2 :# Formation R
 		return enemyPool[2]
 
-	if random ==40 :# Formation A
+	if random ==3 :# Formation A
 		return enemyPool[3]
 
-	if random ==50 :# Formation V
+	if random ==4 :# Formation V
 		return enemyPool[4]
 
-	if random ==60 :# Formation E
+	if random ==5 :# Formation E
 		return enemyPool[5]
 
-	if random ==70 :# Formation N
+	if random ==6 :# Formation N
 		return enemyPool[6]
 
 	return enemyPool[0]
